@@ -60,6 +60,11 @@ Commands marked **planned** do not exist yet and must be implemented before the
 corresponding stage is called complete. Establish detailed numerical social
 acceptance criteria with independent reviewers before the final comparison.
 
+Implementation update: [VERIFICATION.md](VERIFICATION.md) maps these original
+planned commands to the actual pilot modules and records execution. Training
+uses the CPU fallback after native and WSL CUDA initialization failed. The
+original intended checks below remain visible; GPU availability is not claimed.
+
 | Requirement or material risk | Source | Runnable check | Explicit pass criterion | Status |
 | --- | --- | --- | --- | --- |
 | Reproducible source intake | Model/dataset publisher revisions; research integrity | `python scripts/pin_sources.py`; `python scripts/pin_sources.py --verify-only` | All recorded local evidence hashes match; exact source revision and declared license captured | Passed 2026-10-25: 7 source records, 10 evidence files; this does not establish dataset admission or training readiness |

@@ -1,0 +1,8 @@
+{
+  "original_tied_tensors_exactly_equal": true,
+  "shape": [
+    151936,
+    1024
+  ],
+  "rationale": "Normalize both base and pilot through HF save_pretrained before the same converter/quantizer to avoid duplicate tied output weights."
+}

@@ -1,0 +1,8 @@
+{
+  "visible_gpu": "-1",
+  "peak_rss_mib": 4380.3125,
+  "peak_gpu_reserved_mib": 0,
+  "peak_gpu_allocated_mib": 0,
+  "status": "completed",
+  "elapsed_seconds": 62.78200000000652
+}

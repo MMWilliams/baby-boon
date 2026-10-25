@@ -1,6 +1,6 @@
 {
   "project": "TinySocial",
-  "stage": "baseline_and_data_design",
+  "stage": "pilot_v1_complete_quality_gate_failed",
   "user_confirmed": {
     "deployment": "laptop_cpu_then_robot_computer",
     "output": "text_and_optional_tone_expression_cues",
@@ -10,7 +10,7 @@
     "language": "English-first",
     "starting_point": "adapt_pretrained_model",
     "target_model_parameters": [360000000, 600000000],
-    "deployment_format": "quantized_cpu_runtime_to_be_selected",
+    "deployment_format": "llama.cpp_Q4_K_M_GGUF",
     "max_context_tokens": 2048,
     "typical_reply_tokens": [16, 80],
     "max_reply_tokens": 128

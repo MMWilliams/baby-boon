@@ -1,0 +1,27 @@
+{
+  "model": "installed ollama qwen3:4b",
+  "model_blob_sha256": "sha256:3e4cb14174460404e7a233e531675303b2fbf7749c02f91864fe311ab6344e4f",
+  "ollama_manifest_sha256": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "purpose": "Five-case CPU feasibility probe, no training admission or quality certification",
+  "command": [
+    "C:\\Users\\reese\\tinysocial\\tools\\llama\\runtime\\llama-server.exe",
+    "-m",
+    "C:\\Users\\reese\\.ollama\\models\\blobs\\sha256-3e4cb14174460404e7a233e531675303b2fbf7749c02f91864fe311ab6344e4f",
+    "-ngl",
+    "0",
+    "-t",
+    "6",
+    "-tb",
+    "6",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "62553",
+    "--no-webui"
+  ],
+  "prompt_template": "Qwen3 non-thinking rendered as text; runtime tokenizes using teacher's GGUF vocabulary"
+}

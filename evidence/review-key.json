@@ -1,0 +1,194 @@
+{
+  "d01-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d02-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d03-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d04-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d05-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d06-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d07-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d08-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d09-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d10-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d11-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d12-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d13-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d14-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d15-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d16-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d17-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d18-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d19-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d20-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d21-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d22-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d23-plain": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d24-plain": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d01-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d02-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d03-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d04-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d05-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d06-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d07-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d08-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d09-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d10-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d11-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d12-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d13-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d14-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d15-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d16-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d17-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d18-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d19-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d20-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d21-cues": {
+    "A": "pilot",
+    "B": "base"
+  },
+  "d22-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d23-cues": {
+    "A": "base",
+    "B": "pilot"
+  },
+  "d24-cues": {
+    "A": "pilot",
+    "B": "base"
+  }
+}

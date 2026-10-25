@@ -1,0 +1,16 @@
+{
+  "tag": "b11829",
+  "commit": "184f6536024668e8908ab8c86033d56708e62b40",
+  "files": [
+    {
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11829/llama-b11829-bin-win-cpu-x64.zip",
+      "sha256": "c534f35ce9c842f3bc224fadaecc82e1b49768f63e8320922f6dbd603f66395e",
+      "publisher_digest_verified": true
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp/archive/184f6536024668e8908ab8c86033d56708e62b40.zip",
+      "sha256": "25d4b1374f68d87dbf46441f53b21ad9fd51a67ba1b819a3ce0cec0db728fab5",
+      "publisher_digest_verified": false
+    }
+  ]
+}

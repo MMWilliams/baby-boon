@@ -1,0 +1,82 @@
+{
+  "model": "C:\\Users\\reese\\tinysocial\\models\\pilot-v1\\model-q4_k_m.gguf",
+  "model_sha256": "02056233205879002c9b8794cedc0181c5437ca171586e9eed9e357155df2833",
+  "model_mib": 378.3269958496094,
+  "threads": 6,
+  "context": 2048,
+  "parallel": 1,
+  "gpu_layers": 0,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "hardware": "AMD Ryzen 9 9900X desktop; not user's laptop",
+  "process_peak_rss_mib": 899.2109375,
+  "memory_scope": "llama-server process tree; excludes Python evaluation harness",
+  "cold_process_start_to_health_ms": 811.7371000116691,
+  "cold_note": "OS file cache not flushed; this is process startup, not cold-disk latency",
+  "first_query": {
+    "text": "Hello. How can I assist you today?",
+    "first_content_ms": 90.99759999662638,
+    "total_ms": 199.33630002196878,
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 105,
+      "prompt_ms": 74.153,
+      "prompt_per_token_ms": 0.7062190476190476,
+      "prompt_per_second": 1415.991261311073,
+      "predicted_n": 10,
+      "predicted_ms": 108.09,
+      "predicted_per_token_ms": 12.01,
+      "predicted_per_second": 83.2639467110741
+    },
+    "tokens_predicted": 10,
+    "stop_type": "eos",
+    "truncated": false,
+    "error": null
+  },
+  "plain": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 217.58039999986067,
+    "median_decode_tokens_per_second": 96.58308804076239,
+    "minimum_decode_tokens_per_second": 47.105295476377535,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 0.0
+  },
+  "cues": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 223.90820004511625,
+    "median_decode_tokens_per_second": 95.1732133905713,
+    "minimum_decode_tokens_per_second": 49.94793887909141,
+    "valid_cues": 22,
+    "median_cue_suffix_tokens": 8.0
+  },
+  "command": [
+    "C:\\Users\\reese\\tinysocial\\tools\\llama\\runtime\\llama-server.exe",
+    "-m",
+    "C:\\Users\\reese\\tinysocial\\models\\pilot-v1\\model-q4_k_m.gguf",
+    "-t",
+    "6",
+    "-tb",
+    "6",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "58212",
+    "--no-webui"
+  ],
+  "chat_client_smoke": {
+    "exit_code": 0,
+    "stdout": "{\"text\": \"No problem. How long was that?\", \"tone\": \"neutral\", \"expression\": \"neutral\", \"intensity\": 0, \"cue_valid\": true}\n",
+    "stderr": ""
+  },
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f"
+}

@@ -1,6 +1,6 @@
 # Data source review
 
-No conversation dataset has been admitted to training. Publisher metadata is
+No external conversation dataset has been admitted to training. Publisher metadata is
 an intake signal, not a completed provenance/quality review. Preserve source
 IDs and licenses on every accepted conversation. Do not read or train on local
 personal chat databases, private conversations, or customer records.
@@ -28,3 +28,29 @@ Initial corpus sizes and mixture proportions remain experimental choices.
 Start with a small, inspectable pilot rather than generating a large unchecked
 synthetic corpus. Score naturalness, appropriateness and continuity; avoid
 rewarding stereotyped emotion labels or automatic agreement.
+
+## Pilot v1 admission
+
+The local pilot uses `original-fictional-v1`: 120 synthetic conversation targets,
+each represented in plain and cue modes (240 rows). There are 184 training rows
+and 56 validation rows. All are Codex-assisted original examples assembled from
+`configs/seeds.jsonl` and `tinysocial/data.py`. They are not human conversation
+records. No external dataset, private chat, personal database or teacher service
+was used. Broad linguistic/social coverage is deliberately limited at this stage.
+
+Seed families s01-s24 were rejected before training because their structure
+closely parallels the development cases. The remaining source seeds and all
+template outputs were reviewed during construction for the intended response,
+capability honesty and valid presentation labels. Sibling plain/cue examples
+and each entire generator family stay in the same split. The audit checks hashes,
+source labels, exact prompt overlap, family membership and cue validity; it is
+not a semantic deduplication model or a human-quality certification.
+
+The validation split has four whole seed families and two whole template
+families. The authored dev suite is separate but covers related skills. Neither
+this small validation set nor the development suite establishes broad social
+generalization. Independent unseen human evaluation remains required.
+
+Reproduce with `python -m tinysocial.data`; verify the immutable output with
+`python -m tinysocial.data --audit`. The exact corpus manifest is saved alongside
+the experiment evidence after training; the full generated rows remain local.

@@ -1,0 +1,6 @@
+{
+  "raw_generation_records_rechecked": 48,
+  "metadata_in_spoken_text": 0,
+  "original_failure": "d12 cue output contained <concern>0; regression test failed before parser fix",
+  "valid_cue_rows": 22
+}

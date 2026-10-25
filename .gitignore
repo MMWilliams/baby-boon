@@ -5,4 +5,5 @@ models/
 data/
 runs/
 checkpoints/
+tools/
 .claude/HANDOFF.md

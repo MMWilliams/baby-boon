@@ -1,0 +1,18 @@
+{
+  "base_model": "Qwen/Qwen3-0.6B",
+  "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "checkpoint": "checkpoints/pilot-v1",
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "converter_sha256": "e9a1da876330bbce9687541ab31736542a01b4ac43c6686126514a50f122fb7f",
+  "quantization": "Q4_K_M",
+  "files": {
+    "model-f16.gguf": {
+      "bytes": 1198182240,
+      "sha256": "d107728a115478ea03883ce8b6e502d04841bda937eb8e18f82ccb9783cebc4e"
+    },
+    "model-q4_k_m.gguf": {
+      "bytes": 396704608,
+      "sha256": "02056233205879002c9b8794cedc0181c5437ca171586e9eed9e357155df2833"
+    }
+  }
+}

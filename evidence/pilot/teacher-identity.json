@@ -1,0 +1,11 @@
+{
+  "installed_tag": "qwen3:4b",
+  "general.name": "Qwen3 4B Thinking 2507",
+  "general.finetune": "Thinking",
+  "verified_from": "GGUF metadata of blob sha256:3e4cb14174460404e7a233e531675303b2fbf7749c02f91864fe311ab6344e4f",
+  "next_candidate": "Qwen/Qwen3-4B-Instruct-2507",
+  "candidate_url": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+  "candidate_license": "apache-2.0",
+  "candidate_mode": "non-thinking only",
+  "candidate_downloaded": false
+}

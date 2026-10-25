@@ -1,0 +1,8 @@
+{
+  "steps": 46,
+  "validation_loss_before": 3.55891203554898,
+  "validation_loss_after": 2.394849702593844,
+  "lora_b_norm_from_zero_init": 2.0444209040568437,
+  "elapsed_seconds": 440.0,
+  "conclusion": "Optimization evidence only; social improvement requires independent review"
+}

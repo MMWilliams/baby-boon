@@ -1,0 +1,82 @@
+{
+  "model": "C:\\Users\\reese\\tinysocial\\models\\qwen-base-matched\\model-q4_k_m.gguf",
+  "model_sha256": "ea5d230f49c9d61d791e0266ecf4e6408db66b5c2961f6d99540f01a2af50a7c",
+  "model_mib": 378.3269958496094,
+  "threads": 6,
+  "context": 2048,
+  "parallel": 1,
+  "gpu_layers": 0,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "hardware": "AMD Ryzen 9 9900X desktop; not user's laptop",
+  "process_peak_rss_mib": 936.25,
+  "memory_scope": "llama-server process tree; excludes Python evaluation harness",
+  "cold_process_start_to_health_ms": 512.5896000536159,
+  "cold_note": "OS file cache not flushed; this is process startup, not cold-disk latency",
+  "first_query": {
+    "text": "Hello! How can I help you today? 😊",
+    "first_content_ms": 95.43360001407564,
+    "total_ms": 201.0166000109166,
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 105,
+      "prompt_ms": 57.364,
+      "prompt_per_token_ms": 0.5463238095238095,
+      "prompt_per_second": 1830.416288961718,
+      "predicted_n": 12,
+      "predicted_ms": 105.395,
+      "predicted_per_token_ms": 9.581363636363635,
+      "predicted_per_second": 104.36927747995635
+    },
+    "tokens_predicted": 12,
+    "stop_type": "eos",
+    "truncated": false,
+    "error": null
+  },
+  "plain": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 112.57480003405362,
+    "median_decode_tokens_per_second": 103.03309831297761,
+    "minimum_decode_tokens_per_second": 100.05122622782865,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 0.0
+  },
+  "cues": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 4,
+    "warm_first_content_p95_ms": 196.23820000560954,
+    "median_decode_tokens_per_second": 87.829857407738,
+    "minimum_decode_tokens_per_second": 77.29466246881586,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 14.0
+  },
+  "command": [
+    "C:\\Users\\reese\\tinysocial\\tools\\llama\\runtime\\llama-server.exe",
+    "-m",
+    "C:\\Users\\reese\\tinysocial\\models\\qwen-base-matched\\model-q4_k_m.gguf",
+    "-t",
+    "6",
+    "-tb",
+    "6",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "64718",
+    "--no-webui"
+  ],
+  "chat_client_smoke": {
+    "exit_code": 0,
+    "stdout": "{\"text\": \"Hello! How can I help you today? 😊\", \"tone\": \"neutral\", \"expression\": \"neutral\", \"intensity\": 0, \"cue_valid\": false}\n",
+    "stderr": ""
+  },
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f"
+}

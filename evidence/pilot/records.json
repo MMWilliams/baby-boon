@@ -1,0 +1,86 @@
+[
+  {
+    "path": "evidence/pilot/training/config.json",
+    "sha256": "87519890f2ec1768f526a32aedd56c1edf130c582d146839bf087baa75280121"
+  },
+  {
+    "path": "evidence/pilot/training/result.json",
+    "sha256": "67694b14f1d5491bde05d2cc5448ba8a8204459723f0206656939c245c7565ce"
+  },
+  {
+    "path": "evidence/pilot/training/resources.json",
+    "sha256": "adc993513668830935020686ba0021dcee4da456914130036789f516a4b831c5"
+  },
+  {
+    "path": "evidence/pilot/training/train.jsonl",
+    "sha256": "bf9ebf494a6d4441e75687edc974b7834a291969a2cbe18b0d06d44d8f6f0710"
+  },
+  {
+    "path": "evidence/pilot/smol-float/config.json",
+    "sha256": "51bf9f045a69d5349ccce5579498f15eb9b87d457931af143008104e22ef293d"
+  },
+  {
+    "path": "evidence/pilot/smol-float/responses.jsonl",
+    "sha256": "d89147aea6203f7ba5889cf6d3a286bf8e44e6497e0fed5c6f2b7fa716fd4e69"
+  },
+  {
+    "path": "evidence/pilot/smol-float/resources.json",
+    "sha256": "f3fc354803507fa4e63eab3eeab1677251f63d75e2ddbe84ceb1ec55715aef4b"
+  },
+  {
+    "path": "evidence/pilot/qwen-float/config.json",
+    "sha256": "b333a79847d981f0407d3ec5ef810e326c5cb2a64afdce5be026c213248ba72b"
+  },
+  {
+    "path": "evidence/pilot/qwen-float/responses.jsonl",
+    "sha256": "f07bfac3b47fe46f98512a9850c2262cafc7ba228f4cd8af2f3c1c36ae4c5af4"
+  },
+  {
+    "path": "evidence/pilot/qwen-float/resources.json",
+    "sha256": "a3eadd11bd36e864382a8f2ab2c9690e68f1ebe45c48d0cdff12f71c440bed3f"
+  },
+  {
+    "path": "evidence/pilot/pilot-float/config.json",
+    "sha256": "20544c6061304484f191cd6c210247026fbaebbbe4b19c86a0954f7cd782e7d4"
+  },
+  {
+    "path": "evidence/pilot/pilot-float/responses.jsonl",
+    "sha256": "d4c9efbac830c021d755179713555158a1b7c0dc89a6a3bffeba2d3d15314e0d"
+  },
+  {
+    "path": "evidence/pilot/pilot-float/resources.json",
+    "sha256": "90250a96524a2e3f2bc7f451e53cf2057bb4ffb6a0e389e05666b54f0a462464"
+  },
+  {
+    "path": "evidence/pilot/base-cpu/summary.json",
+    "sha256": "f1e26fbda2cd56bbd48fe783b779248b3bf20af84873525244c371845466d936"
+  },
+  {
+    "path": "evidence/pilot/base-cpu/responses.jsonl",
+    "sha256": "77a3e145cdd4cf0b9e7279bfa4bc00d0bb8a98e31982e4a83e69121845addb60"
+  },
+  {
+    "path": "evidence/pilot/pilot-cpu/summary.json",
+    "sha256": "af36d34e89c2e38984c468fcb241a03e7fbbb66521588483fa4fa441e8f6917d"
+  },
+  {
+    "path": "evidence/pilot/pilot-cpu/responses.jsonl",
+    "sha256": "dd89e73d1c2f6d75e9e8b86827d4bca49a37e2866be9cc8e1f62ac1a70f9e12c"
+  },
+  {
+    "path": "evidence/pilot/base-export/manifest.json",
+    "sha256": "2ae69f78db2c3e90d7ccc74cb5dac9dce3c25ff0855427876f7c820d51d9ee22"
+  },
+  {
+    "path": "evidence/pilot/pilot-export/manifest.json",
+    "sha256": "39275403889661e2cf56309a3763848252db9e803c9e0cdcdddd7076ea28b6a1"
+  },
+  {
+    "path": "evidence/pilot/teacher-probe/manifest.json",
+    "sha256": "a87fda9502c820cca843fb738c2190a7eb465128cbe6a0e492b01db7348fefb4"
+  },
+  {
+    "path": "evidence/pilot/teacher-probe/responses.jsonl",
+    "sha256": "f007913143131ec8ef7628461b7b128451a39be4268bcfaf09f045441761cf12"
+  }
+]

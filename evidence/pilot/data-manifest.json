@@ -1,0 +1,22 @@
+{
+  "source": "original-fictional-v1",
+  "author": "Codex-assisted original synthetic examples",
+  "private_data": false,
+  "external_dataset_rows": 0,
+  "teacher_model": null,
+  "admission": "Local pilot only. No claim of human-authored dialogue or independent evaluation.",
+  "excluded_seed_families": "s01-s24: closely parallel development prompts; rejected before training",
+  "generator_sha256": "13c950d5b0c8fda40c14daf25c928ea2cce419625016ce72db52b23d2f83e840",
+  "seeds_sha256": "6427882acdb24200f943d5b79a9b382618d0152ddb51d65009ae5583eeb009d9",
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f",
+  "files": {
+    "train.jsonl": {
+      "sha256": "22747956b0926116f6526736fd5fde6384d834381775bcd61829cd1b51b3d254",
+      "rows": 184
+    },
+    "validation.jsonl": {
+      "sha256": "39b6744439c41057684efb3dd1ca9eca53824b6cf5a3c39672414509a6d48be8",
+      "rows": 56
+    }
+  }
+}

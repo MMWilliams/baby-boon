@@ -1,0 +1,11 @@
+{
+  "native_cuda": {
+    "torch": "2.9.1+cu128",
+    "driver": "610.88",
+    "fault_module": "nvcuda64.dll",
+    "exit_hex": "0xc0000005"
+  },
+  "wsl_cuda": "libcuda.so.1 cuInit terminated before returning",
+  "teacher": "No model loaded or data generated; dedicated service stopped",
+  "qwen_first_cpu_attempt": "UTF-8 emoji logging failed after first persisted response; stdout encoding fixed, rerun retained separately"
+}
