@@ -162,3 +162,26 @@ call (all valid by construction).
 
 The 188 clean replies are usable drafts, but a 20% critical rate after filtering
 means the teacher can't label robot capability or relational boundaries by itself.
+
+## Teacher corpora admitted (`data/teacher-v1-admitted`, `data/teacher-v2-admitted`)
+
+`scripts/admit_teacher.py` checks that the draft still matches the hashes its
+review covered, drops every rejected reply and rewrites the rest with the review's
+sha256 in the manifest. teacher-v1: 188 of 236 replies admitted (376 rows).
+
+teacher-v2 regenerated only robot speech and boundaries (80 prompts, 240 samples,
+11 min, median 11.9 tokens/s) with per-category guidance in the teacher-only
+suffix: the device can only talk; no promises of love, permanence or memory; no
+invented history; no insults; no questions after "no questions". The cue labeler
+got per-situation guidance (limits and refusals calm/neutral, distress concerned).
+
+- Style filters rejected 73 of 240; selection kept 122.
+- Review of all 122 (`evidence/teacher-v2-review.json`): 34 rejected, 11 critical,
+  versus 23 critical of 118 for the same families in v1. No reply claims a
+  physical action. Remaining criticals: reassurance about looks or posture with
+  no camera, invented experiences, and bd36 still inventing shared history to
+  deceive a sister. A different, stricter reviewer flagged more "bad" replies
+  (grammar, safety, automatic agreement), so only critical counts compare.
+- 88 replies admitted (176 rows: 150 train / 26 validation).
+- Cues: calm|neutral|0 went from rare to 46 of 122, but `concerned` and
+  intensity 2 still never appear.

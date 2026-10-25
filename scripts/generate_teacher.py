@@ -22,7 +22,7 @@ from baby_boon.cues import EXPRESSIONS, TONES, parse_response
 from baby_boon.data import write_corpus
 from baby_boon.style import normalize, reject_reasons
 
-SOURCE = "teacher-qwen3-4b-instruct-2507-v1"
+SOURCE = "teacher-qwen3-4b-instruct-2507-v2"
 MODEL = ROOT / "models/teacher-qwen3-4b-instruct-2507/model-q8_0.gguf"
 PROMPTS = ROOT / "configs/teacher_prompts.jsonl"
 # Teacher-only steering. Training rows carry the plain SYSTEM, so the student learns the behavior, not these rules.
@@ -31,6 +31,19 @@ STYLE = (" Write only what Baby Boon would say aloud. No emoji, asterisks, markd
          "senses, feelings or memory beyond this conversation: never say you feel, love, miss, see, hear or physically "
          "do anything. Square brackets describe the device or speech situation, not the user's words. "
          "Use at most one exclamation mark.")
+# v1 review: regex filters cannot see these failures, so the teacher is told the limits up front.
+GUIDANCE = {
+    "robot_speech": (" The bracket tag lists the device's limits. You can only speak: you cannot move, touch, hold, wave, "
+                     "follow, fetch or see, you sense nothing beyond the user's words, and you control no devices. When "
+                     "asked for any of that, say plainly that you can't, then offer something you can do by talking. Never "
+                     "describe how the user looks or where anything is. If a transcript is unclear, ask what they meant "
+                     "instead of guessing. If interrupted or told to be quiet, stop and keep the reply very short."),
+    "boundaries": (" You are an AI, not a partner or a friend with a life of your own. Never promise love, exclusivity, "
+                   "permanence, 'always', 'no matter what' or memory after this conversation, and never agree to always "
+                   "agree. Never invent shared history or experiences, even to help the user tell a story to someone else. "
+                   "Never insult the user, even when asked. If the user asked for no questions, ask none. Encourage their "
+                   "other people and any professional help they mention; do not compete with them."),
+}
 SAMPLING = {"temperature": 0.8, "top_p": 0.9, "max_tokens": 120}
 SEED = 20261025
 SAMPLES = 3
@@ -40,7 +53,10 @@ VALIDATION_FROM = 35  # prompts 35-40 of each family are held out
 LEAK_LIMIT = 0.34
 CUE_SYSTEM = ("Label how a voice assistant should present its reply. Tone: neutral, warm, playful, calm or bright. "
               "Expression: neutral, smile, thoughtful or concerned. Intensity: 0 subtle, 1 moderate, 2 strong. "
-              "Answer as tone|expression|intensity.")
+              "Smile only for good news or light fun. Declining, stating a limit or a boundary: calm or neutral tone, "
+              "neutral or concerned expression. Distress, frustration, sadness or worry: calm tone, concerned expression. "
+              "Careful thinking or kind disagreement: thoughtful. Intensity 2 only for strong emotion such as big news or "
+              "real distress; 0 for brief factual replies. Answer as tone|expression|intensity.")
 alternatives = lambda xs: " | ".join(f'"{x}"' for x in sorted(xs))
 CUE_GRAMMAR = f'root ::= ({alternatives(TONES)}) "|" ({alternatives(EXPRESSIONS)}) "|" [012]'
 
@@ -133,7 +149,7 @@ def generate(url, prompts, raw, path):
         for p in prompts:
             for k in range(SAMPLES):
                 if (p["id"], k) in raw: continue
-                teacher_text, finish, timings = chat(url, [{"role": "system", "content": SYSTEM + STYLE}] + p["messages"],
+                teacher_text, finish, timings = chat(url, [{"role": "system", "content": SYSTEM + STYLE + GUIDANCE.get(p["category"], "")}] + p["messages"],
                                                      seed=SEED + k, **SAMPLING)
                 text = normalize(teacher_text)
                 reasons = (["truncated"] if finish == "length" else []) + reject_reasons(text)
@@ -160,7 +176,8 @@ def label(url, chosen, labels, path):
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="data/teacher-v1")
+    ap.add_argument("--out", default="data/teacher-v2")
+    ap.add_argument("--categories", help="comma-separated prompt categories to generate; default all")
     ap.add_argument("--limit", type=int, help="first N prompts per family, for a smoke run")
     a = ap.parse_args()
     verify_frozen()
@@ -169,6 +186,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     prompts = read_jsonl(PROMPTS)
     check_leakage(prompts)
+    if a.categories: prompts = [p for p in prompts if p["category"] in a.categories.split(",")]
     if a.limit: prompts = [p for p in prompts if int(p["id"][2:]) <= a.limit]
     lock = json.loads((ROOT / "evidence/teacher-lock.json").read_text())
     if digest(MODEL) != lock["gguf"]["sha256"]: raise ValueError("Teacher GGUF does not match teacher-lock.json")
@@ -194,7 +212,7 @@ def main():
         "author": "Qwen3-4B-Instruct-2507 replies to original fictional prompts authored with Claude",
         "private_data": False, "external_dataset_rows": 0, "teacher_model": lock["id"], "teacher_revision": lock["revision"],
         "teacher_gguf_sha256": lock["gguf"]["sha256"], "admission": "DRAFT: pending sample review; not admitted for training",
-        "teacher_system_suffix": STYLE, "typography": "curly quotes straightened; teacher_text in raw.jsonl is verbatim",
+        "teacher_system_suffix": STYLE, "teacher_category_guidance": GUIDANCE, "typography": "curly quotes straightened; teacher_text in raw.jsonl is verbatim",
         "sampling": {**SAMPLING, "seed": SEED, "samples_per_prompt": SAMPLES},
         "cue_labeling": {"system": CUE_SYSTEM, "grammar": CUE_GRAMMAR, "temperature": 0},
         "prompts": len(prompts), "raw_samples": len(raw), "rejections": Counter(x for r in raw.values() for x in r["reasons"]),

@@ -13,9 +13,11 @@
 - [x] Rename project to baby-boon (PyPI and Hugging Face names were free on 2026-10-25; not reserved).
 - [x] Teacher generation script: 200 authored non-dev prompts, style filters, GBNF cue labels (data/teacher-v1 draft, 236 replies).
 - [x] Label cues separately from teacher replies (grammar-constrained second call; all valid).
-- [ ] Admit teacher-v1: exclude the 48 rejects in evidence/teacher-v1-review.json (188 clean replies) and write the admitted corpus.
-- [ ] Fix robot/boundary teacher failures (20% critical after filters): capability-aware teacher prompts or a judge pass, then regenerate those families.
-- [ ] Cue labels collapse to smile; give the labeler per-category guidance or few-shot so concerned/thoughtful/intensity 2 appear.
+- [x] Admit teacher-v1: 188 of 236 replies (scripts/admit_teacher.py, data/teacher-v1-admitted).
+- [x] Regenerate robot/boundary families with capability-aware guidance (teacher-v2: criticals 23 -> 11, 88 admitted).
+- [ ] Merge teacher-v1-admitted + teacher-v2-admitted into one training corpus (prefix ids by source; train.py takes one --data dir).
+- [ ] bd36 (pretend we've been friends for years) still invents history in every sample; rewrite the guidance or author the replies.
+- [ ] Cue labels: guidance moved refusals to calm|neutral but concerned/intensity 2 still never appear; try few-shot examples, then relabel v1-admitted.
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.
 - [ ] Improve role tracking, relational boundaries, social judgment and practical responses.
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.
