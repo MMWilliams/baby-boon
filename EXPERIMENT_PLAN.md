@@ -1,4 +1,4 @@
-# TinySocial initial experiment and verification plan
+# Baby Boon initial experiment and verification plan
 
 User criteria: very small and fast; strong conversation/human interaction;
 social and emotional responsiveness; expressive; chatbot and humanoid use.
@@ -68,13 +68,13 @@ original intended checks below remain visible; GPU availability is not claimed.
 | Requirement or material risk | Source | Runnable check | Explicit pass criterion | Status |
 | --- | --- | --- | --- | --- |
 | Reproducible source intake | Model/dataset publisher revisions; research integrity | `python scripts/pin_sources.py`; `python scripts/pin_sources.py --verify-only` | All recorded local evidence hashes match; exact source revision and declared license captured | Passed 2026-10-25: 7 source records, 10 evidence files; this does not establish dataset admission or training readiness |
-| Training data rights and provenance | Intended distributable chatbot/robot model; original-source terms | Planned: `python -m tinysocial.data.audit --manifest data/manifest.json` plus source review | Every row attributable to an admitted source; no NC/unknown-rights source admitted; private user chats excluded | Pending; no rows admitted |
-| No family/tree leakage | Social generalization and evaluation integrity | Planned: `python -m tinysocial.data.verify_splits` | No source conversation, duplicate cluster or generator family spans train/dev/final; hashes frozen before training | Pending |
-| Real pre-training baseline | User's small/fast/social objective | Planned: `python -m tinysocial.evaluate --config configs/baseline.json` | Both exact base checkpoints produce complete journals under matching prompts; every failure retained | Pending |
-| Assistant-only training and valid cues | Avoid teaching prompt echo; proposed expression interface | Planned: `python -m tinysocial.train --config configs/smoke.json` and masking/schema tests | Real optimizer step; finite gradients; user/padding tokens excluded from loss; boundary and malformed-cue cases checked | Pending |
-| Resource limits | Conservative prior local-model resource policy | Planned: `python -m tinysocial.preflight`; monitored pilot run | GPU 0 only <=16000 MiB process allocation; GPU 1 unused; host <=20000 MiB; no paid calls or disturbance of unrelated jobs | Pending |
+| Training data rights and provenance | Intended distributable chatbot/robot model; original-source terms | Planned: `python -m baby_boon.data.audit --manifest data/manifest.json` plus source review | Every row attributable to an admitted source; no NC/unknown-rights source admitted; private user chats excluded | Pending; no rows admitted |
+| No family/tree leakage | Social generalization and evaluation integrity | Planned: `python -m baby_boon.data.verify_splits` | No source conversation, duplicate cluster or generator family spans train/dev/final; hashes frozen before training | Pending |
+| Real pre-training baseline | User's small/fast/social objective | Planned: `python -m baby_boon.evaluate --config configs/baseline.json` | Both exact base checkpoints produce complete journals under matching prompts; every failure retained | Pending |
+| Assistant-only training and valid cues | Avoid teaching prompt echo; proposed expression interface | Planned: `python -m baby_boon.train --config configs/smoke.json` and masking/schema tests | Real optimizer step; finite gradients; user/padding tokens excluded from loss; boundary and malformed-cue cases checked | Pending |
+| Resource limits | Conservative prior local-model resource policy | Planned: `python -m baby_boon.preflight`; monitored pilot run | GPU 0 only <=16000 MiB process allocation; GPU 1 unused; host <=20000 MiB; no paid calls or disturbance of unrelated jobs | Pending |
 | Social quality improvement | User's primary objective | Planned: blinded human baseline/pilot comparisons on independent scenarios | Preference improvement with uncertainty reported, plus no material regressions in continuity, honesty and appropriate response style; thresholds set before review | Pending |
-| Actual laptop performance | Confirmed CPU-first deployment | Planned: `python -m tinysocial.benchmark --runtime llama.cpp --threads <fixed> --device-report <file>` | Report warm/cold latency, throughput, process RAM, context and artifacts; compare with provisional targets; laptop test required for laptop claims | Pending |
+| Actual laptop performance | Confirmed CPU-first deployment | Planned: `python -m baby_boon.benchmark --runtime llama.cpp --threads <fixed> --device-report <file>` | Report warm/cold latency, throughput, process RAM, context and artifacts; compare with provisional targets; laptop test required for laptop claims | Pending |
 | Quantization preserves usable behavior | Deployable tiny checkpoint | Planned: same held-out review and schema checks on quantized export | Report paired float/export quality and speed; do not infer behavior from float checkpoint alone | Pending |
 
 ## Milestones

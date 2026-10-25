@@ -1,4 +1,4 @@
-# TinySocial backlog
+# Baby Boon backlog
 
 - [x] Confirm laptop CPU first; text and expression cues; speech separate.
 - [x] Pin model/data-source evidence and isolated dependency/runtime versions.
@@ -9,7 +9,10 @@
 - [x] Export matched base/pilot Q4_K_M artifacts and benchmark on desktop CPU.
 - [x] Provide chat client, malformed-cue fallback, tests and blinded review page.
 - [x] Diagnose teacher mismatch: installed qwen3:4b is actually Qwen3 4B Thinking 2507.
-- [ ] Pin and test the separate non-thinking Qwen3-4B-Instruct-2507 teacher.
+- [x] Pin and test the separate non-thinking Qwen3-4B-Instruct-2507 teacher (Q8_0, 7.8 tok/s CPU).
+- [x] Rename project to baby-boon (PyPI and Hugging Face names were free on 2026-10-25; not reserved).
+- [ ] Teacher generation script: new non-dev prompt families, filters for emoji, invented inner life/actions, length and register.
+- [ ] Label cues separately from teacher replies; the teacher produced 0/24 valid inline cues.
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.
 - [ ] Improve role tracking, relational boundaries, social judgment and practical responses.
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.

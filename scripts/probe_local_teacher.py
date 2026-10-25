@@ -11,8 +11,8 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from tinysocial.common import SYSTEM, digest, read_jsonl, source, write_json
-from tinysocial.cpu_eval import complete
+from baby_boon.common import SYSTEM, digest, read_jsonl, source, write_json
+from baby_boon.cpu_eval import complete
 
 
 def main():

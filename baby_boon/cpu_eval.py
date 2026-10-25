@@ -48,6 +48,7 @@ def main():
     p.add_argument("--model",required=True)
     p.add_argument("--out",required=True)
     p.add_argument("--threads",type=int,default=6)
+    p.add_argument("--tokenizer",help="local tokenizer dir for a model with its own chat template")
     a=p.parse_args()
     verify_frozen()
     out=Path(a.out)
@@ -55,7 +56,8 @@ def main():
     if (out/"responses.jsonl").exists(): raise FileExistsError("Evaluation journal already exists")
     from transformers import AutoTokenizer
     import psutil
-    tok=AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B",revision=source("Qwen/Qwen3-0.6B")["revision"])
+    if a.tokenizer: tok=AutoTokenizer.from_pretrained(a.tokenizer,local_files_only=True)
+    else: tok=AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B",revision=source("Qwen/Qwen3-0.6B")["revision"])
     # Reserve an unused loopback port; the server must bind successfully.
     with socket.socket() as s:
         s.bind(("127.0.0.1",0))
@@ -117,10 +119,11 @@ def main():
                     "valid_cues":sum(x["parsed"]["cue_valid"] for x in rows),
                     "median_cue_suffix_tokens":statistics.median([x["cue_suffix_tokens"] for x in rows]) if rows else None}
         # Exercise the actual chat client against the same running server.
-        client=subprocess.run([sys.executable,"-m","tinysocial.chat","--url",url,"--message","Hello. Keep it brief."],
+        client=subprocess.run([sys.executable,"-m","baby_boon.chat","--url",url,"--message","Hello. Keep it brief."],
                               cwd=ROOT,capture_output=True,encoding="utf-8",timeout=120)
         smoke={"exit_code":client.returncode,"stdout":client.stdout,"stderr":client.stderr}
         write_json(out/"summary.json",{"model":str(model),"model_sha256":digest(model),"model_mib":model.stat().st_size/1024**2,
+            "tokenizer":a.tokenizer or "Qwen/Qwen3-0.6B",
             "threads":a.threads,"context":2048,"parallel":1,"gpu_layers":0,"platform":platform.platform(),
             "hardware":"AMD Ryzen 9 9900X desktop; not user's laptop", "process_peak_rss_mib":peak[0]/1024**2,
             "memory_scope":"llama-server process tree; excludes Python evaluation harness", "cold_process_start_to_health_ms":load_ms,

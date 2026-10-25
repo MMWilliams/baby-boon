@@ -27,7 +27,7 @@ SOURCES = [
 
 
 def download(url):
-    request = urllib.request.Request(url, headers={"User-Agent": "TinySocial-source-audit"})
+    request = urllib.request.Request(url, headers={"User-Agent": "baby-boon-source-audit"})
     for attempt in range(3):
         try:
             with urllib.request.urlopen(request, timeout=30) as response:

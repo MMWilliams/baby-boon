@@ -1,7 +1,7 @@
 import unittest
 
-from tinysocial.cues import parse_response
-from tinysocial.training_data import encode_example, pad_batch
+from baby_boon.cues import parse_response
+from baby_boon.training_data import encode_example, pad_batch
 
 
 class ToyTokenizer:

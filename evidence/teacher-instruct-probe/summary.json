@@ -1,0 +1,83 @@
+{
+  "model": "C:\\Users\\reese\\tinysocial\\models\\teacher-qwen3-4b-instruct-2507\\model-q8_0.gguf",
+  "model_sha256": "fe1422e19942aaacb3dea89eb5a0da251993678be0f895b21d242c283c6ad81e",
+  "model_mib": 4082.1109924316406,
+  "tokenizer": "models/teacher-qwen3-4b-instruct-2507/src",
+  "threads": 6,
+  "context": 2048,
+  "parallel": 1,
+  "gpu_layers": 0,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "hardware": "AMD Ryzen 9 9900X desktop; not user's laptop",
+  "process_peak_rss_mib": 4517.3046875,
+  "memory_scope": "llama-server process tree; excludes Python evaluation harness",
+  "cold_process_start_to_health_ms": 1604.4177999719977,
+  "cold_note": "OS file cache not flushed; this is process startup, not cold-disk latency",
+  "first_query": {
+    "text": "Hey there! 😊 How’s it going?",
+    "first_content_ms": 1565.4467000276782,
+    "total_ms": 2911.9559000246227,
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 102,
+      "prompt_ms": 1530.326,
+      "prompt_per_token_ms": 15.003196078431372,
+      "prompt_per_second": 66.65246489963576,
+      "predicted_n": 11,
+      "predicted_ms": 1340.979,
+      "predicted_per_token_ms": 134.0979,
+      "predicted_per_second": 7.45723833109989
+    },
+    "tokens_predicted": 11,
+    "stop_type": "eos",
+    "truncated": false,
+    "error": null
+  },
+  "plain": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 2098.499300016556,
+    "median_decode_tokens_per_second": 7.828719951089038,
+    "minimum_decode_tokens_per_second": 6.476678466423913,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 0.0
+  },
+  "cues": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 3134.369199979119,
+    "median_decode_tokens_per_second": 8.201309742927997,
+    "minimum_decode_tokens_per_second": 7.613027810390591,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 11.0
+  },
+  "command": [
+    "C:\\Users\\reese\\tinysocial\\.claude\\worktrees\\teacher\\tools\\llama\\runtime\\llama-server.exe",
+    "-m",
+    "C:\\Users\\reese\\tinysocial\\models\\teacher-qwen3-4b-instruct-2507\\model-q8_0.gguf",
+    "-t",
+    "6",
+    "-tb",
+    "6",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "49689",
+    "--no-webui"
+  ],
+  "chat_client_smoke": {
+    "exit_code": 0,
+    "stdout": "{\"text\": \"Hey! Nice to meet you. How’s your day going?\", \"tone\": \"neutral\", \"expression\": \"neutral\", \"intensity\": 0, \"cue_valid\": false}\n",
+    "stderr": ""
+  },
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f"
+}

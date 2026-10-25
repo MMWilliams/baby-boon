@@ -7,3 +7,5 @@ runs/
 checkpoints/
 tools/
 .claude/HANDOFF.md
+.claude/worktrees/
+.claude/activity.json

@@ -397,7 +397,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tinysocial"
+name = "baby-boon"
 version = "0.0.1"
 source = { virtual = "." }
 dependencies = [

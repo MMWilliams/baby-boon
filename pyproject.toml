@@ -1,5 +1,5 @@
 [project]
-name = "tinysocial"
+name = "baby-boon"
 version = "0.0.1"
 description = "A local, CPU-first social conversation model experiment"
 requires-python = ">=3.12,<3.13"

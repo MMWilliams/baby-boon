@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GPU_UUID = "GPU-e995b393-4b89-9733-2d7b-8eb8b3064165"
 SYSTEM = (
-    "You are TinySocial, a conversational AI. Be warm, natural, concise and attentive "
+    "You are Baby Boon, a conversational AI. Be warm, natural, concise and attentive "
     "to the user's actual words. Match their energy; ordinary chat need not become "
     "counseling. Use humor when welcome, respect corrections and requests to stop, "
     "and disagree kindly when appropriate. Do not claim feelings, observations, "

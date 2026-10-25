@@ -1,7 +1,9 @@
-# TinySocial
+# Baby Boon
 
-Working name for a small conversational model for chatbots and human-facing
-robots. User requested this project on 2026-10-25.
+A small conversational model for chatbots and human-facing robots. User
+requested this project on 2026-10-25. Renamed from TinySocial the same day;
+pilot v1 data, evidence and journals keep the old name because that is what ran.
+Distribution name `baby-boon`, import package `baby_boon`.
 
 The first target is **laptop CPU inference, then a robot computer**. The model
 will produce **text plus optional tone/expression cues**; speech recognition,
@@ -71,7 +73,7 @@ Start the CPU server in one terminal from this directory:
 Then in another terminal:
 
 ```powershell
-.\.venv\Scripts\python.exe -m tinysocial.chat
+.\.venv\Scripts\python.exe -m baby_boon.chat
 ```
 
 The client returns `text`, `tone`, `expression`, `intensity` (0-2), and
@@ -93,13 +95,13 @@ CUDA initialization failed on this machine.
 uv sync --locked
 .\.venv\Scripts\python.exe scripts/setup_llama.py
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe -m tinysocial.data --audit
+.\.venv\Scripts\python.exe -m baby_boon.data --audit
 .\.venv\Scripts\python.exe scripts/verify_pilot.py
 ```
 
 The last command currently returns **2**, preserving the failed social acceptance
 result even though artifact and desktop CPU checks pass. On a fresh checkout,
-generate data with `python -m tinysocial.data` before auditing. Model/run folders
+generate data with `python -m baby_boon.data` before auditing. Model/run folders
 are excluded from Git. Train into a fresh directory with
-`python -m tinysocial.train --out checkpoints/<new-run>`, then use
-`tinysocial.export` and `tinysocial.cpu_eval` with fresh output directories.
+`python -m baby_boon.train --out checkpoints/<new-run>`, then use
+`baby_boon.export` and `baby_boon.cpu_eval` with fresh output directories.

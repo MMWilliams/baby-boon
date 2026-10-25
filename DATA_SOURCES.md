@@ -34,7 +34,7 @@ rewarding stereotyped emotion labels or automatic agreement.
 The local pilot uses `original-fictional-v1`: 120 synthetic conversation targets,
 each represented in plain and cue modes (240 rows). There are 184 training rows
 and 56 validation rows. All are Codex-assisted original examples assembled from
-`configs/seeds.jsonl` and `tinysocial/data.py`. They are not human conversation
+`configs/seeds.jsonl` and `baby_boon/data.py`. They are not human conversation
 records. No external dataset, private chat, personal database or teacher service
 was used. Broad linguistic/social coverage is deliberately limited at this stage.
 
@@ -51,6 +51,6 @@ families. The authored dev suite is separate but covers related skills. Neither
 this small validation set nor the development suite establishes broad social
 generalization. Independent unseen human evaluation remains required.
 
-Reproduce with `python -m tinysocial.data`; verify the immutable output with
-`python -m tinysocial.data --audit`. The exact corpus manifest is saved alongside
+Reproduce with `python -m baby_boon.data`; verify the immutable output with
+`python -m baby_boon.data --audit`. The exact corpus manifest is saved alongside
 the experiment evidence after training; the full generated rows remain local.

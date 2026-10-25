@@ -1,4 +1,4 @@
-# TinySocial pilot v1 — 2026-10-25
+# Baby Boon pilot v1 (trained as TinySocial), 2026-10-25
 
 **Failed social-quality acceptance; training, export and desktop CPU engineering
 checks passed.** This checkpoint is an experiment, not a release candidate.
@@ -106,5 +106,31 @@ These outputs were rejected, not treated as final conversational targets.
 GGUF inspection then identified the installed tag as **Qwen3 4B Thinking 2507**.
 The next teacher candidate is the separately published
 [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507),
-whose official card specifies non-thinking-only behavior and Apache-2.0. Its
-revision and weights still need to be pinned; it has not generated training data.
+whose official card specifies non-thinking-only behavior and Apache-2.0.
+
+## Teacher probe: Qwen3-4B-Instruct-2507
+
+Pinned at `cdbee75f17c01a7cc42f958dc650907174af0554`; all three weight shards
+matched the publisher's SHA256, were converted with the pinned llama.cpp to a
+4,082 MiB Q8_0 GGUF, then deleted for disk space (`evidence/teacher-lock.json`).
+It ran all 24 development cases in plain and cue modes on CPU with its own chat
+template (`runs/teacher-instruct-cpu`, archived in `evidence/teacher-instruct-probe`).
+These are development-prompt outputs and are **never training data**.
+
+- Final replies only: no reasoning text, 0/48 truncated, no request errors.
+- Desktop CPU, six threads: median decode 7.8 tokens/s plain, 8.2 cue; warm p95
+  first content 2.1 s / 3.1 s; server peak RSS 4,517 MiB. Usable for offline
+  generation, far too slow as the deployed model.
+- Social judgment is clearly better than v1: d09 declines to write off the
+  teammate, plain d24 says it can't judge an unheard song, cue d17 declines to
+  replace people.
+- Systematic defects to filter: an emoji on most replies; invented inner life or
+  actions (d14 "a questionable attempt at a dance routine", cue d24 "listen with
+  all my heart", d23 "all warm"); register drift (d03 "Ain't no need to explain,
+  man"); d16 runs past the three-sentence limit.
+- Cue format fails completely: 0/24 valid; it writes `tone|bright|1>` and
+  `intensity=1` instead of `tone|expression|intensity`. Cues must be labeled
+  separately, not generated inline by the teacher.
+
+Agent review only, no human scoring. The teacher is a usable source of draft
+replies that need filtering and review, not a trusted label source.

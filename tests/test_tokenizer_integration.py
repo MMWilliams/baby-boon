@@ -1,8 +1,8 @@
 import unittest
 
 from transformers import AutoTokenizer
-from tinysocial.common import source
-from tinysocial.training_data import encode_example
+from baby_boon.common import source
+from baby_boon.training_data import encode_example
 
 
 class TokenizerIntegration(unittest.TestCase):

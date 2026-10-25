@@ -5,8 +5,8 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from tinysocial.common import digest, read_jsonl, verify_frozen
-from tinysocial.data import audit
+from baby_boon.common import digest, read_jsonl, verify_frozen
+from baby_boon.data import audit
 
 
 def main():
