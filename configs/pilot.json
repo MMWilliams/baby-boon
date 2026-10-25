@@ -1,0 +1,40 @@
+{
+  "project": "TinySocial",
+  "stage": "baseline_and_data_design",
+  "user_confirmed": {
+    "deployment": "laptop_cpu_then_robot_computer",
+    "output": "text_and_optional_tone_expression_cues",
+    "speech": "separate_component"
+  },
+  "provisional_assumptions": {
+    "language": "English-first",
+    "starting_point": "adapt_pretrained_model",
+    "target_model_parameters": [360000000, 600000000],
+    "deployment_format": "quantized_cpu_runtime_to_be_selected",
+    "max_context_tokens": 2048,
+    "typical_reply_tokens": [16, 80],
+    "max_reply_tokens": 128
+  },
+  "model_candidates": [
+    "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "Qwen/Qwen3-0.6B"
+  ],
+  "reserve_candidates": ["Qwen/Qwen3.5-0.8B"],
+  "resource_limits": {
+    "basis": "conservative limits carried forward from earlier local model work",
+    "allowed_gpu_indices": [0],
+    "max_training_process_gpu_memory_mib": 16000,
+    "max_training_process_host_memory_mib": 20000,
+    "leave_gpu_1_unused": true,
+    "paid_external_calls": false,
+    "initial_training_run_max_minutes": 30,
+    "note": "Recheck other jobs/free VRAM and host commit immediately before running. Enforce limits and stop on excess; do not kill unrelated processes."
+  },
+  "provisional_cpu_targets": {
+    "model_file_size_max_mib": 512,
+    "process_peak_rss_max_mib": 2048,
+    "warm_first_token_p95_max_ms": 500,
+    "generation_tokens_per_second_min": 20,
+    "note": "Engineering targets, not achieved results. Exact laptop/device and CPU thread budget are still unspecified; desktop measurements cannot certify laptop performance."
+  }
+}

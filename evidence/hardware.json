@@ -1,0 +1,25 @@
+{
+    "checked_at_utc":  "2026-10-25T19:54:07.0068999Z",
+    "cpu":  "AMD Ryzen 9 9900X 12-Core Processor            ",
+    "logical_processors":  24,
+    "physical_memory_mib":  63032,
+    "available_physical_memory_mib":  35637,
+    "available_commit_mib":  46464,
+    "gpus":  [
+                 {
+                     "index":  "0",
+                     "name":  "NVIDIA GeForce RTX 5090",
+                     "total_mib":  "32607",
+                     "used_mib":  "3601",
+                     "utilization_percent":  "1"
+                 },
+                 {
+                     "index":  "1",
+                     "name":  "NVIDIA GeForce RTX 5090",
+                     "total_mib":  "32607",
+                     "used_mib":  "0",
+                     "utilization_percent":  "0"
+                 }
+             ],
+    "note":  "Desktop availability snapshot, not a reservation or laptop benchmark. No training started."
+}
