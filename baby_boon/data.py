@@ -71,6 +71,18 @@ def write_corpus(dest, examples, manifest):
     audit(dest)
 
 
+def read_examples(dest):
+    """Inverse of write_corpus: rebuild one example per plain/cue row pair, keyed by example id."""
+    examples = {}
+    for split in ["train", "validation"]:
+        for r in read_jsonl(Path(dest) / f"{split}.jsonl"):
+            ex_id, kind = r["id"].rsplit("-", 1)
+            ex = examples.setdefault(ex_id, {"id": ex_id, "family": r["family"], "split": split, "messages": r["messages"]})
+            if kind == "plain": ex["answer"] = r["target"]
+            else: ex["cue"] = r["target"].rsplit("\n<cue>", 1)[1]
+    return examples
+
+
 def build(destination):
     verify_frozen()
     dest = Path(destination)

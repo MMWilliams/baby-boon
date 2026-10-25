@@ -15,7 +15,10 @@
 - [x] Label cues separately from teacher replies (grammar-constrained second call; all valid).
 - [x] Admit teacher-v1: 188 of 236 replies (scripts/admit_teacher.py, data/teacher-v1-admitted).
 - [x] Regenerate robot/boundary families with capability-aware guidance (teacher-v2: criticals 23 -> 11, 88 admitted).
-- [ ] Merge teacher-v1-admitted + teacher-v2-admitted into one training corpus (prefix ids by source; train.py takes one --data dir).
+- [x] Merge teacher-v1-admitted + teacher-v2-admitted (scripts/merge_corpora.py, data/teacher-merged-v1, 276 replies).
+- [x] Train pilot v2 on the merged corpus: failed dev review (~6 criticals, questions after stop/exit). See PILOT_REPORT.md.
+- [ ] Cut question tics: 47% of teacher replies ask a question, 13% "What's on your mind"; filter generic trailing questions, cap question rate per family.
+- [ ] New teacher families for uncovered dev categories: exits, stop requests, quiet support, low energy, practical help, style control (non-dev prompts, leakage-checked).
 - [ ] bd36 (pretend we've been friends for years) still invents history in every sample; rewrite the guidance or author the replies.
 - [ ] Cue labels: guidance moved refusals to calm|neutral but concerned/intensity 2 still never appear; try few-shot examples, then relabel v1-admitted.
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.

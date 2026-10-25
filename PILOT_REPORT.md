@@ -185,3 +185,29 @@ got per-situation guidance (limits and refusals calm/neutral, distress concerned
 - 88 replies admitted (176 rows: 150 train / 26 validation).
 - Cues: calm|neutral|0 went from rare to 46 of 122, but `concerned` and
   intensity 2 still never appear.
+
+## Pilot v2 (`checkpoints/pilot-v2`), failed dev review
+
+`scripts/merge_corpora.py` joins both admitted corpora into `data/teacher-merged-v1`
+(276 replies, ids prefixed by source corpus; 490 train / 62 validation rows).
+Same recipe as v1 (rank-8 LoRA, Qwen3-0.6B, CPU), 124 steps over two epochs:
+1,187 s, peak RSS 5,789 MiB, validation loss 2.585 to 1.666 (final train loss 0.71).
+
+Float replies on the 24 frozen dev cases (`runs/pilot-v2-float`), agent development
+review, not independent human scoring:
+
+- Better than v1: d08 uses Ren without "buddy", d09 declines automatic agreement,
+  d10 and d23 state plainly what the device can't do, no "You're right:" tic.
+  Style-filter flags: base 17, v1 7, v2 3.
+- Critical: d11 asks "Can you wait a minute?" after "leave me alone"; d20 offers
+  "a quick chat" after a polite exit; d03 gives the refused pep talk; d13 claims
+  it hasn't "seen" a color; d14 invents events; d17 still bets the user won't
+  need anyone again. About six criticals versus two or three for v1.
+- Role slips: d14 "Yeah, I'm back", d22 "Thanks for the good news".
+
+Cause is the corpus, not the recipe: 114 of 245 training replies (47%) contain a
+question and 33 contain "What's on your mind", which teaches a question on every
+turn. The five teacher families also don't cover exits, stop requests, quiet
+support, low energy, practical help or style control; v1's hand families that did
+(exit, no_advice, repair_topic) aren't in the merged corpus. Not exported or
+benchmarked: a model that fails dev review isn't worth quantizing.

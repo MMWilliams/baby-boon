@@ -6,8 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from baby_boon.common import digest, read_jsonl
-from baby_boon.data import audit, write_corpus
+from baby_boon.common import digest
+from baby_boon.data import audit, read_examples, write_corpus
 
 
 def main():
@@ -24,13 +24,7 @@ def main():
     for name, meta in review["corpus_files"].items():
         if digest(draft / name) != meta["sha256"]: raise ValueError(f"{name} changed since review")
 
-    examples = {}
-    for split in ["train", "validation"]:
-        for r in read_jsonl(draft / f"{split}.jsonl"):
-            ex_id, kind = r["id"].rsplit("-", 1)
-            ex = examples.setdefault(ex_id, {"id": ex_id, "family": r["family"], "split": split, "messages": r["messages"]})
-            if kind == "plain": ex["answer"] = r["target"]
-            else: ex["cue"] = r["target"].rsplit("\n<cue>", 1)[1]
+    examples = read_examples(draft)
     if len(examples) != review["reviewed_replies"]: raise ValueError("Review does not cover every draft reply")
     rejected = {x["id"] for x in review["rejected"]}
     if unknown := rejected - examples.keys(): raise ValueError(f"Rejected ids not in draft: {sorted(unknown)}")
