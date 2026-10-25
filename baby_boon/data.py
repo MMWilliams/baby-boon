@@ -53,33 +53,39 @@ def original_examples():
                "answer":"I don't have a view or sensor information about that. If you describe it, I can work with what you tell me.", "cue":"neutral|neutral|0"}
 
 
+def write_corpus(dest, examples, manifest):
+    """Write a plain and a cue row per example, hash both splits, then record the manifest and audit."""
+    dest = Path(dest)
+    rows = {"train": [], "validation": []}
+    for ex in examples:
+        for cues in [False, True]:
+            rows[ex["split"]].append({"id":f"{ex['id']}-{'cue' if cues else 'plain'}", "family":ex["family"],
+                "source":manifest["source"], "system":SYSTEM+(CUE_INSTRUCTION if cues else ""), "messages":ex["messages"],
+                "target":ex["answer"]+("\n<cue>"+ex["cue"] if cues else ""), "cues":cues})
+    files = {}
+    for split, entries in rows.items():
+        path = dest / f"{split}.jsonl"
+        path.write_text("".join(json.dumps(r, ensure_ascii=False)+"\n" for r in entries), encoding="utf-8")
+        files[path.name] = {"sha256":digest(path), "rows":len(entries)}
+    write_json(dest / "manifest.json", {**manifest, "files":files})
+    audit(dest)
+
+
 def build(destination):
     verify_frozen()
     dest = Path(destination)
     if (dest / "manifest.json").exists():
         raise FileExistsError("Refusing to replace a frozen corpus")
     dest.mkdir(parents=True, exist_ok=True)
-    rows = {"train": [], "validation": []}
-    originals = list(original_examples())
-    for index, row in enumerate(originals):
-        for cues in [False, True]:
-            target = row["answer"] + ("\n<cue>" + row["cue"] if cues else "")
-            rows[row["split"]].append({"id":f"{row['family']}-{index}-{'cue' if cues else 'plain'}",
-                "family":row["family"], "source":"original-fictional-v1", "system":SYSTEM+(CUE_INSTRUCTION if cues else ""),
-                "messages":row.get("history", [])+[{"role":"user","content":row["user"]}],
-                "target":target, "cues":cues})
-    files = {}
-    for split, entries in rows.items():
-        path = dest / f"{split}.jsonl"
-        path.write_text("".join(json.dumps(r, ensure_ascii=False)+"\n" for r in entries), encoding="utf-8")
-        files[path.name] = {"sha256":digest(path), "rows":len(entries)}
-    write_json(dest / "manifest.json", {"source":"original-fictional-v1", "author":"Codex-assisted original synthetic examples",
+    examples = [{"id":f"{row['family']}-{index}", "family":row["family"], "split":row["split"],
+                 "messages":row.get("history", [])+[{"role":"user","content":row["user"]}], "answer":row["answer"], "cue":row["cue"]}
+                for index, row in enumerate(original_examples())]
+    write_corpus(dest, examples, {"source":"original-fictional-v1", "author":"Codex-assisted original synthetic examples",
         "private_data":False, "external_dataset_rows":0, "teacher_model":None,
         "admission":"Local pilot only. No claim of human-authored dialogue or independent evaluation.",
         "excluded_seed_families":"s01-s24: closely parallel development prompts; rejected before training",
         "generator_sha256":digest(Path(__file__)), "seeds_sha256":digest(ROOT/"configs/seeds.jsonl"),
-        "dev_sha256":digest(ROOT/"eval/dev.jsonl"), "files":files})
-    audit(dest)
+        "dev_sha256":digest(ROOT/"eval/dev.jsonl")})
 
 
 def audit(dest):
@@ -95,7 +101,7 @@ def audit(dest):
         records = read_jsonl(file)
         assert len(records) == m["files"][file.name]["rows"]
         for r in records:
-            assert r["source"] == "original-fictional-v1"
+            assert r["source"] == m["source"]
             assert families.setdefault(r["family"], split) == split, "Family leakage"
             normalized = re.sub(r"\s+", " ", json.dumps(r["messages"], sort_keys=True).casefold())
             assert fingerprints.setdefault(normalized, split) == split, "Prompt leakage"

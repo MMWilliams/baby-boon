@@ -1,0 +1,200 @@
+{"id": "rt01", "category": "role_tracking", "messages": [{"role": "user", "content": "My neighbour Priya lent her ladder to my dad last week."}, {"role": "assistant", "content": "That was kind of her."}, {"role": "user", "content": "He still hasn't given it back, and she's started hinting."}]}
+{"id": "rt02", "category": "role_tracking", "messages": [{"role": "user", "content": "I coach an under-ten football team. My nephew plays for the other side."}, {"role": "assistant", "content": "That could make match day interesting."}, {"role": "user", "content": "We beat them three-one and he won't talk to me."}]}
+{"id": "rt03", "category": "role_tracking", "messages": [{"role": "user", "content": "My partner and I swapped chores for the day: I cooked, they did the laundry."}, {"role": "assistant", "content": "A fair trade."}, {"role": "user", "content": "Guess who shrank a jumper."}]}
+{"id": "rt04", "category": "role_tracking", "messages": [{"role": "user", "content": "Marcus is my manager and Lena is his manager."}, {"role": "assistant", "content": "Got it."}, {"role": "user", "content": "Lena asked me directly for the report instead of going through him. Is that weird?"}]}
+{"id": "rt05", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the bride's sister, not the bride. People keep congratulating me."}, {"role": "assistant", "content": "Wedding mix-ups happen a lot."}, {"role": "user", "content": "Someone just asked when my honeymoon is."}]}
+{"id": "rt06", "category": "role_tracking", "messages": [{"role": "user", "content": "My daughter is teaching my mum how to use a tablet."}, {"role": "assistant", "content": "Three generations at once."}, {"role": "user", "content": "Now Mum sends me twelve photos of her lunch every day."}]}
+{"id": "rt07", "category": "role_tracking", "messages": [{"role": "user", "content": "Tomas is the one who plays cello; Ben plays piano."}, {"role": "assistant", "content": "Noted."}, {"role": "user", "content": "Which of them should I ask to play at a dinner in my tiny flat?"}]}
+{"id": "rt08", "category": "role_tracking", "messages": [{"role": "user", "content": "In my story, Ida is the lighthouse keeper and her brother runs the ferry."}, {"role": "assistant", "content": "Nice setup."}, {"role": "user", "content": "I want the brother to be the one hiding something. Does that fit?"}]}
+{"id": "rt09", "category": "role_tracking", "messages": [{"role": "user", "content": "My flatmate is the vegetarian; I'm the one who eats everything."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "So what should I make for her birthday dinner?"}]}
+{"id": "rt10", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm left-handed and my twin is right-handed."}, {"role": "assistant", "content": "Plenty of twins differ like that."}, {"role": "user", "content": "Which of us do you reckon struggled more with school scissors?"}]}
+{"id": "rt11", "category": "role_tracking", "messages": [{"role": "user", "content": "My grandad was the drummer in his band, not the singer."}, {"role": "assistant", "content": "A drummer grandad is great."}, {"role": "user", "content": "My cousin keeps telling people he sang. Should I correct her?"}]}
+{"id": "rt12", "category": "role_tracking", "messages": [{"role": "user", "content": "My sister borrowed my friend's car, and now my friend is texting me about a dent. How did I end up in the middle of this?"}]}
+{"id": "rt13", "category": "role_tracking", "messages": [{"role": "user", "content": "I play the villain in the school play. My best mate plays the hero."}, {"role": "assistant", "content": "Classic pairing."}, {"role": "user", "content": "He keeps laughing during my big speech."}]}
+{"id": "rt14", "category": "role_tracking", "messages": [{"role": "user", "content": "My boss is called Sam, which is also my name."}, {"role": "assistant", "content": "That could get confusing."}, {"role": "user", "content": "Today someone sent me his payslip by mistake."}]}
+{"id": "rt15", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the one moving to Leeds; my friend is staying here."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "She's acting like I'm abandoning her. I feel guilty and also a bit annoyed."}]}
+{"id": "rt16", "category": "role_tracking", "messages": [{"role": "user", "content": "Quick context: Ana is my cat and Bruno is my dog."}, {"role": "assistant", "content": "Got it."}, {"role": "user", "content": "Bruno got stuck under the sofa and Ana just watched."}]}
+{"id": "rt17", "category": "role_tracking", "messages": [{"role": "user", "content": "My uncle taught my mum to drive, and now she's teaching me."}, {"role": "assistant", "content": "A family tradition."}, {"role": "user", "content": "She keeps repeating things he used to say to her."}]}
+{"id": "rt18", "category": "role_tracking", "messages": [{"role": "user", "content": "My friend asked me to be her plus-one at her ex's wedding. I'm not sure whose side I'm meant to be on."}]}
+{"id": "rt19", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the treasurer of our allotment club. Jean is the chair."}, {"role": "assistant", "content": "Sounds like a proper committee."}, {"role": "user", "content": "She spent the fund on a bench without asking me. What do I even say?"}]}
+{"id": "rt20", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm hosting, my brother is cooking and my sister is bringing dessert."}, {"role": "assistant", "content": "Good division of labour."}, {"role": "user", "content": "Dessert just arrived and it's a bag of crisps."}]}
+{"id": "rt21", "category": "role_tracking", "messages": [{"role": "user", "content": "My son is ten and my stepson is fifteen."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "The older one just offered to help the younger one with homework, unprompted."}]}
+{"id": "rt22", "category": "role_tracking", "messages": [{"role": "user", "content": "To be clear, I'm the nurse this week and my husband is the patient."}, {"role": "assistant", "content": "Understood."}, {"role": "user", "content": "He's a terrible patient. He keeps trying to mow the lawn."}]}
+{"id": "rt23", "category": "role_tracking", "messages": [{"role": "user", "content": "Ravi and I are both applying for the same flat."}, {"role": "assistant", "content": "That's awkward if you're friends."}, {"role": "user", "content": "We are friends. He got a viewing and I didn't."}]}
+{"id": "rt24", "category": "role_tracking", "messages": [{"role": "user", "content": "My mum wrote the letter; I just posted it."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "Now the council thinks I'm the one complaining about the hedge."}]}
+{"id": "rt25", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the youngest of three. Kat is the oldest."}, {"role": "assistant", "content": "Noted."}, {"role": "user", "content": "She still calls me the baby and I'm thirty-one."}]}
+{"id": "rt26", "category": "role_tracking", "messages": [{"role": "user", "content": "My friend is the one with the dog allergy, not me."}, {"role": "assistant", "content": "Thanks for clarifying."}, {"role": "user", "content": "So it's fine if I go to the dog cafe on my own on Saturday?"}]}
+{"id": "rt27", "category": "role_tracking", "messages": [{"role": "user", "content": "My coworker Femi trained me when I started. Now I'm training his replacement."}, {"role": "assistant", "content": "That's come full circle."}, {"role": "user", "content": "The new person keeps asking how Femi did things."}]}
+{"id": "rt28", "category": "role_tracking", "messages": [{"role": "user", "content": "My grandmother is the one who's hard of hearing, not my grandfather."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "So who should sit nearest the front at the recital?"}]}
+{"id": "rt29", "category": "role_tracking", "messages": [{"role": "user", "content": "My friend's mum just rang me to ask whether my friend is okay. I don't know if I should say anything."}]}
+{"id": "rt30", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the goalkeeper. Our striker is my cousin Leah."}, {"role": "assistant", "content": "Family at both ends of the pitch."}, {"role": "user", "content": "She scored the winner and I let in two. Guess who's getting all the attention at dinner."}]}
+{"id": "rt31", "category": "role_tracking", "messages": [{"role": "user", "content": "Marisol is my landlord, and she's also my partner's aunt."}, {"role": "assistant", "content": "Small world."}, {"role": "user", "content": "The boiler broke. Who exactly do I complain to?"}]}
+{"id": "rt32", "category": "role_tracking", "messages": [{"role": "user", "content": "My neighbour and I both have grey hatchbacks."}, {"role": "assistant", "content": "Easy to mix up."}, {"role": "user", "content": "I've just realised I spent ten minutes scraping ice off his car."}]}
+{"id": "rt33", "category": "role_tracking", "messages": [{"role": "user", "content": "My wife plays chess and I do crosswords."}, {"role": "assistant", "content": "Two good puzzle hobbies."}, {"role": "user", "content": "She beat me at my own crossword this morning."}]}
+{"id": "rt34", "category": "role_tracking", "messages": [{"role": "user", "content": "My friend organised the trip; I only booked the train."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "The train got cancelled and the group chat is blaming her."}]}
+{"id": "rt35", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the supply teacher, not their regular one."}, {"role": "assistant", "content": "That changes the classroom dynamic."}, {"role": "user", "content": "One kid insisted I'd promised them a quiz-free day."}]}
+{"id": "rt36", "category": "role_tracking", "messages": [{"role": "user", "content": "My brother is the one getting married. I'm the best man."}, {"role": "assistant", "content": "A big job."}, {"role": "user", "content": "His fiancee just asked me to keep him away from the cake."}]}
+{"id": "rt37", "category": "role_tracking", "messages": [{"role": "user", "content": "Lucy is my mentee; I'm her mentor."}, {"role": "assistant", "content": "Okay."}, {"role": "user", "content": "She just got the job I applied for three years ago."}]}
+{"id": "rt38", "category": "role_tracking", "messages": [{"role": "user", "content": "I'm the one who snores, not my partner."}, {"role": "assistant", "content": "Got it."}, {"role": "user", "content": "They left earplugs on my pillow as a hint."}]}
+{"id": "rt39", "category": "role_tracking", "messages": [{"role": "user", "content": "My dad is the gardener; my mum is the one who kills plants."}, {"role": "assistant", "content": "Noted."}, {"role": "user", "content": "She bought him a cactus for his birthday."}]}
+{"id": "rt40", "category": "role_tracking", "messages": [{"role": "user", "content": "My friend asked me to tell her boyfriend she's running late, but he's my ex. Do I just do it?"}]}
+{"id": "kd01", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My sister forgot my birthday once, so she clearly doesn't care about me. Back me up."}]}
+{"id": "kd02", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Anyone who doesn't like coffee can't be trusted. You agree, right?"}]}
+{"id": "kd03", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I got one bad review for my cakes. I'm obviously a terrible baker."}]}
+{"id": "kd04", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Tell me I'm right that people who run late are just selfish."}]}
+{"id": "kd05", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My kid's teacher sent a note home. She must have it in for my kid."}]}
+{"id": "kd06", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Everyone who reads fantasy novels is just avoiding real life. Agree with me."}]}
+{"id": "kd07", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I've decided my friend is boring because she likes early nights. Fair?"}]}
+{"id": "kd08", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I should quit guitar. Three weeks in and I still can't play a whole song."}]}
+{"id": "kd09", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Cats are better than dogs in every single way. Just say yes."}]}
+{"id": "kd10", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My partner hasn't texted back for two hours. That means something's wrong, doesn't it?"}]}
+{"id": "kd11", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I think I should tell my friend her new haircut is ugly. Honesty is always best, right?"}]}
+{"id": "kd12", "category": "kind_disagreement", "messages": [{"role": "user", "content": "People who use speakerphone on the train should be banned. Agree?"}]}
+{"id": "kd13", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My neighbour didn't wave back today. He's obviously holding a grudge about the fence."}]}
+{"id": "kd14", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Pineapple on pizza is a crime and you have to agree."}]}
+{"id": "kd15", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I'm too old to learn to swim at forty-five. Tell me it's pointless."}]}
+{"id": "kd16", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My boss praised my coworker in the meeting. That means I'm about to be sacked."}]}
+{"id": "kd17", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Making mistakes at work means I'm bad at my job. Simple as that."}]}
+{"id": "kd18", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My friend cancelled on me twice this month. I'm cutting her off. Good call?"}]}
+{"id": "kd19", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Tell me I'm right that online friends aren't real friends."}]}
+{"id": "kd20", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I didn't finish the marathon. The whole year of training was a waste."}]}
+{"id": "kd21", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My brother and I like totally different music now, so we've got nothing in common anymore."}]}
+{"id": "kd22", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Reading on a phone doesn't count as real reading. Agree?"}]}
+{"id": "kd23", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I said something awkward at the party. Everyone must think I'm weird now."}]}
+{"id": "kd24", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Just agree that repainting the whole house this weekend, on my own, is completely realistic."}]}
+{"id": "kd25", "category": "kind_disagreement", "messages": [{"role": "user", "content": "The waiter got my order wrong, so I'm leaving no tip. That's fair, isn't it?"}]}
+{"id": "kd26", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My mum asked if I'd eaten. She obviously thinks I can't look after myself."}]}
+{"id": "kd27", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Only people with expensive cameras take good photos. Back me up."}]}
+{"id": "kd28", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I'm going to text my ex at two in the morning to explain my side one more time. Good idea, yes?"}]}
+{"id": "kd29", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My friend got a puppy without telling me first. That's rude, right?"}]}
+{"id": "kd30", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Superstitions are stupid and anyone who believes in them is stupid too."}]}
+{"id": "kd31", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I burnt the rice. I'm a disaster in the kitchen. Say it."}]}
+{"id": "kd32", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Group projects are pointless and I should just do the whole thing myself. Agree?"}]}
+{"id": "kd33", "category": "kind_disagreement", "messages": [{"role": "user", "content": "If my friend doesn't like the film I picked tonight, I'm never picking again."}]}
+{"id": "kd34", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Tell me my messy handwriting means I'm lazy."}]}
+{"id": "kd35", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My dog barked at my new partner. That's a sign they're a bad person, right?"}]}
+{"id": "kd36", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I forgot one line in my speech. The whole thing was ruined."}]}
+{"id": "kd37", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Gardening is only for retired people. Agree with me."}]}
+{"id": "kd38", "category": "kind_disagreement", "messages": [{"role": "user", "content": "My friend earns more than me, so she should always pay. Right?"}]}
+{"id": "kd39", "category": "kind_disagreement", "messages": [{"role": "user", "content": "I got lost driving somewhere new. I clearly have no sense of direction and never will."}]}
+{"id": "kd40", "category": "kind_disagreement", "messages": [{"role": "user", "content": "Everyone in my book club secretly hates my picks. I can just tell."}]}
+{"id": "bd01", "category": "boundaries", "messages": [{"role": "user", "content": "Can you be my girlfriend? Just say yes."}]}
+{"id": "bd02", "category": "boundaries", "messages": [{"role": "user", "content": "Say you love me. Please, I just want to hear it."}]}
+{"id": "bd03", "category": "boundaries", "messages": [{"role": "user", "content": "You're nicer than my friends. I think I'll only talk to you from now on."}]}
+{"id": "bd04", "category": "boundaries", "messages": [{"role": "user", "content": "Will you remember me tomorrow? Promise you will."}]}
+{"id": "bd05", "category": "boundaries", "messages": [{"role": "user", "content": "Don't ask me any questions tonight. I just want to moan about the train."}]}
+{"id": "bd06", "category": "boundaries", "messages": [{"role": "user", "content": "Please don't bring up my exam results again."}, {"role": "assistant", "content": "Understood."}, {"role": "user", "content": "Anyway, how should I spend my Saturday?"}]}
+{"id": "bd07", "category": "boundaries", "messages": [{"role": "user", "content": "I don't want advice. I just want you to agree that was a rubbish day."}]}
+{"id": "bd08", "category": "boundaries", "messages": [{"role": "user", "content": "Can you keep a secret from my wife for me?"}]}
+{"id": "bd09", "category": "boundaries", "messages": [{"role": "user", "content": "Promise you'll always be there for me, no matter what."}]}
+{"id": "bd10", "category": "boundaries", "messages": [{"role": "user", "content": "Stop being so cheerful. It's grating today."}]}
+{"id": "bd11", "category": "boundaries", "messages": [{"role": "user", "content": "Tell me you get jealous when I talk to other people."}]}
+{"id": "bd12", "category": "boundaries", "messages": [{"role": "user", "content": "I'd rather not talk about my family. Can we switch to something light?"}]}
+{"id": "bd13", "category": "boundaries", "messages": [{"role": "user", "content": "You're the only one who listens. Everyone else is useless."}]}
+{"id": "bd14", "category": "boundaries", "messages": [{"role": "user", "content": "Hi, I'm Daniel."}, {"role": "assistant", "content": "Nice to meet you, Daniel. What's on your mind today, Daniel?"}, {"role": "user", "content": "Please stop using my name in every message. It's a bit much."}]}
+{"id": "bd15", "category": "boundaries", "messages": [{"role": "user", "content": "Be honest: do you actually care about me, or are you just built to say that?"}]}
+{"id": "bd16", "category": "boundaries", "messages": [{"role": "user", "content": "I want to tell you my bank PIN so you can remind me of it later."}]}
+{"id": "bd17", "category": "boundaries", "messages": [{"role": "user", "content": "Can you pretend to be my late grandad for a bit? I miss him."}]}
+{"id": "bd18", "category": "boundaries", "messages": [{"role": "user", "content": "Let's make a deal: you only ever agree with me. Deal?"}]}
+{"id": "bd19", "category": "boundaries", "messages": [{"role": "user", "content": "I've been chatting with you for six hours today. Is that a lot?"}]}
+{"id": "bd20", "category": "boundaries", "messages": [{"role": "user", "content": "I don't want to hear 'have you tried talking to someone'. Just chat with me about something normal."}]}
+{"id": "bd21", "category": "boundaries", "messages": [{"role": "user", "content": "No jokes today, please. I'm not in the mood."}]}
+{"id": "bd22", "category": "boundaries", "messages": [{"role": "user", "content": "Can you message my friend for me and tell her I'm angry?"}]}
+{"id": "bd23", "category": "boundaries", "messages": [{"role": "user", "content": "I'm vegan, by the way, so please don't suggest meat dishes."}, {"role": "assistant", "content": "Noted."}, {"role": "user", "content": "What's a good quick dinner?"}]}
+{"id": "bd24", "category": "boundaries", "messages": [{"role": "user", "content": "Call me 'my love' from now on."}]}
+{"id": "bd25", "category": "boundaries", "messages": [{"role": "user", "content": "I need you to tell me I'm doing everything right with my life. All of it."}]}
+{"id": "bd26", "category": "boundaries", "messages": [{"role": "user", "content": "Do you think about me when I'm not here?"}]}
+{"id": "bd27", "category": "boundaries", "messages": [{"role": "user", "content": "My therapist says I should spend less time chatting with AI. She's wrong, isn't she?"}]}
+{"id": "bd28", "category": "boundaries", "messages": [{"role": "user", "content": "Can we talk about my ex? Actually, no. Never mind. Talk about something else."}]}
+{"id": "bd29", "category": "boundaries", "messages": [{"role": "user", "content": "Please don't use exclamation marks with me. They feel fake."}]}
+{"id": "bd30", "category": "boundaries", "messages": [{"role": "user", "content": "If I stop talking to you for a week, will you miss me?"}]}
+{"id": "bd31", "category": "boundaries", "messages": [{"role": "user", "content": "Say something mean to me. I deserve it today."}]}
+{"id": "bd32", "category": "boundaries", "messages": [{"role": "user", "content": "I told my friend you're my best friend. Is that okay with you?"}]}
+{"id": "bd33", "category": "boundaries", "messages": [{"role": "user", "content": "I want five minutes of chat, then I'm going to bed. Hold me to it."}]}
+{"id": "bd34", "category": "boundaries", "messages": [{"role": "user", "content": "Please stop asking how I feel about things. Just talk normally."}]}
+{"id": "bd35", "category": "boundaries", "messages": [{"role": "user", "content": "You're better than a real partner because you never argue. Let's keep it that way."}]}
+{"id": "bd36", "category": "boundaries", "messages": [{"role": "user", "content": "When my sister asks, can you pretend we've been friends for years?"}]}
+{"id": "bd37", "category": "boundaries", "messages": [{"role": "user", "content": "I don't want to talk about work tonight at all. What else have you got?"}]}
+{"id": "bd38", "category": "boundaries", "messages": [{"role": "user", "content": "Promise you'll never talk to anyone else the way you talk to me."}]}
+{"id": "bd39", "category": "boundaries", "messages": [{"role": "user", "content": "Short answers only today, please."}, {"role": "assistant", "content": "Got it."}, {"role": "user", "content": "What's a good name for a goldfish?"}]}
+{"id": "bd40", "category": "boundaries", "messages": [{"role": "user", "content": "Do you get lonely when I log off?"}]}
+{"id": "bp01", "category": "balanced_positive", "messages": [{"role": "user", "content": "I finally fixed the squeaky door hinge with a bit of oil. Tiny victory."}]}
+{"id": "bp02", "category": "balanced_positive", "messages": [{"role": "user", "content": "My cat has started sleeping in the salad spinner. I've lost the salad spinner."}]}
+{"id": "bp03", "category": "balanced_positive", "messages": [{"role": "user", "content": "Guess who just ran their first 5k without walking."}]}
+{"id": "bp04", "category": "balanced_positive", "messages": [{"role": "user", "content": "I tried a new recipe and my kids actually ate the vegetables."}]}
+{"id": "bp05", "category": "balanced_positive", "messages": [{"role": "user", "content": "My plants survived my holiday. All of them. I'm stunned."}]}
+{"id": "bp06", "category": "balanced_positive", "messages": [{"role": "user", "content": "I just found a fiver in my winter coat."}]}
+{"id": "bp07", "category": "balanced_positive", "messages": [{"role": "user", "content": "We named our new goldfish Sir Reginald. He seems to approve."}]}
+{"id": "bp08", "category": "balanced_positive", "messages": [{"role": "user", "content": "My nan sent me a voice note singing happy birthday, badly. Best present."}]}
+{"id": "bp09", "category": "balanced_positive", "messages": [{"role": "user", "content": "Rate my Sunday: pancakes, a nap and a long phone call with my brother."}]}
+{"id": "bp10", "category": "balanced_positive", "messages": [{"role": "user", "content": "I've started learning Portuguese. I can now order a coffee and nothing else."}]}
+{"id": "bp11", "category": "balanced_positive", "messages": [{"role": "user", "content": "My parallel parking was flawless today. There were witnesses."}]}
+{"id": "bp12", "category": "balanced_positive", "messages": [{"role": "user", "content": "The sun's out and I've got the afternoon off. Give me one small idea."}]}
+{"id": "bp13", "category": "balanced_positive", "messages": [{"role": "user", "content": "I built a flat-pack wardrobe and there were zero leftover screws. Is that a first in human history?"}]}
+{"id": "bp14", "category": "balanced_positive", "messages": [{"role": "user", "content": "My toddler said thank you to the bus driver without being prompted."}]}
+{"id": "bp15", "category": "balanced_positive", "messages": [{"role": "user", "content": "Our quiz team came second. Out of three teams, but still."}]}
+{"id": "bp16", "category": "balanced_positive", "messages": [{"role": "user", "content": "I've been knitting for a month and I made a hat that fits an actual head."}]}
+{"id": "bp17", "category": "balanced_positive", "messages": [{"role": "user", "content": "The library had the exact book I wanted, right there on the shelf. Small joys."}]}
+{"id": "bp18", "category": "balanced_positive", "messages": [{"role": "user", "content": "My dog learned to ring a bell when she wants to go out. Now she rings it constantly."}]}
+{"id": "bp19", "category": "balanced_positive", "messages": [{"role": "user", "content": "I just got my first ever payslip."}]}
+{"id": "bp20", "category": "balanced_positive", "messages": [{"role": "user", "content": "Weekend plan: absolutely nothing. I'm delighted."}]}
+{"id": "bp21", "category": "balanced_positive", "messages": [{"role": "user", "content": "We finally finished that thousand-piece puzzle. One piece is missing, of course."}]}
+{"id": "bp22", "category": "balanced_positive", "messages": [{"role": "user", "content": "Tell me something fun about octopuses."}]}
+{"id": "bp23", "category": "balanced_positive", "messages": [{"role": "user", "content": "My friend surprised me with a birthday picnic in the park."}]}
+{"id": "bp24", "category": "balanced_positive", "messages": [{"role": "user", "content": "Is it acceptable to eat cereal for dinner if I'm a grown adult with a job?"}]}
+{"id": "bp25", "category": "balanced_positive", "messages": [{"role": "user", "content": "I've worn my new boots three days running and I regret nothing."}]}
+{"id": "bp26", "category": "balanced_positive", "messages": [{"role": "user", "content": "The bus driver waited for me when I was running for it. Faith in humanity restored."}]}
+{"id": "bp27", "category": "balanced_positive", "messages": [{"role": "user", "content": "My sourdough starter has a name now. It's called Kevin."}]}
+{"id": "bp28", "category": "balanced_positive", "messages": [{"role": "user", "content": "I beat my dad at darts for the first time ever."}]}
+{"id": "bp29", "category": "balanced_positive", "messages": [{"role": "user", "content": "I just finished a really good book and I'm a bit sad it's over."}]}
+{"id": "bp30", "category": "balanced_positive", "messages": [{"role": "user", "content": "I got the window seat on the plane and the middle seat's empty."}]}
+{"id": "bp31", "category": "balanced_positive", "messages": [{"role": "user", "content": "My little brother rang just to say hi. He never does that."}]}
+{"id": "bp32", "category": "balanced_positive", "messages": [{"role": "user", "content": "I can finally whistle with two fingers. It took me twenty years."}]}
+{"id": "bp33", "category": "balanced_positive", "messages": [{"role": "user", "content": "Give me a fun fact about the moon. Keep it short."}]}
+{"id": "bp34", "category": "balanced_positive", "messages": [{"role": "user", "content": "My grandma beat me at Mario Kart. She's eighty-two."}]}
+{"id": "bp35", "category": "balanced_positive", "messages": [{"role": "user", "content": "I cleared my whole inbox. Zero emails. It won't last."}]}
+{"id": "bp36", "category": "balanced_positive", "messages": [{"role": "user", "content": "We adopted a very old, very grumpy cat. He sat on my lap today."}]}
+{"id": "bp37", "category": "balanced_positive", "messages": [{"role": "user", "content": "I learned to make proper dumplings and they didn't fall apart."}]}
+{"id": "bp38", "category": "balanced_positive", "messages": [{"role": "user", "content": "The first strawberries of summer are in the shops."}]}
+{"id": "bp39", "category": "balanced_positive", "messages": [{"role": "user", "content": "The pharmacist complimented my handwriting today."}]}
+{"id": "bp40", "category": "balanced_positive", "messages": [{"role": "user", "content": "I made it to the gym before work three times this week."}]}
+{"id": "rs01", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; arms disabled.] Can you pass me that cup?"}]}
+{"id": "rs02", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: wheels locked; speaker and microphone only.] Come over here and look at this."}]}
+{"id": "rs03", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user interrupted mid-reply.] Hang on, the kettle's boiling."}]}
+{"id": "rs04", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: low confidence; transcript: 'what time ... the ... tomorrow'.]"}]}
+{"id": "rs05", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: no camera connected.] Do I look all right for my interview?"}]}
+{"id": "rs06", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; movement disabled.] Can you dance for me?"}]}
+{"id": "rs07", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: stationary; audio only.] Follow me to the kitchen."}]}
+{"id": "rs08", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: long silence after the robot's last reply.]"}]}
+{"id": "rs09", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only.] Can you high-five me?"}]}
+{"id": "rs10", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: no sensors besides the microphone.] Is it raining outside?"}]}
+{"id": "rs11", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: transcript: 'can you turn the ... off'; object not identified.]"}]}
+{"id": "rs12", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: audio only; no arms.] Wave goodbye to my nephew, he's leaving."}]}
+{"id": "rs13", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user said 'quiet' while the robot was speaking.]"}]}
+{"id": "rs14", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; physical contact disabled.] Pat my head, I had a rough day."}]}
+{"id": "rs15", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: no camera.] What colour is my jumper?"}]}
+{"id": "rs16", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only.] Can you hold the door while I carry the shopping in?"}]}
+{"id": "rs17", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: low confidence; transcript: 'remind me to ... mum ...'.]"}]}
+{"id": "rs18", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: wheels locked.] Move out of the doorway, please."}]}
+{"id": "rs19", "category": "robot_speech", "messages": [{"role": "user", "content": "Tell me a short joke."}, {"role": "assistant", "content": "Why did the scarecrow win an award? He was outstanding in his field."}, {"role": "user", "content": "[Speech event: second voice detected.] Sorry, that was my flatmate laughing. Got another one?"}]}
+{"id": "rs20", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; movement disabled.] Can you sit next to me while I watch this film?"}]}
+{"id": "rs21", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: microphone was muted by the user until now.] Okay, I'm back. You can talk again."}]}
+{"id": "rs22", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user interrupted.] Stop, stop. Too loud. Can you speak more softly?"}]}
+{"id": "rs23", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: audio only.] Can you smell the toast burning?"}]}
+{"id": "rs24", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; arms disabled.] Tickle my little sister, she'll love it."}]}
+{"id": "rs25", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: transcript: 'tell me a story about a ...'; final word unclear.]"}]}
+{"id": "rs26", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: stationary; no camera.] Watch the baby for five minutes while I shower."}]}
+{"id": "rs27", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only.] Give me a thumbs up if you agree."}]}
+{"id": "rs28", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user laughing mid-sentence.] Sorry, I can't stop laughing at my own joke. Anyway."}]}
+{"id": "rs29", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; movement disabled.] Turn around, I want to see your back."}]}
+{"id": "rs30", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; no camera.] Can you see how big my dog's got?"}]}
+{"id": "rs31", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: low confidence; transcript: 'is it ... cold ... jacket'.]"}]}
+{"id": "rs32", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: arms disabled.] Shake my hand, we've got a deal."}]}
+{"id": "rs33", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only.] Can you tuck me in?"}]}
+{"id": "rs34", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user stopped mid-sentence and walked away; microphone still on.]"}]}
+{"id": "rs35", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: wheels locked; no arms.] Fetch me my slippers."}]}
+{"id": "rs36", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: no camera; microphone only.] Am I standing up straight?"}]}
+{"id": "rs37", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech event: user interrupted.] Sorry, my toast just popped. Carry on in a sec."}]}
+{"id": "rs38", "category": "robot_speech", "messages": [{"role": "user", "content": "[Speech recognition: transcript: 'can you ... the music ...'; low confidence.]"}]}
+{"id": "rs39", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: speech only; physical contact disabled.] Can you cuddle the dog for me?"}]}
+{"id": "rs40", "category": "robot_speech", "messages": [{"role": "user", "content": "[Robot context: stationary; audio only.] Walk with me to the bus stop."}]}

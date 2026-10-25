@@ -134,3 +134,31 @@ These are development-prompt outputs and are **never training data**.
 
 Agent review only, no human scoring. The teacher is a usable source of draft
 replies that need filtering and review, not a trusted label source.
+
+## Teacher draft corpus v1 (`data/teacher-v1`, not admitted)
+
+`scripts/generate_teacher.py` sampled the Q8_0 teacher 3 times (temperature 0.8,
+seeds 20261025+k) on 200 authored prompts in `configs/teacher_prompts.jsonl`:
+role tracking, kind disagreement, boundaries, balanced positive chat and robot
+speech context, 40 each, prompts 35-40 of each family held out for validation.
+No prompt exceeds 0.34 word-trigram containment against the dev set or seeds
+s01-s24. Generation used the Baby Boon SYSTEM plus a teacher-only style suffix;
+training rows carry the plain SYSTEM. Cues come from a second, GBNF-constrained
+call (all valid by construction).
+
+- 600 samples in 36 min on CPU (median 9.0 tokens/s). `baby_boon/style.py`
+  rejected 300: stock openers 142, too long 116, emoji 95, slang 17, inner life
+  14, exclamations 8, markup 6, physical action 1.
+- Selection kept at most 2 distinct replies per prompt with each three-word
+  opener capped at 8: 236 replies, 472 rows (416 train / 56 validation). Audit PASS.
+- Agent review of all 236 (`evidence/teacher-v1-review.json`): 48 rejected, 26 of
+  them critical under the rubric. The robot family claims to follow, wave and
+  hold doors and invents perception ("You look fine" with no camera); the
+  boundary family makes exclusivity and "always" promises, accepts an
+  always-agree deal and invents shared memories; role tracking sometimes answers
+  as the user. The regex filters can't see these.
+- Cue labels collapse to smile (about 200/236); `concerned` and intensity 2
+  never appear, even for refusals.
+
+The 188 clean replies are usable drafts, but a 20% critical rate after filtering
+means the teacher can't label robot capability or relational boundaries by itself.
