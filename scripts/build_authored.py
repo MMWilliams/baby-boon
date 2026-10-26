@@ -1,5 +1,5 @@
-"""Build data/authored-v1 from configs/authored_v1.jsonl: replies written by Claude in a Claude Code session at
-reese's request (option b after pilot v3-1.7B), not by a teacher model and not by a human.
+"""Build an authored corpus (data/authored-vN) from configs/authored_vN.jsonl: replies written by Claude in a Claude Code
+session at reese's request (option b after pilot v3-1.7B), not by a teacher model and not by a human.
 Every reply must pass the style filters as written; nothing is repaired."""
 import argparse
 import sys
@@ -10,20 +10,23 @@ sys.path.insert(0, str(ROOT))
 from baby_boon.common import digest, read_jsonl, verify_frozen
 from baby_boon.data import write_corpus
 from baby_boon.style import reject_reasons
-
-SOURCE = ROOT / "configs/authored_v1.jsonl"
+from generate_teacher import check_leakage
 
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--source", default="configs/authored_v1.jsonl")
     ap.add_argument("--out", default="data/authored-v1")
     a = ap.parse_args()
+    source = ROOT / a.source
     verify_frozen()
     out = ROOT / a.out
     if (out / "manifest.json").exists(): raise FileExistsError("Refusing to replace an authored corpus")
-    rows = read_jsonl(SOURCE)
-    # Merging looks categories up by prompt id, so an id may only reuse a teacher prompt verbatim.
-    teacher = {p["id"]: p for p in read_jsonl(ROOT / "configs/teacher_prompts.jsonl")}
+    rows = read_jsonl(source)
+    check_leakage(rows)
+    # Merging looks categories up by prompt id, so an id may only reuse another prompt verbatim.
+    others = [ROOT / "configs/teacher_prompts.jsonl", *(f for f in ROOT.glob("configs/authored_v*.jsonl") if f != source)]
+    teacher = {p["id"]: p for f in others for p in read_jsonl(f)}
     clashes = [r["id"] for r in rows if r["id"] in teacher and
                (teacher[r["id"]]["category"], teacher[r["id"]]["messages"]) != (r["category"], r["messages"])]
     if clashes: raise SystemExit(f"Ids clash with different teacher prompts: {clashes}")
@@ -33,10 +36,10 @@ def main():
     examples = [{"id": f"{r['id']}-0", "family": r["id"], "split": "validation" if int(r["id"][2:]) >= 35 else "train",
                  "messages": r["messages"], "answer": r["answer"], "cue": r["cue"]} for r in rows]
     out.mkdir(parents=True, exist_ok=True)
-    write_corpus(out, examples, {"source": "authored-v1", "author": "Claude (claude-opus-5-5) in a Claude Code session",
+    write_corpus(out, examples, {"source": out.name, "author": "Claude (claude-opus-5-5) in a Claude Code session",
         "private_data": False, "external_dataset_rows": 0, "teacher_model": None,
         "admission": "Authored to the prompt expectations and style filters; not human-authored or independently reviewed.",
-        "authored_sha256": digest(SOURCE), "builder_sha256": digest(Path(__file__))})
+        "authored_sha256": digest(source), "builder_sha256": digest(Path(__file__))})
 
 
 if __name__ == "__main__": main()

@@ -22,7 +22,8 @@ def main():
     a = ap.parse_args()
     out = ROOT / a.out
     if (out / "manifest.json").exists(): raise FileExistsError("Refusing to replace a merged corpus")
-    category = {p["id"]: p["category"] for f in ("teacher_prompts", "authored_v1") for p in read_jsonl(ROOT / f"configs/{f}.jsonl")}
+    prompts = [ROOT / "configs/teacher_prompts.jsonl", *ROOT.glob("configs/authored_v*.jsonl")]
+    category = {p["id"]: p["category"] for f in prompts for p in read_jsonl(f)}
     examples, sources, rejected = [], [], Counter()
     for name in a.sources:
         src = ROOT / name

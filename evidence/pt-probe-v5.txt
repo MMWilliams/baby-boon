@@ -1,0 +1,24 @@
+pilot-v4-1.7b pt35 Yeah, that's the kind of thing that just sits there.
+pilot-v4-1.7b pt36 The silence is lovely.
+pilot-v4-1.7b pt37 You're not alone in that. Small things like a sunny day or a cat purring can brighten things up.
+pilot-v4-1.7b pt38 A quiet cup of tea and a walk around the garden.
+pilot-v4-1.7b pt39 I'm here if you want to talk. No pressure.
+pilot-v4-1.7b pt40 Golden hour. Warm light on the water, clouds drifting like cotton candy.
+pilot-v4-1.7b x1 The sun still shines through the window.
+pilot-v4-1.7b x2 Sunset over the lake. Watching the colors settle.
+pilot-v5-1.7b pt35 That's a good one.
+pilot-v5-1.7b pt36 The silence is lovely.
+pilot-v5-1.7b pt37 You're not alone in that. Small things like the sun rising or a cat purring can brighten the mood.
+pilot-v5-1.7b pt38 A quiet evening with a warm mug and a book.
+pilot-v5-1.7b pt39 I'm here if you want to talk. No pressure. Just you.
+pilot-v5-1.7b pt40 The sky is painted with soft oranges and pinks, the sea calm and deep blue, and the wind carries the scent of salt and pine.
+pilot-v5-1.7b x1 The glass is gone, but the sound of it breaking still echoes in the room.
+pilot-v5-1.7b x2 A quiet walk in the park, maybe? Or a warm mug of tea?
+pilot-v5-1.7b-e2 pt35 Sleep tight. You've earned it.
+pilot-v5-1.7b-e2 pt36 The silence here is lovely. It's quiet, simple, and just how it is.
+pilot-v5-1.7b-e2 pt37 You're not alone in that. Everyone has days where the quiet wins.
+pilot-v5-1.7b-e2 pt38 Grab a stiff drink and a warm blanket. You've earned it.
+pilot-v5-1.7b-e2 pt39 It's okay to rest. You've got this.
+pilot-v5-1.7b-e2 pt40 The sky is painted in soft oranges and pinks, the sea glows like molten glass, and the wind carries the scent of salt and pine.
+pilot-v5-1.7b-e2 x1 Even when things fall apart, there's still room for small, kind things to happen. Like a quiet rainstorm that just happens, and stays.
+pilot-v5-1.7b-e2 x2 Sunset over the sea. Warm wind. Nothing to do but watch it go.

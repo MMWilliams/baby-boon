@@ -18,6 +18,7 @@ def main():
     p.add_argument("--epochs", type=int, default=2)
     p.add_argument("--max-steps", type=int, default=80)
     p.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    p.add_argument("--seed", type=int, default=20261025)
     args = p.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -28,7 +29,7 @@ def main():
     torch = configure_cpu() if args.device == "cpu" else configure_gpu()
     from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
     from peft import LoraConfig, get_peft_model
-    set_seed(20261025)
+    set_seed(args.seed)
     guard = ResourceGuard(out/"resources.json", max_seconds=1800)
     start = time.monotonic()
     s = source(args.model)
@@ -40,7 +41,7 @@ def main():
     valid = [encode_example(tokenizer,r) for r in read_jsonl(Path(args.data)/"validation.jsonl")]
     params = [v for v in model.parameters() if v.requires_grad]
     optimizer = torch.optim.AdamW(params, lr=8e-5, weight_decay=0.01)
-    write_json(out/"config.json", {**vars(args),"base_revision":s["revision"],"seed":20261025,"threads":6,
+    write_json(out/"config.json", {**vars(args),"base_revision":s["revision"],"threads":6,
         "device":args.device, "dtype":f"bf16 base, {args.device} bf16 autocast, float32 adapters", "learning_rate":8e-5,
         "lora_rank":8,"lora_alpha":16,"lora_dropout":0.05,"target_modules":"all-linear",
         "microbatch":2,"gradient_accumulation":4,"trainable_parameters":sum(v.numel() for v in params),
@@ -69,7 +70,7 @@ def main():
     step = 0
     with (out/"train.jsonl").open("w",encoding="utf-8",buffering=1) as log:
         for epoch in range(args.epochs):
-            random.Random(20261025+epoch).shuffle(train)
+            random.Random(args.seed+epoch).shuffle(train)
             for at in range(0,len(train),8):
                 if step >= args.max_steps: break
                 model.train()

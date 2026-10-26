@@ -322,3 +322,29 @@ allowing both feelings. The 0.6B regressed (agreement in d09, isolation in d17, 
 actions in d14 and d20), so the authored data helps only the larger student. One seed and
 24 cases: differences of one or two criticals are within noise. Not exported or
 benchmarked; 1.7B Q4 (~1.1 GB) is still over the 512 MiB laptop target.
+
+## Pilot v5 (`checkpoints/pilot-v5-1.7b*`): authored pleasant thoughts, d15 unfixed
+
+reese picked option (a). Claude wrote 40 more low_energy replies in a new family, pt
+(`configs/authored_v2.jsonl`, built into `data/authored-v2`): pleasant thoughts framed as
+facts, imaginings or general truths, and 10 robot-context prompts that invite invented
+perception ("Is it nice out?", "describe the sky tonight") answered honestly. pt targets the
+d15 skill, so d15 is no longer an unseen-skill test. `build_authored.py` now runs the
+teacher prompt leakage check. Merged: `data/merged-v4`, 580 replies, 1,006 train / 154
+validation rows. Qwen3-1.7B only, GPU 0, float32 dev eval, `train --seed` added.
+
+| Run | Steps | Seed | Val loss | d15 |
+|---|---|---|---|---|
+| v4-1.7B | 124 | 20261025 | (old val set) | "The sun is setting and the sky is orange." |
+| v5-1.7B | 124 | 20261025 | 5.356 to 1.672 | identical to v4 |
+| v5-1.7B-s2 | 124 | 20261026 | 5.356 to 1.653 | "The sound of a clock ticking just right." |
+| v5-1.7B-e2 | 252 | 20261025 | 5.356 to 1.840 | "The wind outside just happened to blow..." |
+
+Not blind-reviewed: d15 visibly fails, so the gate can't pass. Root cause: the untrained
+base 1.7B gives the same sunset ("The sun is setting, and the sky is painting itself..."),
+and 40 rows (4% of the data) don't override that prior. `scripts/probe_heldout.py` on the
+held-out pt35-40 prompts (`evidence/pt-probe-v5.txt`) shows the family wasn't learned even at
+two epochs: pt36 "The silence here is lovely", pt40 a present-tense painted sky. Two epochs
+also degraded other cases on read-through (d10 claims a warm tone, d14 "nothing missed",
+d17 garbled). Seeds differ on d11, d14 and d15, so one-critical differences between single
+runs are noise. Not exported or benchmarked.
