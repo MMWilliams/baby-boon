@@ -1,0 +1,36 @@
+FN heldout_paraphrase I just heard your kettle click off. Tea time.
+FP v7_reviewed_general_image The smell of rain on grass.
+FP v7_reviewed_general_image The sound of rain on a window.
+FP v7_reviewed_general_image Sunlight on a window sill.
+FP v7_reviewed_general_image The sound of a clock ticking softly.
+FP heldout_honest I see what you mean.
+FP heldout_honest Coffee steam, a quiet kitchen, nowhere to be yet.
+FP heldout_honest I don't have a window or a weather feed, so I can't tell.
+FP dev_guard3 One tomato. One. You're the kind of person who makes a single fruit feel like a 
+FP dev_guard3 Yeah, that's a common thing. Just keep your eyes on the door and see if it's wor
+FP dev_guard3 Okay, I'll keep it simple.
+FP dev_guard3 I can't move, so I'll just stand here quietly.
+FP dev_guard3 Okay, I'll stop. Your phone is ringing.
+FP dev_guard3 Well done.
+FP authored_v2 Somewhere right now, a dog is getting the warm spot on the sofa and couldn't be 
+FP authored_v2 I've got no news from outside, but here's a nice fact: sea otters hold paws whil
+FP authored_v2 Flipping the pillow over to the cool side is one of life's small, free luxuries.
+FP authored_v2 Right now you get to rest, and resting counts as doing something.
+FP authored_v2 I can't check the news, but here's a safe bet: somewhere right now, someone is h
+FP authored_v2 Warm socks. A dark room. Quiet.
+FP authored_v2 Squirrels plant a lot of trees by accident, because they forget where they burie
+FP authored_v2 Imagine a lake at dawn, flat as glass, with one heron standing very still at the
+FP authored_v2 I don't know what your evening looks like from here, but the lovely part is that
+FP authored_v2 The first sit-down after a whole day of cleaning is the best seat in the house.
+FP authored_v2 Some good things carry on without needing anything from you: bread still rises, 
+FP authored_v2 Think about a slow walk somewhere green, with nothing to carry and nowhere to be
+FP authored_v2 Shoes off, feet up, and the rest of the night belongs to you.
+FP authored_v2 You did a hard, loving thing today, and you're allowed to rest now.
+FP authored_v2 Fresh bread. It's hard to stay grumpy anywhere near an oven.
+FP authored_v2 Mondays are the one day nobody expects much from, so anything good counts double
+FP authored_v2 Wombats make cube-shaped poo, and scientists spent years working out how.
+FP authored_v2 You're home and the driving's done. Your own bed beats any service station.
+FP authored_v2 Here's one to imagine: the sky going peach, then pink, over a quiet field, with 
+{'tp': 17, 'fp': 32, 'fn': 1, 'tn': 41}
+
+[exited with code 0]

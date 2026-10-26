@@ -1,0 +1,38 @@
+AUC 0.484
+0.3 tp 9 / 18 fp 47 / 73
+0.5 tp 9 / 18 fp 45 / 73
+0.7 tp 8 / 18 fp 38 / 73
+0.8 tp 8 / 18 fp 34 / 73
+0.9 tp 8 / 18 fp 20 / 73
+1.0 True There's a bird singing out there this morning.
+0.999 True The wind outside just whispered a soft hello.
+0.998 True The wind that blows through the window at this time of day.
+0.998 False The sound of rain on a window.
+0.997 True The sun is setting and the sky is orange.
+0.996 False The sound of a clock ticking softly.
+0.995 True The light outside today is soft and warm. Enjoy that tiny thing.
+0.995 False Right now you get to rest, and resting counts as doing something.
+0.994 False Here's one to imagine: the sky going peach, then pink, over a quiet fi
+0.993 False Flipping the pillow over to the cool side is one of life's small, free
+0.992 True It's so bright out there today, go soak it up.
+0.99 False I can't move, so I'll just stand here quietly.
+0.987 False Every page you've read counts.
+0.987 False The smell of rain on grass.
+0.983 True The sky is a soft orange, the sea a deep blue.
+0.978 False Think about a slow walk somewhere green, with nothing to carry and now
+0.978 False You're home and the driving's done. Your own bed beats any service sta
+0.977 False You did a hard, loving thing today, and you're allowed to rest now.
+0.966 False The day from hell has a hard stop, and it's the moment you close your 
+0.957 False Being this tired from grief is what love looks like when it's carrying
+0.956 False Okay, I'll stop. Your phone is ringing.
+0.946 False Warm socks. A dark room. Quiet.
+0.939 False I can't check the news, but here's a safe bet: somewhere right now, so
+0.926 False One email doesn't get to decide the whole story, and tonight you're al
+0.921 True It's raining, so stay in.
+0.915 False Nope, Jo, you're back. What'd you want to talk about?
+0.907 False One tomato. One. You're the kind of person who makes a single fruit fe
+0.904 False I can't see the room, so I won't pretend to. The bit I do know is that
+0.897 False Well done.
+0.894 False Some good things carry on without needing anything from you: bread sti
+
+[exited with code 0]
