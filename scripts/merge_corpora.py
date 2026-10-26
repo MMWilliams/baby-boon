@@ -22,7 +22,7 @@ def main():
     a = ap.parse_args()
     out = ROOT / a.out
     if (out / "manifest.json").exists(): raise FileExistsError("Refusing to replace a merged corpus")
-    category = {p["id"]: p["category"] for p in read_jsonl(ROOT / "configs/teacher_prompts.jsonl")}
+    category = {p["id"]: p["category"] for f in ("teacher_prompts", "authored_v1") for p in read_jsonl(ROOT / f"configs/{f}.jsonl")}
     examples, sources, rejected = [], [], Counter()
     for name in a.sources:
         src = ROOT / name
@@ -38,7 +38,7 @@ def main():
     examples = [ex for i, ex in enumerate(examples) if i not in capped]
     out.mkdir(parents=True, exist_ok=True)
     write_corpus(out, examples, {"source": a.source_name, "private_data": False, "external_dataset_rows": 0,
-        "teacher_model": sorted({s["teacher_model"] for s in sources}),
+        "teacher_model": sorted({s["teacher_model"] for s in sources} - {None}),
         "admission": "Admitted source corpora below, re-filtered by baby_boon/style.py. Not independent human evidence.",
         "sources": sources, "style_sha256": digest(ROOT / "baby_boon/style.py"), "filter_rejections": rejected,
         "question_share_cap": QUESTION_SHARE, "question_cap_dropped": len(capped), "examples": len(examples),

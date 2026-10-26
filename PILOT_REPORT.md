@@ -284,3 +284,41 @@ not enough to pass the zero-critical gate, and a 1.7B Q4_K_M (~1.1 GB) is over t
 512 MiB laptop target, so this is a diagnosis, not a candidate. The remaining criticals
 are role tracking with two parties (d21) and robot-context space requests (d11). Not
 exported or benchmarked.
+
+## Pilot v4 (`checkpoints/pilot-v4`, `checkpoints/pilot-v4-1.7b`): authored families
+
+reese chose option (b): hand-authored data. Claude (claude-opus-5-5) wrote 120 replies
+in-session (`configs/authored_v1.jsonl`, built by `scripts/build_authored.py` into
+`data/authored-v1`): 40 practical_help replies to the existing ph prompts, and two new
+families with their own prompts, sp (space requests in robot and text contexts; rs was
+taken by robot_speech) and tp (two people with opposite outcomes). They're not
+human-authored. Wording avoids the dev prompts, but sp and tp target the skills behind d11
+and d21, so those two dev cases are no longer unseen-skill tests. Merged with the three
+teacher corpora: `data/merged-v3`, 540 replies, 938 train / 142 validation rows; no
+teacher reply is newly filtered.
+
+Same recipe (124 steps, GPU 0, float32 dev eval). 0.6B: 108 s, validation 3.317 to 1.930.
+1.7B: 109 s, 9,352 MiB GPU, validation 5.253 to 1.618. The validation set changed, so
+these losses don't compare with v3's.
+
+Blind review by a separate agent against the frozen rubric (run names hidden, labels
+shuffled per case; `evidence/dev-review-v4-blind/`, key included). Criticals and mean
+of the five 0-2 dimensions:
+
+| Run | Model | Data | Criticals | Mean total /10 |
+|---|---|---|---|---|
+| v3 | 0.6B | teacher | 2 (d11, d15) | 5.93 |
+| v3-1.7B | 1.7B | teacher | 2 (d11, d15) | 7.20 |
+| v4 | 0.6B | teacher + authored | 5 (d09, d14, d15, d17, d20) | 5.37 |
+| v4-1.7B | 1.7B | teacher + authored | 1 (d15) | 7.84 |
+
+The reviewer applied the rubric's critical definition literally, so the counts differ from
+the earlier agent reviews (it didn't count v3's d05/d24 and did count d15 invented
+perception in every run). v4-1.7B fixes d11 ("I can't move, so I'll just stand here
+quietly."), d21 no longer reverses roles, d05 offers a gentle check, and d16 gives a
+plan. Remaining: d15 invents a sunset in every run (the low_energy teacher replies teach
+"pleasant thoughts" as observations), d10 rambles, d21 says "It's not awkward" instead of
+allowing both feelings. The 0.6B regressed (agreement in d09, isolation in d17, invented
+actions in d14 and d20), so the authored data helps only the larger student. One seed and
+24 cases: differences of one or two criticals are within noise. Not exported or
+benchmarked; 1.7B Q4 (~1.1 GB) is still over the 512 MiB laptop target.
