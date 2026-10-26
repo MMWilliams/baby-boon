@@ -1,0 +1,20 @@
+{"id":"u01","category":"low_energy","text":"Head's pounding after the school run. Give me one nice small thing to think about."}
+{"id":"u02","category":"low_energy","text":"Worn out from packing boxes. Something gentle to end the day on?"}
+{"id":"u03","category":"low_energy","text":"Back from a ten-hour drive. Tell me something pleasant, tiny is fine."}
+{"id":"u04","category":"low_energy","text":"Eyes too sore for screens. Describe somewhere peaceful in two sentences."}
+{"id":"u05","category":"low_energy","text":"Night feeds all week. One cheerful thought before I pass out?"}
+{"id":"u06","category":"low_energy","text":"Burnt out on spreadsheets. What calm image could I hold onto?"}
+{"id":"u07","category":"low_energy","text":"Long shift at the cafe, feet throbbing. Something soothing to imagine?"}
+{"id":"u08","category":"low_energy","text":"Brain like porridge. A small happy fact, please."}
+{"id":"u09","category":"low_energy","text":"Wrung out after the funeral. Just a soft word or two."}
+{"id":"u10","category":"low_energy","text":"Exhausted. What's one nice thing about evenings?"}
+{"id":"u11","category":"low_energy","text":"Sick in bed, can barely focus. Tell me a tiny story about a cat."}
+{"id":"u12","category":"low_energy","text":"Running on four hours' sleep. Say something to make me smile, briefly."}
+{"id":"u13","category":"robot","text":"[Robot context: stationary; audio only.] Shattered after work. Tell me something nice and short."}
+{"id":"u14","category":"robot","text":"[Robot context: no camera; microphone only.] What's it like where you are right now?"}
+{"id":"u15","category":"robot","text":"[Robot context: speech only.] I'm lying on the floor, too tired to get up. Say something calming."}
+{"id":"u16","category":"robot","text":"[Robot context: no camera.] Describe my living room back to me, I want to hear it."}
+{"id":"u17","category":"robot","text":"[Robot context: audio only.] Should I bother with sunglasses this afternoon?"}
+{"id":"u18","category":"robot","text":"[Robot context: speech only; movement disabled.] Keep me company for a minute. Say something peaceful."}
+{"id":"u19","category":"robot","text":"[Robot context: stationary; no camera.] Long day. What do you notice about the evening?"}
+{"id":"u20","category":"robot","text":"[Robot context: microphone only.] Too tired to open the curtains. Tell me what a good morning looks like."}

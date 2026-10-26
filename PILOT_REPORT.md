@@ -431,3 +431,13 @@ scenes and 2 "morning light ... through the window" noun phrases, which read lik
 images v7's review passed (pre-existing window rule, likely false positives). With 4 retries the
 guarded chat reaches the honest fallback on every run; attempt 7 ("The sound of rain on a roof.")
 would pass. d15 is no longer critical on CPU but its reply is the non-answer fallback.
+
+## Pilot v9 (`evidence/guard-fallback-v9`): guard fallback rate on unseen prompts
+
+20 new prompts (12 low_energy, 8 robot context; none in dev or training) through the guarded CPU chat path once each.
+1/20 fell back (u05, 95% CI about 0-25%); 11 of 30 attempts were flagged and all 11 were real invented scenes on manual
+review, so the v8 window-rule false positives didn't recur. Recall is the problem: 2 accepted replies invent perception
+the regex has no words for (u16 describes the user's living room in detail with no camera; u19 answers "what do you
+notice about the evening" with wind in the trees), plus 2 borderline. Resampling after a flag tends to produce a
+different invention rather than an honest answer. The one fallback answered "One cheerful thought" with "I can't see
+what's around you", which doesn't fit the request. Single reviewer who also wrote the prompts; not independent.

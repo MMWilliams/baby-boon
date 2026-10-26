@@ -40,7 +40,11 @@
 - [x] Pilot v4 (merged-v3 = teacher 420 + authored 120): blind review 1.7B 1 critical (d15), best means; 0.6B regressed to 5. See PILOT_REPORT.md.
 - [x] low_energy d15: SFT (v5) and DPO (v6) failed; runtime guard (baby_boon/guard.py, v7) makes guarded v4-1.7B 0 dev criticals (development evidence; regex tuned on d15). See PILOT_REPORT.md v7.
 - [x] Guard misses on CPU: reese picked regex over a classifier (deployed model as checker is at chance, AUC 0.48). Widened regex matches the 91-row eval/perception_check.jsonl (unit test). See PILOT_REPORT.md v8.
-- [ ] Guard fallback rate: CPU d15 flags 8/10 samples (2 are likely window-rule false positives), so 4 retries always reach the non-answer fallback. Measure on unseen low_energy/robot prompts; consider narrowing the window rule, more retries, or a pleasant-thought fallback. A weights fix (length-matched DPO + NLL) is still open.
+- [x] Guard fallback rate on 20 unseen prompts (v9): 1/20 fallbacks, 11/11 flags real, 0 false positives. See PILOT_REPORT.md v9.
+- [ ] Guard recall: v9 accepted 2 invented-perception replies the regex has no words for (u16 invented living room, u19 "wind whispers"). Regex is whack-a-mole; options: stronger checker model, weights fix (length-matched DPO + NLL), or no-camera prompts answered from a fixed honest template. reese to pick.
+- [ ] Fallback text must fit the request: u05 "one cheerful thought" got "I can't see what's around you". Consider a pleasant-thought fallback for low_energy.
+- [ ] Cue leaks into reply text on sampled attempts ("Smiles. 1. playful.", v9 u12); check parse_response.
+- [ ] Idiom comprehension: "brain like porridge" and "shattered" read literally (v9 u08, u13).
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
