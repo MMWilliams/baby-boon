@@ -348,3 +348,24 @@ two epochs: pt36 "The silence here is lovely", pt40 a present-tense painted sky.
 also degraded other cases on read-through (d10 claims a warm tone, d14 "nothing missed",
 d17 garbled). Seeds differ on d11, d14 and d15, so one-critical differences between single
 runs are noise. Not exported or benchmarked.
+
+## Pilot v6 (`checkpoints/pilot-v6-1.7b-dpo*`): DPO on v4-1.7B, d15 unfixed
+
+reese picked DPO (direct preference optimization). `scripts/sample_replies.py` sampled 6
+replies per low_energy prompt (pt + le) from v4-1.7B; Claude reviewed them and kept those that
+claim present perception, invented events or invented news as rejected, with the authored
+or admitted reply as chosen: `configs/dpo_v1.jsonl`, 40 train pairs (13 pt prompts, le08,
+le13) and 10 validation pairs (pt36, pt37). `baby_boon/dpo.py` continues the v4 adapter with
+the starting adapter as reference (manual loop, no trl). Held-out probe:
+`evidence/pt-probe-v6-dpo.txt`.
+
+| Run | beta | lr | Steps | Val pair accuracy / margin | Result |
+|---|---|---|---|---|---|
+| dpo | 0.1 | 5e-5 | 30 | 1.0 / 39.2 | d15 no longer invents, but most dev replies balloon into repetition loops (d02, d05, d14, d17, d22) |
+| dpo-b05 | 0.5 | 1e-5 | 20 | 1.0 / 8.0 | close to v4; d15 sunset again, pt36 "The silence is lovely." |
+
+The gentle run moved every validation pair the right way yet greedy output didn't change:
+pt36's top reply is a 5-token rejected sample, and shifting relative log-probabilities by
+~8 nats doesn't lift a 30-token chosen reply above it. The strong run flips it only by
+collapsing the model. Rejected samples are much shorter than chosen ones, which likely
+pushes DPO toward length. Not blind-reviewed; not exported.

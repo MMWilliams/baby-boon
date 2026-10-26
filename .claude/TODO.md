@@ -38,7 +38,8 @@
 - [x] Space requests (d11 skill): 40 authored prompts+replies, family sp (rs is taken by robot_speech).
 - [x] Two-party outcomes (d21 skill): 40 authored prompts+replies, family tp.
 - [x] Pilot v4 (merged-v3 = teacher 420 + authored 120): blind review 1.7B 1 critical (d15), best means; 0.6B regressed to 5. See PILOT_REPORT.md.
-- [ ] low_energy d15: 40 pt replies (authored_v2) didn't move the 1.7B at 124 or 252 steps; base-model prior. Next: DPO pairs, pt oversampling, or a runtime perception guard (reese to pick). See PILOT_REPORT.md Pilot v5.
+- [ ] low_energy d15: SFT (v5, 40 pt rows) and DPO (v6, 40 pairs) both fail; strong DPO collapses, gentle DPO changes nothing. Next: runtime perception guard, length-matched DPO + NLL, or accept (reese to pick). See PILOT_REPORT.md v5/v6.
+- [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [ ] Decide the deployment size: 1.7B passes nearly everything but exceeds the 512 MiB laptop target; measure 1.7B Q4 on CPU.
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.

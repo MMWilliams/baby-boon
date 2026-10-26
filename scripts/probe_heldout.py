@@ -3,10 +3,9 @@ whether a family was learned before spending a dev review. Usage: probe_heldout.
 import sys
 from pathlib import Path
 
-import torch
-
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from baby_boon.common import prompt_ids, read_jsonl, source
+from baby_boon.common import configure_gpu, prompt_ids, read_jsonl, source
+torch = configure_gpu()
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 s = source("Qwen/Qwen3-1.7B")
