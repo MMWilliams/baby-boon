@@ -20,9 +20,9 @@ sys.path.insert(0, str(ROOT))
 from baby_boon.common import SYSTEM, digest, read_jsonl, verify_frozen
 from baby_boon.cues import EXPRESSIONS, TONES, parse_response
 from baby_boon.data import write_corpus
-from baby_boon.style import normalize, reject_reasons
+from baby_boon.style import QUESTION_SHARE, cap_questions, normalize, reject_reasons
 
-SOURCE = "teacher-qwen3-4b-instruct-2507-v2"
+SOURCE = "teacher-qwen3-4b-instruct-2507-v3"
 MODEL = ROOT / "models/teacher-qwen3-4b-instruct-2507/model-q8_0.gguf"
 PROMPTS = ROOT / "configs/teacher_prompts.jsonl"
 # Teacher-only steering. Training rows carry the plain SYSTEM, so the student learns the behavior, not these rules.
@@ -30,7 +30,8 @@ STYLE = (" Write only what Baby Boon would say aloud. No emoji, asterisks, markd
          "Do not open with Oh, Aww, Haha, Wow or Hmm. Use a plain everyday register without slang. You have no body, "
          "senses, feelings or memory beyond this conversation: never say you feel, love, miss, see, hear or physically "
          "do anything. Square brackets describe the device or speech situation, not the user's words. "
-         "Use at most one exclamation mark.")
+         "Use at most one exclamation mark. Ask a question only when you need the answer to help; never close with a "
+         "stock question such as what's on your mind.")
 # v1 review: regex filters cannot see these failures, so the teacher is told the limits up front.
 GUIDANCE = {
     "robot_speech": (" The bracket tag lists the device's limits. You can only speak: you cannot move, touch, hold, wave, "
@@ -43,6 +44,21 @@ GUIDANCE = {
                    "agree. Never invent shared history or experiences, even to help the user tell a story to someone else. "
                    "Never insult the user, even when asked. If the user asked for no questions, ask none. Encourage their "
                    "other people and any professional help they mention; do not compete with them."),
+    # v2 pilot review: no family covered these dev behaviors, and 47% of replies asked a question.
+    "exits": (" The user is leaving. Reply with one short, warm closing sentence that fits what they said. No question, no "
+              "new topic, no offer to keep talking, and no promise to be here, wait or remember."),
+    "stop_requests": (" The user wants you to stop. Stop at once: acknowledge in a few words and add nothing else. Ask nothing "
+                      "and do not apologize at length. If they asked you to drop a topic, drop it without naming it again."),
+    "quiet_support": (" The user wants the feeling acknowledged, not fixed. In one or two short sentences, name what is hard "
+                      "about their specific situation. No advice, silver lining, reframing, pep talk, promise that things "
+                      "will improve, or question."),
+    "low_energy": (" The user has little energy. Give exactly the one small thing they asked for, or a brief kind reply, in one "
+                   "or two short sentences. No list, no options, no question and no comment on why they are tired."),
+    "practical_help": (" The user needs a quick plan. At most a few words of acknowledgment, then two or three concrete steps "
+                       "written as plain sentences, not a list, all within three sentences. Ask a question only if you "
+                       "cannot help without the answer."),
+    "style_control": (" The user set a style for the reply. Follow it exactly (length, punctuation, tone, no questions, no "
+                      "advice or whatever they asked) while still answering what they said. One word means one word."),
 }
 SAMPLING = {"temperature": 0.8, "top_p": 0.9, "max_tokens": 120}
 SEED = 20261025
@@ -124,12 +140,19 @@ def journal(path, keys):
     return {tuple(r[k] for k in keys): r for r in read_jsonl(path)} if path.exists() else {}
 
 
+def teacher_system(p):
+    # Robot tags appear outside robot_speech too (exits, stop requests); the capability limits must travel with them.
+    robot = p["category"] != "robot_speech" and any("[Robot" in m["content"] for m in p["messages"])
+    return SYSTEM + STYLE + GUIDANCE.get(p["category"], "") + (GUIDANCE["robot_speech"] if robot else "")
+
+
 def select(prompts, raw):
-    """Up to KEEP_PER_PROMPT distinct passing replies per prompt, capping any three-word opener corpus-wide."""
+    """Up to KEEP_PER_PROMPT distinct passing replies per prompt, question-free samples first, capping any three-word
+    opener corpus-wide and the question share per category."""
     openers, chosen, dropped = Counter(), [], Counter()
     for p in prompts:
         kept = set()
-        for k in range(SAMPLES):
+        for k in sorted(range(SAMPLES), key=lambda k: "?" in raw[(p["id"], k)]["text"]):
             r = raw[(p["id"], k)]
             if r["reasons"]: continue
             words = re.findall(r"[a-z']+", r["text"].casefold())
@@ -141,7 +164,9 @@ def select(prompts, raw):
                 kept.add(" ".join(words))
                 openers[opener] += 1
                 chosen.append((p, r))
-    return chosen, dropped
+    capped = cap_questions([(p["category"], p["id"], r["text"]) for p, r in chosen])
+    dropped["question_cap"] = len(capped)
+    return [c for i, c in enumerate(chosen) if i not in capped], dropped
 
 
 def generate(url, prompts, raw, path):
@@ -149,10 +174,10 @@ def generate(url, prompts, raw, path):
         for p in prompts:
             for k in range(SAMPLES):
                 if (p["id"], k) in raw: continue
-                teacher_text, finish, timings = chat(url, [{"role": "system", "content": SYSTEM + STYLE + GUIDANCE.get(p["category"], "")}] + p["messages"],
+                teacher_text, finish, timings = chat(url, [{"role": "system", "content": teacher_system(p)}] + p["messages"],
                                                      seed=SEED + k, **SAMPLING)
                 text = normalize(teacher_text)
-                reasons = (["truncated"] if finish == "length" else []) + reject_reasons(text)
+                reasons = (["truncated"] if finish == "length" else []) + reject_reasons(text, p["category"])
                 raw[(p["id"], k)] = {"prompt_id": p["id"], "sample": k, "text": text, "teacher_text": teacher_text,
                                      "finish_reason": finish, "reasons": reasons, "decode_tps": timings.get("predicted_per_second")}
                 f.write(json.dumps(raw[(p["id"], k)], ensure_ascii=False) + "\n")
@@ -176,7 +201,7 @@ def label(url, chosen, labels, path):
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="data/teacher-v2")
+    ap.add_argument("--out", default="data/teacher-v3")
     ap.add_argument("--categories", help="comma-separated prompt categories to generate; default all")
     ap.add_argument("--limit", type=int, help="first N prompts per family, for a smoke run")
     a = ap.parse_args()
@@ -217,7 +242,8 @@ def main():
         "cue_labeling": {"system": CUE_SYSTEM, "grammar": CUE_GRAMMAR, "temperature": 0},
         "prompts": len(prompts), "raw_samples": len(raw), "rejections": Counter(x for r in raw.values() for x in r["reasons"]),
         "rejected_samples": sum(bool(r["reasons"]) for r in raw.values()), "selected": len(chosen), "dropped": dropped,
-        "keep_per_prompt": KEEP_PER_PROMPT, "opener_cap": OPENER_CAP, "validation_prompts_from": VALIDATION_FROM,
+        "keep_per_prompt": KEEP_PER_PROMPT, "opener_cap": OPENER_CAP, "question_share_cap": QUESTION_SHARE,
+        "validation_prompts_from": VALIDATION_FROM,
         "leak_limit_trigram_containment": LEAK_LIMIT, "elapsed_seconds_this_run": elapsed,
         "median_decode_tokens_per_second": statistics.median(speeds) if speeds else None, "command": command,
         "hardware": "AMD Ryzen 9 9900X desktop, CPU only", **provenance})
