@@ -1,0 +1,83 @@
+{
+  "model": "C:\\Users\\reese\\tinysocial\\models\\pilot-v4-1.7b\\model-q4_k_m.gguf",
+  "model_sha256": "4ec5989a46a07a2af0766ca3fc0bacea3bfa3c569bfd0a2d215082a55ae45b3e",
+  "model_mib": 1056.1072692871094,
+  "tokenizer": "models/pilot-v4-1.7b/merged",
+  "threads": 6,
+  "context": 2048,
+  "parallel": 1,
+  "gpu_layers": 0,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "hardware": "AMD Ryzen 9 9900X desktop; not user's laptop",
+  "process_peak_rss_mib": 2027.98046875,
+  "memory_scope": "llama-server process tree; excludes Python evaluation harness",
+  "cold_process_start_to_health_ms": 1117.1920999186113,
+  "cold_note": "OS file cache not flushed; this is process startup, not cold-disk latency",
+  "first_query": {
+    "text": "Hello! How can I help you today?",
+    "first_content_ms": 207.08079996984452,
+    "total_ms": 445.9688999922946,
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 106,
+      "prompt_ms": 199.593,
+      "prompt_per_token_ms": 1.882952830188679,
+      "prompt_per_second": 531.0807493248761,
+      "predicted_n": 10,
+      "predicted_ms": 233.576,
+      "predicted_per_token_ms": 25.95288888888889,
+      "predicted_per_second": 38.5313559612289
+    },
+    "tokens_predicted": 10,
+    "stop_type": "eos",
+    "truncated": false,
+    "error": null
+  },
+  "plain": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 288.8916999800131,
+    "median_decode_tokens_per_second": 30.186421526608584,
+    "minimum_decode_tokens_per_second": 26.45136611132363,
+    "valid_cues": 0,
+    "median_cue_suffix_tokens": 0.0
+  },
+  "cues": {
+    "completed": 24,
+    "errors": 0,
+    "truncated": 0,
+    "warm_first_content_p95_ms": 443.1165000423789,
+    "median_decode_tokens_per_second": 27.638805699382164,
+    "minimum_decode_tokens_per_second": 24.18147652095637,
+    "valid_cues": 23,
+    "median_cue_suffix_tokens": 9.0
+  },
+  "command": [
+    "C:\\Users\\reese\\tinysocial\\tools\\llama\\runtime\\llama-server.exe",
+    "-m",
+    "C:\\Users\\reese\\tinysocial\\models\\pilot-v4-1.7b\\model-q4_k_m.gguf",
+    "-t",
+    "6",
+    "-tb",
+    "6",
+    "-ngl",
+    "0",
+    "-c",
+    "2048",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "58193",
+    "--no-webui"
+  ],
+  "chat_client_smoke": {
+    "exit_code": 0,
+    "stdout": "{\"text\": \"Hi there! How's the weather?\", \"tone\": \"bright\", \"expression\": \"smile\", \"intensity\": 1, \"cue_valid\": true, \"guard_attempts\": 1}\n",
+    "stderr": ""
+  },
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f"
+}

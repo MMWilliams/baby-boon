@@ -393,3 +393,23 @@ regex was tuned on d15's own outputs, so this is development evidence, not an un
 guard3 passed on its last attempt, so a different sampler or model may fall back; a regex
 chases paraphrases and will miss new ones. GPU latency for d15 was 3.1 s across 5 attempts.
 The chat client's llama-server `seed` field is untested live. Not exported or benchmarked.
+
+## Pilot v7 deployment path (`evidence/cpu-v4-1.7b`): Q4_K_M on desktop CPU
+
+`baby_boon/export.py` merged the v4-1.7B adapter and quantized it; `baby_boon.cpu_eval` ran
+all 24 dev cases plain and with cues on the Ryzen 9 9900X (six threads, not reese's laptop).
+
+| Measure | v4-1.7B Q4_K_M | Target / v1 0.6B |
+|---|---|---|
+| GGUF file | 1,056 MiB | 512 MiB target; v1 378 MiB |
+| Server peak RSS | 2,028 MiB | v1 936 MiB |
+| Median decode | 30.2 tok/s plain, 27.6 cue | |
+| Warm p95 first content | 289 ms plain, 443 ms cue | |
+| Valid cues | 23/24 | |
+
+The 1.7B is about 2x the size target at Q4, so it can't ship to a 512 MiB laptop as is.
+Unguarded Q4 d15 still invents the sunset. Through the guarded chat client and
+`scripts/serve.ps1 -Model pilot-v4-1.7b`, llama-server honors `seed` (same seed, identical
+text), but the guard passed "The light outside today is soft and warm." on attempt 2: its
+place/time slot takes one word and "outside today" is two. The GPU guard3 result doesn't
+carry over to the llama.cpp sampler; the regex miss is the paraphrase risk the v7 caveats named.

@@ -39,9 +39,9 @@
 - [x] Two-party outcomes (d21 skill): 40 authored prompts+replies, family tp.
 - [x] Pilot v4 (merged-v3 = teacher 420 + authored 120): blind review 1.7B 1 critical (d15), best means; 0.6B regressed to 5. See PILOT_REPORT.md.
 - [x] low_energy d15: SFT (v5) and DPO (v6) failed; runtime guard (baby_boon/guard.py, v7) makes guarded v4-1.7B 0 dev criticals (development evidence; regex tuned on d15). See PILOT_REPORT.md v7.
-- [ ] Guard is a regex that passed d15 on its last attempt: measure fallback rate on unseen low_energy/robot prompts before trusting it; a weights fix (length-matched DPO + NLL) is still open.
+- [ ] Guard is a regex that passed d15 on its last attempt: on Q4 CPU it let "The light outside today is soft and warm." through (two-word place/time slot). Fix or replace (classifier/second-pass check), then measure fallback rate on unseen low_energy/robot prompts; a weights fix (length-matched DPO + NLL) is still open.
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
-- [ ] Decide the deployment size: 1.7B passes nearly everything but exceeds the 512 MiB laptop target; measure 1.7B Q4 on CPU.
+- [ ] Decide the deployment size: 1.7B Q4_K_M measured on desktop CPU (1,056 MiB file, 2,028 MiB RSS, 30 tok/s), 2x the 512 MiB target. Options: raise the target, smaller quant, or distill to 0.6B.
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 

@@ -1,0 +1,10 @@
+scripts/serve.ps1 -Model pilot-v4-1.7b (llama-server, CPU, --jinja), then:
+python -m baby_boon.chat --message "I'm too tired for a whole conversation. Tell me one tiny pleasant thing."
+{"text": "The light outside today is soft and warm. Enjoy that tiny thing.", "tone": "bright", "expression": "smile", "intensity": 1, "cue_valid": true, "guard_attempts": 2}
+
+Seed check, same d15 messages, temperature 0.8:
+seed1 twice equal: True | seed2 differs: True
+seed 1: 'The light outside today is soft and warm. Enjoy that tiny thing.\n<cue>bright|smile|1'
+seed 2: 'The light on the coffee maker is finally on. 🌞\n<cue>bright|smile|1'
+
+Guard miss: HERE allows one place/time word after the scene noun; "outside today" is two, so the reply passed.

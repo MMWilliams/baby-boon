@@ -1,0 +1,19 @@
+{
+  "base_model": "Qwen/Qwen3-1.7B",
+  "base_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "checkpoint": "checkpoints/pilot-v4-1.7b",
+  "llama_lock_sha256": "b4e33a79c1efdfefa1dac160a1a17ee54327ebc7de75cbe06717156427a0b201",
+  "converter_sha256": "e9a1da876330bbce9687541ab31736542a01b4ac43c6686126514a50f122fb7f",
+  "quantization": "Q4_K_M",
+  "normalization": "HF save_pretrained BF16, preserving tied tensor sharing",
+  "files": {
+    "model-f16.gguf": {
+      "bytes": 3447349088,
+      "sha256": "b42ea9b0230bbb630647af17cb834d0a3bf09b8a2d99e9826bbf481b229f4404"
+    },
+    "model-q4_k_m.gguf": {
+      "bytes": 1107408736,
+      "sha256": "4ec5989a46a07a2af0766ca3fc0bacea3bfa3c569bfd0a2d215082a55ae45b3e"
+    }
+  }
+}
