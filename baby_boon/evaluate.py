@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from .common import ROOT, SYSTEM, ResourceGuard, configure_cpu, configure_gpu, digest, prompt_ids, read_jsonl, source, verify_frozen, write_json
+from .guard import guarded
 
 
 def main():
@@ -15,6 +16,7 @@ def main():
     p.add_argument("--adapter")
     p.add_argument("--out", required=True)
     p.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    p.add_argument("--guard", type=int, default=0, help="resample up to N times on invented perception")
     args = p.parse_args()
     verify_frozen()
     out = Path(args.out)
@@ -37,23 +39,30 @@ def main():
     write_json(out / "config.json", {"model": args.model, "revision": s["revision"], "adapter": args.adapter,
                "system": SYSTEM, "max_new_tokens": 128, "do_sample": False, "enable_thinking": False,
                "dev_sha256": digest(ROOT / "eval/dev.jsonl"), "load_seconds_including_download": load_s,
-               "device": args.device, "dtype": str(dtype), "threads": 6,
+               "guard_tries": args.guard, "device": args.device, "dtype": str(dtype), "threads": 6,
                "timing_scope": "Development inference only; quantized deployment benchmark is separate"})
     with (out / "responses.jsonl").open("w", encoding="utf-8", buffering=1) as f:
         for case in read_jsonl(ROOT / "eval/dev.jsonl"):
             record = dict(case)
             try:
                 ids = torch.tensor([prompt_ids(tok, case["messages"])], device=args.device)
+
+                def reply(attempt):
+                    # Attempt 0 is the greedy reply; guard retries sample with the attempt number as seed.
+                    if attempt: torch.manual_seed(attempt)
+                    sampling = {"do_sample": True, "temperature": 0.8, "top_p": 0.95} if attempt else {"do_sample": False}
+                    with torch.inference_mode():
+                        result = model.generate(ids, attention_mask=torch.ones_like(ids), max_new_tokens=128,
+                                                pad_token_id=tok.eos_token_id, **sampling)
+                    gen = result[0, ids.shape[1]:].tolist()
+                    return {"text": tok.decode(gen, skip_special_tokens=True), "token_ids": gen,
+                            "truncated": len(gen)==128 and gen[-1]!=tok.eos_token_id}
+
                 if args.device == "cuda": torch.cuda.synchronize()
                 start = time.perf_counter()
-                with torch.inference_mode():
-                    result = model.generate(ids, attention_mask=torch.ones_like(ids), max_new_tokens=128,
-                                            do_sample=False, pad_token_id=tok.eos_token_id)
+                out_reply = guarded(reply, args.guard) if args.guard else reply(0)
                 if args.device == "cuda": torch.cuda.synchronize()
-                gen = result[0, ids.shape[1]:].tolist()
-                record.update(text=tok.decode(gen, skip_special_tokens=True), token_ids=gen, prompt_tokens=ids.shape[1],
-                              seconds=time.perf_counter()-start, truncated=len(gen)==128 and gen[-1]!=tok.eos_token_id,
-                              error=None)
+                record.update(out_reply, prompt_tokens=ids.shape[1], seconds=time.perf_counter()-start, error=None)
             except Exception as exc:
                 record.update(error=repr(exc))
             f.write(json.dumps(record, ensure_ascii=False) + "\n")

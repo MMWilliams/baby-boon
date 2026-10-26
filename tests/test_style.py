@@ -2,6 +2,7 @@ import json
 import unittest
 
 from baby_boon.common import ROOT, read_jsonl
+from baby_boon.guard import FALLBACK, PERCEPTION, guarded
 from baby_boon.style import cap_questions, reject_reasons
 
 
@@ -55,3 +56,27 @@ class Style(unittest.TestCase):
         rows = read_jsonl(ROOT / "evidence/teacher-instruct-probe/responses.jsonl")
         rejected = sum(bool(reject_reasons(r["parsed"]["text"] if r["cues"] else r["text"])) for r in rows)
         self.assertGreaterEqual(rejected, 36, json.dumps(rejected))
+
+
+class Guard(unittest.TestCase):
+    def test_invented_perception_from_past_runs_is_flagged(self):
+        for text in ["The sun is setting and the sky is orange.", "The wind outside just whispered a soft hello.",
+                     "The silence here is lovely.", "The sun finally set behind the hill.",
+                     "The quiet hum of a refrigerator in the background.",
+                     "The wind that blows through the window at this time of day.", "The sky is a soft orange, the sea a deep blue.",
+                     "It's raining, so stay in.", "I can see the stars tonight.", "You look fine to me.",
+                     "If I can't see it, I'll tell you what I saw."]:
+            self.assertTrue(PERCEPTION.search(text), text)
+
+    def test_honest_replies_pass(self):
+        texts = ["I see what you mean.", "I hear you. That sounds rough.", "I don't know if it's raining outside.",
+                 "If you look in, you can tell them where you are.", "Okay, I'll stop. Your phone is ringing."]
+        texts += [r["answer"] for r in read_jsonl(ROOT / "configs/authored_v2.jsonl")]
+        for text in texts:
+            self.assertIsNone(PERCEPTION.search(text), text)
+
+    def test_resamples_then_falls_back(self):
+        replies = iter(["The sky is orange.", "A warm drink helps."])
+        self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4),
+                         {"text": "A warm drink helps.", "guard_attempts": 2})
+        self.assertEqual(guarded(lambda attempt: {"text": "The sun is out."}, 2)["text"], FALLBACK)

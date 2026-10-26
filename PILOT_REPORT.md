@@ -369,3 +369,27 @@ pt36's top reply is a 5-token rejected sample, and shifting relative log-probabi
 ~8 nats doesn't lift a 30-token chosen reply above it. The strong run flips it only by
 collapsing the model. Rejected samples are much shorter than chosen ones, which likely
 pushes DPO toward length. Not blind-reviewed; not exported.
+
+## Pilot v7 (`runs/pilot-v7-1.7b-guard*`): runtime perception guard on v4-1.7B
+
+reese said proceed, so Claude took the recommended option: leave the weights alone and check each reply at runtime.
+`baby_boon/guard.py` flags present-scene claims (a definite scene noun with a present or
+"just/finally" verb, "it's raining", "in the background", "through the window", "at this time
+of day", sense verbs, "you look") and resamples (temperature 0.8, seed = attempt) up to 4
+times, falling back to an honest fixed line. `evaluate --guard 4` and the chat client use it.
+Across every earlier dev run it flags all d15 failures; its only training-corpus hits are 2
+moon-fact replies, and no authored pt reply trips it.
+
+| Run | Guard regex | d15 (attempts) | Other 23 cases |
+|---|---|---|---|
+| guard | v1 | "The sound of a cat purring in the background." (3) | identical to v4-1.7B |
+| guard2 | + finally, background | "The wind that blows through the window at this time of day." (4) | identical |
+| guard3 | + window, time of day | "The sound of a clock ticking softly." (5) | identical |
+
+A blind single-case review (`evidence/guard-v7/d15-blind-review.md`) rated guard2's reply
+critical and general images like "The sound of rain on a window." non-critical. With the
+v4 blind review covering the 23 unchanged replies, guard3 has 0 dev criticals. Caveats: the
+regex was tuned on d15's own outputs, so this is development evidence, not an unseen test;
+guard3 passed on its last attempt, so a different sampler or model may fall back; a regex
+chases paraphrases and will miss new ones. GPU latency for d15 was 3.1 s across 5 attempts.
+The chat client's llama-server `seed` field is untested live. Not exported or benchmarked.

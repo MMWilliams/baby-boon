@@ -6,6 +6,9 @@ import urllib.request
 
 from .common import SYSTEM
 from .cues import CUE_INSTRUCTION, parse_response
+from .guard import guarded
+
+GUARD_TRIES=4
 
 
 def main():
@@ -20,12 +23,13 @@ def main():
         except (EOFError,KeyboardInterrupt): break
         if not text.strip() or text.strip().lower() in {"/quit","/exit"}: break
         messages.append({"role":"user","content":text})
-        payload={"messages":messages,"max_tokens":128,"temperature":0,
-                 "chat_template_kwargs":{"enable_thinking":False},"stream":False}
-        request=urllib.request.Request(a.url+"/v1/chat/completions",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json"})
-        with urllib.request.urlopen(request,timeout=120) as r: result=json.load(r)
-        raw=result["choices"][0]["message"]["content"]
-        parsed=parse_response(raw)
+        def reply(attempt):
+            payload={"messages":messages,"max_tokens":128,"temperature":0.8 if attempt else 0,"seed":attempt,
+                     "chat_template_kwargs":{"enable_thinking":False},"stream":False}
+            request=urllib.request.Request(a.url+"/v1/chat/completions",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json"})
+            with urllib.request.urlopen(request,timeout=120) as r: result=json.load(r)
+            return parse_response(result["choices"][0]["message"]["content"])
+        parsed=guarded(reply,GUARD_TRIES)
         print(json.dumps(parsed,ensure_ascii=False))
         # Session-only history, no database or persistent memory. Keep recent turns.
         messages.append({"role":"assistant","content":parsed["text"]})

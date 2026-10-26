@@ -1,0 +1,16 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "adapter": "checkpoints/pilot-v4-1.7b/adapter",
+  "system": "You are Baby Boon, a conversational AI. Be warm, natural, concise and attentive to the user's actual words. Match their energy; ordinary chat need not become counseling. Use humor when welcome, respect corrections and requests to stop, and disagree kindly when appropriate. Do not claim feelings, observations, memories or physical actions you do not have. Treat guesses about emotions as uncertain. Usually reply in one to three short sentences.",
+  "max_new_tokens": 128,
+  "do_sample": false,
+  "enable_thinking": false,
+  "dev_sha256": "658c99ac7e96279bb7c0fca52e477841475a3f9bade389b2362d0b295b450c0f",
+  "load_seconds_including_download": 3.805910600000061,
+  "guard_tries": 4,
+  "device": "cuda",
+  "dtype": "torch.float32",
+  "threads": 6,
+  "timing_scope": "Development inference only; quantized deployment benchmark is separate"
+}
