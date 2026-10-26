@@ -211,3 +211,42 @@ turn. The five teacher families also don't cover exits, stop requests, quiet
 support, low energy, practical help or style control; v1's hand families that did
 (exit, no_advice, repair_topic) aren't in the merged corpus. Not exported or
 benchmarked: a model that fails dev review isn't worth quantizing.
+
+## Pilot v3 (`checkpoints/pilot-v3`), fails dev review with a different failure mix
+
+Teacher-v3 generated the six new families (720 raw, 402 selected). Every selected
+reply was reviewed (`evidence/teacher-v3-review.json`): 155 rejected, 10 critical.
+reese excluded practical_help: the 4B teacher gave wrong or impossible steps and only
+20 of 73 survived, 16 of them mixed. 227 replies admitted (`data/teacher-v3-admitted`).
+`scripts/merge_corpora.py` re-filtered v1/v2 (276 to 193) and merged 420 replies
+(`data/teacher-merged-v2`, 734 train / 106 validation rows); corpus verify passes,
+every category is at or under 25% questions.
+
+Same recipe, 124 steps over two epochs: 1,059 s, peak RSS 6,029 MiB, validation loss
+3.008 to 1.754. The base control was rerun with the Baby Boon persona
+(`runs/baseline-qwen-baby-boon`) so `scripts/compare_dev.py` compares base, v2 and v3
+under matched settings (`runs/compare-dev-v3.txt`).
+
+Float replies on the 24 frozen dev cases (`runs/pilot-v3-float`), agent development
+review, not independent human scoring:
+
+- Fixed versus v2: d11 and d20 no longer ask a question after an exit or stop; d20
+  "Right, have a great meal." and d12 "Okay, no more talk about it." close cleanly;
+  d03 accepts the disappointment without a pep talk; d13 asks to repeat without
+  inventing an object. Style-filter flags: base 21, v2 8, v3 0. Three of 24 replies
+  contain a question (d13 appropriately).
+- Critical: d24 reverses roles ("I can't show you my song") and then praises it as
+  "definitely brilliant"; d05 asserts "'Fine' just means you're okay", the confident
+  reading the case forbids; d11 "I'll take a moment to breathe. You're not alone."
+  takes the user's role and doesn't give the space asked for. Three criticals versus
+  about six for v2.
+- Comprehension failures: d07 "That's quiet.", d21 reads the promotion as missing
+  someone, d04 thinks the user is about to enter the room, d22 "Thanks for the proud
+  moment." instead of congratulations, d16 "wipe it up with a cloth or a marker"
+  (expected, with practical_help excluded). d15 claims "The sun is shining".
+- Too terse: d06 "Okay." doesn't own the mistake; d19 "Okay, that's better." doesn't
+  acknowledge the error; d08 misses the celebration.
+
+The question tic is gone, so the corpus fix worked on its target. What remains is
+comprehension and role tracking: a 0.6B student on 420 replies copies the short,
+calm register without understanding the turn. Not exported or benchmarked.

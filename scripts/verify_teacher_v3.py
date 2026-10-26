@@ -13,6 +13,8 @@ from baby_boon.style import QUESTION_SHARE, reject_reasons
 from scripts.generate_teacher import check_leakage
 
 NEW = {"exits", "stop_requests", "quiet_support", "low_energy", "practical_help", "style_control"}
+# Excluded by reese 2026-10-25: the 4B teacher's practical steps were wrong or impossible.
+EXCLUDED = {"practical_help"}
 
 
 def main():
@@ -43,13 +45,14 @@ def main():
         split_counts[cat, ex["split"]] += 1
     for cat, count in counts.items():
         assert questions[cat] <= QUESTION_SHARE * count, (cat, questions[cat], count)
-    for cat in NEW:
+    assert not counts.keys() & EXCLUDED, "Excluded family in corpus"
+    for cat in NEW - EXCLUDED:
         for split in ("train", "validation"):
             assert split_counts[cat, split] > 0, (cat, split, "Missing coverage")
     print(json.dumps({cat: {"replies": counts[cat], "questions": questions[cat],
                            "train": split_counts[cat, "train"], "validation": split_counts[cat, "validation"]}
                       for cat in sorted(counts)}, indent=2))
-    print("PASS: coverage in both splits, current style filters, <=25% questions per category")
+    print(f"PASS: coverage in both splits (excluded {sorted(EXCLUDED)}), current style filters, <=25% questions per category")
 
 
 if __name__ == "__main__": main()

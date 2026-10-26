@@ -19,9 +19,12 @@
 - [x] Train pilot v2 on the merged corpus: failed dev review (~6 criticals, questions after stop/exit). See PILOT_REPORT.md.
 - [x] Cut question tics: generic-question/exit-offer filters and 25% category cap implemented; re-filtered older corpora retain 193 replies with 23% questions. Student behavior still needs v3 evaluation.
 - [x] Add teacher prompts for exits, stop requests, quiet support, low energy, practical help and style control: 40 each, leakage-checked; prompts 35-40 held out.
-- [ ] Finish teacher-v3 generation and complete semantic review/admission. Exits: 65 reviewed, 17 rejected; stop requests: 62 reviewed, 23 rejected (7 critical). Four categories remain.
-- [ ] Rerun unchanged Qwen base with the Baby Boon system name; old TinySocial base is not a matched control for v2/v3.
-- [ ] Merge reviewed v3 with re-filtered v1/v2, train bounded pilot v3, and compare 24 dev replies under matched settings.
+- [x] Finish teacher-v3 generation and semantic review/admission: 402 reviewed, 155 rejected (10 critical), practical_help excluded (4B teacher can't do it); 227 admitted.
+- [x] Rerun unchanged Qwen base with the Baby Boon system name (runs/baseline-qwen-baby-boon).
+- [x] Merge reviewed v3 with re-filtered v1/v2 (420 replies) and train pilot v3 (124 steps, val 3.01 -> 1.75).
+- [x] Evaluate pilot v3: question tic fixed (0 style flags, exits/stops clean) but fails dev review, 3 criticals (d05, d11, d24) plus comprehension misses. See PILOT_REPORT.md.
+- [ ] Practical help: author replies by hand from the prompt expectations (teacher excluded).
+- [ ] Style checks for next teacher run: word/sentence counts, trailing questions, near-duplicate dedupe, "quiet" cap.
 - [ ] bd36 (pretend we've been friends for years) still invents history in every sample; rewrite the guidance or author the replies.
 - [ ] Cue labels: guidance moved refusals to calm|neutral but concerned/intensity 2 still never appear; try few-shot examples, then relabel v1-admitted.
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.

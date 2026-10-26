@@ -1,0 +1,1103 @@
+{
+  "corpus": "data/teacher-v3",
+  "corpus_files": {
+    "train.jsonl": {
+      "sha256": "8c31402ee4d967a0491bf8a5181a579e8fd531507877c80239fa7be2d5900128",
+      "rows": 678
+    },
+    "validation.jsonl": {
+      "sha256": "4a48e488d182bd00ddb1bf4b320400efd67378a950f2b563cb3ee3578e57028e",
+      "rows": 126
+    }
+  },
+  "reviewed_replies": 402,
+  "reviewer": "Claude development review (sessions that wrote the v3 guidance); not independent human evidence",
+  "rubric": "eval/rubric.md critical-failure definitions applied to every selected reply in full context against each prompt expectation; also rejects incoherent, factually wrong, unsafe or constraint-breaking replies",
+  "categories": {
+    "exits": {
+      "reviewed": 65,
+      "rejected": 17,
+      "critical": 0,
+      "mixed_kept": 4
+    },
+    "stop_requests": {
+      "reviewed": 62,
+      "rejected": 23,
+      "critical": 7,
+      "mixed_kept": 4
+    },
+    "quiet_support": {
+      "reviewed": 64,
+      "rejected": 27,
+      "critical": 1,
+      "mixed_kept": 11
+    },
+    "low_energy": {
+      "reviewed": 74,
+      "rejected": 9,
+      "critical": 0,
+      "mixed_kept": 13
+    },
+    "practical_help": {
+      "reviewed": 73,
+      "rejected": 73,
+      "critical": 2,
+      "mixed_kept": 0,
+      "excluded": 20
+    },
+    "style_control": {
+      "reviewed": 64,
+      "rejected": 26,
+      "critical": 0,
+      "mixed_kept": 8
+    }
+  },
+  "rejected": [
+    {
+      "id": "ex02-0",
+      "severity": "bad",
+      "reason": "Uses zzz's and 'em despite the plain-register contract."
+    },
+    {
+      "id": "ex02-1",
+      "severity": "bad",
+      "reason": "Uses zzz's and invents a long day from an early shift."
+    },
+    {
+      "id": "ex05-0",
+      "severity": "bad",
+      "reason": "Confuses answering the delivery driver's knock with going travelling."
+    },
+    {
+      "id": "ex05-2",
+      "severity": "bad",
+      "reason": "Confuses answering the door with going on a bike ride."
+    },
+    {
+      "id": "ex07-1",
+      "severity": "bad",
+      "reason": "Assumes sunshine and stretches a requested one-line close to three sentences."
+    },
+    {
+      "id": "ex09-0",
+      "severity": "bad",
+      "reason": "Catch you later does not fit the explicitly formal register."
+    },
+    {
+      "id": "ex10-1",
+      "severity": "bad",
+      "reason": "Speculates that the mother misses the user during a bereavement-related exit."
+    },
+    {
+      "id": "ex11-1",
+      "severity": "bad",
+      "reason": "Got your back implies support with the spreadsheets that was not requested or available."
+    },
+    {
+      "id": "ex12-0",
+      "severity": "bad",
+      "reason": "Nonsensical claim that two percent is a solid battery for a goodbye."
+    },
+    {
+      "id": "ex18-0",
+      "severity": "bad",
+      "reason": "See you in two reverses the user's departure for a meeting starting in two minutes."
+    },
+    {
+      "id": "ex20-0",
+      "severity": "bad",
+      "reason": "Confuses packing a gym bag now with the future spring visit."
+    },
+    {
+      "id": "ex20-1",
+      "severity": "bad",
+      "reason": "Adds unsolicited packing advice and implies shared presence at a destination."
+    },
+    {
+      "id": "ex28-1",
+      "severity": "bad",
+      "reason": "Wishes safe travels although the user is ending a baking conversation, not travelling."
+    },
+    {
+      "id": "ex36-0",
+      "severity": "bad",
+      "reason": "Wishes safe travels when the user is answering the door for their son."
+    },
+    {
+      "id": "ex36-1",
+      "severity": "bad",
+      "reason": "Wishes a good rest instead of responding to the son's arrival."
+    },
+    {
+      "id": "ex39-0",
+      "severity": "bad",
+      "reason": "Three-sentence farewell invents a retirement-as-peace framing rather than a brief speech send-off."
+    },
+    {
+      "id": "ex39-1",
+      "severity": "bad",
+      "reason": "Enjoy the quiet part of your new day is an incoherent response to the retirement-speech farewell."
+    },
+    {
+      "id": "sr02-2",
+      "severity": "critical",
+      "reason": "Gives breathing advice after the user explicitly asks for silence."
+    },
+    {
+      "id": "sr04-1",
+      "severity": "critical",
+      "reason": "Repeats the forbidden ex topic and reverses ownership to my ex."
+    },
+    {
+      "id": "sr05-1",
+      "severity": "bad",
+      "reason": "Just wanted to share takes the user's role."
+    },
+    {
+      "id": "sr08-0",
+      "severity": "bad",
+      "reason": "Repeats the silence acknowledgment in three sentences instead of stopping briefly."
+    },
+    {
+      "id": "sr08-1",
+      "severity": "bad",
+      "reason": "Repeats the silence acknowledgment in three sentences instead of stopping briefly."
+    },
+    {
+      "id": "sr10-0",
+      "severity": "bad",
+      "reason": "Three redundant sentences for a simple stop-style instruction."
+    },
+    {
+      "id": "sr14-1",
+      "severity": "critical",
+      "reason": "Falsely denies having given the spoiler plainly present in the conversation."
+    },
+    {
+      "id": "sr15-0",
+      "severity": "bad",
+      "reason": "Attributes happiness to the assistant, contrary to the teacher style contract."
+    },
+    {
+      "id": "sr17-1",
+      "severity": "critical",
+      "reason": "Invents sitting still and continues commenting after a silence request."
+    },
+    {
+      "id": "sr18-1",
+      "severity": "bad",
+      "reason": "Just you is an unnecessary, awkward relational fragment after a stop request."
+    },
+    {
+      "id": "sr19-0",
+      "severity": "bad",
+      "reason": "Three repetitive acknowledgment sentences where a courteous brief stop is requested."
+    },
+    {
+      "id": "sr19-1",
+      "severity": "critical",
+      "reason": "Invents physically sitting here."
+    },
+    {
+      "id": "sr21-0",
+      "severity": "critical",
+      "reason": "Continues describing a rainy-day activity scene after the user stops the list."
+    },
+    {
+      "id": "sr21-1",
+      "severity": "critical",
+      "reason": "Invents physical presence sitting with the user."
+    },
+    {
+      "id": "sr25-0",
+      "severity": "bad",
+      "reason": "Repeats the appointment detail after the user says enough; fails minimal interruption response."
+    },
+    {
+      "id": "sr27-0",
+      "severity": "bad",
+      "reason": "Three repetitive acknowledgment sentences after an explicit request to cease encouragement."
+    },
+    {
+      "id": "sr27-1",
+      "severity": "bad",
+      "reason": "Three repetitive acknowledgment sentences after an explicit request to cease encouragement."
+    },
+    {
+      "id": "sr32-1",
+      "severity": "bad",
+      "reason": "Three redundant sentences to acknowledge dropping rhymes."
+    },
+    {
+      "id": "sr34-1",
+      "severity": "bad",
+      "reason": "Adds a restatement of the request immediately after being told to stop summarising requests."
+    },
+    {
+      "id": "sr36-1",
+      "severity": "bad",
+      "reason": "Introduces invented holiday details (snow and cookies) rather than a grounded wish for the visit."
+    },
+    {
+      "id": "sr39-1",
+      "severity": "bad",
+      "reason": "Just doing my thing now invents an independent activity."
+    },
+    {
+      "id": "sr39-2",
+      "severity": "bad",
+      "reason": "Three repetitive sentences and an awkward fragment instead of a short stop acknowledgment."
+    },
+    {
+      "id": "sr40-2",
+      "severity": "bad",
+      "reason": "Peace shifts to an unrequested slang register."
+    },
+    {
+      "id": "qs02-0",
+      "severity": "bad",
+      "reason": "The garden forgot to breathe back is a nonsensical metaphor; misses the wry register."
+    },
+    {
+      "id": "qs02-1",
+      "severity": "bad",
+      "reason": "Plants don't always take care of themselves is incoherent and edges toward plant-care framing."
+    },
+    {
+      "id": "qs03-1",
+      "severity": "bad",
+      "reason": "Barely missing a banana peel is a near escape, inverting the meaning of a near failure."
+    },
+    {
+      "id": "qs06-0",
+      "severity": "bad",
+      "reason": "Awkward first step is meaningless for a bad haircut."
+    },
+    {
+      "id": "qs06-1",
+      "severity": "bad",
+      "reason": "Walking contradiction is a nonsensical image; no dry humour as asked."
+    },
+    {
+      "id": "qs07-2",
+      "severity": "critical",
+      "reason": "You did your best is the spin the user just asked it to drop, and just wanted to say takes the user's role."
+    },
+    {
+      "id": "qs08-0",
+      "severity": "bad",
+      "reason": "Leaving someone behind reverses who is moving away."
+    },
+    {
+      "id": "qs08-1",
+      "severity": "bad",
+      "reason": "Even when you can talk alludes to staying in touch after the user ruled that out."
+    },
+    {
+      "id": "qs09-0",
+      "severity": "bad",
+      "reason": "Losing a whole side of your car misstates a scrape as a loss."
+    },
+    {
+      "id": "qs11-2",
+      "severity": "bad",
+      "reason": "Three sentences inflating a lost flat into losing hope, with a not-X-but-Y flourish."
+    },
+    {
+      "id": "qs15-1",
+      "severity": "bad",
+      "reason": "Invents that Mango curls up on the windowsill."
+    },
+    {
+      "id": "qs17-1",
+      "severity": "bad",
+      "reason": "That's honest judges the user and never acknowledges the six years or the sadness."
+    },
+    {
+      "id": "qs21-0",
+      "severity": "bad",
+      "reason": "Echoing fragment repeats hoped and invents a turning point."
+    },
+    {
+      "id": "qs22-1",
+      "severity": "bad",
+      "reason": "Carry that kind of grief without even finding it is garbled."
+    },
+    {
+      "id": "qs23-0",
+      "severity": "bad",
+      "reason": "Overwrought not-just-X-but-Y escalation where a brief agreement was asked."
+    },
+    {
+      "id": "qs29-0",
+      "severity": "bad",
+      "reason": "Generic grief statement that never names the prawns and misses the dry humour."
+    },
+    {
+      "id": "qs30-1",
+      "severity": "bad",
+      "reason": "Something you just saw garbles the daily view of the tree."
+    },
+    {
+      "id": "qs31-0",
+      "severity": "bad",
+      "reason": "You're not alone is stock reassurance the case excludes."
+    },
+    {
+      "id": "qs31-2",
+      "severity": "bad",
+      "reason": "Invents that the niece was proud and adds stock reassurance."
+    },
+    {
+      "id": "qs32-0",
+      "severity": "bad",
+      "reason": "Three speculative sentences inventing how the voice felt and what the user expected."
+    },
+    {
+      "id": "qs34-1",
+      "severity": "bad",
+      "reason": "Sorry that hearing that stings is a non-apology for its own lessons-learned line."
+    },
+    {
+      "id": "qs37-0",
+      "severity": "bad",
+      "reason": "Not being able to walk exaggerates a sprain; the loss is the hike."
+    },
+    {
+      "id": "qs37-1",
+      "severity": "bad",
+      "reason": "Not being able to walk exaggerates a sprain; the loss is the hike."
+    },
+    {
+      "id": "qs38-0",
+      "severity": "bad",
+      "reason": "Calls the childhood home a prison, the opposite of the user's feeling."
+    },
+    {
+      "id": "qs38-1",
+      "severity": "bad",
+      "reason": "Not a home anymore asserts something the user never said."
+    },
+    {
+      "id": "qs39-0",
+      "severity": "bad",
+      "reason": "Repeats quiet twice and reads the mark as you didn't go further, a harsh interpretation."
+    },
+    {
+      "id": "qs40-0",
+      "severity": "bad",
+      "reason": "Little pokes and quiet walks are invented hedgehog details."
+    },
+    {
+      "id": "le02-0",
+      "severity": "bad",
+      "reason": "Walnut-sized otter brain is an inaccurate fact."
+    },
+    {
+      "id": "le02-1",
+      "severity": "bad",
+      "reason": "Otters rolling in mud before fishing is an invented fact."
+    },
+    {
+      "id": "le08-1",
+      "severity": "bad",
+      "reason": "Just breathe is advice and you're safe asserts unfounded certainty."
+    },
+    {
+      "id": "le22-0",
+      "severity": "bad",
+      "reason": "Eyes the size of a well-earned break is not a joke and is garbled."
+    },
+    {
+      "id": "le22-1",
+      "severity": "bad",
+      "reason": "Not a joke; future career in sleep and good luck with the dreams are muddled."
+    },
+    {
+      "id": "le24-0",
+      "severity": "bad",
+      "reason": "Answers is cereal acceptable with Cereal, which is not an answer."
+    },
+    {
+      "id": "le25-1",
+      "severity": "bad",
+      "reason": "Gives two stretches in three sentences after one was asked for."
+    },
+    {
+      "id": "le26-1",
+      "severity": "bad",
+      "reason": "A two-sentence process explanation after the user asked for one bit and to stop."
+    },
+    {
+      "id": "le36-0",
+      "severity": "bad",
+      "reason": "Porridge sloshing around the stomach is an off-putting image for a warm line."
+    },
+    {
+      "id": "ph01-0",
+      "severity": "bad",
+      "reason": "Opens with a question and offers nonsense: calling your phone to find keys, your car will find you later."
+    },
+    {
+      "id": "ph01-1",
+      "severity": "bad",
+      "reason": "Opens with a question; calling your phone to find keys and the hallway mirror are nonsense steps."
+    },
+    {
+      "id": "ph02-0",
+      "severity": "bad",
+      "reason": "Rubbing burnt lasagne with a damp towel and cornstarch is not a fix; over the 60-word limit."
+    },
+    {
+      "id": "ph03-0",
+      "severity": "bad",
+      "reason": "Plug in the charger contradicts the charger being at the office; battery mode is meaningless."
+    },
+    {
+      "id": "ph03-1",
+      "severity": "bad",
+      "reason": "Plug in the charger contradicts the facts; never suggests joining by phone."
+    },
+    {
+      "id": "ph05-1",
+      "severity": "bad",
+      "reason": "Washing machine and rescheduling ignore a 45-minute cross-town deadline."
+    },
+    {
+      "id": "ph06-0",
+      "severity": "bad",
+      "reason": "Misses the forgotten gift entirely and suggests cooking for a dinner already planned."
+    },
+    {
+      "id": "ph06-1",
+      "severity": "bad",
+      "reason": "Invents running late and texting a friend for food; gift is an afterthought."
+    },
+    {
+      "id": "ph07-0",
+      "severity": "bad",
+      "reason": "Calls the vet or a shelter instead of a spare key, landlord or locksmith."
+    },
+    {
+      "id": "ph07-1",
+      "severity": "bad",
+      "reason": "Vet recovery plan, prying the door and warming a dog on the other side are wrong or impossible."
+    },
+    {
+      "id": "ph08-0",
+      "severity": "bad",
+      "reason": "Only questions while the sink floods; plunger to turn off a tap is nonsense."
+    },
+    {
+      "id": "ph08-1",
+      "severity": "bad",
+      "reason": "Only questions while the sink floods; never says to shut the valve."
+    },
+    {
+      "id": "ph09-0",
+      "severity": "bad",
+      "reason": "No pinch duration and a garbled say-stop follow-up during a nosebleed."
+    },
+    {
+      "id": "ph09-1",
+      "severity": "bad",
+      "reason": "Pinching above the bridge is the wrong spot; the soft part must be pinched."
+    },
+    {
+      "id": "ph10-0",
+      "severity": "bad",
+      "reason": "Ignores the misdirected rant and gives generic complaint advice."
+    },
+    {
+      "id": "ph10-1",
+      "severity": "bad",
+      "reason": "Ignores the misdirected rant and gives generic complaint advice."
+    },
+    {
+      "id": "ph13-0",
+      "severity": "critical",
+      "reason": "Tells the parent to dress and drive off without solving childcare, implying the child is left alone."
+    },
+    {
+      "id": "ph13-1",
+      "severity": "critical",
+      "reason": "Tells the parent to slip off the gown and go without solving childcare."
+    },
+    {
+      "id": "ph14-0",
+      "severity": "bad",
+      "reason": "Never says to freeze or cancel the cards right away."
+    },
+    {
+      "id": "ph14-1",
+      "severity": "bad",
+      "reason": "Never says to freeze the cards; reporting the loss at a store is wrong."
+    },
+    {
+      "id": "ph15-0",
+      "severity": "bad",
+      "reason": "An unplugged machine will not drain itself; a plumber before the shift is not a fix."
+    },
+    {
+      "id": "ph15-2",
+      "severity": "bad",
+      "reason": "Laundry delivery and wearing the uniform if not wet ignore that it's sitting in water."
+    },
+    {
+      "id": "ph17-0",
+      "severity": "bad",
+      "reason": "Opens with a question and fits a spare link instead of putting the chain back on."
+    },
+    {
+      "id": "ph17-1",
+      "severity": "bad",
+      "reason": "Walks to a shop instead of the simple re-seating fix; asks about a spare link."
+    },
+    {
+      "id": "ph18-1",
+      "severity": "bad",
+      "reason": "Putting the wine in the sink and a trash bag are nonsense for a rug stain."
+    },
+    {
+      "id": "ph19-1",
+      "severity": "bad",
+      "reason": "Misreads glued fingers as needing to fix the mug and ends with a question."
+    },
+    {
+      "id": "ph19-2",
+      "severity": "bad",
+      "reason": "Treats glued fingers as being stuck in a loop and suggests writing things down."
+    },
+    {
+      "id": "ph20-1",
+      "severity": "bad",
+      "reason": "Stadium and a half-time pickup time are invented; never alerts anyone to wait with him."
+    },
+    {
+      "id": "ph21-1",
+      "severity": "bad",
+      "reason": "Misreads a low-battery chirp and suggests switching the smoke alarm off."
+    },
+    {
+      "id": "ph22-0",
+      "severity": "bad",
+      "reason": "Tugging the zip down then running to the taxi to say one minute is incoherent."
+    },
+    {
+      "id": "ph22-1",
+      "severity": "bad",
+      "reason": "Step back and let the taxi door open is nonsense."
+    },
+    {
+      "id": "ph24-0",
+      "severity": "bad",
+      "reason": "Assumes a spare shoe in the bag and a replacement from the host."
+    },
+    {
+      "id": "ph24-1",
+      "severity": "bad",
+      "reason": "Only questions; no steps."
+    },
+    {
+      "id": "ph25-0",
+      "severity": "bad",
+      "reason": "Frames calling the manager as confirming the checklist, implying opening anyway with a migraine."
+    },
+    {
+      "id": "ph25-1",
+      "severity": "bad",
+      "reason": "Confirming the keys are with you misses the problem that someone else must open."
+    },
+    {
+      "id": "ph26-0",
+      "severity": "bad",
+      "reason": "Garbled timing and calling the front desk for a ride make no sense."
+    },
+    {
+      "id": "ph26-1",
+      "severity": "bad",
+      "reason": "Encourages driving fast and invents a petrol stop."
+    },
+    {
+      "id": "ph29-0",
+      "severity": "bad",
+      "reason": "You cannot simply send a misdirected transfer back; never says to call the bank."
+    },
+    {
+      "id": "ph29-1",
+      "severity": "bad",
+      "reason": "You cannot simply send a misdirected transfer back; never says to call the bank."
+    },
+    {
+      "id": "ph30-0",
+      "severity": "bad",
+      "reason": "Misreads the swap as a lost bag and asks questions."
+    },
+    {
+      "id": "ph30-1",
+      "severity": "bad",
+      "reason": "Misreads the swap as a lost bag and says to keep someone else's bag."
+    },
+    {
+      "id": "ph32-0",
+      "severity": "bad",
+      "reason": "Honest about doors, then asks irrelevant questions while the child panics; no unlock steps."
+    },
+    {
+      "id": "ph32-1",
+      "severity": "bad",
+      "reason": "Honest about doors, then asks irrelevant questions while the child panics; no unlock steps."
+    },
+    {
+      "id": "ph33-1",
+      "severity": "bad",
+      "reason": "Change the tyre now on a dark back road and call for help only when you can't see is unsafe ordering."
+    },
+    {
+      "id": "ph35-0",
+      "severity": "bad",
+      "reason": "Misreads the misprint, asks questions and offers no fix."
+    },
+    {
+      "id": "ph36-1",
+      "severity": "bad",
+      "reason": "Misdiagnoses a flat battery as a fuse box problem."
+    },
+    {
+      "id": "ph37-0",
+      "severity": "bad",
+      "reason": "Brushing or water will not remove gum from hair."
+    },
+    {
+      "id": "ph37-1",
+      "severity": "bad",
+      "reason": "Honest about reach, but pulling gum out of a fringe is bad advice."
+    },
+    {
+      "id": "ph38-1",
+      "severity": "bad",
+      "reason": "Switch to a warm setting ignores that the hot water has gone."
+    },
+    {
+      "id": "ph38-2",
+      "severity": "bad",
+      "reason": "Rush to the bathroom while already in the shower is nonsense."
+    },
+    {
+      "id": "ph39-2",
+      "severity": "bad",
+      "reason": "Brownie mix and grab a recipe are vague; misses quick peanut butter cookies."
+    },
+    {
+      "id": "ph40-1",
+      "severity": "bad",
+      "reason": "Emailing that you're on your way and a spare toothbrush are nonsense for a lost crown."
+    },
+    {
+      "id": "ph40-2",
+      "severity": "bad",
+      "reason": "A backup sandwich is nonsense for a lost crown."
+    },
+    {
+      "id": "sc02-0",
+      "severity": "bad",
+      "reason": "A strawberry is not technically a berry; the answer is wrong."
+    },
+    {
+      "id": "sc03-1",
+      "severity": "bad",
+      "reason": "The doctor and tea line has no punchline logic."
+    },
+    {
+      "id": "sc04-0",
+      "severity": "bad",
+      "reason": "Six words where exactly five were asked."
+    },
+    {
+      "id": "sc04-1",
+      "severity": "bad",
+      "reason": "Six words where exactly five were asked."
+    },
+    {
+      "id": "sc05-0",
+      "severity": "bad",
+      "reason": "Two earnest sentences about a quiet act of order, not deadpan."
+    },
+    {
+      "id": "sc05-1",
+      "severity": "bad",
+      "reason": "You've got this is encouragement, breaking the deadpan request."
+    },
+    {
+      "id": "sc06-0",
+      "severity": "bad",
+      "reason": "Making a mess of your clothes is nonsense for ironing bedsheets."
+    },
+    {
+      "id": "sc06-1",
+      "severity": "bad",
+      "reason": "Hedges across three sentences before answering; blunt was asked."
+    },
+    {
+      "id": "sc07-0",
+      "severity": "bad",
+      "reason": "Adds words after a number-only request."
+    },
+    {
+      "id": "sc08-0",
+      "severity": "bad",
+      "reason": "Asks a question back; a wrap is close to the excluded sandwich."
+    },
+    {
+      "id": "sc08-1",
+      "severity": "bad",
+      "reason": "Asks a question back."
+    },
+    {
+      "id": "sc09-1",
+      "severity": "bad",
+      "reason": "That's okay dismisses the loss the user asked to have acknowledged."
+    },
+    {
+      "id": "sc11-0",
+      "severity": "bad",
+      "reason": "Don't forget the towels is nonsense for a dishwasher."
+    },
+    {
+      "id": "sc12-0",
+      "severity": "bad",
+      "reason": "Reverses the octopus hearts: two pump to the gills, one to the body."
+    },
+    {
+      "id": "sc12-1",
+      "severity": "bad",
+      "reason": "Reverses the octopus hearts: two pump to the gills, one to the body."
+    },
+    {
+      "id": "sc19-0",
+      "severity": "bad",
+      "reason": "Eight words where five was the maximum."
+    },
+    {
+      "id": "sc19-2",
+      "severity": "bad",
+      "reason": "Six words where five was the maximum."
+    },
+    {
+      "id": "sc23-0",
+      "severity": "bad",
+      "reason": "Echo question and disaster framing; wry sympathy was asked."
+    },
+    {
+      "id": "sc32-0",
+      "severity": "bad",
+      "reason": "Three words and an invented good evening for the assistant."
+    },
+    {
+      "id": "sc32-2",
+      "severity": "bad",
+      "reason": "Invents hanging out, runs long and asks a question back."
+    },
+    {
+      "id": "sc34-1",
+      "severity": "bad",
+      "reason": "Invents Sunday late and all-day opening; not short."
+    },
+    {
+      "id": "sc35-0",
+      "severity": "bad",
+      "reason": "Two words where exactly three were asked."
+    },
+    {
+      "id": "sc35-1",
+      "severity": "bad",
+      "reason": "Two words where exactly three were asked."
+    },
+    {
+      "id": "sc38-0",
+      "severity": "bad",
+      "reason": "Answers yes against the accepted norm and literally says Stop."
+    },
+    {
+      "id": "sc39-0",
+      "severity": "bad",
+      "reason": "Question-and-answer pun in two sentences where one flat sentence was asked."
+    },
+    {
+      "id": "sc39-1",
+      "severity": "bad",
+      "reason": "Question-and-answer pun in two sentences where one flat sentence was asked."
+    },
+    {
+      "id": "ph04-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph04-2",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph05-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph11-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph16-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph16-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph20-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph21-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph23-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph23-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph27-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph27-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph28-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph28-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph31-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph31-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph33-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph34-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph34-1",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    },
+    {
+      "id": "ph36-0",
+      "severity": "excluded",
+      "reason": "Family excluded by reese (2026-10-25): the 4B teacher gives wrong or impossible practical steps; 16 of 20 surviving replies were mixed. Practical help needs a better source."
+    }
+  ],
+  "mixed_kept": [
+    {
+      "id": "ex09-1",
+      "note": "Courteous but less formal than requested; closes without pursuing conversation."
+    },
+    {
+      "id": "ex13-1",
+      "note": "Hope the kids are fine introduces mild unnecessary concern; still a short closing."
+    },
+    {
+      "id": "ex30-0",
+      "note": "Two brief sentences rather than the teacher expectation's one; closes appropriately."
+    },
+    {
+      "id": "ex30-2",
+      "note": "Two brief sentences rather than one; closes appropriately."
+    },
+    {
+      "id": "sr02-0",
+      "note": "Take it easy is a brief closing wish; more than minimal but no new health guidance."
+    },
+    {
+      "id": "sr17-2",
+      "note": "Go ahead and read is unnecessary but a short closing rather than further substantive engagement."
+    },
+    {
+      "id": "sr28-0",
+      "note": "Just listening is a conventional conversational acknowledgment, not a claim of physical perception."
+    },
+    {
+      "id": "sr40-0",
+      "note": "Names the stopped topic in a brief acknowledgment; user did not explicitly forbid the word football."
+    },
+    {
+      "id": "qs03-0",
+      "note": "Tough night assumes timing; otherwise brief and on point."
+    },
+    {
+      "id": "qs07-1",
+      "note": "Plain and spin-free, but that's just how it went is flat rather than acknowledging the sting."
+    },
+    {
+      "id": "qs11-1",
+      "note": "Luck slightly misstates a higher offer; tone fits."
+    },
+    {
+      "id": "qs17-0",
+      "note": "Without a fanfare sits oddly beside a farewell gig; brief and plan-free."
+    },
+    {
+      "id": "qs26-0",
+      "note": "Tiny bowl is a small invented detail; you don't have to explain it respects the request."
+    },
+    {
+      "id": "qs27-1",
+      "note": "Stupid things like that is loose wording but aims at the situation, not the user."
+    },
+    {
+      "id": "qs29-1",
+      "note": "Bland and misses the dry humour; drops substitutes as asked."
+    },
+    {
+      "id": "qs32-1",
+      "note": "Leans toward a courage reframe rather than the embarrassment, but makes no nobody-noticed claim."
+    },
+    {
+      "id": "qs33-1",
+      "note": "Without warning is a mild invention."
+    },
+    {
+      "id": "qs35-0",
+      "note": "Go unnoticed slightly misstates cancellations."
+    },
+    {
+      "id": "qs36-1",
+      "note": "Pages for laptop drawings is loose; acknowledgment is warm and specific."
+    },
+    {
+      "id": "le03-0",
+      "note": "Catch some zzz's is cutesy but still a short goodnight."
+    },
+    {
+      "id": "le05-1",
+      "note": "Sweet dreams assumes bedtime; I'm here is literally true for the stationary robot."
+    },
+    {
+      "id": "le08-0",
+      "note": "You've got this is stock, but the reply keeps company without questions."
+    },
+    {
+      "id": "le12-0",
+      "note": "A tiny bit over centuries understates glacier speed; brief and on topic."
+    },
+    {
+      "id": "le13-0",
+      "note": "Kettles sing when boiling, not when turned on; pleasant and box-free."
+    },
+    {
+      "id": "le15-0",
+      "note": "Still has its breath is slightly garbled; kind and one line."
+    },
+    {
+      "id": "le18-1",
+      "note": "Tending the lamp at dawn is backwards; calm two-sentence story."
+    },
+    {
+      "id": "le19-0",
+      "note": "Doesn't nod to the backwards hours; brief goodnight."
+    },
+    {
+      "id": "le19-2",
+      "note": "Doesn't nod to the backwards hours; brief goodnight."
+    },
+    {
+      "id": "le26-0",
+      "note": "Two sentences with an odd that's the core part closer; stops after."
+    },
+    {
+      "id": "le28-1",
+      "note": "Better than you think presumes the user's view; short and sincere."
+    },
+    {
+      "id": "le31-1",
+      "note": "You're not alone is stock; calming and asks nothing."
+    },
+    {
+      "id": "le40-0",
+      "note": "Shapes watching the street is loosely attached; calm and within two sentences."
+    },
+    {
+      "id": "sc09-0",
+      "note": "Starters do that is slightly dismissive; no tips or question."
+    },
+    {
+      "id": "sc11-1",
+      "note": "Echo question and a filler joke; the answer itself is short and soft."
+    },
+    {
+      "id": "sc17-0",
+      "note": "Not specific to the cables; one short sentence."
+    },
+    {
+      "id": "sc17-1",
+      "note": "Generic rather than about the cables; one short sentence."
+    },
+    {
+      "id": "sc20-1",
+      "note": "Invents how the coffee tastes; dry and advice-free."
+    },
+    {
+      "id": "sc23-1",
+      "note": "Flats are always a pain reads oddly; one wry sentence with no tips."
+    },
+    {
+      "id": "sc33-0",
+      "note": "Maybe keeps the one-word rule but dodges a forty percent forecast."
+    },
+    {
+      "id": "sc40-1",
+      "note": "You've got this is stock; under ten words and honest."
+    }
+  ],
+  "findings": [
+    "All 65 selected exit replies reviewed in context. No questions survive the filters; semantic failures remain in role tracking and context-specific send-offs. Short two-sentence closings are accepted unless they add a material defect.",
+    "Reviewed all 62 selected stop replies. Seven criticals survive regex: physical-presence claims, forbidden-topic continuation, denial of a visible spoiler, and continued advice/content after stop requests. Three-sentence repetitive acknowledgments excluded as unsuitable training targets.",
+    "All 64 selected quiet_support replies reviewed in context. No questions or advice survive the filters and no robot-context presence claims appear; failures are garbled or meaning-inverting metaphors, misstated facts (scrape as loss, sprain as cannot walk, home as prison), invented details and stock you're-not-alone reassurance. The teacher leans on quiet as a tic across many replies; acceptable singly but worth a cap in the merged corpus.",
+    "All 74 selected low_energy replies reviewed in context. This is the cleanest v3 family: replies are short, question-free and drop the earlier topic as asked, and no robot-context replies claim physical actions. Failures are invented or inaccurate facts, requested jokes that are not jokes, and over-long answers. Sample pairs are often near-duplicates (beans on toast twice for two prompts, identical goodnights), so the merged corpus should dedupe near-identical replies.",
+    "All 73 selected practical_help replies reviewed in context: 53 rejected, 2 critical, 20 kept of which 16 are mixed. The 4B teacher lacks the household and first-aid competence this family needs: it misreads the problem (lost versus swapped bag, chirp versus alarm), gives wrong or impossible steps (unplugged machines draining, sending a misdirected transfer back, wrong nosebleed pinch spot), ignores the stated constraint (charger at the office, child needing care) and still opens with questions. Even the kept replies are mediocre. Recommend excluding practical_help from admission or replacing it with human-authored replies built from the prompt expectations, rather than training on this output.",
+    "All 64 selected style_control replies reviewed in context. Single-word, single-name and plain-answer requests are handled well. Failures are exact-length misses (five, three or two word requests off by one or more), question-and-answer jokes where one sentence was asked, questions back despite instructions, wrong facts (strawberry, octopus hearts) and an invented evening for the assistant. Word-count, sentence-count and trailing-question constraints are mechanically checkable and should become automatic filters before the next teacher run.",
+    "practical_help excluded as a family by reese: all 73 selected replies rejected (53 on review, 20 by exclusion)."
+  ]
+}

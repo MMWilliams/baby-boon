@@ -46,6 +46,18 @@ the preserved unfavorable old results.
   (62 selected, 23 rejected including seven criticals). Progress and exact text
   hashes are in ignored `data/teacher-v3/review-progress.json`; this is not final admission.
 
-Implementation checks above are **partially verified** for this iteration.
-Remaining corpus review/admission, training, dev comparison, independent review
-and actual laptop evidence are pending. Prior pilot social acceptance remains failed.
+## Final results
+
+- Unit tests: 15 passed. `--prompts-only`: PASS.
+- Review/admission: 402 selected replies reviewed, hashes match; 155 rejected
+  (10 critical); practical_help excluded by reese; 227 admitted.
+- `verify_teacher_v3.py --corpus data/teacher-merged-v2`: PASS, 420 replies,
+  734/106 rows, every category <=25% questions, practical_help absent.
+- Training: 124 steps, 1,059 s (<=1,800), peak RSS 6,029 MiB (<=20,000),
+  validation 3.008 to 1.754, LoRA B norm 2.31 from zero init. PASS.
+- Dev comparison: 24 complete replies each for base/v2/v3, matched settings,
+  no errors or truncation. Agent review: v3 FAILS (three criticals: d05, d11, d24;
+  comprehension failures d04, d07, d21, d22). See PILOT_REPORT.md.
+
+Implementation checks pass. Social acceptance fails; independent review and actual
+laptop evidence remain pending. No export or publication.
