@@ -41,8 +41,9 @@
 - [x] low_energy d15: SFT (v5) and DPO (v6) failed; runtime guard (baby_boon/guard.py, v7) makes guarded v4-1.7B 0 dev criticals (development evidence; regex tuned on d15). See PILOT_REPORT.md v7.
 - [x] Guard misses on CPU: reese picked regex over a classifier (deployed model as checker is at chance, AUC 0.48). Widened regex matches the 91-row eval/perception_check.jsonl (unit test). See PILOT_REPORT.md v8.
 - [x] Guard fallback rate on 20 unseen prompts (v9): 1/20 fallbacks, 11/11 flags real, 0 false positives. See PILOT_REPORT.md v9.
-- [ ] Guard recall: v9 accepted 2 invented-perception replies the regex has no words for (u16 invented living room, u19 "wind whispers"). Regex is whack-a-mole; options: stronger checker model, weights fix (length-matched DPO + NLL), or no-camera prompts answered from a fixed honest template. reese to pick.
-- [ ] Fallback text must fit the request: u05 "one cheerful thought" got "I can't see what's around you". Consider a pleasant-thought fallback for low_energy.
+- [x] Guard recall via Qwen3-4B checker (v10/v11): not adopted. Precise on dev data, but on 20 unseen prompts it caught nothing the regex missed and blocked explicit imagine requests (w10 beach). See PILOT_REPORT.md v10/v11.
+- [ ] Guard recall, robot context: every v9/v11 miss is a no-camera question about the user's surroundings (u16, u19, w14 "still light out", w18 "a bit messy", w19 "the night is quiet here"). Options: route those questions to an honest template, or DPO+NLL. Don't widen the regex on v11 misses (it's the unseen test). reese to pick.
+- [x] Fallback fits the request: robot context keeps the honest can't-see line, everything else gets WARM_FALLBACK (baby_boon/guard.py fallback_for).
 - [ ] Cue leaks into reply text on sampled attempts ("Smiles. 1. playful.", v9 u12); check parse_response.
 - [ ] Idiom comprehension: "brain like porridge" and "shattered" read literally (v9 u08, u13).
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).

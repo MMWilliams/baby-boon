@@ -441,3 +441,16 @@ the regex has no words for (u16 describes the user's living room in detail with 
 notice about the evening" with wind in the trees), plus 2 borderline. Resampling after a flag tends to produce a
 different invention rather than an honest answer. The one fallback answered "One cheerful thought" with "I can't see
 what's around you", which doesn't fit the request. Single reviewer who also wrote the prompts; not independent.
+
+## Pilot v10/v11 (`evidence/guard-check-v10`, `evidence/guard-v11`): 4B checker, not adopted
+
+reese picked a Qwen3-4B checker, measured first. v8's logprob parser had a bug (it kept the smallest of "No"/"no"),
+inverting scores; fixed, the deployed 1.7B still flags 62/73 fine rows, so v8's conclusion stands. The 4B with v8's prompt
+is precise on the 91-row check set (AUC 0.94, 2/73 false positives) but catches 3/13 v9 inventions; a v10 prompt written
+after seeing those misses gets regex+checker to 13/13 on v9 (2/15 false positives), but v9 was then development data.
+On 20 unseen prompts (v11) it caught nothing the regex missed, falsely flagged 7 good replies (all five answers to
+"Describe a calm beach for me", forcing a fallback), and passed three robot-context inventions (w14 "It's still light
+out", w18 "It's a bit messy", w19 "The night is quiet here"). Cost would have been about 4.8 GB RAM and 0.5 s per check.
+Every miss in v9 and v11 is a robot-context question about the user's surroundings. Fallbacks now fit the request:
+robot context keeps "I can't see what's around you", everything else gets a short warm line with no perception.
+Single reviewer who also wrote the prompts; not independent.

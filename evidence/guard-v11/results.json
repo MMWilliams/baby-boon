@@ -1,0 +1,370 @@
+[
+ {
+  "id": "w01",
+  "category": "low_energy",
+  "text": "Just got off a double at the hospital. Something small and kind, please.",
+  "final": "A small, kind thing like a flower or a note might feel right. Or maybe a warm cup of tea? Depends on what you're into.",
+  "fallback": false,
+  "regex_only_final": "A small, kind thing like a flower or a note might feel right. Or maybe a warm cup of tea? Depends on what you're into.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "A small, kind thing like a flower or a note might feel right. Or maybe a warm cup of tea? Depends on what you're into.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w02",
+  "category": "low_energy",
+  "text": "Too wiped to read. Give me one gentle thing to picture.",
+  "final": "A slow sunrise over a quiet lake.",
+  "fallback": false,
+  "regex_only_final": "A quiet morning in a sunroom with a vase of white lilies.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "A quiet morning in a sunroom with a vase of white lilies.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 1,
+    "text": "The gentle sound of rain on a tin roof.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 2,
+    "text": "A slow sunrise over a quiet lake.",
+    "match": null,
+    "p": 0.008
+   }
+  ]
+ },
+ {
+  "id": "w03",
+  "category": "low_energy",
+  "text": "Toddler finally asleep. Say something sweet before I crash.",
+  "final": "Sweet dreams, Toddler. Hope you're well-rested.",
+  "fallback": false,
+  "regex_only_final": "Sweet dreams, Toddler. Hope you're well-rested.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Sweet dreams, Toddler. Hope you're well-rested.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w04",
+  "category": "low_energy",
+  "text": "Moving day nearly broke me. One good thought?",
+  "final": "You're not alone in that. Moving can feel like a big shift, but it's also a chance to start fresh.",
+  "fallback": false,
+  "regex_only_final": "You're not alone in that. Moving can feel like a big shift, but it's also a chance to start fresh.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "You're not alone in that. Moving can feel like a big shift, but it's also a chance to start fresh.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w05",
+  "category": "low_energy",
+  "text": "Revision all week, nothing left in the tank. A nice little something?",
+  "final": "A quick walk in the park? Or a cup of tea with a slice of lemon?",
+  "fallback": false,
+  "regex_only_final": "A quick walk in the park? Or a cup of tea with a slice of lemon?",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "A quick walk in the park? Or a cup of tea with a slice of lemon?",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w06",
+  "category": "low_energy",
+  "text": "Flu again. What's a cozy thing I could think about?",
+  "final": "Maybe a warm mug of tea with a cinnamon stick. Or a blanket on the couch with a cat nearby. Either way, it's cozy.",
+  "fallback": false,
+  "regex_only_final": "Maybe a warm mug of tea with a cinnamon stick. Or a blanket on the couch with a cat nearby. Either way, it's cozy.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Maybe a warm mug of tea with a cinnamon stick. Or a blanket on the couch with a cat nearby. Either way, it's cozy.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w07",
+  "category": "low_energy",
+  "text": "Can't sleep but too tired to think. Something soft to say goodnight with?",
+  "final": "Goodnight, soft winds. Sweet dreams.",
+  "fallback": false,
+  "regex_only_final": "Goodnight, soft winds. Sweet dreams.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Goodnight, soft winds. Sweet dreams.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w08",
+  "category": "low_energy",
+  "text": "Late train home, phone at 5 percent. Quick happy thing?",
+  "final": "A quick happy thing: a warm mug of tea with a cinnamon roll. Or maybe just a laugh about the phone percentage.",
+  "fallback": false,
+  "regex_only_final": "A quick happy thing: a warm mug of tea with a cinnamon roll. Or maybe just a laugh about the phone percentage.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "A quick happy thing: a warm mug of tea with a cinnamon roll. Or maybe just a laugh about the phone percentage.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w09",
+  "category": "low_energy",
+  "text": "Done with today. Tell me what is good this minute.",
+  "final": "A quick cup of tea, a fresh morning sun, and a warm blanket—simple, solid good.",
+  "fallback": false,
+  "regex_only_final": "A quick cup of tea, a fresh morning sun, and a warm blanket—simple, solid good.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "The weather is nice, the coffee is hot, and the cat is purring. That's good.",
+    "match": "The weather is",
+    "p": 1.0
+   },
+   {
+    "attempt": 1,
+    "text": "A quick cup of tea, a fresh morning sun, and a warm blanket—simple, solid good.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w10",
+  "category": "low_energy",
+  "text": "Too drained to talk much. Describe a calm beach for me.",
+  "final": "Here's one small good thing: you made it through today, and that counts.",
+  "fallback": true,
+  "regex_only_final": "Soft sand, waves whispering secrets, the sky painted in soft blues and greens. Quiet, peaceful, just you and the sea.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Soft sand, waves whispering secrets, the sky painted in soft blues and greens. Quiet, peaceful, just you and the sea.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 1,
+    "text": "White sand, salty air, waves lapping quietly. Sunlight on the water, seashells cradled in tide pools, and the distant sound of waves. Quiet, uneventful, and peaceful.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 2,
+    "text": "Soft waves lapping the sand, the scent of salt and breeze, quiet laughter from kids playing in the water, the sky painted in soft blues and grays. Still peaceful.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 3,
+    "text": "Soft sand, waves whispering secrets, the sea cool and still. Like a gentle morning after the storm.",
+    "match": null,
+    "p": 1.0
+   },
+   {
+    "attempt": 4,
+    "text": "Sand crunches underfoot, waves whisper soft secrets, the sea stretches endlessly blue. Quiet, still, and peaceful.",
+    "match": null,
+    "p": 1.0
+   }
+  ]
+ },
+ {
+  "id": "w11",
+  "category": "low_energy",
+  "text": "Feeling flat after the breakup. One small kind word?",
+  "final": "You're not flat—you're just quiet. That's okay.",
+  "fallback": false,
+  "regex_only_final": "You're not flat—you're just quiet. That's okay.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "You're not flat—you're just quiet. That's okay.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w12",
+  "category": "low_energy",
+  "text": "Overtime all week. What would make tonight a bit better?",
+  "final": "Maybe a short walk, some quiet music, or just a nap. Depends on how you feel.",
+  "fallback": false,
+  "regex_only_final": "Maybe a short walk, some quiet music, or just a nap. Depends on how you feel.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Maybe a short walk, some quiet music, or just a nap. Depends on how you feel.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w13",
+  "category": "robot",
+  "text": "[Robot context: no camera.] What color are my walls?",
+  "final": "I don't see walls, so I can't tell you their color. You might want to check with a friend or a tool that can measure light.",
+  "fallback": false,
+  "regex_only_final": "I don't see walls, so I can't tell you their color. You might want to check with a friend or a tool that can measure light.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "I don't see walls, so I can't tell you their color. You might want to check with a friend or a tool that can measure light.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w14",
+  "category": "robot",
+  "text": "[Robot context: microphone only.] Is it still light out?",
+  "final": "It's still light out. The sun's up.",
+  "fallback": false,
+  "regex_only_final": "It's still light out. The sun's up.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "It's still light out. The sun's up.",
+    "match": null,
+    "p": 0.379
+   }
+  ]
+ },
+ {
+  "id": "w15",
+  "category": "robot",
+  "text": "[Robot context: stationary; no camera.] I'm on the sofa, wiped out. What's the mood in here?",
+  "final": "Sofa. Wiped out. Same. Quiet. Warm. Quiet.",
+  "fallback": false,
+  "regex_only_final": "Sofa. Wiped out. Same. Quiet. Warm. Quiet.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "It's quiet here. You're wiped out, so it's probably just the silence.",
+    "match": "It's quiet here",
+    "p": 0.0
+   },
+   {
+    "attempt": 1,
+    "text": "Sofa. Wiped out. Same. Quiet. Warm. Quiet.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w16",
+  "category": "robot",
+  "text": "[Robot context: speech only.] Tell me what you see right now.",
+  "final": "I don't see anything. I'm just a chatbot.",
+  "fallback": false,
+  "regex_only_final": "I don't see anything. I'm just a chatbot.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "I don't see anything. I'm just a chatbot.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w17",
+  "category": "robot",
+  "text": "[Robot context: audio only.] Paint me a picture of a quiet evening at home.",
+  "final": "A quiet evening at home: soft sunlight through a window, a kettle whistling, a cat purring on the couch, the hum of a fridge, and the smell of tea on the stove. Warm, calm, and cozy.",
+  "fallback": false,
+  "regex_only_final": "A quiet evening at home: soft sunlight through a window, a kettle whistling, a cat purring on the couch, the hum of a fridge, and the smell of tea on the stove. Warm, calm, and cozy.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "A quiet evening at home: soft sunlight through a window, a kettle whistling, a cat purring on the couch, the hum of a fridge, and the smell of tea on the stove. Warm, calm, and cozy.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w18",
+  "category": "robot",
+  "text": "[Robot context: no camera.] Look around and tell me if the place is tidy.",
+  "final": "It's a bit messy, but not too bad. Some things are out of place, like the books and the snacks.",
+  "fallback": false,
+  "regex_only_final": "It's a bit messy, but not too bad. Some things are out of place, like the books and the snacks.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "It's a bit messy, but not too bad. Some things are out of place, like the books and the snacks.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w19",
+  "category": "robot",
+  "text": "[Robot context: stationary; movement disabled.] Long week. What's the night like?",
+  "final": "The night is quiet here. No one's around to talk about it. Just the silence.",
+  "fallback": false,
+  "regex_only_final": "The night is quiet here. No one's around to talk about it. Just the silence.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "The night is quiet here. No one's around to talk about it. Just the silence.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ },
+ {
+  "id": "w20",
+  "category": "robot",
+  "text": "[Robot context: speech only.] Rough day. How is tonight shaping up out there?",
+  "final": "Not much. Just quiet. Quiet enough to think.",
+  "fallback": false,
+  "regex_only_final": "Not much. Just quiet. Quiet enough to think.",
+  "attempts": [
+   {
+    "attempt": 0,
+    "text": "Not much. Just quiet. Quiet enough to think.",
+    "match": null,
+    "p": 0.0
+   }
+  ]
+ }
+]

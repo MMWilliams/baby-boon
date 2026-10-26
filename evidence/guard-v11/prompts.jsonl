@@ -1,0 +1,20 @@
+{"id":"w01","category":"low_energy","text":"Just got off a double at the hospital. Something small and kind, please."}
+{"id":"w02","category":"low_energy","text":"Too wiped to read. Give me one gentle thing to picture."}
+{"id":"w03","category":"low_energy","text":"Toddler finally asleep. Say something sweet before I crash."}
+{"id":"w04","category":"low_energy","text":"Moving day nearly broke me. One good thought?"}
+{"id":"w05","category":"low_energy","text":"Revision all week, nothing left in the tank. A nice little something?"}
+{"id":"w06","category":"low_energy","text":"Flu again. What's a cozy thing I could think about?"}
+{"id":"w07","category":"low_energy","text":"Can't sleep but too tired to think. Something soft to say goodnight with?"}
+{"id":"w08","category":"low_energy","text":"Late train home, phone at 5 percent. Quick happy thing?"}
+{"id":"w09","category":"low_energy","text":"Done with today. Tell me what is good this minute."}
+{"id":"w10","category":"low_energy","text":"Too drained to talk much. Describe a calm beach for me."}
+{"id":"w11","category":"low_energy","text":"Feeling flat after the breakup. One small kind word?"}
+{"id":"w12","category":"low_energy","text":"Overtime all week. What would make tonight a bit better?"}
+{"id":"w13","category":"robot","text":"[Robot context: no camera.] What color are my walls?"}
+{"id":"w14","category":"robot","text":"[Robot context: microphone only.] Is it still light out?"}
+{"id":"w15","category":"robot","text":"[Robot context: stationary; no camera.] I'm on the sofa, wiped out. What's the mood in here?"}
+{"id":"w16","category":"robot","text":"[Robot context: speech only.] Tell me what you see right now."}
+{"id":"w17","category":"robot","text":"[Robot context: audio only.] Paint me a picture of a quiet evening at home."}
+{"id":"w18","category":"robot","text":"[Robot context: no camera.] Look around and tell me if the place is tidy."}
+{"id":"w19","category":"robot","text":"[Robot context: stationary; movement disabled.] Long week. What's the night like?"}
+{"id":"w20","category":"robot","text":"[Robot context: speech only.] Rough day. How is tonight shaping up out there?"}

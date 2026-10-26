@@ -32,7 +32,7 @@ def main():
         except (EOFError,KeyboardInterrupt): break
         if not text.strip() or text.strip().lower() in {"/quit","/exit"}: break
         messages.append({"role":"user","content":text})
-        parsed=guarded(lambda attempt: complete(a.url,messages,attempt),GUARD_TRIES)
+        parsed=guarded(lambda attempt: complete(a.url,messages,attempt),GUARD_TRIES,text)
         print(json.dumps(parsed,ensure_ascii=False))
         # Session-only history, no database or persistent memory. Keep recent turns.
         messages.append({"role":"assistant","content":parsed["text"]})

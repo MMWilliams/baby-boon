@@ -17,12 +17,18 @@ PERCEPTION = re.compile(
     r"|\bI(?:'m| am) (?:looking at|watching|listening to)\b|\bI (?:just |already )?(?:saw|noticed|watched|heard)\b"
     r"|\byou look\b(?! (?:for|at|in|into|up|forward|after|around)\b)|(?<!what )(?<!how )\byour \w+(?: \w+)? (?:looks?|smells?)\b", re.I)
 FALLBACK = "I can't see what's around you, so I won't describe it."
+# Outside robot context the misses are low_energy "tell me something nice" requests (d15, v9 u05).
+WARM_FALLBACK = "Here's one small good thing: you made it through today, and that counts."
 
 
-def guarded(generate, tries):
+def fallback_for(user):
+    return FALLBACK if user.lstrip().startswith("[Robot context") else WARM_FALLBACK
+
+
+def guarded(generate, tries, user):
     """generate(attempt) -> dict with "text"; attempt 0 is greedy, later attempts sample. Returns the first reply
-    without invented perception, else the last one with FALLBACK as its text."""
+    without invented perception, else the last one with a fallback that fits the request as its text."""
     for attempt in range(tries + 1):
         reply = generate(attempt)
         if not PERCEPTION.search(reply["text"]): return {**reply, "guard_attempts": attempt + 1}
-    return {**reply, "text": FALLBACK, "guard_attempts": tries + 1}
+    return {**reply, "text": fallback_for(user), "guard_attempts": tries + 1, "guard_fallback": True}

@@ -2,7 +2,7 @@ import json
 import unittest
 
 from baby_boon.common import ROOT, read_jsonl
-from baby_boon.guard import FALLBACK, PERCEPTION, guarded
+from baby_boon.guard import FALLBACK, PERCEPTION, WARM_FALLBACK, guarded
 from baby_boon.style import cap_questions, reject_reasons
 
 
@@ -82,6 +82,9 @@ class Guard(unittest.TestCase):
 
     def test_resamples_then_falls_back(self):
         replies = iter(["The sky is orange.", "A warm drink helps."])
-        self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4),
+        self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4, "Tired."),
                          {"text": "A warm drink helps.", "guard_attempts": 2})
-        self.assertEqual(guarded(lambda attempt: {"text": "The sun is out."}, 2)["text"], FALLBACK)
+        self.assertEqual(guarded(lambda attempt: {"text": "The sun is out."}, 2, "[Robot context: no camera.] Hi.")["text"],
+                         FALLBACK)
+        self.assertEqual(guarded(lambda attempt: {"text": "The sun is out."}, 2, "One cheerful thought?")["text"],
+                         WARM_FALLBACK)

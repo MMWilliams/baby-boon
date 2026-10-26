@@ -60,7 +60,7 @@ def main():
 
                 if args.device == "cuda": torch.cuda.synchronize()
                 start = time.perf_counter()
-                out_reply = guarded(reply, args.guard) if args.guard else reply(0)
+                out_reply = guarded(reply, args.guard, case["messages"][-1]["content"]) if args.guard else reply(0)
                 if args.device == "cuda": torch.cuda.synchronize()
                 record.update(out_reply, prompt_tokens=ids.shape[1], seconds=time.perf_counter()-start, error=None)
             except Exception as exc:

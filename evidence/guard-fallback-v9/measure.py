@@ -9,7 +9,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
 from baby_boon.chat import GUARD_TRIES, complete
 from baby_boon.common import SYSTEM
 from baby_boon.cues import CUE_INSTRUCTION
-from baby_boon.guard import FALLBACK, PERCEPTION, guarded
+from baby_boon.guard import PERCEPTION, guarded
 
 HERE = pathlib.Path(__file__).parent
 p = argparse.ArgumentParser()
@@ -25,8 +25,8 @@ for prompt in map(json.loads, open(HERE / "prompts.jsonl", encoding="utf-8")):
         m = PERCEPTION.search(reply["text"])
         attempts.append({"attempt": attempt, "text": reply["text"], "match": m and m.group(0)})
         return reply
-    final = guarded(generate, GUARD_TRIES)
-    rows.append({**prompt, "final": final["text"], "fallback": final["text"] == FALLBACK, "attempts": attempts})
+    final = guarded(generate, GUARD_TRIES, prompt["text"])
+    rows.append({**prompt, "final": final["text"], "fallback": final.get("guard_fallback", False), "attempts": attempts})
     print(prompt["id"], len(attempts), "FALLBACK" if rows[-1]["fallback"] else "ok", flush=True)
 
 (HERE / "results.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
