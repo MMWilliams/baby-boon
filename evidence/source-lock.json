@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-10-25T19:52:18.181944+00:00",
+  "created_at_utc": "2026-10-26T03:30:50.924051+00:00",
   "scope": "publisher metadata, model configs and cards only; no weights or dialogue rows",
   "sources": [
     {
@@ -164,6 +164,38 @@
           "sha256": "4644eba8dd0abf873f0da128ff0bb254cfa25fc3c57c471498df3539c5df75d7"
         }
       ]
+    },
+    {
+      "kind": "model",
+      "id": "Qwen/Qwen3-1.7B",
+      "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "status": "capacity_test_student",
+      "declared_license": "apache-2.0",
+      "publisher_url": "https://huggingface.co/Qwen/Qwen3-1.7B",
+      "files": [
+        {
+          "path": "evidence/model--Qwen--Qwen3-1.7B/README.md",
+          "url": "https://huggingface.co/Qwen/Qwen3-1.7B/resolve/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e/README.md",
+          "bytes": 13963,
+          "sha256": "257e52c419dac2258852643f18af6c974f21f8c6c1b6f371b6cca6201cf29091"
+        },
+        {
+          "path": "evidence/model--Qwen--Qwen3-1.7B/config.json",
+          "url": "https://huggingface.co/Qwen/Qwen3-1.7B/resolve/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e/config.json",
+          "bytes": 726,
+          "sha256": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197"
+        }
+      ],
+      "model_type": "qwen3",
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "safetensors_metadata": {
+        "parameters": {
+          "BF16": 2031739904
+        },
+        "total": 2031739904
+      }
     }
   ]
 }

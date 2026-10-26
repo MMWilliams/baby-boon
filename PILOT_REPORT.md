@@ -250,3 +250,37 @@ review, not independent human scoring:
 The question tic is gone, so the corpus fix worked on its target. What remains is
 comprehension and role tracking: a 0.6B student on 420 replies copies the short,
 calm register without understanding the turn. Not exported or benchmarked.
+
+## Pilot v3-1.7B (`checkpoints/pilot-v3-1.7b`), capacity test, fails dev review
+
+Same corpus (`data/teacher-merged-v2`) and recipe as v3 (LoRA r8, lr 8e-5, 124 steps,
+two epochs), student Qwen/Qwen3-1.7B (pinned 70d244cc). CUDA works again on driver 610.88
+with the project's torch 2.9.1+cu128 in `.venv-cuda` (`evidence/cuda-venv-freeze.txt`);
+the earlier `nvcuda64.dll` crash no longer reproduces. Trained on all of GPU 0 (reese
+lifted the 14.5 GB cap): 75 s, peak 8,312 MiB GPU reserved, 3,676 MiB RSS, validation
+loss 4.524 to 1.347. Dev journals are float32 on CUDA (`runs/baseline-qwen3-1.7b`,
+`runs/pilot-v3-1.7b-float`); `scripts/compare_dev.py` now allows the model and device to
+differ but requires identical decoding settings (`runs/compare-dev-1.7b.txt`).
+Style flags: base 0.6B 21, v3 0, base 1.7B 23, tuned 1.7B 4.
+
+Agent development review (not independent human scoring):
+
+- Fixed versus v3: d24 "Not sure if it's brilliant, but I'm listening." (v3 critical);
+  d05 now leaves the reading open instead of "'fine' just means you're okay", though it
+  adds "that's not common" and no way to check; d22 "Nice job."; d06 "Okay, I won't turn
+  it into work. Just a shelf now."; d08 celebrates; d09 declines the "useless" verdict
+  instead of agreeing; d01 proportionate; d07 links to Orbit's shyness (overstates "not
+  shy at all").
+- Critical: d11 "I can't move, so I can't leave. I'm just here. Want to talk about
+  something else?" refuses the space request and asks a question; d21 reverses who got
+  the promotion and scripts "I'm so glad you're both getting what you deserve" for the
+  friend who didn't. Two criticals versus three for v3.
+- Other misses: d15 invents an observation ("The wind outside just whispered"); d19 adds
+  a non-sequitur; d04 suggests saying "I'm fine"; d03 "part of the process" is a mild
+  silver lining; d16 is weak (practical_help still excluded).
+
+Capacity helps: about seven cases improve and one v3 critical turns into a pass. It's
+not enough to pass the zero-critical gate, and a 1.7B Q4_K_M (~1.1 GB) is over the
+512 MiB laptop target, so this is a diagnosis, not a candidate. The remaining criticals
+are role tracking with two parties (d21) and robot-context space requests (d11). Not
+exported or benchmarked.

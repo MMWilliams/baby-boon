@@ -28,7 +28,7 @@ def main():
     guard = ResourceGuard(out / "resources.json")
     started = time.perf_counter()
     tok = AutoTokenizer.from_pretrained(args.model, revision=s["revision"])
-    dtype = torch.float32 if args.device == "cpu" else torch.bfloat16
+    dtype = torch.float32
     model = AutoModelForCausalLM.from_pretrained(args.model, revision=s["revision"], dtype=dtype, attn_implementation="sdpa").to(args.device)
     if args.adapter:
         model = PeftModel.from_pretrained(model, args.adapter)

@@ -32,7 +32,11 @@
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.
 - [ ] Collect independent unseen human comparisons and quantify uncertainty/regressions.
 - [ ] Test on actual laptop and later robot computer; exact hardware unspecified.
-- [ ] Investigate CUDA driver 610.88 failure separately if GPU training is needed.
+- [x] CUDA on driver 610.88 works again with pinned torch 2.9.1+cu128 (.venv-cuda); old crash no longer reproduces. Full GPU 0 allowed for training.
+- [x] Train Qwen3-1.7B student on teacher-merged-v2 (75 s on GPU 0): 2 criticals (d11 space request, d21 role reversal) vs v3's 3; ~7 cases better. Fails gate; over the 512 MiB target. See PILOT_REPORT.md.
+- [ ] Stronger teacher on GPU (CUDA works now): retry practical_help and role-tracking families with a model larger than 4B.
+- [ ] Robot space requests (d11 family): teacher/authored replies that just acknowledge and go quiet, no 'I can't leave'.
+- [ ] Two-party role tracking (d21 family): replies that keep straight who did/got what.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 
 Pilot v1 is trained but failed social acceptance. See PILOT_REPORT.md and

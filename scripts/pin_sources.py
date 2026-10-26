@@ -19,6 +19,7 @@ SOURCES = [
     ("model", "HuggingFaceTB/SmolLM2-360M-Instruct", "baseline_candidate"),
     ("model", "Qwen/Qwen3-0.6B", "baseline_candidate"),
     ("model", "Qwen/Qwen3.5-0.8B", "reserve_candidate"),
+    ("model", "Qwen/Qwen3-1.7B", "capacity_test_student"),
     ("dataset", "OpenAssistant/oasst1", "review_pending"),
     ("dataset", "HuggingFaceTB/smoltalk", "constituent_review_pending"),
     ("dataset", "HuggingFaceH4/ultrachat_200k", "provenance_review_pending"),
@@ -107,15 +108,20 @@ def main():
     if args.verify_only:
         verify()
         return
+    kept = []
     if LOCK.exists() and not args.refresh:
-        raise SystemExit("A source lock already exists. Use --verify-only or an intentional --refresh.")
+        kept = json.loads(LOCK.read_text(encoding="utf-8"))["sources"]
+    pinned = {(item["kind"], item["id"]) for item in kept}
+    missing = [s for s in SOURCES if (s[0], s[1]) not in pinned]
+    if not missing:
+        raise SystemExit("Every source is pinned. Use --verify-only or an intentional --refresh.")
     with ThreadPoolExecutor(max_workers=4) as pool:
-        records = list(pool.map(pin, SOURCES))
+        records = kept + list(pool.map(pin, missing))
     result = {"created_at_utc": datetime.now(timezone.utc).isoformat(),
               "scope": "publisher metadata, model configs and cards only; no weights or dialogue rows",
               "sources": records}
     LOCK.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    for record in records:
+    for record in records[len(kept):]:
         print(f"{record['id']} @ {record['revision']}: declared license={record['declared_license']}; {record['status']}")
     verify()
 

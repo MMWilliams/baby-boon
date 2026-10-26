@@ -54,9 +54,6 @@ def configure_gpu():
     torch.set_num_threads(6)
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("Expected exactly one visible CUDA GPU")
-    total = torch.cuda.get_device_properties(0).total_memory
-    # Leave margin for the context and non-PyTorch CUDA allocations.
-    torch.cuda.set_per_process_memory_fraction(14500 * 1024**2 / total)
     free, _ = torch.cuda.mem_get_info()
     if free < 8 * 1024**3:
         raise RuntimeError("Less than 8 GiB free GPU memory; defer this job")
@@ -98,7 +95,7 @@ class ResourceGuard:
         self.report["peak_gpu_allocated_mib"] = max(allocated, self.report["peak_gpu_allocated_mib"])
         elapsed = time.monotonic() - self.started
         self.report["elapsed_seconds"] = elapsed
-        if rss > 20000 or reserved > 14500 or elapsed > self.max_seconds or psutil.virtual_memory().available < 2 * 1024**3:
+        if rss > 20000 or elapsed > self.max_seconds or psutil.virtual_memory().available < 2 * 1024**3:
             self.report["status"] = "resource_limit_exceeded"
             write_json(self.path, self.report)
             os._exit(75)

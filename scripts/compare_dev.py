@@ -22,8 +22,9 @@ def main():
     verify_frozen()
     cases = read_jsonl(ROOT / "eval/dev.jsonl")
     ids = {r["id"] for r in cases}
-    settings = ("model", "revision", "system", "max_new_tokens", "do_sample", "enable_thinking",
-                "dev_sha256", "device", "dtype", "threads")
+    # Model and device may differ (student comparisons); decoding settings must not.
+    settings = ("system", "max_new_tokens", "do_sample", "enable_thinking",
+                "dev_sha256", "dtype")
     reference, data, summary = None, {}, {}
     for item in args.runs:
         name, path = item.split("=", 1)
@@ -37,7 +38,8 @@ def main():
         rows = read_jsonl(folder / "responses.jsonl")
         assert len(rows) == len(cases) and {r["id"] for r in rows} == ids, f"Incomplete journal: {name}"
         data[name] = {r["id"]: r for r in rows}
-        summary[name] = {"responses_sha256": digest(folder / "responses.jsonl"),
+        summary[name] = {"model": config["model"], "adapter": config["adapter"], "device": config["device"],
+                         "responses_sha256": digest(folder / "responses.jsonl"),
                          "errors": sum(bool(r.get("error")) for r in rows),
                          "truncated": sum(bool(r.get("truncated")) for r in rows), "style_flags": 0}
     for case in cases:
