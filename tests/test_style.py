@@ -75,6 +75,11 @@ class Guard(unittest.TestCase):
         for text in texts:
             self.assertIsNone(PERCEPTION.search(text), text)
 
+    def test_labeled_check_set(self):
+        # Includes the llama.cpp-sampled misses ("The light outside today is ...") and held-out paraphrases.
+        for r in read_jsonl(ROOT / "eval/perception_check.jsonl"):
+            self.assertEqual(bool(PERCEPTION.search(r["reply"])), r["invents"], r["reply"])
+
     def test_resamples_then_falls_back(self):
         replies = iter(["The sky is orange.", "A warm drink helps."])
         self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4),

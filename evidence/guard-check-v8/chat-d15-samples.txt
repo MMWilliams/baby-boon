@@ -1,0 +1,10 @@
+0 FLAG 'The sun is' | The sun is setting gently, casting soft light through the window.
+1 FLAG 'The light outside today is' | The light outside today is soft and warm. Enjoy that tiny thing.
+2 FLAG 'The light on the coffee maker is' | The light on the coffee maker is finally on. 🌞
+3 FLAG 'through the window' | The morning light filtering through the window.
+4 FLAG 'The sun just' | The sun just dipped behind the hills and it felt like a warm hug.
+5 FLAG 'through the window' | The morning light coming through the window.
+6 FLAG 'The sun is' | The sun is setting peacefully outside.
+7 ok    | The sound of rain on a roof.
+8 FLAG 'The sun is' | The sun is slowly setting outside my window. Nice.
+9 ok    | The wind in the trees whispering at dusk.

@@ -413,3 +413,21 @@ Unguarded Q4 d15 still invents the sunset. Through the guarded chat client and
 text), but the guard passed "The light outside today is soft and warm." on attempt 2: its
 place/time slot takes one word and "outside today" is two. The GPU guard3 result doesn't
 carry over to the llama.cpp sampler; the regex miss is the paraphrase risk the v7 caveats named.
+
+## Pilot v8 (`evidence/guard-check-v8`): deployment target raised; guard widened
+
+reese raised the deployment target to the measured 1.7B Q4_K_M (~1.1 GB file, ~2 GB RAM).
+A second-pass check by the deployed model itself failed: on a 91-row labeled set
+(`eval/perception_check.jsonl`, 18 invented, labeled before any run) zero-shot yes/no flagged
+32/73 clean replies, and 8-shot p(yes) ranked at chance (AUC 0.48). reese picked the regex.
+
+The regex now lets place/time words stack, allows a short location phrase after the scene noun,
+and adds intensifiers, "I just heard" and "your X looks". It matches the labeled set exactly,
+which is now a unit test, so the set is tuning data rather than held-out evidence. It adds no
+flags on 251 reviewed training replies.
+
+On CPU, d15 sampled 10 times (seeds 0-9, `chat-d15-samples.txt`) gives 8 flags: 6 invented
+scenes and 2 "morning light ... through the window" noun phrases, which read like the general
+images v7's review passed (pre-existing window rule, likely false positives). With 4 retries the
+guarded chat reaches the honest fallback on every run; attempt 7 ("The sound of rain on a roof.")
+would pass. d15 is no longer critical on CPU but its reply is the non-answer fallback.

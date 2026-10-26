@@ -39,9 +39,10 @@
 - [x] Two-party outcomes (d21 skill): 40 authored prompts+replies, family tp.
 - [x] Pilot v4 (merged-v3 = teacher 420 + authored 120): blind review 1.7B 1 critical (d15), best means; 0.6B regressed to 5. See PILOT_REPORT.md.
 - [x] low_energy d15: SFT (v5) and DPO (v6) failed; runtime guard (baby_boon/guard.py, v7) makes guarded v4-1.7B 0 dev criticals (development evidence; regex tuned on d15). See PILOT_REPORT.md v7.
-- [ ] Guard is a regex that passed d15 on its last attempt: on Q4 CPU it let "The light outside today is soft and warm." through (two-word place/time slot). Fix or replace (classifier/second-pass check), then measure fallback rate on unseen low_energy/robot prompts; a weights fix (length-matched DPO + NLL) is still open.
+- [x] Guard misses on CPU: reese picked regex over a classifier (deployed model as checker is at chance, AUC 0.48). Widened regex matches the 91-row eval/perception_check.jsonl (unit test). See PILOT_REPORT.md v8.
+- [ ] Guard fallback rate: CPU d15 flags 8/10 samples (2 are likely window-rule false positives), so 4 retries always reach the non-answer fallback. Measure on unseen low_energy/robot prompts; consider narrowing the window rule, more retries, or a pleasant-thought fallback. A weights fix (length-matched DPO + NLL) is still open.
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
-- [ ] Decide the deployment size: 1.7B Q4_K_M measured on desktop CPU (1,056 MiB file, 2,028 MiB RSS, 30 tok/s), 2x the 512 MiB target. Options: raise the target, smaller quant, or distill to 0.6B.
+- [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 
