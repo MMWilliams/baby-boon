@@ -477,3 +477,7 @@ Criticals drop 10 to 2 (9 vs 1 discordant cases, sign test p = 0.021); preferenc
 caught only 3 of 12 surroundings questions, so the robot gain comes from the model (the pt robot rows in merged-v4 plus
 v12 data), not the regex. Open: deception still fails sometimes (x33, x34), wrong facts in both models, "shattered" still
 literal in robot context. Same Q4_K_M size as v4 (1,056 MiB). Laptop bench bundle: `scripts/make_laptop_bundle.ps1`.
+
+Robot context deferred (reese, 2026-10-26): the project is a plain chat LLM for now. On the 19 chat-only v12 cases the
+blind agent scores give v4 5 criticals, v12 2 (4 vs 1 discordant, p = 0.375), means 6.26 vs 6.11, preference 8 v12, 6 v4:
+without the robot cases the v12 advantage is small and uncertain. The human review page now shows only those 19 cases.
