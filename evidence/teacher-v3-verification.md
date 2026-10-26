@@ -26,3 +26,26 @@ current system into `runs/baseline-qwen-baby-boon` after the teacher exits;
 then use `python scripts/compare_dev.py` for the base/v2/v3 comparison.
 This new baseline is necessary for matched settings, not a replacement for
 the preserved unfavorable old results.
+
+## Checkpoint before session handoff
+
+- `python -m unittest discover -s tests -v`: exit 0, 15 tests passed,
+  including the actual pinned tokenizer. No skips. Pre-change root accepted
+  `Okay. Let me know if you want to chat.`; the regression now rejects it for exits/stops.
+- `python scripts/verify_teacher_v3.py --prompts-only`: exit 0; frozen dev,
+  leakage and all six sets of 40 prompts pass. `git diff --check`: exit 0.
+- `python scripts/merge_corpora.py --sources data/teacher-v1-admitted data/teacher-v2-admitted --out data/teacher-refilter-baseline-v3 --source-name teacher-refilter-baseline-v3`:
+  exit 0; source audits 376/176 rows, output audit 386 rows. Retains 193 replies,
+  44 questions. This temporary diagnostic corpus has no new categories and is
+  not the planned final training corpus.
+- `python scripts/compare_dev.py --runs base=runs/baseline-qwen-cpu-v2 v2=runs/pilot-v2-float`:
+  failed as intended with `Unmatched inference settings: v2`; the system persona
+  name differs. Fresh base run remains pending, queued after teacher completion.
+- Teacher generation is still running; observed server RSS about 4774 MiB.
+  Manual review completed for exits (65 selected, 17 rejected) and stops
+  (62 selected, 23 rejected including seven criticals). Progress and exact text
+  hashes are in ignored `data/teacher-v3/review-progress.json`; this is not final admission.
+
+Implementation checks above are **partially verified** for this iteration.
+Remaining corpus review/admission, training, dev comparison, independent review
+and actual laptop evidence are pending. Prior pilot social acceptance remains failed.
