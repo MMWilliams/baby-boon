@@ -38,6 +38,19 @@ class Style(unittest.TestCase):
                    ("c", "p4", "Which one?"), ("c", "p4", "Why?"), ("c", "p5", "When?")]
         self.assertEqual(cap_questions(replies), {4, 5})
 
+    def test_exit_does_not_reopen_without_a_question_mark(self):
+        for category in ("exits", "stop_requests"):
+            for text in ("Okay. Let me know if you want to chat.", "I'm here if you need anything else."):
+                self.assertIn("continuation_offer", reject_reasons(text, category))
+            self.assertEqual(reject_reasons("Understood. I'll stop.", category), [])
+        self.assertEqual(reject_reasons("Let me know which file is missing.", "practical_help"), [])
+
+    def test_question_cap_independent_categories_and_all_question_family(self):
+        replies = [("a", "a1", "Which?"), ("a", "a2", "Why?")]
+        replies += [("b", f"b{i}", "Done.") for i in range(6)]
+        replies += [("b", "b6", "When?"), ("b", "b7", "Where?")]
+        self.assertEqual(cap_questions(replies), {0, 1})
+
     def test_teacher_probe_is_mostly_rejected(self):
         rows = read_jsonl(ROOT / "evidence/teacher-instruct-probe/responses.jsonl")
         rejected = sum(bool(reject_reasons(r["parsed"]["text"] if r["cues"] else r["text"])) for r in rows)

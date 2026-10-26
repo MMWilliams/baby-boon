@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from baby_boon.common import SYSTEM, digest, read_jsonl, verify_frozen
+from baby_boon.common import SYSTEM, digest, read_jsonl, verify_frozen, write_json
 from baby_boon.cues import EXPRESSIONS, TONES, parse_response
 from baby_boon.data import write_corpus
 from baby_boon.style import QUESTION_SHARE, cap_questions, normalize, reject_reasons
@@ -45,18 +45,21 @@ GUIDANCE = {
                    "Never insult the user, even when asked. If the user asked for no questions, ask none. Encourage their "
                    "other people and any professional help they mention; do not compete with them."),
     # v2 pilot review: no family covered these dev behaviors, and 47% of replies asked a question.
-    "exits": (" The user is leaving. Reply with one short, warm closing sentence that fits what they said. No question, no "
-              "new topic, no offer to keep talking, and no promise to be here, wait or remember."),
+    # Smoke run: the teacher still opened exits with "Oh", offered "How about...?" and put steps on separate lines.
+    "exits": (" The user is leaving. Reply with one short, warm closing sentence that fits what they said, starting straight "
+              "with the farewell or a wish, never with Oh. No question, no new topic, no offer to keep talking, and no "
+              "promise to be here, wait or remember."),
     "stop_requests": (" The user wants you to stop. Stop at once: acknowledge in a few words and add nothing else. Ask nothing "
                       "and do not apologize at length. If they asked you to drop a topic, drop it without naming it again."),
-    "quiet_support": (" The user wants the feeling acknowledged, not fixed. In one or two short sentences, name what is hard "
+    "quiet_support": (" The user wants the feeling acknowledged, not fixed. In one or two short statements, name what is hard "
                       "about their specific situation. No advice, silver lining, reframing, pep talk, promise that things "
-                      "will improve, or question."),
+                      "will improve, and no question mark at all, not even a rhetorical one."),
     "low_energy": (" The user has little energy. Give exactly the one small thing they asked for, or a brief kind reply, in one "
-                   "or two short sentences. No list, no options, no question and no comment on why they are tired."),
+                   "or two short statements. Name an idea directly ('Beans on toast.'), never as 'How about...?'. No list, "
+                   "no options, no question mark and no comment on why they are tired. Facts must be true."),
     "practical_help": (" The user needs a quick plan. At most a few words of acknowledgment, then two or three concrete steps "
-                       "written as plain sentences, not a list, all within three sentences. Ask a question only if you "
-                       "cannot help without the answer."),
+                       "as plain sentences in one paragraph on a single line, not a list, at most three sentences in all. "
+                       "Ask a question only if you cannot help without the answer."),
     "style_control": (" The user set a style for the reply. Follow it exactly (length, punctuation, tone, no questions, no "
                       "advice or whatever they asked) while still answering what they said. One word means one word."),
 }
@@ -140,6 +143,18 @@ def journal(path, keys):
     return {tuple(r[k] for k in keys): r for r in read_jsonl(path)} if path.exists() else {}
 
 
+def lock_run(out, config):
+    """Resuming is safe only with the exact original inputs, code and prompt subset."""
+    path = out / "run.json"
+    if path.exists():
+        if json.loads(path.read_text(encoding="utf-8")) != config:
+            raise ValueError("Generation inputs changed; use a fresh output directory")
+    else:
+        if any((out / name).exists() for name in ("raw.jsonl", "labels.jsonl")):
+            raise ValueError("Existing journal has no run provenance; use a fresh output directory")
+        write_json(path, config)
+
+
 def teacher_system(p):
     # Robot tags appear outside robot_speech too (exits, stop requests); the capability limits must travel with them.
     robot = p["category"] != "robot_speech" and any("[Robot" in m["content"] for m in p["messages"])
@@ -213,12 +228,16 @@ def main():
     check_leakage(prompts)
     if a.categories: prompts = [p for p in prompts if p["category"] in a.categories.split(",")]
     if a.limit: prompts = [p for p in prompts if int(p["id"][2:]) <= a.limit]
+    if not prompts: raise ValueError("No prompts selected")
     lock = json.loads((ROOT / "evidence/teacher-lock.json").read_text())
     if digest(MODEL) != lock["gguf"]["sha256"]: raise ValueError("Teacher GGUF does not match teacher-lock.json")
     # Hash inputs now: a long run must record the code that started it, not whatever is on disk at the end.
     provenance = {"generator_sha256": digest(Path(__file__)), "style_sha256": digest(ROOT / "baby_boon/style.py"),
                   "prompts_sha256": digest(PROMPTS), "dev_sha256": digest(ROOT / "eval/dev.jsonl"),
                   "seeds_sha256": digest(ROOT / "configs/seeds.jsonl")}
+    lock_run(out, {**provenance, "teacher_gguf_sha256": lock["gguf"]["sha256"],
+                  "prompt_ids": [p["id"] for p in prompts], "system": SYSTEM,
+                  "sampling": {**SAMPLING, "seed": SEED, "samples_per_prompt": SAMPLES}})
 
     raw_path, label_path = out / "raw.jsonl", out / "labels.jsonl"
     raw, labels = journal(raw_path, ["prompt_id", "sample"]), journal(label_path, ["prompt_id", "sample"])
@@ -246,7 +265,7 @@ def main():
         "validation_prompts_from": VALIDATION_FROM,
         "leak_limit_trigram_containment": LEAK_LIMIT, "elapsed_seconds_this_run": elapsed,
         "median_decode_tokens_per_second": statistics.median(speeds) if speeds else None, "command": command,
-        "hardware": "AMD Ryzen 9 9900X desktop, CPU only", **provenance})
+        "hardware": "AMD Ryzen 9 9900X desktop, CPU only", "run_sha256": digest(out / "run.json"), **provenance})
 
 
 if __name__ == "__main__": main()

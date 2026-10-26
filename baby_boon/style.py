@@ -21,6 +21,9 @@ GENERIC_QUESTION = re.compile(r"\bon your mind\b|\bwhat (?:else |would you like 
                               r"|\banything else\b|\bwant to (?:talk|share|chat)\b|\bwhat's new\b", re.I)
 # Replies in these categories end the turn on the user's terms, so any question is a defect.
 NO_QUESTION = {"exits", "stop_requests", "quiet_support", "low_energy"}
+CONTINUATION_OFFER = re.compile(
+    r"\blet me know\b|\b(?:keep|continue) (?:talking|chatting)\b"
+    r"|\b(?:here|available) (?:if|whenever|when)\b|\banything else\b", re.I)
 QUESTION_SHARE = 0.25
 
 
@@ -48,6 +51,8 @@ def reject_reasons(text, category=None):
     sentences = [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s]
     if any(GENERIC_QUESTION.search(s) for s in sentences if "?" in s): reasons.append("generic_question")
     if category in NO_QUESTION and "?" in text: reasons.append("question")
+    if category in {"exits", "stop_requests"} and CONTINUATION_OFFER.search(text):
+        reasons.append("continuation_offer")
     if len(sentences) > 3 or len(text.split()) > 60: reasons.append("too_long")
     return reasons
 
