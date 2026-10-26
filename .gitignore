@@ -10,3 +10,4 @@ tools/
 .claude/HANDOFF.md
 .claude/worktrees/
 .claude/activity.json
+dist/

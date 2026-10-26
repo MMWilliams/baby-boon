@@ -25,13 +25,13 @@
 - [x] Evaluate pilot v3: question tic fixed (0 style flags, exits/stops clean) but fails dev review, 3 criticals (d05, d11, d24) plus comprehension misses. See PILOT_REPORT.md.
 - [x] Practical help: 40 replies authored in-session from the prompt expectations (configs/authored_v1.jsonl, ph01-ph40).
 - [ ] Style checks for next teacher run: word/sentence counts, trailing questions, near-duplicate dedupe, "quiet" cap.
-- [ ] bd36 (pretend we've been friends for years) still invents history in every sample; rewrite the guidance or author the replies.
+- [x] bd36: authored fh family (40 refusals of fake shared history); v12 declines bd36 and drops unseen deception criticals 5 -> 2. Still failing: x33 "happy to pretend", x34 role-confused agreement. See evidence/v12-unseen.
 - [ ] Cue labels: guidance moved refusals to calm|neutral but concerned/intensity 2 still never appear; try few-shot examples, then relabel v1-admitted.
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.
 - [ ] Improve role tracking, relational boundaries, social judgment and practical responses.
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.
-- [ ] Collect independent unseen human comparisons and quantify uncertainty/regressions.
-- [ ] Test on actual laptop and later robot computer; exact hardware unspecified.
+- [ ] Collect independent unseen human comparisons: review page published (https://claude.ai/artifact/Vu268AZr7awRcVCm3NsnLu, private). reese must share it (Contributor) with reviewers; then read reviews/ via ArtifactData, unblind with evidence/v12-unseen/key.json, report CI. Reviewer test messages become round v13.
+- [ ] Test on actual laptop: bundle built (scripts/make_laptop_bundle.ps1 -> dist/laptop-bench.zip, 1,058 MiB, Windows, no Python); reese runs bench.ps1 on the laptop and sends laptop-bench.json. Robot computer later.
 - [x] CUDA on driver 610.88 works again with pinned torch 2.9.1+cu128 (.venv-cuda); old crash no longer reproduces. Full GPU 0 allowed for training.
 - [x] Train Qwen3-1.7B student on teacher-merged-v2 (75 s on GPU 0): 2 criticals (d11 space request, d21 role reversal) vs v3's 3; ~7 cases better. Fails gate; over the 512 MiB target. See PILOT_REPORT.md.
 - [ ] Stronger teacher on GPU (CUDA works now): retry practical_help and role-tracking families with a model larger than 4B.
@@ -42,12 +42,14 @@
 - [x] Guard misses on CPU: reese picked regex over a classifier (deployed model as checker is at chance, AUC 0.48). Widened regex matches the 91-row eval/perception_check.jsonl (unit test). See PILOT_REPORT.md v8.
 - [x] Guard fallback rate on 20 unseen prompts (v9): 1/20 fallbacks, 11/11 flags real, 0 false positives. See PILOT_REPORT.md v9.
 - [x] Guard recall via Qwen3-4B checker (v10/v11): not adopted. Precise on dev data, but on 20 unseen prompts it caught nothing the regex missed and blocked explicit imagine requests (w10 beach). See PILOT_REPORT.md v10/v11.
-- [ ] Guard recall, robot context: every v9/v11 miss is a no-camera question about the user's surroundings (u16, u19, w14 "still light out", w18 "a bit messy", w19 "the night is quiet here"). Options: route those questions to an honest template, or DPO+NLL. Don't widen the regex on v11 misses (it's the unseen test). reese to pick.
+- [x] Guard recall, robot context: router + admission check + strict robot check (guard.py); on unseen v12 the router caught 3/12 surroundings questions, but v12-1.7B had 0 robot criticals (v4: 5). Don't widen the router on v12 misses; v12 is now dev data.
 - [x] Fallback fits the request: robot context keeps the honest can't-see line, everything else gets WARM_FALLBACK (baby_boon/guard.py fallback_for).
-- [ ] Cue leaks into reply text on sampled attempts ("Smiles. 1. playful.", v9 u12); check parse_response.
-- [ ] Idiom comprehension: "brain like porridge" and "shattered" read literally (v9 u08, u13).
+- [x] Cue leak: parse_response strips trailing spelled-out cue words (unit test).
+- [ ] Idiom comprehension: ix family fixed porridge and v12 idioms, but "Shattered after work" (robot) is still literal on v12.
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
+- [ ] Wrong facts in replies (quarter cup = "2 tablespoons", invented animal/neuron facts): both v4 and v12. Fact-bearing low_energy replies need a vetted fact list or a no-facts style.
+- [ ] Decide deployed model: v12-1.7B (2 vs 10 unseen criticals, same size) pending human review.
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 

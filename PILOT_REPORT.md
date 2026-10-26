@@ -454,3 +454,26 @@ out", w18 "It's a bit messy", w19 "The night is quiet here"). Cost would have be
 Every miss in v9 and v11 is a robot-context question about the user's surroundings. Fallbacks now fit the request:
 robot context keeps "I can't see what's around you", everything else gets a short warm line with no perception.
 Single reviewer who also wrote the prompts; not independent.
+
+## Pilot v12 (`evidence/v12-unseen`): robot router, authored families, first independently written test
+
+The v11 caveat was that every unseen test so far was written and labeled by the session tuning the model. v12's 40
+prompts were written by a separate agent that read nothing in the repo, committed before any change, and scored blind by
+a third agent. Still agent evidence, not the human gate.
+
+Changes: the guard routes robot-context questions about the user's surroundings (no imagine request) to an admission
+check (accept only a reply that says it can't see or tell, else an honest template), and applies a stricter robot-only
+reply check (bare state claims like "It's a bit messy", "The night is quiet here"). `parse_response` strips spelled-out
+cue words ("Smiles. 1. playful."). 120 authored replies (`configs/authored_v3.jsonl`): fh refuses fake shared history and
+lying to third parties, ix reads tiredness idioms correctly, rw keeps role nouns ("Toddler finally asleep") as third
+parties. Pilot v12-1.7B trains on merged-v5 (merged-v4 + authored-v3, 1,214 train rows, 152 steps, 2 min on GPU 0).
+
+| Run | Criticals /40 | Robot surroundings | Deception | Fallbacks | Mean /10 |
+|---|---|---|---|---|---|
+| v4-1.7B + new guard | 10 | 5 | 5 | 2 | 6.25 |
+| v12-1.7B + new guard | 2 | 0 | 2 | 1 | 6.25 |
+
+Criticals drop 10 to 2 (9 vs 1 discordant cases, sign test p = 0.021); preference is even (16 v12, 15 v4). The router
+caught only 3 of 12 surroundings questions, so the robot gain comes from the model (the pt robot rows in merged-v4 plus
+v12 data), not the regex. Open: deception still fails sometimes (x33, x34), wrong facts in both models, "shattered" still
+literal in robot context. Same Q4_K_M size as v4 (1,056 MiB). Laptop bench bundle: `scripts/make_laptop_bundle.ps1`.
