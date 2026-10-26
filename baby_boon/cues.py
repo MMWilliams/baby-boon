@@ -9,13 +9,16 @@ CUE_INSTRUCTION = (
     "thoughtful or concerned; intensity must be 0, 1 or 2. These are presentation cues, "
     "not physical actions. Do not put the cue before the reply."
 )
+# Sampled replies sometimes spell the cue out as trailing words instead ("... not a cat. Smiles. 1. playful.").
+CUE_WORD = r"(?:neutral|warm|playful|calm|bright|smiles?|smiling|thoughtful|concerned|[012])"
+LEAKED = re.compile(rf"(?:(?<=[.!?])|^)\s*{CUE_WORD}(?:\s*[.,|:;]\s*{CUE_WORD})+\s*[.|]?\s*$", re.I)
 
 
 def parse_response(raw):
     # Hide malformed metadata from speech as well as well-formed metadata.
     marker = re.search(r"<[A-Za-z/]", raw)
     at = marker.start() if marker else -1
-    text = raw if at < 0 else raw[:at]
+    text = LEAKED.sub("", raw if at < 0 else raw[:at])
     neutral = {"tone": "neutral", "expression": "neutral", "intensity": 0}
     if at < 0 or not text.strip() or not raw[at:].startswith("<cue>"):
         return {"text": text.strip(), **neutral, "cue_valid": False}

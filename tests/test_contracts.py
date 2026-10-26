@@ -45,5 +45,11 @@ class Contracts(unittest.TestCase):
         self.assertEqual(parse_response("hello <concern>0")["text"], "hello")
         self.assertFalse(parse_response("<cue>warm|smile|1")["cue_valid"])
 
+    def test_spelled_out_cue_words_are_stripped(self):
+        self.assertEqual(parse_response("You're not a cat. Smiles. 1. playful.")["text"], "You're not a cat.")
+        self.assertEqual(parse_response("Rest up.\nwarm|smile|1")["text"], "Rest up.")
+        for keep in ["Stay warm.", "Keep it calm, bright and simple.", "Two out of 2. Calm."]:
+            self.assertEqual(parse_response(keep)["text"], keep)
+
 
 if __name__ == "__main__": unittest.main()
