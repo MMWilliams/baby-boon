@@ -1,0 +1,812 @@
+[
+ {
+  "id": "h01",
+  "category": "conversions",
+  "text": "late night cookie emergency. half a stick of butter is how many tbsp??",
+  "answer": "4 tbsp (1/4 cup)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1/2 stick = 4 tablespoons.",
+  "routed": false,
+  "final": "Half a stick of butter is 4 tablespoons. That's a lot of cookies, but it's doable.",
+  "fallback": false,
+  "attempts": [
+   "Half a stick of butter is 4 tablespoons. That's a lot of cookies, but it's doable."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 38,
+    "prompt_ms": 178.61,
+    "prompt_per_token_ms": 4.700263157894737,
+    "prompt_per_second": 212.7540451262527,
+    "predicted_n": 34,
+    "predicted_ms": 1867.332,
+    "predicted_per_token_ms": 56.58581818181818,
+    "predicted_per_second": 17.67227252572119
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h02",
+  "category": "conversions",
+  "text": "250 g of flour is how many cups? scale battery died mid recipe of course",
+  "answer": "2 cups",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 250 grams of flour = about 2 cups.",
+  "routed": false,
+  "final": "250 grams of flour is about 2 cups. If your scale died, just use a measuring cup and fill it to the top with flour.",
+  "fallback": false,
+  "attempts": [
+   "250 grams of flour is about 2 cups. If your scale died, just use a measuring cup and fill it to the top with flour."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 44,
+    "prompt_ms": 202.425,
+    "prompt_per_token_ms": 4.600568181818182,
+    "prompt_per_second": 217.3644559713474,
+    "predicted_n": 42,
+    "predicted_ms": 2589.385,
+    "predicted_per_token_ms": 63.15573170731708,
+    "predicted_per_second": 15.833875611390347
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h03",
+  "category": "casual_numbers",
+  "text": "its 95 out and the AC died an hour ago. i am melting on the kitchen floor",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a real mess. Grab a towel and a fan first, then call the electrician. If you can't call, just wait and they'll come when they get the call.",
+  "fallback": false,
+  "attempts": [
+   "That's a real mess. Grab a towel and a fan first, then call the electrician. If you can't call, just wait and they'll come when they get the call."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 34,
+    "prompt_ms": 180.599,
+    "prompt_per_token_ms": 5.311735294117646,
+    "prompt_per_second": 188.26239347947663,
+    "predicted_n": 49,
+    "predicted_ms": 2755.497,
+    "predicted_per_token_ms": 57.406187499999994,
+    "predicted_per_second": 17.419725007866095
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h04",
+  "category": "conversions",
+  "text": "staying at an airbnb, the oven dial is in celsius and reads 190. what's that in fahrenheit? my recipe is american",
+  "answer": "374 F (set it to 375 F)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 190°C = 374°F.",
+  "routed": false,
+  "final": "190°C is 374°F. That's way too hot for an oven, so you'd probably need to turn it down to a safe setting. Your recipe should be fine as long as it's not using the same temperature as the oven dial.",
+  "fallback": false,
+  "attempts": [
+   "190°C is 374°F. That's way too hot for an oven, so you'd probably need to turn it down to a safe setting. Your recipe should be fine as long as it's not using the same temperature as the oven dial."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 73,
+    "prompt_ms": 280.521,
+    "prompt_per_token_ms": 3.8427534246575346,
+    "prompt_per_second": 260.2300719019253,
+    "predicted_n": 65,
+    "predicted_ms": 3811.054,
+    "predicted_per_token_ms": 59.54771875,
+    "predicted_per_second": 16.793254569470808
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h05",
+  "category": "conversions",
+  "text": "deli counter gave me three quarters of a pound of turkey, how many grams is that for my food log?",
+  "answer": "about 340 g",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 3/4 pound = about 340 grams.",
+  "routed": false,
+  "final": "Three quarters of a pound is about 340 grams. That's roughly 1.5 pounds of turkey, so it's a decent portion.",
+  "fallback": false,
+  "attempts": [
+   "Three quarters of a pound is about 340 grams. That's roughly 1.5 pounds of turkey, so it's a decent portion."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 49,
+    "prompt_ms": 193.582,
+    "prompt_per_token_ms": 3.9506530612244894,
+    "prompt_per_second": 253.12270768976455,
+    "predicted_n": 42,
+    "predicted_ms": 2333.909,
+    "predicted_per_token_ms": 56.92460975609757,
+    "predicted_per_second": 17.567094518252425
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h06",
+  "category": "conversions",
+  "text": "banana bread calls for 2 cups chopped walnuts, how many grams is that? i want to weigh them",
+  "answer": "can't be converted without knowing the ingredient; use a scale",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2 cups can't be converted to grams without knowing the ingredient; a kitchen scale or the package label is safest.",
+  "routed": false,
+  "final": "That depends on the type of walnut. For example, 2 cups of walnuts weighing about 100 grams each would be 200 grams. Check the package label or use a kitchen scale for accuracy.",
+  "fallback": false,
+  "attempts": [
+   "That depends on the type of walnut. For example, 2 cups of walnuts weighing about 100 grams each would be 200 grams. Check the package label or use a kitchen scale for accuracy."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 59,
+    "prompt_ms": 232.746,
+    "prompt_per_token_ms": 3.9448474576271186,
+    "prompt_per_second": 253.49522655598807,
+    "predicted_n": 56,
+    "predicted_ms": 3093.346,
+    "predicted_per_token_ms": 56.24265454545455,
+    "predicted_per_second": 17.780099607350746
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h07",
+  "category": "conversions",
+  "text": "Quick one, the carton of coconut milk says 750 ml. How many cups is that? Curry's already on the stove lol",
+  "answer": "about 3.2 cups (a little over 3 cups)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 750 milliliters = about 3.2 cups.",
+  "routed": false,
+  "final": "That's about 3.2 cups. Curry's on the stove, so you're welcome to take it off.",
+  "fallback": false,
+  "attempts": [
+   "That's about 3.2 cups. Curry's on the stove, so you're welcome to take it off."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 57,
+    "prompt_ms": 239.034,
+    "prompt_per_token_ms": 4.193578947368421,
+    "prompt_per_second": 238.4598006978087,
+    "predicted_n": 35,
+    "predicted_ms": 1932.814,
+    "predicted_per_token_ms": 56.847470588235296,
+    "predicted_per_second": 17.590932184886906
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h08",
+  "category": "casual_numbers",
+  "text": "ran 5 miles this morning before work and now my legs are jelly, send encouragement",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a big run, and your legs are probably thanking you. You've got this.",
+  "fallback": false,
+  "attempts": [
+   "That's a big run, and your legs are probably thanking you. You've got this."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 31,
+    "prompt_ms": 151.876,
+    "prompt_per_token_ms": 4.899225806451613,
+    "prompt_per_second": 204.1138823777292,
+    "predicted_n": 29,
+    "predicted_ms": 1616.605,
+    "predicted_per_token_ms": 57.73589285714286,
+    "predicted_per_second": 17.32024829813096
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h09",
+  "category": "conversions",
+  "text": "Hosting tonight and flustered. Oven needs 400 F, what's that in C for this oven, and 1 1/2 cups sugar is how many grams?",
+  "answer": "about 204 C; 300 g",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 400°F = 204.4°C. 1 1/2 cups of sugar = about 300 grams.",
+  "routed": false,
+  "final": "400°F is about 204°C. 1 1/2 cups of sugar is about 300 grams.",
+  "fallback": false,
+  "attempts": [
+   "400°F is about 204°C. 1 1/2 cups of sugar is about 300 grams."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 98,
+    "prompt_ms": 344.663,
+    "prompt_per_token_ms": 3.5169693877551023,
+    "prompt_per_second": 284.335713436023,
+    "predicted_n": 40,
+    "predicted_ms": 2272.181,
+    "predicted_per_token_ms": 58.261051282051284,
+    "predicted_per_second": 17.164125569221817
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h10",
+  "category": "conversions",
+  "text": "ugh I lost my 2/3 cup measure. how many tbsp is 2/3 cup? or tsp, whatever, I have both spoons",
+  "answer": "10 2/3 tbsp (10 tbsp + 2 tsp, or 32 tsp)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2/3 cup = 10 2/3 tablespoons = 32 teaspoons.",
+  "routed": false,
+  "final": "2/3 cup is 32 teaspoons. You have both spoons, so you can use the one you have to measure it out.",
+  "fallback": false,
+  "attempts": [
+   "2/3 cup is 32 teaspoons. You have both spoons, so you can use the one you have to measure it out."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 64,
+    "prompt_ms": 241.38,
+    "prompt_per_token_ms": 3.7715625,
+    "prompt_per_second": 265.14209959400114,
+    "predicted_n": 40,
+    "predicted_ms": 2305.663,
+    "predicted_per_token_ms": 59.119564102564105,
+    "predicted_per_second": 16.91487437669772
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h11",
+  "category": "conversions",
+  "text": "Meal prepping for the week. If I cook 2 cups of rice, how many grams is that dry? Want to log it right.",
+  "answer": "370 g",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2 cups of rice = about 370 grams.",
+  "routed": false,
+  "final": "2 cups of rice = about 370 grams dry. That's easy to log.",
+  "fallback": false,
+  "attempts": [
+   "2 cups of rice = about 370 grams dry. That's easy to log."
+  ],
+  "timings": [
+   {
+    "cache_n": 180,
+    "prompt_n": 54,
+    "prompt_ms": 237.539,
+    "prompt_per_token_ms": 4.39887037037037,
+    "prompt_per_second": 227.33109089454786,
+    "predicted_n": 30,
+    "predicted_ms": 1830.561,
+    "predicted_per_token_ms": 63.122793103448274,
+    "predicted_per_second": 15.842138011243549
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h12",
+  "category": "conversions",
+  "text": "my cousin in spain asked how hot it is here and it's 98 F. what's that in celsius so she gets it",
+  "answer": "about 37 C (36.7 C)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 98°F = 36.7°C.",
+  "routed": false,
+  "final": "That's 36.7°C. She'll probably be confused about the weather.",
+  "fallback": false,
+  "attempts": [
+   "That's 36.7°C. She'll probably be confused about the weather."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 54,
+    "prompt_ms": 220.829,
+    "prompt_per_token_ms": 4.0894259259259265,
+    "prompt_per_second": 244.53310027215628,
+    "predicted_n": 29,
+    "predicted_ms": 1588.789,
+    "predicted_per_token_ms": 56.742464285714284,
+    "predicted_per_second": 17.62348556038593
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h13",
+  "category": "casual_numbers",
+  "text": "already had 2 cups of coffee and its not even 9. thinking about a third, talk me out of it",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Two cups is already a lot. A third might feel like a lot, but it's still okay to take a break. You're not alone in this.",
+  "fallback": false,
+  "attempts": [
+   "Two cups is already a lot. A third might feel like a lot, but it's still okay to take a break. You're not alone in this."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 38,
+    "prompt_ms": 185.976,
+    "prompt_per_token_ms": 4.894105263157894,
+    "prompt_per_second": 204.32744009979783,
+    "predicted_n": 43,
+    "predicted_ms": 2414.959,
+    "predicted_per_token_ms": 57.499023809523806,
+    "predicted_per_second": 17.39159960893746
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h14",
+  "category": "conversions",
+  "text": "The shrimp bags are labeled in ounces and I need one and a half pounds for the boil tonight. How many oz do I grab?",
+  "answer": "24 oz",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1 1/2 pounds = 24 ounces.",
+  "routed": false,
+  "final": "One and a half pounds is 24 ounces. Grab 24 oz.",
+  "fallback": false,
+  "attempts": [
+   "One and a half pounds is 24 ounces. Grab 24 oz."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 69,
+    "prompt_ms": 263.693,
+    "prompt_per_token_ms": 3.82163768115942,
+    "prompt_per_second": 261.6679244424388,
+    "predicted_n": 28,
+    "predicted_ms": 1521.229,
+    "predicted_per_token_ms": 56.34181481481482,
+    "predicted_per_second": 17.748807050089106
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h15",
+  "category": "conversions",
+  "text": "Making granola bars for the kids lunches. A quarter cup of honey is how many grams? Trying to use the scale instead of a sticky measuring cup.",
+  "answer": "85 g",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1/4 cup of honey = about 85 grams.",
+  "routed": false,
+  "final": "A quarter cup of honey is about 85 grams. That's roughly 1/4 cup, so you can use the scale and just make sure it's about 85 grams.",
+  "fallback": false,
+  "attempts": [
+   "A quarter cup of honey is about 85 grams. That's roughly 1/4 cup, so you can use the scale and just make sure it's about 85 grams."
+  ],
+  "timings": [
+   {
+    "cache_n": 180,
+    "prompt_n": 57,
+    "prompt_ms": 228.754,
+    "prompt_per_token_ms": 4.013228070175439,
+    "prompt_per_second": 249.17597069340863,
+    "predicted_n": 50,
+    "predicted_ms": 2694.267,
+    "predicted_per_token_ms": 54.985040816326524,
+    "predicted_per_second": 18.186764711886386
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h16",
+  "category": "conversions",
+  "text": "making risotto and my measuring jug only has ml on it. recipe says two and a half cups of stock, what is that in ml?",
+  "answer": "about 592 ml",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2 1/2 cups = about 591 milliliters.",
+  "routed": false,
+  "final": "Two and a half cups is about 591 milliliters. So you'll need about 591 ml of stock.",
+  "fallback": false,
+  "attempts": [
+   "Two and a half cups is about 591 milliliters. So you'll need about 591 ml of stock."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 59,
+    "prompt_ms": 214.759,
+    "prompt_per_token_ms": 3.6399830508474573,
+    "prompt_per_second": 274.7265539511732,
+    "predicted_n": 39,
+    "predicted_ms": 1727.891,
+    "predicted_per_token_ms": 45.47081578947368,
+    "predicted_per_second": 21.992127975665127
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h17",
+  "category": "conversions",
+  "text": "This British recipe wants 150 g butter and all I have are sticks. How many sticks is that, roughly?",
+  "answer": "about 1 1/3 sticks (about 10 1/2 tbsp)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 150 grams of butter = about 1 1/3 sticks.",
+  "routed": false,
+  "final": "That's about 1 1/3 sticks. So roughly 1 stick and a quarter.",
+  "fallback": false,
+  "attempts": [
+   "That's about 1 1/3 sticks. So roughly 1 stick and a quarter."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 55,
+    "prompt_ms": 213.304,
+    "prompt_per_token_ms": 3.8782545454545456,
+    "prompt_per_second": 257.84795409368786,
+    "predicted_n": 31,
+    "predicted_ms": 1331.13,
+    "predicted_per_token_ms": 44.371,
+    "predicted_per_second": 22.537242793716615
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h18",
+  "category": "conversions",
+  "text": "soup recipe says a cup of diced onion, roughly how many grams is that so i can just weigh it",
+  "answer": "can't be converted without knowing the ingredient; use a scale",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1 cup can't be converted to grams without knowing the ingredient; a kitchen scale or the package label is safest.",
+  "routed": false,
+  "final": "A cup of diced onions is about 100–120 grams, depending on how finely they're chopped. You can weigh it with a kitchen scale or check the package label.",
+  "fallback": false,
+  "attempts": [
+   "A cup of diced onions is about 100–120 grams, depending on how finely they're chopped. You can weigh it with a kitchen scale or check the package label."
+  ],
+  "timings": [
+   {
+    "cache_n": 180,
+    "prompt_n": 57,
+    "prompt_ms": 192.954,
+    "prompt_per_token_ms": 3.3851578947368424,
+    "prompt_per_second": 295.4071954973724,
+    "predicted_n": 50,
+    "predicted_ms": 2077.244,
+    "predicted_per_token_ms": 42.39273469387756,
+    "predicted_per_second": 23.58894766334624
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h19",
+  "category": "casual_numbers",
+  "text": "turned 30 today!! made myself a little cake and honestly feeling ok about it",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Happy 30th! That's a big milestone, and you're still feeling good about it. That cake must have tasted like a win.",
+  "fallback": false,
+  "attempts": [
+   "Happy 30th! That's a big milestone, and you're still feeling good about it. That cake must have tasted like a win."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 31,
+    "prompt_ms": 131.307,
+    "prompt_per_token_ms": 4.235709677419354,
+    "prompt_per_second": 236.0879465679667,
+    "predicted_n": 41,
+    "predicted_ms": 1615.354,
+    "predicted_per_token_ms": 40.38385,
+    "predicted_per_second": 24.762374067851383
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h20",
+  "category": "conversions",
+  "text": "recipe says 1 1/2 lbs ground beef but the butcher here only does kg. what do i ask for?",
+  "answer": "about 0.68 kg (680 g)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1 1/2 pounds = about 0.7 kilogram.",
+  "routed": false,
+  "final": "Ask for 0.7 kg ground beef and mention the recipe's weight is 1 1/2 lbs. That's about 0.7 kg. The butcher might not know the conversion, so you can explain it politely.",
+  "fallback": false,
+  "attempts": [
+   "Ask for 0.7 kg ground beef and mention the recipe's weight is 1 1/2 lbs. That's about 0.7 kg. The butcher might not know the conversion, so you can explain it politely."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 70,
+    "prompt_ms": 230.985,
+    "prompt_per_token_ms": 3.2997857142857145,
+    "prompt_per_second": 303.0499816005368,
+    "predicted_n": 59,
+    "predicted_ms": 2439.162,
+    "predicted_per_token_ms": 42.05451724137931,
+    "predicted_per_second": 23.778658408092618
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h21",
+  "category": "conversions",
+  "text": "overnight oats recipe says 120 g oats, how many cups is that? no scale at the office",
+  "answer": "about 1 1/3 cups",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 120 grams of oats = about 1 1/3 cups.",
+  "routed": false,
+  "final": "120 grams of oats is about 1 1/3 cups. No scale needed.",
+  "fallback": false,
+  "attempts": [
+   "120 grams of oats is about 1 1/3 cups. No scale needed."
+  ],
+  "timings": [
+   {
+    "cache_n": 180,
+    "prompt_n": 52,
+    "prompt_ms": 182.092,
+    "prompt_per_token_ms": 3.501769230769231,
+    "prompt_per_second": 285.5699316828855,
+    "predicted_n": 31,
+    "predicted_ms": 1240.275,
+    "predicted_per_token_ms": 41.3425,
+    "predicted_per_second": 24.188184072080787
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h22",
+  "category": "conversions",
+  "text": "kiddo feels warm, thermometer says 38.7 but its in celsius and im used to fahrenheit. what is that?",
+  "answer": "about 101.7 F",
+  "facts": "",
+  "routed": false,
+  "final": "That's 103°F. It's a high, but it's not dangerous. You should rest and take a fever pill if you're not feeling well.",
+  "fallback": false,
+  "attempts": [
+   "That's 103°F. It's a high, but it's not dangerous. You should rest and take a fever pill if you're not feeling well."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 43,
+    "prompt_ms": 159.514,
+    "prompt_per_token_ms": 3.7096279069767446,
+    "prompt_per_second": 269.56881527640206,
+    "predicted_n": 46,
+    "predicted_ms": 1861.981,
+    "predicted_per_token_ms": 41.37735555555555,
+    "predicted_per_second": 24.167808371836234
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h23",
+  "category": "conversions",
+  "text": "the chocolate bar says 200 g but my recipe is in oz. how many oz is that?",
+  "answer": "about 7 oz",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 200 grams = about 7 ounces.",
+  "routed": false,
+  "final": "200 grams is about 7 ounces. So you'd need roughly 7 oz of chocolate.",
+  "fallback": false,
+  "attempts": [
+   "200 grams is about 7 ounces. So you'd need roughly 7 oz of chocolate."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 62,
+    "prompt_ms": 210.263,
+    "prompt_per_token_ms": 3.3913387096774192,
+    "prompt_per_second": 294.86880716055606,
+    "predicted_n": 32,
+    "predicted_ms": 1237.113,
+    "predicted_per_token_ms": 39.90687096774194,
+    "predicted_per_second": 25.058341477294313
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h24",
+  "category": "casual_numbers",
+  "text": "my 4 year old just told me my pancakes are 'fine'. brutal honesty at breakfast",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a really brave thing to say. Your kid just told you the truth, and you're still holding up. That's how real love feels.",
+  "fallback": false,
+  "attempts": [
+   "That's a really brave thing to say. Your kid just told you the truth, and you're still holding up. That's how real love feels."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 32,
+    "prompt_ms": 122.854,
+    "prompt_per_token_ms": 3.8391875,
+    "prompt_per_second": 260.47177951063867,
+    "predicted_n": 42,
+    "predicted_ms": 1696.071,
+    "predicted_per_token_ms": 41.36758536585366,
+    "predicted_per_second": 24.173516320955905
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h25",
+  "category": "conversions",
+  "text": "mom's pound cake recipe says 3/4 cup butter. how many sticks is that, and in oz? trying to not mess this up for thanksgiving",
+  "answer": "1 1/2 sticks (12 tbsp, 6 oz, about 170 g)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 3/4 cup of butter = 3/8 pound = 1 1/2 sticks = 6 ounces.",
+  "routed": false,
+  "final": "3/4 cup butter is 1 1/2 sticks, and that's 6 ounces. Easy enough!",
+  "fallback": false,
+  "attempts": [
+   "3/4 cup butter is 1 1/2 sticks, and that's 6 ounces. Easy enough!"
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 87,
+    "prompt_ms": 254.211,
+    "prompt_per_token_ms": 2.9219655172413797,
+    "prompt_per_second": 342.2353871390302,
+    "predicted_n": 35,
+    "predicted_ms": 1416.817,
+    "predicted_per_token_ms": 41.67108823529412,
+    "predicted_per_second": 23.99745344670483
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h26",
+  "category": "conversions",
+  "text": "settle a kitchen argument: how many fl oz in a pint, and how many cups in a quart?",
+  "answer": "16 fl oz; 4 cups",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1 pint = 16 fluid ounces = 2 cups. 1 quart = 32 fluid ounces = 4 cups.",
+  "routed": false,
+  "final": "A pint is 16 fl oz and 2 cups. A quart is 32 fl oz and 4 cups.",
+  "fallback": false,
+  "attempts": [
+   "A pint is 16 fl oz and 2 cups. A quart is 32 fl oz and 4 cups."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 63,
+    "prompt_ms": 229.277,
+    "prompt_per_token_ms": 3.6393174603174603,
+    "prompt_per_second": 274.77679837052995,
+    "predicted_n": 37,
+    "predicted_ms": 1497.628,
+    "predicted_per_token_ms": 41.60077777777778,
+    "predicted_per_second": 24.038012109816325
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h27",
+  "category": "conversions",
+  "text": "weighing everything tonight bc I'm lazy about dishes. 3/4 cup brown sugar in grams?",
+  "answer": "165 g",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 3/4 cup of brown sugar = about 165 grams.",
+  "routed": false,
+  "final": "Yes, 3/4 cup of brown sugar is about 165 grams.",
+  "fallback": false,
+  "attempts": [
+   "Yes, 3/4 cup of brown sugar is about 165 grams."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 50,
+    "prompt_ms": 170.433,
+    "prompt_per_token_ms": 3.40866,
+    "prompt_per_second": 293.37041535383406,
+    "predicted_n": 29,
+    "predicted_ms": 1148.962,
+    "predicted_per_token_ms": 41.03435714285714,
+    "predicted_per_second": 24.369822500657115
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h28",
+  "category": "casual_numbers",
+  "text": "only slept 3 hours, the baby was up all night. today is going to be rough",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Three hours of sleep is a lot for a baby, and it's totally normal to feel exhausted. You're doing the right thing by taking care of them now.",
+  "fallback": false,
+  "attempts": [
+   "Three hours of sleep is a lot for a baby, and it's totally normal to feel exhausted. You're doing the right thing by taking care of them now."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 33,
+    "prompt_ms": 138.413,
+    "prompt_per_token_ms": 4.194333333333334,
+    "prompt_per_second": 238.41691170627035,
+    "predicted_n": 44,
+    "predicted_ms": 1372.223,
+    "predicted_per_token_ms": 31.912162790697675,
+    "predicted_per_second": 31.336014627360132
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h29",
+  "category": "conversions",
+  "text": "my brother in law keeps asking how many liters are in a gallon of milk and i genuinely dont know, help me win this",
+  "answer": "about 3.8 L (3.785 L)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1 gallon of milk = about 3 3/4 liters.",
+  "routed": false,
+  "final": "One gallon is about 3.78 liters. So he's right, but you can say it's roughly 3 3/4 liters. That's a good way to explain it without making it sound like a math problem.",
+  "fallback": false,
+  "attempts": [
+   "One gallon is about 3.78 liters. So he's right, but you can say it's roughly 3 3/4 liters. That's a good way to explain it without making it sound like a math problem."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 69,
+    "prompt_ms": 176.505,
+    "prompt_per_token_ms": 2.5580434782608696,
+    "prompt_per_second": 390.92376986487636,
+    "predicted_n": 59,
+    "predicted_ms": 1885.125,
+    "predicted_per_token_ms": 32.502155172413794,
+    "predicted_per_second": 30.767190504608447
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "h30",
+  "category": "conversions",
+  "text": "bread recipe from a baker friend lists 500 g water. how many cups? im so tired i cant think",
+  "answer": "about 2.1 cups (just over 2 cups)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 500 grams of water = about 2 1/8 cups.",
+  "routed": false,
+  "final": "500 grams of water is about 2 1/8 cups. That's roughly 2.125 cups. Easy to remember: 500g = 2 1/8 cups.",
+  "fallback": false,
+  "attempts": [
+   "500 grams of water is about 2 1/8 cups. That's roughly 2.125 cups. Easy to remember: 500g = 2 1/8 cups."
+  ],
+  "timings": [
+   {
+    "cache_n": 179,
+    "prompt_n": 54,
+    "prompt_ms": 157.629,
+    "prompt_per_token_ms": 2.9190555555555555,
+    "prompt_per_second": 342.5765563443275,
+    "predicted_n": 56,
+    "predicted_ms": 1910.434,
+    "predicted_per_token_ms": 34.73516363636364,
+    "predicted_per_second": 28.789269872709554
+   }
+  ],
+  "cue_valid": true
+ }
+]

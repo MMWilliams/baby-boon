@@ -527,3 +527,18 @@ The remaining wrong replies are mostly the model ignoring or garbling a correct 
 octopus hearts, an unrelated reply) and one layer bug ("one and a half cups" read as a half, fixed afterwards). Next lever
 is a reply check, not more regex: when a conversion note was injected and its number is missing from the reply, resample
 or answer with the note.
+
+## Conversion reply check (`evidence/facts3-unseen`)
+
+The guard now also checks a reply against this turn's conversion note: a converted value must appear (digits or spelled),
+and every figure written in digits must come from the note or the user's message; otherwise it resamples up to 4 times
+and finally answers with the note itself (`baby_boon.facts.keeps_figures`, `baby_boon.guard.guarded`). Fact notes aren't
+checked. Same v12 model, no retrain.
+
+On a third fresh set of 30 prompts (24 conversions, 6 controls; separate author and blind scorer agents), check off vs on:
+wrong facts 7 to 3 (4 vs 0 discordant, p = 0.125), preference on 4 vs off 0 with 26 ties (p = 0.125), mean 7.77 to 8.30,
+criticals 1 both (the same reply). The check fired on 4 of 24 conversions and all 4 were the preferred cases: two
+resamples removed an invented second figure, and two unconvertible requests (chopped walnuts, diced onion) ended on the
+honest can't-convert line after every attempt invented a weight. Still wrong in both runs: a false remark next to a correct
+figure ("374°F ... way too hot for an oven"), a layer miss ("38.7 but its in celsius", fixed afterwards) that also carried
+a fever-pill suggestion in a child-fever context, and one control misreading who slept.

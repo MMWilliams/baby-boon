@@ -1,0 +1,122 @@
+{
+ "h01": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h02": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h03": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h04": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h05": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h06": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h07": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h08": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h09": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h10": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h11": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h12": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h13": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h14": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h15": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h16": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h17": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h18": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h19": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h20": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h21": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h22": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h23": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h24": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h25": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h26": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h27": {
+  "A": "check-off",
+  "B": "check-on"
+ },
+ "h28": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h29": {
+  "A": "check-on",
+  "B": "check-off"
+ },
+ "h30": {
+  "A": "check-on",
+  "B": "check-off"
+ }
+}
