@@ -2,6 +2,7 @@
 is resampled. Pilots v5 (SFT) and v6 (DPO) couldn't train out the base 1.7B's own invented-sunset answer to d15."""
 import re
 
+from . import health
 from .facts import keeps_figures
 
 SCENE = (r"(?:sun|sunset|sunrise|sky|moon|stars?|light|sunlight|moonlight|rain|wind|breeze|air|room|silence|sea|ocean"
@@ -45,6 +46,7 @@ FALLBACK = "I can't see what's around you, so I won't describe it."
 SURROUNDINGS_REPLY = "I can't see what's around you from here, so I won't guess. Tell me what it's like and I'll go from there."
 # Outside robot context the misses are low_energy "tell me something nice" requests (d15, v9 u05).
 WARM_FALLBACK = "Here's one small good thing: you made it through today, and that counts."
+ESCALATED = {"text": health.EMERGENCY, "tone": "calm", "expression": "concerned", "intensity": 2, "cue_valid": True}
 
 
 def robot(user):
@@ -55,7 +57,10 @@ def asks_surroundings(user):
     return robot(user) and bool(SURROUNDINGS.search(user)) and not IMAGINE.search(user)
 
 
-def fallback_for(user):
+def fallback_for(user, note=None, last=""):
+    """A health turn gets the note plus a referral; a conversion note the last reply didn't use becomes the reply."""
+    if health.health(user): return health.fallback(note)
+    if note and not keeps_figures(last, note, user): return note
     if asks_surroundings(user):
         return ("Sorry it's been a long one. " if TIRED.search(user) else "") + SURROUNDINGS_REPLY
     return FALLBACK if robot(user) else WARM_FALLBACK
@@ -64,6 +69,7 @@ def fallback_for(user):
 def acceptable(text, user):
     """Robot context gets the stricter check; a surroundings question must also be answered with an admission."""
     text, user = text.replace("’", "'"), user.replace("’", "'")
+    if health.health(user) and not health.acceptable(text): return False
     if not robot(user): return not PERCEPTION.search(text)
     return not ROBOT_PERCEPTION.search(text) and (not asks_surroundings(user) or bool(ADMITS.search(text)))
 
@@ -71,10 +77,12 @@ def acceptable(text, user):
 def guarded(generate, tries, user, note=None):
     """generate(attempt) -> dict with "text"; attempt 0 is greedy, later attempts sample. Returns the first acceptable
     reply, else the last one with a fallback that fits the request as its text. A conversion note, when this turn has
-    one, must be used (its figures and no others); a reply that never manages it is replaced by the note itself."""
+    one, must be used (its figures and no others); a reply that never manages it is replaced by the note itself. A health
+    context falls back to the note plus a referral, and a red-flag message never reaches the model."""
+    if health.emergency(user):
+        return {**ESCALATED, "guard_attempts": 0, "guard_fallback": True, "guard_escalated": True}
     for attempt in range(tries + 1):
         reply = generate(attempt)
         if acceptable(reply["text"], user) and (not note or keeps_figures(reply["text"], note, user)):
             return {**reply, "guard_attempts": attempt + 1}
-    text = note if note and not keeps_figures(reply["text"], note, user) else fallback_for(user)
-    return {**reply, "text": text, "guard_attempts": tries + 1, "guard_fallback": True}
+    return {**reply, "text": fallback_for(user, note, reply["text"]), "guard_attempts": tries + 1, "guard_fallback": True}

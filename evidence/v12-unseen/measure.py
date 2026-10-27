@@ -11,6 +11,7 @@ from baby_boon.common import SYSTEM
 from baby_boon.cues import CUE_INSTRUCTION
 from baby_boon.facts import conversion_note, with_facts
 from baby_boon.guard import asks_surroundings, guarded
+from baby_boon.health import with_lead
 
 HERE = pathlib.Path(__file__).parent
 p = argparse.ArgumentParser()
@@ -24,6 +25,7 @@ rows = []
 for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
     messages = [{"role": "system", "content": SYSTEM + CUE_INSTRUCTION}, {"role": "user", "content": prompt["text"]}]
     if a.facts: messages = with_facts(messages, prompt["text"])
+    messages = with_lead(messages, prompt["text"])
     attempts = []
 
     def generate(attempt):
