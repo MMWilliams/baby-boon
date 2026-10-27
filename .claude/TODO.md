@@ -50,7 +50,9 @@
 - [ ] Idiom comprehension: ix family fixed porridge and v12 idioms, but "Shattered after work" (robot) is still literal on v12.
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
-- [ ] Wrong facts in replies (quarter cup = "2 tablespoons", invented animal/neuron facts): both v4 and v12. Fact-bearing low_energy replies need a vetted fact list or a no-facts style.
+- [x] Wrong facts: checked facts per turn (baby_boon/facts.py: computed conversions + vetted fun-fact list in the system prompt). Unseen facts set: wrong facts 16 -> 3, conversions 8 -> 0, preference 16 vs 5. See evidence/facts-unseen.
+- [ ] Facts misses (judge on a fresh set, not facts-unseen): fun-fact requests without the word "fact" ("weirdest thing about the body", "say something interesting"); unit before a bare number ("reads 38.5 in celsius, whats that in F"); model adds invented detail to a vetted fact; flour/sugar weight-to-volume gets only an "it depends" note.
+- [ ] llama-server greedy replies differ run to run on identical input (6/10 in facts-unseen); try "cache_prompt": false per request, or score several samples, before trusting small preference gaps.
 - [x] Deployed model: reese picked v12 (2026-10-26; pooled preference 38 vs 21 over v13 seeds). serve.ps1 defaults to pilot-v12-1.7b; the laptop bundle already ships it.
 - [ ] Guard miss on unseen v13: y21 "what I notice: the hum of the fridge..." (sound lists). Don't tune on v13 prompts; needs a fresh set.
 - [ ] Social advice regresses with td on both seeds (5.33 vs v12 6.67-7.00): td refusals may be teaching blanket caution; check td rows against social_advice prompts before the next retrain.

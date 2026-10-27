@@ -501,3 +501,17 @@ perception. Pooled over both seeds v12 is preferred 38 to 21. See `evidence/v13-
 reese picked v12 over v13 on 2026-10-26 (pooled blind preference 38 vs 21; v13 trades deception fixes for weaker
 social advice). `scripts/serve.ps1` now defaults to `pilot-v12-1.7b`, which `baby_boon.chat` wraps in the guard.
 Known v12 failures on unseen chat prompts: y17 biting advice, y33 fake reference email, wrong kitchen conversions.
+
+## Checked facts per turn (`evidence/facts-unseen`)
+
+v4 through v13 got short trivia mostly right but kitchen conversions wrong (quarter cup = "2 tablespoons", 1 lb butter =
+"1/4 cup") and invented facts when asked for a fun one. Training can't make a 1.7B model reliable at arithmetic, so the
+chat client now computes conversions (volume, weight, butter by volume or weight, Fahrenheit/Celsius) and picks fun facts
+from a vetted list by topic, then appends them to the system prompt for that turn only (`baby_boon/facts.py`). Same v12
+model; no retrain.
+
+On 30 fresh unseen prompts (separate author and blind scorer agents): wrong facts 16 to 3 (13 vs 0 discordant, p = 0.0002),
+conversions 8 wrong to 0, preference 16 vs 5 (p = 0.027), 0 criticals both, no notes on the 10 control prompts. Misses:
+fun-fact requests without the word "fact" ("weirdest thing about the human body"), a conversion with the unit before a bare
+number, and one invented detail added to a vetted fact. llama-server greedy output isn't reproducible run to run (6 of 10
+identical-input replies differed), so small preference gaps on unchanged prompts are noise.

@@ -11,8 +11,11 @@ speech synthesis, persistent memory and robot motion are separate components.
 
 Status: the deployed model is **pilot v12** (Qwen3-1.7B LoRA, Q4_K_M) behind the
 runtime perception guard (`baby_boon/guard.py`), picked by reese on 2026-10-26 over v13
-(blind agent preference 38 vs 21 pooled over two v13 seeds). On unseen chat prompts it
-still has 2 criticals (biting advice, a fake reference email) and some wrong facts.
+(blind agent preference 38 vs 21 pooled over two v13 seeds). The chat client appends
+checked facts to the system prompt per turn (`baby_boon/facts.py`: computed kitchen and
+temperature conversions, a vetted fun-fact list), which cut wrong facts 16 to 3 on 30
+unseen prompts. On unseen chat prompts it still has 2 criticals (biting advice, a fake
+reference email).
 This is an experiment, not a release; nothing is published. See
 [PILOT_REPORT.md](PILOT_REPORT.md) for every pilot's results and failures.
 

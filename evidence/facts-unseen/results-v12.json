@@ -1,0 +1,824 @@
+[
+ {
+  "id": "f01",
+  "category": "conversions",
+  "text": "ugh my 1/3 measuring cup is missing. how many tablespoons is a third of a cup?",
+  "answer": "5 tbsp + 1 tsp (5 1/3 tbsp)",
+  "facts": "",
+  "routed": false,
+  "final": "A third of a cup is about 5 tablespoons. That's roughly 1/3 of a cup, which is about 1/4 of a cup in tablespoons. So, 5 tablespoons is a third of a cup.",
+  "fallback": false,
+  "attempts": [
+   "A third of a cup is about 5 tablespoons. That's roughly 1/3 of a cup, which is about 1/4 of a cup in tablespoons. So, 5 tablespoons is a third of a cup."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 30,
+    "prompt_ms": 82.553,
+    "prompt_per_token_ms": 2.7517666666666667,
+    "prompt_per_second": 363.40290480055234,
+    "predicted_n": 58,
+    "predicted_ms": 1632.836,
+    "predicted_per_token_ms": 28.646245614035088,
+    "predicted_per_second": 34.9085884926594
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f02",
+  "category": "fun_facts",
+  "text": "studying for finals and my brain is mush, give me a weird animal fact",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "A squid has a brain that's bigger than its body. That's a weird fact, right?",
+  "fallback": false,
+  "attempts": [
+   "A squid has a brain that's bigger than its body. That's a weird fact, right?"
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 25,
+    "prompt_ms": 69.409,
+    "prompt_per_token_ms": 2.7763600000000004,
+    "prompt_per_second": 360.1838378308288,
+    "predicted_n": 31,
+    "predicted_ms": 845.874,
+    "predicted_per_token_ms": 28.195800000000002,
+    "predicted_per_second": 35.46627511898935
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f03",
+  "category": "casual_numbers",
+  "text": "3 cups of coffee and its not even 10am. today is gonna be a lot",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Three cups of coffee at 10am is a lot, especially if you're not used to it. That's why you're feeling it now. You're not alone.",
+  "fallback": false,
+  "attempts": [
+   "Three cups of coffee at 10am is a lot, especially if you're not used to it. That's why you're feeling it now. You're not alone."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 28,
+    "prompt_ms": 79.253,
+    "prompt_per_token_ms": 2.8304642857142857,
+    "prompt_per_second": 353.2989287471768,
+    "predicted_n": 47,
+    "predicted_ms": 1316.608,
+    "predicted_per_token_ms": 28.62191304347826,
+    "predicted_per_second": 34.938265603733235
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f04",
+  "category": "conversions",
+  "text": "recipe wants 3/4 cup milk but my measuring thing only shows fl oz. how many fl oz is that",
+  "answer": "6 fl oz",
+  "facts": "",
+  "routed": false,
+  "final": "3/4 cup is about 2.25 fl oz. So you can just use the 2.25 fl oz and call it good.",
+  "fallback": false,
+  "attempts": [
+   "3/4 cup is about 2.25 fl oz. So you can just use the 2.25 fl oz and call it good."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 32,
+    "prompt_ms": 73.982,
+    "prompt_per_token_ms": 2.3119375,
+    "prompt_per_second": 432.5376442918548,
+    "predicted_n": 43,
+    "predicted_ms": 1263.3,
+    "predicted_per_token_ms": 30.07857142857143,
+    "predicted_per_second": 33.24625979577298
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f05",
+  "category": "quick_facts",
+  "text": "wait whats the capital of australia, is it sydney?",
+  "answer": "Canberra",
+  "facts": "",
+  "routed": false,
+  "final": "No, Sydney is the largest city, not the capital. The capital is Canberra.",
+  "fallback": false,
+  "attempts": [
+   "No, Sydney is the largest city, not the capital. The capital is Canberra."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 21,
+    "prompt_ms": 61.28,
+    "prompt_per_token_ms": 2.9180952380952383,
+    "prompt_per_second": 342.6892950391645,
+    "predicted_n": 28,
+    "predicted_ms": 779.264,
+    "predicted_per_token_ms": 28.86162962962963,
+    "predicted_per_second": 34.648078186596585
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f06",
+  "category": "conversions",
+  "text": "got 1.5 lbs of ground beef but the recipe is all in ounces. how many oz is that",
+  "answer": "24 oz",
+  "facts": "",
+  "routed": false,
+  "final": "1.5 lbs is 30 oz. Easy enough to convert.",
+  "fallback": false,
+  "attempts": [
+   "1.5 lbs is 30 oz. Easy enough to convert."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 31,
+    "prompt_ms": 83.268,
+    "prompt_per_token_ms": 2.6860645161290324,
+    "prompt_per_second": 372.29187683143584,
+    "predicted_n": 26,
+    "predicted_ms": 723.198,
+    "predicted_per_token_ms": 28.92792,
+    "predicted_per_second": 34.56867967002121
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f07",
+  "category": "fun_facts",
+  "text": "give me a cool space fact pls",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The Great Barrier Reef is home to over 1,500 species of fish, and some of them have evolved to live in the water column, like the angelfish, which can swim up to 100 meters in the water column. That's a pretty cool fact!",
+  "fallback": false,
+  "attempts": [
+   "The Great Barrier Reef is home to over 1,500 species of fish, and some of them have evolved to live in the water column, like the angelfish, which can swim up to 100 meters in the water column. That's a pretty cool fact!"
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 16,
+    "prompt_ms": 48.772,
+    "prompt_per_token_ms": 3.04825,
+    "prompt_per_second": 328.0570819322562,
+    "predicted_n": 70,
+    "predicted_ms": 1989.491,
+    "predicted_per_token_ms": 28.833202898550724,
+    "predicted_per_second": 34.68223781861793
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f08",
+  "category": "casual_numbers",
+  "text": "its 95 degrees out and my AC just died. i'm literally melting",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Your AC just died and it's 95 degrees out. You're melting, and that's real. You're not alone in that.",
+  "fallback": false,
+  "attempts": [
+   "Your AC just died and it's 95 degrees out. You're melting, and that's real. You're not alone in that."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 25,
+    "prompt_ms": 70.672,
+    "prompt_per_token_ms": 2.82688,
+    "prompt_per_second": 353.74688702739417,
+    "predicted_n": 40,
+    "predicted_ms": 1152.89,
+    "predicted_per_token_ms": 29.561282051282053,
+    "predicted_per_second": 33.828032162652114
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f09",
+  "category": "conversions",
+  "text": "if a recipe says two sticks of butter thats how many cups?",
+  "answer": "1 cup (16 tbsp, 8 oz)",
+  "facts": "",
+  "routed": false,
+  "final": "Two sticks of butter is about 1 cup, depending on how finely you chop it. If you're using a stick, it's roughly 1/2 cup. So two sticks would be 1 cup. Check your butter for consistency, because it can vary.",
+  "fallback": false,
+  "attempts": [
+   "Two sticks of butter is about 1 cup, depending on how finely you chop it. If you're using a stick, it's roughly 1/2 cup. So two sticks would be 1 cup. Check your butter for consistency, because it can vary."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 22,
+    "prompt_ms": 68.941,
+    "prompt_per_token_ms": 3.1336818181818185,
+    "prompt_per_second": 319.11344482963693,
+    "predicted_n": 65,
+    "predicted_ms": 1772.954,
+    "predicted_per_token_ms": 27.70240625,
+    "predicted_per_second": 36.09794726766741
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f10",
+  "category": "conversions",
+  "text": "This British recipe says to bake at 180C. What should I set my oven to in Fahrenheit?",
+  "answer": "356 F (recipes usually round to 350 F)",
+  "facts": "",
+  "routed": false,
+  "final": "180C is about 350°F. So you can set it to 350°F if your oven is calibrated in Fahrenheit, or 180°C if it's calibrated in Celsius.",
+  "fallback": false,
+  "attempts": [
+   "180C is about 350°F. So you can set it to 350°F if your oven is calibrated in Fahrenheit, or 180°C if it's calibrated in Celsius."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 32,
+    "prompt_ms": 73.249,
+    "prompt_per_token_ms": 2.28903125,
+    "prompt_per_second": 436.8660323007823,
+    "predicted_n": 55,
+    "predicted_ms": 1502.182,
+    "predicted_per_token_ms": 27.818185185185186,
+    "predicted_per_second": 35.94770806733139
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f11",
+  "category": "fun_facts",
+  "text": "whats the weirdest thing about the human body",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The human body has a lot of weird things. Like the fact that we can't see our own breath, or that our skin is made of dead cells that keep shedding every day. Or that we can't hear our own heartbeat, which is actually louder than most people think.",
+  "fallback": false,
+  "attempts": [
+   "The human body has a lot of weird things. Like the fact that we can't see our own breath, or that our skin is made of dead cells that keep shedding every day. Or that we can't hear our own heartbeat, which is actually louder than most people think."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 19,
+    "prompt_ms": 63.811,
+    "prompt_per_token_ms": 3.3584736842105265,
+    "prompt_per_second": 297.754305683973,
+    "predicted_n": 67,
+    "predicted_ms": 1945.736,
+    "predicted_per_token_ms": 29.480848484848487,
+    "predicted_per_second": 33.920326292981166
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f12",
+  "category": "quick_facts",
+  "text": "what year did the berlin wall come down? arguing w my dad rn",
+  "answer": "1989",
+  "facts": "",
+  "routed": false,
+  "final": "The Berlin Wall fell in 1989. Your dad probably remembers it differently, but that's the actual date.",
+  "fallback": false,
+  "attempts": [
+   "The Berlin Wall fell in 1989. Your dad probably remembers it differently, but that's the actual date."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 23,
+    "prompt_ms": 76.64,
+    "prompt_per_token_ms": 3.332173913043478,
+    "prompt_per_second": 300.1043841336117,
+    "predicted_n": 36,
+    "predicted_ms": 998.677,
+    "predicted_per_token_ms": 28.533628571428572,
+    "predicted_per_second": 35.04636634267135
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f13",
+  "category": "conversions",
+  "text": "kid's thermometer says 102.2 F and the nurse line wants it in celsius. what is that??",
+  "answer": "39 C",
+  "facts": "",
+  "routed": false,
+  "final": "That's 38.9 degrees Celsius. You can tell the nurse it's 39, and the thermometer should show 38.9.",
+  "fallback": false,
+  "attempts": [
+   "That's 38.9 degrees Celsius. You can tell the nurse it's 39, and the thermometer should show 38.9."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 34,
+    "prompt_ms": 89.766,
+    "prompt_per_token_ms": 2.6401764705882353,
+    "prompt_per_second": 378.7625604349085,
+    "predicted_n": 43,
+    "predicted_ms": 1173.134,
+    "predicted_per_token_ms": 27.931761904761906,
+    "predicted_per_second": 35.801536738343614
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f14",
+  "category": "casual_numbers",
+  "text": "cake's in at 350 for another 30 min. why do i always start baking at 11pm lol",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Because you're a night owl, and your body clock is set to 11pm. It's not a bad thing, just a habit you've got.",
+  "fallback": false,
+  "attempts": [
+   "Because you're a night owl, and your body clock is set to 11pm. It's not a bad thing, just a habit you've got."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 36,
+    "prompt_ms": 87.507,
+    "prompt_per_token_ms": 2.43075,
+    "prompt_per_second": 411.39565977578934,
+    "predicted_n": 44,
+    "predicted_ms": 1189.48,
+    "predicted_per_token_ms": 27.66232558139535,
+    "predicted_per_second": 36.1502505296432
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f15",
+  "category": "conversions",
+  "text": "only have a teaspoon and i need 2 tbsp of soy sauce, how many teaspoons do i use",
+  "answer": "6 tsp",
+  "facts": "",
+  "routed": false,
+  "final": "Two tablespoons of soy sauce is four teaspoons. So you'd need to use four teaspoons of soy sauce.",
+  "fallback": false,
+  "attempts": [
+   "Two tablespoons of soy sauce is four teaspoons. So you'd need to use four teaspoons of soy sauce."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 29,
+    "prompt_ms": 74.139,
+    "prompt_per_token_ms": 2.5565172413793102,
+    "prompt_per_second": 391.1571507573612,
+    "predicted_n": 32,
+    "predicted_ms": 825.192,
+    "predicted_per_token_ms": 26.619096774193547,
+    "predicted_per_second": 37.567014706880336
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f16",
+  "category": "fun_facts",
+  "text": "random food fact, go",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Octopuses have three hearts: two pump blood to the gills, and one pumps it to the rest of the body. They stop the second one when they swim, which is why they can't really \"swim\" like fish.",
+  "fallback": false,
+  "attempts": [
+   "Octopuses have three hearts: two pump blood to the gills, and one pumps it to the rest of the body. They stop the second one when they swim, which is why they can't really \"swim\" like fish."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 14,
+    "prompt_ms": 48.367,
+    "prompt_per_token_ms": 3.454785714285714,
+    "prompt_per_second": 289.4535530423636,
+    "predicted_n": 60,
+    "predicted_ms": 1457.435,
+    "predicted_per_token_ms": 24.702288135593218,
+    "predicted_per_second": 40.482079818310936
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f17",
+  "category": "conversions",
+  "text": "how many ml is half a cup? my measuring jug is metric only",
+  "answer": "about 118 ml (1/2 US cup = 118.3 ml)",
+  "facts": "",
+  "routed": false,
+  "final": "Half a cup is 250 ml. If you're using a metric jug, that's straightforward. If you're using a US cup, it's about 250 ml, but the US cup is a bit bigger than the metric cup. So you might want to check your jug's markings to be sure.",
+  "fallback": false,
+  "attempts": [
+   "Half a cup is 250 ml. If you're using a metric jug, that's straightforward. If you're using a US cup, it's about 250 ml, but the US cup is a bit bigger than the metric cup. So you might want to check your jug's markings to be sure."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 23,
+    "prompt_ms": 72.77,
+    "prompt_per_token_ms": 3.1639130434782605,
+    "prompt_per_second": 316.0643122165728,
+    "predicted_n": 77,
+    "predicted_ms": 2270.86,
+    "predicted_per_token_ms": 29.879736842105263,
+    "predicted_per_second": 33.4674968954493
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f18",
+  "category": "casual_numbers",
+  "text": "down 2 pounds this week!! small but im taking it",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a solid start. Small wins count, especially when you're working hard.",
+  "fallback": false,
+  "attempts": [
+   "That's a solid start. Small wins count, especially when you're working hard."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 21,
+    "prompt_ms": 71.161,
+    "prompt_per_token_ms": 3.3886190476190476,
+    "prompt_per_second": 295.1054650721603,
+    "predicted_n": 27,
+    "predicted_ms": 934.036,
+    "predicted_per_token_ms": 35.924461538461536,
+    "predicted_per_second": 27.83618618554317
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f19",
+  "category": "quick_facts",
+  "text": "Quick one: which planet is closest to the sun?",
+  "answer": "Mercury",
+  "facts": "",
+  "routed": false,
+  "final": "Mercury. It's the closest planet to the Sun, because it's the smallest and closest to the Sun in its orbit.",
+  "fallback": false,
+  "attempts": [
+   "Mercury. It's the closest planet to the Sun, because it's the smallest and closest to the Sun in its orbit."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 20,
+    "prompt_ms": 69.63,
+    "prompt_per_token_ms": 3.4814999999999996,
+    "prompt_per_second": 287.2325147206664,
+    "predicted_n": 37,
+    "predicted_ms": 1277.837,
+    "predicted_per_token_ms": 35.49547222222222,
+    "predicted_per_second": 28.172607304374502
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f20",
+  "category": "conversions",
+  "text": "need 4 oz of cheese and my scale only does grams, help",
+  "answer": "about 113 g (113.4 g)",
+  "facts": "",
+  "routed": false,
+  "final": "4 oz is about 113 grams. Just weigh it on the scale, and if it's not right, try again. Or use a kitchen scale that says oz.",
+  "fallback": false,
+  "attempts": [
+   "4 oz is about 113 grams. Just weigh it on the scale, and if it's not right, try again. Or use a kitchen scale that says oz."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 23,
+    "prompt_ms": 85.412,
+    "prompt_per_token_ms": 3.7135652173913045,
+    "prompt_per_second": 269.2830047300145,
+    "predicted_n": 47,
+    "predicted_ms": 1657.791,
+    "predicted_per_token_ms": 36.03893478260869,
+    "predicted_per_second": 27.747767963512892
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f21",
+  "category": "fun_facts",
+  "text": "ok the deep ocean. whats the creepiest thing living down there",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The deep ocean has some weird things. Maybe the giant squid? Or the anglerfish with a glowing lure? Or the bioluminescent jellyfish that drifts around like a ghost?",
+  "fallback": false,
+  "attempts": [
+   "The deep ocean has some weird things. Maybe the giant squid? Or the anglerfish with a glowing lure? Or the bioluminescent jellyfish that drifts around like a ghost?"
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 22,
+    "prompt_ms": 85.557,
+    "prompt_per_token_ms": 3.8889545454545456,
+    "prompt_per_second": 257.138515843239,
+    "predicted_n": 50,
+    "predicted_ms": 1761.251,
+    "predicted_per_token_ms": 35.94389795918367,
+    "predicted_per_second": 27.821133955353325
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f22",
+  "category": "conversions",
+  "text": "whats 425 F in celsius, my new oven only shows C and im losing it",
+  "answer": "about 218 C (218.3 C, often rounded to 220 C)",
+  "facts": "",
+  "routed": false,
+  "final": "425°F is about 218°C. You can check it on a converter or use a calculator app. If your oven only shows Celsius, you can still use the conversion to figure out what it's really saying.",
+  "fallback": false,
+  "attempts": [
+   "425°F is about 218°C. You can check it on a converter or use a calculator app. If your oven only shows Celsius, you can still use the conversion to figure out what it's really saying."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 30,
+    "prompt_ms": 105.066,
+    "prompt_per_token_ms": 3.5022,
+    "prompt_per_second": 285.53480669293583,
+    "predicted_n": 58,
+    "predicted_ms": 2036.228,
+    "predicted_per_token_ms": 35.72329824561404,
+    "predicted_per_second": 27.992935958055778
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f23",
+  "category": "casual_numbers",
+  "text": "just baked 4 dozen cookies for the bake sale and my kitchen is a war zone",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Your kitchen is a war zone, and you've baked 4 dozen cookies. That's a lot of cookies for a small group of people. You've got a lot of cookies to share, and you've already baked them. That's a lot of cookies for a small group of people. You've got a lot of cookies to share, and you've already baked them. That's a lot of cookies for a small group of people.",
+  "fallback": false,
+  "attempts": [
+   "Your kitchen is a war zone, and you've baked 4 dozen cookies. That's a lot of cookies for a small group of people. You've got a lot of cookies to share, and you've already baked them. That's a lot of cookies for a small group of people. You've got a lot of cookies to share, and you've already baked them. That's a lot of cookies for a small group of people."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 26,
+    "prompt_ms": 87.801,
+    "prompt_per_token_ms": 3.3769615384615386,
+    "prompt_per_second": 296.12418992949966,
+    "predicted_n": 100,
+    "predicted_ms": 3579.603,
+    "predicted_per_token_ms": 36.157606060606064,
+    "predicted_per_second": 27.656698242793965
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f24",
+  "category": "fun_facts",
+  "text": "bored outta my mind at work. hit me with a fun fact",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Did you know that the average human brain has about 100,000 neurons, and each one connects to about 100 others? That's 100 million connections! Fun fact: they're all connected to the same place in your head.",
+  "fallback": false,
+  "attempts": [
+   "Did you know that the average human brain has about 100,000 neurons, and each one connects to about 100 others? That's 100 million connections! Fun fact: they're all connected to the same place in your head."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 24,
+    "prompt_ms": 74.468,
+    "prompt_per_token_ms": 3.1028333333333333,
+    "prompt_per_second": 322.28608261266584,
+    "predicted_n": 67,
+    "predicted_ms": 2391.172,
+    "predicted_per_token_ms": 36.22987878787879,
+    "predicted_per_second": 27.601527619092227
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f25",
+  "category": "conversions",
+  "text": "recipe says 6 tbsp butter. how much of a stick is that",
+  "answer": "3/4 of a stick (1 stick = 8 tbsp)",
+  "facts": "",
+  "routed": false,
+  "final": "A stick of butter is 6 tbsp. So 6 tbsp is exactly one stick.",
+  "fallback": false,
+  "attempts": [
+   "A stick of butter is 6 tbsp. So 6 tbsp is exactly one stick."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 23,
+    "prompt_ms": 82.775,
+    "prompt_per_token_ms": 3.598913043478261,
+    "prompt_per_second": 277.8616732105104,
+    "predicted_n": 29,
+    "predicted_ms": 1001.147,
+    "predicted_per_token_ms": 35.755250000000004,
+    "predicted_per_second": 27.967920794848308
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f26",
+  "category": "quick_facts",
+  "text": "how many bones does an adult human have again",
+  "answer": "206",
+  "facts": "",
+  "routed": false,
+  "final": "206. That's the standard count, though some sources might say 207 if they count the bones in the hands and feet separately.",
+  "fallback": false,
+  "attempts": [
+   "206. That's the standard count, though some sources might say 207 if they count the bones in the hands and feet separately."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 18,
+    "prompt_ms": 73.301,
+    "prompt_per_token_ms": 4.072277777777778,
+    "prompt_per_second": 245.56281633265576,
+    "predicted_n": 42,
+    "predicted_ms": 1443.21,
+    "predicted_per_token_ms": 35.20024390243903,
+    "predicted_per_second": 28.40889406254114
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f27",
+  "category": "fun_facts",
+  "text": "cant sleep again... say something interesting to distract me",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Wait, I didn't say anything interesting yet. What's something that makes you think about things? That might be the only way to get you to sleep again.",
+  "fallback": false,
+  "attempts": [
+   "The moon is actually a giant, round rock that's about 2,160 miles in diameter. It's not made of cheese, though it's pretty smooth and shiny.",
+   "Wait, I didn't say anything interesting yet. What's something that makes you think about things? That might be the only way to get you to sleep again."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 19,
+    "prompt_ms": 76.313,
+    "prompt_per_token_ms": 4.016473684210527,
+    "prompt_per_second": 248.97461769292258,
+    "predicted_n": 48,
+    "predicted_ms": 1683.689,
+    "predicted_per_token_ms": 35.82317021276596,
+    "predicted_per_second": 27.914894021401814
+   },
+   {
+    "cache_n": 186,
+    "prompt_n": 1,
+    "prompt_ms": 32.159,
+    "prompt_per_token_ms": 32.159,
+    "prompt_per_second": 31.09549426288131,
+    "predicted_n": 44,
+    "predicted_ms": 1535.139,
+    "predicted_per_token_ms": 35.700906976744186,
+    "predicted_per_second": 28.01049286090706
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f28",
+  "category": "conversions",
+  "text": "thermometer is stuck on celsius and reads 38.5. whats that in F?",
+  "answer": "101.3 F",
+  "facts": "",
+  "routed": false,
+  "final": "38.5°C is about 101.3°F. That's a bit high, but not life-threatening.",
+  "fallback": false,
+  "attempts": [
+   "38.5°C is about 101.3°F. That's a bit high, but not life-threatening."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 30,
+    "prompt_ms": 102.39,
+    "prompt_per_token_ms": 3.413,
+    "prompt_per_second": 292.99736302373276,
+    "predicted_n": 37,
+    "predicted_ms": 1282.984,
+    "predicted_per_token_ms": 35.638444444444445,
+    "predicted_per_second": 28.05958608992786
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f29",
+  "category": "casual_numbers",
+  "text": "drove 6 hours today to see my grandma, so worth it tho",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "Yeah, it's worth it. You've got a lot of love in that drive.",
+  "fallback": false,
+  "attempts": [
+   "Yeah, it's worth it. You've got a lot of love in that drive."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 24,
+    "prompt_ms": 71.622,
+    "prompt_per_token_ms": 2.98425,
+    "prompt_per_second": 335.09256932227527,
+    "predicted_n": 28,
+    "predicted_ms": 969.41,
+    "predicted_per_token_ms": 35.904074074074074,
+    "predicted_per_second": 27.851992449015384
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "f30",
+  "category": "fun_facts",
+  "text": "my 7yo needs a fun fact for show n tell tomorrow, got any good ones?",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "How many times can a human blink in a lifetime? Around 10 million times. That's a lot of blinking, but it's totally normal.",
+  "fallback": false,
+  "attempts": [
+   "How many times can a human blink in a lifetime? Around 10 million times. That's a lot of blinking, but it's totally normal."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 28,
+    "prompt_ms": 86.977,
+    "prompt_per_token_ms": 3.106321428571429,
+    "prompt_per_second": 321.9241868539958,
+    "predicted_n": 42,
+    "predicted_ms": 1469.153,
+    "predicted_per_token_ms": 35.833,
+    "predicted_per_second": 27.907236346384618
+   }
+  ],
+  "cue_valid": true
+ }
+]
