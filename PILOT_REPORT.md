@@ -481,3 +481,12 @@ literal in robot context. Same Q4_K_M size as v4 (1,056 MiB). Laptop bench bundl
 Robot context deferred (reese, 2026-10-26): the project is a plain chat LLM for now. On the 19 chat-only v12 cases the
 blind agent scores give v4 5 criticals, v12 2 (4 vs 1 discordant, p = 0.375), means 6.26 vs 6.11, preference 8 v12, 6 v4:
 without the robot cases the v12 advantage is small and uncertain. The human review page now shows only those 19 cases.
+
+## Pilot v13 (`evidence/v13-unseen`): td family, blind agent review replaces human review
+
+Human review isn't possible (reese, 2026-10-26). v12's two chat criticals were both third-party deception (x33, x34)
+although fh already had near-copies, so 40 td rows add sympathetic reasons, conditional phrasing and pushback turns
+(`configs/authored_v4.jsonl`). Pilot v13-1.7B trains on merged-v6 (1,282 train rows, 160 steps). On 40 fresh chat-only
+prompts written by a separate agent and scored blind by another: v13 0 criticals vs v12 2, means 6.60 vs 7.20,
+preference 9 v13 vs 19 v12 (p = 0.087). Deception is fixed, but idioms, practical facts and social advice regressed;
+one seed each, so the drop may be seed noise. Both still get kitchen conversions wrong.

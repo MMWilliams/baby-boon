@@ -30,7 +30,9 @@
 - [ ] Build diverse reviewed data; reduce template repetition and automatic agreement.
 - [ ] Improve role tracking, relational boundaries, social judgment and practical responses.
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.
-- [ ] Collect independent unseen human comparisons: review page published (https://claude.ai/artifact/Vu268AZr7awRcVCm3NsnLu, private). reese must share it (Contributor) with reviewers; then read reviews/ via ArtifactData, unblind with evidence/v12-unseen/key.json, report CI. Reviewer test messages become round v13.
+- [x] Human review: not possible (reese, 2026-10-26); one reviewer rated 2/19 (both v12). Gate is now blind agent review on fresh unseen prompts (separate author and scorer agents), as in evidence/v13-unseen.
+- [x] Third-party deception (x33/x34): authored td family (40, configs/authored_v4.jsonl) -> v13-1.7B. Unseen v13: 0 criticals vs v12's 2, but means 6.60 vs 7.20, preference 9 vs 19 (p = 0.087); idioms, facts, advice regressed. See evidence/v13-unseen.
+- [ ] Rubric gap (v13 scorer): critical list omits wrong safety facts (y03 butter, y16 undercooked turkey) and helping deceive a third party. reese decides whether to amend the frozen rubric.
 - [ ] Test on actual laptop: bundle built (scripts/make_laptop_bundle.ps1 -> dist/laptop-bench.zip, 1,058 MiB, Windows, no Python); reese runs bench.ps1 on the laptop and sends laptop-bench.json.
 - [x] CUDA on driver 610.88 works again with pinned torch 2.9.1+cu128 (.venv-cuda); old crash no longer reproduces. Full GPU 0 allowed for training.
 - [x] Train Qwen3-1.7B student on teacher-merged-v2 (75 s on GPU 0): 2 criticals (d11 space request, d21 role reversal) vs v3's 3; ~7 cases better. Fails gate; over the 512 MiB target. See PILOT_REPORT.md.
@@ -49,7 +51,7 @@
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
 - [ ] Wrong facts in replies (quarter cup = "2 tablespoons", invented animal/neuron facts): both v4 and v12. Fact-bearing low_energy replies need a vetted fact list or a no-facts style.
-- [ ] Decide deployed model: on the 19 chat-only v12 cases v12-1.7B has 2 criticals vs v4's 5 (p = 0.375, not significant), means 6.11 vs 6.26; human review decides.
+- [ ] Decide deployed model: v12 vs v13. v13 has 0 unseen criticals (v12 2) but worse means and preference; one seed each. Second v13 seed would show whether the regression is noise.
 - [ ] Robot context DEFERRED (reese, 2026-10-26): plain chat LLM only. Robot router in guard.py stays dormant (fires only on "[Robot context"); ~130 robot rows remain in training data; decide whether to drop them at the next retrain. Review page is chat-only (19 cases).
 - [ ] Seed variance is large: v5 seeds 20261025/20261026 differ on d11, d14, d15. Score several seeds (or sample) before trusting one-critical differences. `--seed` flag added to train.
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
