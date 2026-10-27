@@ -41,6 +41,9 @@ UNIT_FIRST = re.compile(rf"(?<![\w°])({UNIT})\b(?:\s+\w+){{0,2}}?\s+(?:reads?|s
 # "37.9 on the celsius thing" (health k02, k09).
 READING_SCALE = re.compile(rf"(?<![\w/.])({NUMBER})(?![\w/]|\.\d)(?:\s+[\w']+){{0,3}}?\s+(?:in|on|and (?:it'?s|its))\s+(?:the\s+)?"
                            r"(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
+# A body-range reading with its scale anywhere in the clause: "38.6 right now, celsius i mean" (health2 m02).
+BODY_SCALE = re.compile(r"(?<![\w/.])((?:3[5-9]|4[0-2]|9[5-9]|10[0-7])(?:\.\d)?)(?![\w/]|\.\d)[^.?!\d]{0,30}?"
+                        r"\b(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
 LETTER_TARGET = re.compile(r"\b(?:in|to|into|does|uses|shows|reads|on)\s+([CF])\b", re.I)
 INGREDIENT = "|".join(sorted(INGREDIENTS, key=len, reverse=True)).replace(" ", r"\s+")
@@ -198,7 +201,7 @@ def parse(user):
     for m in UNIT_FIRST.finditer(user):
         if (len(m[1]) > 1 or re.search(r"\bin\s*$", user[:m.start()], re.I)) and not inside(found, m.start(2)):
             found.append((m.span(), m[2], canonical(m[1])))
-    for m in READING_SCALE.finditer(user):
+    for m in (*READING_SCALE.finditer(user), *BODY_SCALE.finditer(user)):
         if not inside(found, m.start(1)): found.append((m.span(), m[1], canonical(m[2])))
     # Next to a real amount, "a teaspoon" names the measure wanted ("need 2 tbsp, only have a teaspoon").
     named = [q for q in found if q[1].lower() in ("a", "an")]

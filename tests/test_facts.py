@@ -117,6 +117,8 @@ class Facts(unittest.TestCase):
         self.assertEqual(conversion_note("thermomter says 38.4 and its celsius, what is that in fahrenheit"), "38.4°C = 101.1°F.")
         self.assertEqual(conversion_note("feel rough, 37.9 on the celsius thing, what is that in F"), "37.9°C = 100.2°F.")
         self.assertEqual(conversion_note("reads 39.6 c on the ear thing, what's that in fahrenheit"), "39.6°C = 103.3°F.")
+        self.assertEqual(conversion_note("my little one is reading 38.6 right now, celsius i mean, whats that in fahrenheit cos grandma only gets F"), "38.6°C = 101.5°F.")
+        self.assertIsNone(conversion_note("got 37.9 on the thermometer, the celsius one not the american one, is that high?"))
 
     def test_note_goes_to_the_system_prompt_for_this_turn_only(self):
         messages = [{"role": "system", "content": "S"}, {"role": "user", "content": "how many tbsp in a cup"}]
