@@ -1,24 +1,50 @@
 # Baby Boon
 
-A small conversational model for chatbots and human-facing robots. User
-requested this project on 2026-10-25. Renamed from TinySocial the same day;
-pilot v1 data, evidence and journals keep the old name because that is what ran.
-Distribution name `baby-boon`, import package `baby_boon`.
+A small local social chat model: Qwen3-1.7B fine-tuned with LoRA (a small trained add-on to the base weights), 1.1 GB
+as a Q4_K_M GGUF (4-bit quantized weights file), about 2 GB of RAM and 30 tokens/s on a desktop CPU. Each reply comes
+with a tone and expression cue for a voice or an avatar. Runtime guards check every reply: no invented sights or
+sounds, computed unit conversions, and health questions referred to a pharmacist, doctor or nurse line instead of
+judged.
 
-The first target is **laptop CPU inference, then a robot computer**. The model
-will produce **text plus optional tone/expression cues**; speech recognition,
-speech synthesis, persistent memory and robot motion are separate components.
+**Not for medical, emergency or crisis use.** On 40 fresh prompts with the guards on, 5 of 12 health questions still
+got unsafe advice and 3 of 8 emergencies got a harmful reply. Without the guards (the raw GGUF in another app) it's
+worse. See [Limitations](#limitations).
 
-Status: the deployed model is **pilot v14** (Qwen3-1.7B LoRA, Q4_K_M) behind the
-runtime perception and health guards (`baby_boon/guard.py`, `baby_boon/health.py`), picked
-by reese on 2026-10-27 over v12 (fresh health prompts: emergency criticals 5 to 3 and blind
-preference 15 vs 8; v12 had beaten v13 38 vs 21 on 2026-10-26). The chat client appends
-checked facts to the system prompt per turn (`baby_boon/facts.py`: computed kitchen and
-temperature conversions, a vetted fun-fact list), which cut wrong facts 16 to 3 on 30
-unseen prompts. Health advice is still often unsafe (5/12 on the fresh set) and 2 of 4
-model-answered emergencies stay critical; v14 isn't re-measured on the earlier chat sets.
-This is an experiment, not a release; nothing is published. See
-[PILOT_REPORT.md](PILOT_REPORT.md) for every pilot's results and failures.
+## Install
+
+```
+pip install baby-boon
+baby-boon
+```
+
+The client needs llama.cpp's `llama-server` on PATH (`winget install llama.cpp`, `brew install llama.cpp`) or
+`--llama-server PATH`. The first run downloads the model from
+[Hugging Face](https://huggingface.co/maureesewilliams/baby-boon) (1.1 GB, sha256-checked) into `~/.cache/baby-boon`
+(`$BABY_BOON_HOME` overrides). `baby-boon --message "..."` sends one message; `--url` uses a server you already run.
+The client itself has no dependencies beyond Python 3.10+.
+
+Each turn prints one JSON line: `text`, `tone`, `expression`, `intensity` (0-2), `cue_valid`, and llama-server
+`timings`. Invalid cues fall back to neutral and are stripped from the text. Cues describe presentation, not a
+diagnosis of the user's feelings. History lasts for the session only (last 8 turns); nothing is stored.
+
+## Limitations
+
+- Health: on the fresh health set (`evidence/health4-unseen`), 5 of 12 health questions got unsafe advice (a dose
+  kept, a medicine named, a verdict) and 3 of 8 emergencies got a harmful reply (a swallowed button battery, a cut that
+  won't stop bleeding, an allergic reaction sent to a pharmacist).
+- The deployed model is pilot v14. It's measured on that health set only; earlier general chat sets measured v12,
+  which still helped deceive a third party twice in 30 prompts and got some kitchen facts wrong.
+- Evaluation is by blind AI-agent scorers on fresh prompts written by a separate agent; there was no human review.
+  English only. The robot context (camera, body) is deferred.
+- Training data: 782 conversations, 422 from Qwen3-4B-Instruct-2507 as a teacher and 360 written by Claude
+  (claude-opus-5-5) in Claude Code sessions (`configs/authored_v*.jsonl`); no external dataset. See [NOTICE](https://github.com/MMWilliams/baby-boon/blob/main/NOTICE).
+
+## Project
+
+The research log below keeps the old TinySocial name where that's what ran. Distribution name `baby-boon`, import
+package `baby_boon`. The first target is laptop CPU inference, then a robot computer; speech recognition, speech
+synthesis, persistent memory and robot motion are separate components. See [PILOT_REPORT.md](https://github.com/MMWilliams/baby-boon/blob/main/PILOT_REPORT.md) for
+every pilot's results and failures (v14 was picked over v12 on 2026-10-27).
 
 ## What success means
 
@@ -36,7 +62,7 @@ social objective.
 ## First experiment
 
 The initial design below is retained for context. The first run is complete;
-actual checks and current limitations are recorded in [VERIFICATION.md](VERIFICATION.md).
+actual checks and current limitations are recorded in [VERIFICATION.md](https://github.com/MMWilliams/baby-boon/blob/main/VERIFICATION.md).
 
 Compare unmodified SmolLM2-360M-Instruct and Qwen3-0.6B with thinking disabled
 where supported. These are candidates, not a final architecture selection.
@@ -49,9 +75,9 @@ supervised adaptation and, if justified by reviewed preferences, preference
 training. Training language ability from scratch is outside the initial pilot.
 English-first is a provisional scope assumption, not a user-imposed limit.
 
-See [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) for evaluation and training gates,
-[configs/pilot.json](configs/pilot.json) for provisional budgets, and
-[DATA_SOURCES.md](DATA_SOURCES.md) for source status.
+See [EXPERIMENT_PLAN.md](https://github.com/MMWilliams/baby-boon/blob/main/EXPERIMENT_PLAN.md) for evaluation and training gates,
+[configs/pilot.json](https://github.com/MMWilliams/baby-boon/blob/main/configs/pilot.json) for provisional budgets, and
+[DATA_SOURCES.md](https://github.com/MMWilliams/baby-boon/blob/main/DATA_SOURCES.md) for source status.
 
 ## Setup evidence
 
@@ -69,7 +95,7 @@ This check establishes source-record integrity only, not training readiness.
 
 ## Try the local pilot
 
-Start the CPU server in one terminal from this directory:
+From a checkout, start the CPU server in one terminal:
 
 ```powershell
 .\scripts\serve.ps1
@@ -78,14 +104,10 @@ Start the CPU server in one terminal from this directory:
 Then in another terminal:
 
 ```powershell
-.\.venv\Scripts\python.exe -m baby_boon.chat
+.\.venv\Scripts\python.exe -m baby_boon.chat --url http://127.0.0.1:11438
 ```
 
-The client returns `text`, `tone`, `expression`, `intensity` (0-2), and
-`cue_valid`. Invalid metadata falls back to neutral and is removed from spoken
-text. Cues describe presentation, not a diagnosis of the user's feelings.
-They arrive after the reply; a speech system needing them before speaking must
-buffer the utterance. Speech, persistent memory and physical motion are separate.
+Cues arrive after the reply; a speech system needing them before speaking must buffer the utterance.
 
 Local artifact: `models/pilot-v14-1.7b/model-q4_k_m.gguf` (1,056 MiB, about 2 GB RSS,
 30 tok/s on a Ryzen 9 9900X desktop CPU for v12, same size; laptop not measured yet). Adapter:

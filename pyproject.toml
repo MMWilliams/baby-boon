@@ -1,9 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "baby-boon"
-version = "0.0.1"
-description = "A local, CPU-first social conversation model experiment"
-requires-python = ">=3.12,<3.13"
-dependencies = [
+version = "0.1.0"
+description = "Tiny local social chat model (Qwen3-1.7B LoRA, 1.1 GB GGUF, CPU) with runtime perception, facts and health guards"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+authors = [{name = "Maureese Williams"}]
+keywords = ["chatbot", "llm", "gguf", "llama.cpp", "qwen3", "social", "cpu"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# The chat client is stdlib only; training needs the "train" group (installed by uv sync).
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/MMWilliams/baby-boon"
+Model = "https://huggingface.co/maureesewilliams/baby-boon"
+Issues = "https://github.com/MMWilliams/baby-boon/issues"
+
+[project.scripts]
+baby-boon = "baby_boon.chat:main"
+
+[tool.setuptools]
+packages = ["baby_boon"]
+
+[tool.uv]
+default-groups = ["train"]
+
+[dependency-groups]
+train = [
   "torch==2.9.1",
   "transformers==4.57.3",
   "peft==0.18.0",

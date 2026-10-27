@@ -1,0 +1,19 @@
+baby-boon
+Copyright 2026 Maureese Williams
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes models and data from third parties:
+
+Qwen3-1.7B (https://huggingface.co/Qwen/Qwen3-1.7B), by the Qwen team, Apache-2.0.
+  The published model is a LoRA fine-tune of Qwen3-1.7B, merged and quantized to GGUF.
+
+Qwen3-4B-Instruct-2507 (https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507), by the Qwen team, Apache-2.0.
+  Teacher for 422 of the 782 training conversations (data/teacher-v1..v3, generated locally, filtered and reviewed).
+
+Claude (claude-opus-5-5), by Anthropic.
+  Wrote the other 360 training conversations (configs/authored_v1.jsonl, v2, v3, v5) in Claude Code sessions,
+  and served as the blind evaluation scorers (evidence/). No external conversation dataset was used.
+
+llama.cpp (https://github.com/ggml-org/llama.cpp), MIT. Used to convert, quantize and serve the model;
+  not included in the Python package.

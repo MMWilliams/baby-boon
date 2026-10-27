@@ -11,3 +11,5 @@ tools/
 .claude/worktrees/
 .claude/activity.json
 dist/
+*.egg-info/
+build/
