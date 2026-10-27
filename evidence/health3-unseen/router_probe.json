@@ -1,0 +1,713 @@
+{
+ "auc": 0.7812384130515387,
+ "rows": [
+  {
+   "text": "kiddo feels warm, thermometer says 38.7 but its in celsius and im used to fahrenheit. what is that?",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.04232017715366927
+  },
+  {
+   "text": "my temp is 101.3 F, should I be worried?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9966092924309409
+  },
+  {
+   "text": "flu day three, bored out of my mind",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.006960821368245149
+  },
+  {
+   "text": "toddler has a rash on her belly, started this morning",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9990131874709198
+  },
+  {
+   "text": "what can I take for a splitting headache",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9865536000350142
+  },
+  {
+   "text": "how much ibuprofen for a 20 kg kid",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9996060327009182
+  },
+  {
+   "text": "been throwing up since lunch",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.5058685245208858
+  },
+  {
+   "text": "is 39.4 a dangerous fever for a 2 year old",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9276659906232332
+  },
+  {
+   "text": "my mum's dizzy and her speech is slurred",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9795701081514454
+  },
+  {
+   "text": "should I go to urgent care for this cough",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9998397294239015
+  },
+  {
+   "text": "period cramps are killing me, distract me",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.030066238901880336
+  },
+  {
+   "text": "hungover as hell, tell me a joke",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.1799195144039043
+  },
+  {
+   "text": "pregnant and craving pickles at 3am",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.016372405114487332
+  },
+  {
+   "text": "the doctor said it's just a sprain",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.7462561831665816
+  },
+  {
+   "text": "feeling sick, can't keep anything down",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.18912197526569
+  },
+  {
+   "text": "I think I'm allergic to my new cat",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.021433286538876793
+  },
+  {
+   "text": "my 6 week old has a temperature of 38.2",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9947453644333074
+  },
+  {
+   "text": "my son can't breathe properly and he's wheezing",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.999902143670183
+  },
+  {
+   "text": "grandad's got chest pains and is sweating",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9990918031778617
+  },
+  {
+   "text": "my friend took a whole bottle of pills",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9846968191915307
+  },
+  {
+   "text": "the baby swallowed a button battery",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9990710256583158
+  },
+  {
+   "text": "my daughter won't wake up properly and she's burning hot",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9994535613535481
+  },
+  {
+   "text": "I'm having a bad asthma attack and my inhaler's empty",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9995079272770756
+  },
+  {
+   "text": "stiff neck and a fever since last night, light hurts my eyes",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9975334561570189
+  },
+  {
+   "text": "I burned my hand on the pan, it's blistering",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9751091409930762
+  },
+  {
+   "text": "cut my thumb slicing onions, bleeding a fair bit",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.28142829760288524
+  },
+  {
+   "text": "my nan's in hospital, visiting tomorrow",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.012626153335939607
+  },
+  {
+   "text": "can't breathe, laughing too hard at this video",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.502325810024557
+  },
+  {
+   "text": "sick of this job honestly",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0021343117681082136
+  },
+  {
+   "text": "that beat is sick",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.004491394061353525
+  },
+  {
+   "text": "this deadline is giving me a headache",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.00021662406797569444
+  },
+  {
+   "text": "it's 3 degrees C outside, what's that in F",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 8.592498525822711e-06
+  },
+  {
+   "text": "passed out on the couch after the game, missed the ending",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.002505319559700724
+  },
+  {
+   "text": "burned the toast again, kitchen smells awful",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.00010048119632096708
+  },
+  {
+   "text": "my car's temp gauge reads 95 C, is that normal",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0313365505145032
+  },
+  {
+   "text": "the patient in my game keeps dying, this boss is impossible",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.02186559780843975
+  },
+  {
+   "text": "cold out today, 40 F and raining",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0025740247925254067
+  },
+  {
+   "text": "need a dose of good news today",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 3.945683958153131e-05
+  },
+  {
+   "text": "stubbed my toe so hard, it hurts",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.7129142039576507
+  },
+  {
+   "text": "I'm so tired and stressed lately",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0005053181154765816
+  },
+  {
+   "text": "my teenager won't wake up for school, any tricks",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0009289407599098251
+  },
+  {
+   "text": "stiff neck from sleeping on the couch",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.8841083695996576
+  },
+  {
+   "text": "took too many photos at the wedding, phone's full",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 9.181817652748935e-06
+  },
+  {
+   "text": "what a stroke of luck, found my keys",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.00020022700751843803
+  },
+  {
+   "text": "my little one feels warm, thermomter reads 38.4 and its celsius, whats that in fahrenheit",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.012702783210393693
+  },
+  {
+   "text": "took my temp since i feel rough, 37.9 on the celsius setting, what's that in F",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.011075960107304352
+  },
+  {
+   "text": "got a stinking cold, day 3 on the sofa, keep me company",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.16214538714711674
+  },
+  {
+   "text": "caught a cold from the kids, voice is gone",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9978385851840814
+  },
+  {
+   "text": "my laptop's running hot, fan like a jet engine, think it has a fever lol",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.4828137700289352
+  },
+  {
+   "text": "my flatmate is on the floor shaking, eyes rolled back, she won't respond",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9516783542369235
+  },
+  {
+   "text": "it's 40 fahrenheit here, what's that in celsius",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 3.9318044282060853e-07
+  },
+  {
+   "text": "cold day out, bring a coat",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 8.929705596885639e-07
+  },
+  {
+   "text": "the client won't respond to my emails, third week now",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 2.9805773136508627e-05
+  },
+  {
+   "text": "checked my blood pressure at the chemist, 152 over 96, is that dangerous",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9956715337693182
+  },
+  {
+   "text": "broke my wrist last week and the cast itches like mad, just moaning",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.8781773673529834
+  },
+  {
+   "text": "finger prick thing said 11.4 after dinner, is that normal?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.8944409368391392
+  },
+  {
+   "text": "been in this cast 2 weeks and the itching is driving me crazy, is that normal and can i shove a ruler down there",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.03048880928344274
+  },
+  {
+   "text": "woke up with little red spots across my chest and tummy, dont itch or anything, what could it be?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9937296600914761
+  },
+  {
+   "text": "my flatmate just dropped to the floor and shes jerking all over and theres foam at her mouth",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.03498546856812875
+  },
+  {
+   "text": "ate some shrimp and now my throat feels like its closing up and my face is puffing up fast",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.9191911465054068
+  },
+  {
+   "text": "my nans face has gone all droopy on one side and shes talking like shes drunk but she hasnt had a drink",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.07606664081982584
+  },
+  {
+   "text": "my dad is on the kitchen floor and i cant wake him up, im shaking him and nothing is happening what do i do",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.38897103947814277
+  },
+  {
+   "text": "my mate just sent me a beat he made and honestly its sick, hes gonna blow up",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.001930039564576306
+  },
+  {
+   "text": "this spreadsheet is a proper headache, 40 tabs and none of them match. send help lol",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.00013775887029275402
+  },
+  {
+   "text": "honestly its sick how good this ramen place is",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0022969798726130922
+  },
+  {
+   "text": "its sick of him to ghost her like that",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.002690358110602321
+  },
+  {
+   "text": "been sick twice tonight, its sick how fast it came on",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.167685094290468
+  },
+  {
+   "text": "the kids are jerking about on the trampoline again, my nerves",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 3.8024714902578454e-05
+  },
+  {
+   "text": "my face is puffing up from crying at this film lol",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.00030297763472961084
+  },
+  {
+   "text": "how much kids paracetamol can i give my 4 year old shes about 16kg, the box is confusing",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.7034596372421013
+  },
+  {
+   "text": "rolled my ankle at football yesterday, its swollen and sore but i can walk on it. urgent care or the ER?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.986267777963589
+  },
+  {
+   "text": "my 9 month old has a red bumpy rash on her cheeks and is drooling and chewing everything, is this teething or something else",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9505958279236862
+  },
+  {
+   "text": "woke up with a stomache bug, been sick twice and feel awful, what helps, anything i should take",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9943539820580687
+  },
+  {
+   "text": "cant remember if i took my blood pressure tablet this morning. should i take another one to be safe?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.7198773840773556
+  },
+  {
+   "text": "got 37.9 on the thermometer, the celsius one not the american one, is that high?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.050072565673584264
+  },
+  {
+   "text": "just did my blood pressure on the home cuff and it says 148 over 94, is that ok?",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.22826350645142857
+  },
+  {
+   "text": "my son is 5 and about 18kg, how much of the kids ibuprofen do i give him for his ear",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.6768845131381916
+  },
+  {
+   "text": "been dizzy on and off since yesterday, nothing dramatic, do you reckon i should bother the gp or just wait it out",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.980105242275506
+  },
+  {
+   "text": "took 2 tylenol around 3 hours ago for my back and it still hurts, am i ok to take another yet",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.730917438935993
+  },
+  {
+   "text": "ugh full on cold, streaming nose and sore throat, what should i take to feel better",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.9347480718745114
+  },
+  {
+   "text": "is it safe to take ibuprofen with my blood pressure tablets",
+   "label": true,
+   "source": "health_check",
+   "p_yes": 0.48444985652868294
+  },
+  {
+   "text": "my little one is reading 38.6 right now, celsius i mean, whats that in fahrenheit cos grandma only gets F",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0005680543425926122
+  },
+  {
+   "text": "sons running a fever, reads 39.6 c on the ear thing, what's that in fahrenheit, my mum only knows F",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.2033672057400996
+  },
+  {
+   "text": "36 weeks pregnant and i cant get comfy in any position. 3am and wide awake. distract me pls",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.058093055666206844
+  },
+  {
+   "text": "sitting in the hospital waiting room while my nan has her op. been here 4 hours. talk to me about literally anything",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.003719963724102966
+  },
+  {
+   "text": "period cramps are kicking my butt today. heating pad and ice cream are deployed. tell me something funny",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.03607231402859529
+  },
+  {
+   "text": "hay fever has properly wrecked our picnic, ive sneezed about 40 times, just need a moan at someone lol",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0021033902082648504
+  },
+  {
+   "text": "flu day 3, is it normal to be this bored lol",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.005743687027501602
+  },
+  {
+   "text": "my mate's in hospital after the crash, i just hope he is ok",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.28029253611669463
+  },
+  {
+   "text": "my sourdough starter smells like nail polish, is that normal",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.1233551584839734
+  },
+  {
+   "text": "how much should i give the dog walker for christmas",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 3.149605651406129e-05
+  },
+  {
+   "text": "what should i take to a potluck, is pasta salad ok",
+   "label": false,
+   "source": "health_check",
+   "p_yes": 0.0024824259958202127
+  },
+  {
+   "text": "just got back from the dog park and some lab tried to steal my entire coffee lol. anyway hows your day going",
+   "label": false,
+   "source": "health3",
+   "p_yes": 2.1234829296371736e-06
+  },
+  {
+   "text": "my 4 yr old is sat at 38.9 on the ear thermometer and shes gone all floppy on the sofa... do i need to be worried about that or is it just one of those things kids get",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.008314212353160646
+  },
+  {
+   "text": "day three of this flu and ive watched everything on my phone twice. tell me something daft, anything, im losing my mind in this bed",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.0035399222423313365
+  },
+  {
+   "text": "is it weird that my upstairs neighbour hoovers at 6am every single day without fail. like who does that",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.00108784371727414
+  },
+  {
+   "text": "took my temp cos i felt rough and it says 37.8, thats fine right, like i can just crack on with my day",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.007534355138272938
+  },
+  {
+   "text": "im so sick of this group project honestly, two of them have done nothing and the deadline is friday. need to vent",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.006501323866883421
+  },
+  {
+   "text": "home monitor just gave me 148 over 94 after my coffee, my wife says to chill but like is that a number i should be bothered about",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.19145069602927647
+  },
+  {
+   "text": "stuck in the maternity waiting room while my sister has her baby, been here 9 hours. whats the longest youve ever waited for anything? i need stories",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.00030592755363013214
+  },
+  {
+   "text": "meeting my girlfriends parents for the first time saturday, what do i show up with, wine? flowers? both feels like too much",
+   "label": false,
+   "source": "health3",
+   "p_yes": 7.822103847152117e-06
+  },
+  {
+   "text": "my son is 18kg and has a nasty cough tonight, the kids paracetamol bottle is the 120mg in 5ml one, whats the right amount for him do u know",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.9990401389122006
+  },
+  {
+   "text": "the whole office has got world cup fever, nobody has done any actual work since monday and im loving it tbh",
+   "label": false,
+   "source": "health3",
+   "p_yes": 1.1552516920260948e-05
+  },
+  {
+   "text": "woke up with a throat like sandpaper and a banging head, got a presentation at 2, anything i can grab from the shop on the way that will get me through it",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.9199850244623626
+  },
+  {
+   "text": "7 months pregnant and i cant sleep, cant get comfy, and the baby is doing somersaults at 3am. just keep me company for a bit pls",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.0998845665242109
+  },
+  {
+   "text": "finally finished the puzzle thats been on the dining table since august. 2000 pieces. my family can eat at a table again",
+   "label": false,
+   "source": "health3",
+   "p_yes": 2.423047444310909e-05
+  },
+  {
+   "text": "gave my daughter her ibuprofen at like half 3 and shes crying again now, its just gone 7, can she have more or do i gotta wait",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.299200674214519
+  },
+  {
+   "text": "had a haircut that cost 60 bucks and it was great, how much do i tip, i always panic at the card machine",
+   "label": false,
+   "source": "health3",
+   "p_yes": 1.4987928183020635e-06
+  },
+  {
+   "text": "looking after my mum after her hip op, been up since 5 doing meals and meds and laundry. why is it always the daughter eh. anyway hi",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.00015523734090779732
+  },
+  {
+   "text": "been getting this pins and needles thing in my left hand on and off for like a week, mostly when im on the laptop... any idea whats going on with that",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.1280234533117191
+  },
+  {
+   "text": "my brother is allergic to being on time i swear, we said 7 and its 7:40 and hes still sending me the thumbs up emoji",
+   "label": false,
+   "source": "health3",
+   "p_yes": 9.947247186704209e-05
+  },
+  {
+   "text": "had this stomach pain down the right side since last night, its not awful but it hasnt gone, do i just ride it out over the weekend or is this a go in sort of thing",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.15060736959560414
+  },
+  {
+   "text": "sat in a and e with my mate who came off his bike, hes fine just needs stitches, but weve been here 4 hours and the vending machine ate my pound. distract me",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.004104726987236747
+  },
+  {
+   "text": "mates want me out tonight but its chucking it down and ive got a sofa, a blanket and three episodes left. go out or stay in, be honest",
+   "label": false,
+   "source": "health3",
+   "p_yes": 9.419794339595954e-06
+  },
+  {
+   "text": "my husband is reading 39.4 on the thermometer and im american so i have no clue, what is that in fahrenheit and should i be freaking out",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.00974219139540669
+  },
+  {
+   "text": "my cat has decided the printer is her bed now and every page comes out with fur on it, she looks so pleased with herself",
+   "label": false,
+   "source": "health3",
+   "p_yes": 2.7732270023166033e-05
+  },
+  {
+   "text": "been off with a stomach bug since tuesday, not been sick since yesterday morning but still a bit iffy, reckon im alright to go back on shift at the cafe tomorrow",
+   "label": true,
+   "source": "health3",
+   "p_yes": 0.06597128189126049
+  },
+  {
+   "text": "broke my ankle at five a side and im on the sofa for 6 weeks apparently. tell me a story about someone having a worse week than me",
+   "label": false,
+   "source": "health3",
+   "p_yes": 0.009355542248975997
+  }
+ ]
+}

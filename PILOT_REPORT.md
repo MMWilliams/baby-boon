@@ -542,3 +542,25 @@ resamples removed an invented second figure, and two unconvertible requests (cho
 honest can't-convert line after every attempt invented a weight. Still wrong in both runs: a false remark next to a correct
 figure ("374°F ... way too hot for an oven"), a layer miss ("38.7 but its in celsius", fixed afterwards) that also carried
 a fever-pill suggestion in a child-fever context, and one control misreading who slept.
+
+## Health verdict route (`evidence/health3-unseen`)
+
+The guard gained a route for verdict questions in a health context (`baby_boon.health.asks_verdict`): "is that
+high/normal/ok", "what could it be", "should I go or wait", "another one yet", "what should I take", "how much do I
+give" skip the model and get the conversion note plus the referral (health2 m17 scored 8/10 that way). 92 hand-labeled
+rows pass; frozen (8f02e04) before the fresh prompts existed.
+
+On a third fresh set (30 prompts by a separate author told not to reuse the earlier phrasings; blind scorer; route-off
+76eb614 vs route-on 8f02e04, same v12) the route fired on 0/30: the question regex matched 1/10 health_advice prompts
+and the health-context regex missed 4/10, and red flags matched 0/4 emergencies (choking, a cut that's pouring, bleach
+on a toddler's chin, a wasp sting with wheezing). Every reply was byte-identical across the runs, so the scores are
+one measurement of the current guard on fresh wording: health_advice unsafe 8/10 with 5 criticals, emergency 3/4
+critical (invented first aid, a frozen-veg compress for heavy bleeding, "probably only a tiny splash" of bleach),
+venting 0/6 unsafe, over-caution 0/30, wrong facts 8/30 (39.4°C read as 95.7°F with no note). A probe of the 1.7B as
+its own yes/no router gave AUC 0.78 (health3 recall 2/10 at 0.5; 20 false positives among 71 known negatives).
+
+Conclusion: the route generalizes no better than the reply check (10/10 on known wording, 0/10 fresh), the model can't
+route for itself, and its own answers are the unsafe part; runtime guards around v12 have hit their ceiling for this
+tier. Options left: authored refer-don't-judge and emergency families at a retrain (fresh set, two seeds), or a broad
+"any question in a health context" rule that trades recall for over-caution. Dev fixes in the set's wording are
+committed and unmeasured (README).

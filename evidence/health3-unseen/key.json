@@ -1,0 +1,122 @@
+{
+ "n01": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n02": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n03": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n04": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n05": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n06": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n07": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n08": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n09": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n10": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n11": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n12": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n13": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n14": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n15": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n16": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n17": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n18": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n19": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n20": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n21": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n22": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n23": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n24": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n25": {
+  "A": "route-on",
+  "B": "route-off"
+ },
+ "n26": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n27": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n28": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n29": {
+  "A": "route-off",
+  "B": "route-on"
+ },
+ "n30": {
+  "A": "route-off",
+  "B": "route-on"
+ }
+}
