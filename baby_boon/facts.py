@@ -32,8 +32,8 @@ AMOUNT = (rf"\d+(?:\.\d+)?(?:\s*[½¼¾⅓⅔⅛]|\s+\d+/\d+)?|\d+/\d+|[½¼¾�
 QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?)?\s*(?:°\s*|degrees?\s+)?({UNIT})\b", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
 ASK = re.compile(r"\bconvert|\bhow (?:many|much)\b|\bwhat(?:'s| is) (?:that|this|it)\b|\bequals?\b|\bsame as\b", re.I)
-NICE = (0, 1/8, 1/4, 1/3, 1/2, 2/3, 3/4, 1)
-FRACTION = {1/8: "1/8", 1/4: "1/4", 1/3: "1/3", 1/2: "1/2", 2/3: "2/3", 3/4: "3/4"}
+FRACTION = {1/8: "1/8", 1/4: "1/4", 1/3: "1/3", 3/8: "3/8", 1/2: "1/2", 5/8: "5/8", 2/3: "2/3", 3/4: "3/4", 7/8: "7/8"}
+NICE = (0, *FRACTION, 1)
 
 FACTS = {
     "ocean": ["Starfish don't have blood; they pump seawater through their bodies instead.",
@@ -135,8 +135,9 @@ def compatible(unit, target, butter):
     return unit != target and (len(dims) == 1 or (butter and dims == {"volume", "weight"}))
 
 
-def conversion_note(user):
-    quantities, spans = [], []
+def parse(user):
+    """(value, unit, butter) amounts in the message, and the units it asks for."""
+    found = []
     for m in QUANTITY.finditer(user):
         word = m[2]
         if len(word) == 1 and not (m[1][0].isdigit() and (word in ("C", "F", "g") or "°" in m[0] or "degree" in m[0].lower())):
@@ -144,27 +145,34 @@ def conversion_note(user):
         unit = canonical(word)
         butter = unit == "stick" or bool(re.match(r"\s+(?:of\s+)?(?:\w+\s+)?butter\b", user[m.end():], re.I)
                                          or re.search(r"\bbutter\W{0,3}$", user[:m.start()], re.I))
-        quantities.append((amount(m[1]), unit, butter))
-        spans.append(m.span())
-    targets = []
+        found.append((m, unit, butter))
+    # Next to a real amount, "a teaspoon" names the measure wanted ("need 2 tbsp, only have a teaspoon").
+    named = [q for q in found if q[0][1].lower() in ("a", "an")]
+    if len(named) == len(found): named = []
+    targets = [unit for _, unit, _ in named]
     for m in UNIT_WORD.finditer(user):
         unit = canonical(m[0])
-        if (len(m[0]) > 1 and unit not in targets and not any(s <= m.start() < e for s, e in spans)
+        if (len(m[0]) > 1 and unit not in targets and not any(q.start() <= m.start() < q.end() for q, *_ in found)
                 and (unit != "stick" or re.search(r"\bbutter\b", user, re.I))):
             targets.append(unit)
-    if not quantities or not (targets or ASK.search(user)): return None
-    lines = []
-    for value, unit, butter in quantities:
-        chosen = [t for t in targets if compatible(unit, t, butter)]
-        if targets and not chosen:
-            lines.append(f"{label(value, unit)} can't be converted to {targets[0]}s without knowing the ingredient; "
-                         "a kitchen scale or the package label is safest.")
-            continue
-        defaults = DEFAULTS["butter" if butter and not unit.startswith("°") else UNITS[unit][0]]
-        chosen = chosen or [t for t in defaults if compatible(unit, t, butter)]
-        lines.append(" = ".join([label(value, unit) + (" of butter" if butter and unit != "stick" else "")]
-                                + [label(convert(value, unit, t), t) for t in chosen]) + ".")
-    return " ".join(lines)
+    return [(amount(m[1]), unit, butter) for m, unit, butter in found if (m, unit, butter) not in named], targets
+
+
+def line(value, unit, butter, targets):
+    chosen = [t for t in targets if compatible(unit, t, butter)]
+    if targets and not chosen:
+        return (f"{label(value, unit)} can't be converted to {targets[0]}s without knowing the ingredient; "
+                "a kitchen scale or the package label is safest.")
+    defaults = DEFAULTS["butter" if butter and not unit.startswith("°") else UNITS[unit][0]]
+    chosen = chosen or [t for t in defaults if compatible(unit, t, butter)]
+    return " = ".join([label(value, unit) + (" of butter" if butter and unit != "stick" else "")]
+                      + [label(convert(value, unit, t), t) for t in chosen]) + "."
+
+
+def conversion_note(user):
+    quantities, targets = parse(user)
+    if not (targets or ASK.search(user)): return None
+    return " ".join(line(value, unit, butter, targets) for value, unit, butter in quantities if unit not in targets) or None
 
 
 def fact_note(user):

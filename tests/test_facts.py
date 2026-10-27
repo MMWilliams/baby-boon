@@ -14,6 +14,10 @@ class Facts(unittest.TestCase):
             "half a cup is how many tsp": "1/2 cup = 24 teaspoons.",
             "how much is two sticks of butter": "2 sticks = 1 cup = 16 tablespoons = 8 ounces.",
             "how many ml in 3/4 cup": "3/4 cup = about 177 milliliters.",
+            # A measure named with "a" next to a real amount is the unit wanted, not a second amount.
+            "need 3 tablespoons of oil but I only have a teaspoon, how many do I use": "3 tablespoons = 9 teaspoons.",
+            "the recipe wants 4 tbsp butter, how much of a stick is that": "4 tablespoons of butter = 1/2 stick.",
+            "how much is 6 tbsp in cups": "6 tablespoons = 3/8 cup.",
         }
         for text, note in cases.items():
             self.assertEqual(conversion_note(text), note, text)
