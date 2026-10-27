@@ -1,6 +1,7 @@
 import unittest
 
-from baby_boon.facts import FACTS, conversion_note, fact_note, with_facts
+from baby_boon.facts import FACTS, conversion_note, fact_note, keeps_figures, with_facts
+from baby_boon.guard import guarded
 
 ALL_FACTS = [f for facts in FACTS.values() for f in facts]
 
@@ -80,6 +81,27 @@ class Facts(unittest.TestCase):
         for text in ["what's the weirdest thing about your day?", "tell me something interesting about yourself",
                      "trivia night is tomorrow and I'm nervous", "the weirdest thing about my ex is he never texts back"]:
             self.assertIsNone(fact_note(text), text)
+
+    def test_reply_must_use_the_note_and_add_no_figures(self):
+        rice = ("370 grams of rice = about 2 cups.", "recipe says 370 g of rice, how many cups is that")
+        self.assertTrue(keeps_figures("That's about 2 cups. 370 g is a bit more than two cups, so round down.", *rice))
+        self.assertTrue(keeps_figures("Two cups, more or less.", *rice))  # spelled number counts as present
+        self.assertFalse(keeps_figures("That's about 2 cups. One cup is 100 grams, so 370 grams is roughly 2.7 cups.", *rice))  # facts2 g17
+        self.assertFalse(keeps_figures("Two and a half cups.", *rice))
+        self.assertFalse(keeps_figures("Just use a scale, it's easier.", *rice))
+        oven = ("350°F = 176.7°C.", "oven says 350 F, what's that in celsius")
+        self.assertTrue(keeps_figures("About 177°C, so 180 on most dials is fine.", *oven))  # rounding within 2%
+        self.assertFalse(keeps_figures("About 200°C.", *oven))
+        oil = ("3 tablespoons of oil = 9 teaspoons.", "need 3 tablespoons of oil but only have a teaspoon")
+        self.assertTrue(keeps_figures("3 tablespoons is 9 teaspoons, so 9 scoops and you're there.", *oil))
+        self.assertTrue(keeps_figures("1 gallon is about 3,785 ml, so 3785 is the number.", "1 gallon = about 3,785 milliliters.", "how many ml in a gallon"))
+        walnuts = (conversion_note("how many cups is 200 g of chopped walnuts"), "how many cups is 200 g of chopped walnuts")
+        self.assertTrue(keeps_figures("I can't convert 200 g of walnuts to cups without knowing how fine they're chopped.", *walnuts))
+        self.assertFalse(keeps_figures("About 2 cups.", *walnuts))
+        # The guard resamples on a bad reply and answers with the note itself when every attempt fails.
+        replies = iter(["One cup is 100 grams, so 2.7 cups.", "About 2 cups."])
+        self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4, rice[1], rice[0]), {"text": "About 2 cups.", "guard_attempts": 2})
+        self.assertEqual(guarded(lambda attempt: {"text": "Use a scale."}, 1, rice[1], rice[0])["text"], rice[0])
 
     def test_note_goes_to_the_system_prompt_for_this_turn_only(self):
         messages = [{"role": "system", "content": "S"}, {"role": "user", "content": "how many tbsp in a cup"}]

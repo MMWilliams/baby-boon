@@ -108,6 +108,9 @@ FACT_REQUEST = re.compile(
     rf"|\b(?:say|tell me|share|give me|teach me|distract me with|hit me with|know) something "
     rf"(?:{ADJ}|i (?:don'?t|didn'?t) know)\b(?! about (?:{PERSONAL})\b)",
     re.I)
+# Figures in a reply: digits (with commas, decimals, fractions, glyphs); spelled numbers only count as present, never as extra.
+DIGITS = re.compile(rf"(?<![\w/.,])(\d{{1,3}}(?:,\d{{3}})+(?:\.\d+)?|{NUMBER}|[½¼¾⅓⅔⅛])(?![\d/]|[.,]\d)")
+SPELLED = re.compile(rf"(?<![\w/.])((?:(?:{COUNT})[\s-])?(?:{PART})|(?:{COUNT})(?:\s+and\s+a\s+half)?)\b", re.I)
 CONVERSION_LEAD = "For this reply, use these checked numbers exactly and add no other figures:"
 FACT_LEAD = "For this reply, share this checked fact in your own words and add no other facts:"
 
@@ -237,6 +240,26 @@ def fact_note(user):
     words = {w.rstrip("s") for w in re.findall(r"[a-z]{4,}", user.lower())} - GENERIC
     pool = [fact for fact in pool if any(w in fact.lower() for w in words)] or pool
     return pool[zlib.crc32(user.encode()) % len(pool)]
+
+
+def figures(text, spelled=False):
+    found = [amount(m[1].replace(",", "")) for m in DIGITS.finditer(text)]
+    if spelled: found += [amount(m[1]) for m in SPELLED.finditer(text) if m[1].lower() not in ("a", "an")]
+    return found
+
+
+def close(a, b):
+    return abs(a - b) <= max(0.02 * abs(b), 0.06)  # 177 for 176.7, 0.13 for 1/8
+
+
+def keeps_figures(reply, note, user):
+    """The conversion note was used: a converted value appears in the reply, and every figure written in digits is one
+    from the note or the user's message (facts2 g17 wrote the right 2 cups next to an invented "100 grams" and "2.7")."""
+    results = [v for sentence in re.split(r"(?<=\.)\s+", note) for part in sentence.split(" = ")[1:] for v in figures(part)]
+    allowed = figures(note) + figures(user)
+    present = figures(reply, spelled=True)
+    return ((not results or any(close(r, v) for r in results for v in present))
+            and all(any(close(v, a) for a in allowed) for v in figures(reply)))
 
 
 def with_facts(messages, user):

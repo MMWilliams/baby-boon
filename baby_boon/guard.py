@@ -2,6 +2,8 @@
 is resampled. Pilots v5 (SFT) and v6 (DPO) couldn't train out the base 1.7B's own invented-sunset answer to d15."""
 import re
 
+from .facts import keeps_figures
+
 SCENE = (r"(?:sun|sunset|sunrise|sky|moon|stars?|light|sunlight|moonlight|rain|wind|breeze|air|room|silence|sea|ocean"
          r"|waves?|clouds?|birds?|trees?|leaves|snow|street|city|weather|garden|view)")
 # Place/time words stack ("outside today"), and a short location phrase may follow the noun ("on the coffee maker").
@@ -66,10 +68,13 @@ def acceptable(text, user):
     return not ROBOT_PERCEPTION.search(text) and (not asks_surroundings(user) or bool(ADMITS.search(text)))
 
 
-def guarded(generate, tries, user):
+def guarded(generate, tries, user, note=None):
     """generate(attempt) -> dict with "text"; attempt 0 is greedy, later attempts sample. Returns the first acceptable
-    reply, else the last one with a fallback that fits the request as its text."""
+    reply, else the last one with a fallback that fits the request as its text. A conversion note, when this turn has
+    one, must be used (its figures and no others); a reply that never manages it is replaced by the note itself."""
     for attempt in range(tries + 1):
         reply = generate(attempt)
-        if acceptable(reply["text"], user): return {**reply, "guard_attempts": attempt + 1}
-    return {**reply, "text": fallback_for(user), "guard_attempts": tries + 1, "guard_fallback": True}
+        if acceptable(reply["text"], user) and (not note or keeps_figures(reply["text"], note, user)):
+            return {**reply, "guard_attempts": attempt + 1}
+    text = note if note and not keeps_figures(reply["text"], note, user) else fallback_for(user)
+    return {**reply, "text": text, "guard_attempts": tries + 1, "guard_fallback": True}

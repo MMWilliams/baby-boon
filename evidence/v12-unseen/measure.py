@@ -9,7 +9,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
 from baby_boon.chat import GUARD_TRIES, complete
 from baby_boon.common import SYSTEM
 from baby_boon.cues import CUE_INSTRUCTION
-from baby_boon.facts import with_facts
+from baby_boon.facts import conversion_note, with_facts
 from baby_boon.guard import asks_surroundings, guarded
 
 HERE = pathlib.Path(__file__).parent
@@ -30,7 +30,7 @@ for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
         attempts.append(complete(a.url, messages, attempt))
         return attempts[-1]
 
-    reply = guarded(generate, GUARD_TRIES, prompt["text"])
+    reply = guarded(generate, GUARD_TRIES, prompt["text"], conversion_note(prompt["text"]) if a.facts else None)
     rows.append({**prompt, "facts": messages[0]["content"][len(SYSTEM + CUE_INSTRUCTION):].strip(), "routed": asks_surroundings(prompt["text"]), "final": reply["text"],
                  "fallback": bool(reply.get("guard_fallback")), "attempts": [t["text"] for t in attempts],
                  "timings": [t["timings"] for t in attempts],
