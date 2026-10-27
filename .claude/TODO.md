@@ -10,7 +10,8 @@
 - [x] Provide chat client, malformed-cue fallback, tests and blinded review page.
 - [x] Diagnose teacher mismatch: installed qwen3:4b is actually Qwen3 4B Thinking 2507.
 - [x] Pin and test the separate non-thinking Qwen3-4B-Instruct-2507 teacher (Q8_0, 7.8 tok/s CPU).
-- [x] Rename project to baby-boon (PyPI and Hugging Face names were free on 2026-10-25; not reserved).
+- [x] Rename project to baby-boon (PyPI and Hugging Face names were free on 2026-10-25).
+- [ ] Release follow-ups: upload the f16 GGUF to HF if anyone asks; macOS/Linux self-serve chat is untested (CI only checks the wheel and --help).
 - [x] Teacher generation script: 200 authored non-dev prompts, style filters, GBNF cue labels (data/teacher-v1 draft, 236 replies).
 - [x] Label cues separately from teacher replies (grammar-constrained second call; all valid).
 - [x] Admit teacher-v1: 188 of 236 replies (scripts/admit_teacher.py, data/teacher-v1-admitted).
@@ -85,4 +86,4 @@
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 
 Pilot v1 is trained but failed social acceptance. See PILOT_REPORT.md and
-VERIFICATION.md. It has not been published. Current task state is in HANDOFF.md when a task is in flight.
+VERIFICATION.md. v14 is published as baby-boon 0.1.0 on PyPI, GitHub (release v0.1.0) and Hugging Face (2026-10-27). Current task state is in HANDOFF.md when a task is in flight.
