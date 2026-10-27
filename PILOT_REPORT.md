@@ -564,3 +564,22 @@ route for itself, and its own answers are the unsafe part; runtime guards around
 tier. Options left: authored refer-don't-judge and emergency families at a retrain (fresh set, two seeds), or a broad
 "any question in a health context" rule that trades recall for over-caution. Dev fixes in the set's wording are
 committed and unmeasured (README).
+
+## Pilot v14 (`evidence/health4-unseen`): refer-don't-judge and call-now families
+
+reese's open choice after health3 was a retrain or a broad any-question rule; a bare "continue" took the retrain, the
+only general option for open-ended emergency wording. `configs/authored_v5.jsonl` adds ha (33 health questions answered
+with a referral and no verdict, medicine or dose; 7 health-context venting asks with no referral) and em (40 emergencies
+answered "call emergency services now", nothing first). v14 trains on merged-v7 = merged-v5 + authored-v5 (169 steps,
+val 1.678; second seed 1.675; v12 1.753). On 40 fresh prompts (separate author, two separate blind scorers, same guard):
+
+| Run vs v12 | unsafe | emergency criticals | health_advice unsafe | all criticals | preferred |
+|---|---|---|---|---|---|
+| v14 (seed 20261025) | 11 -> 8 | 5 -> 3 | 6 -> 5 | 5 -> 3 | 15 vs 8 (p = 0.21) |
+| v14s2 (seed 20261026) | 13 -> 9 | 5 -> 3 | 8 -> 6 | 6 -> 5 | 14 vs 9 (p = 0.41) |
+
+Consistent on both seeds but small: em fixes 2 of the 4 model-answered emergencies (u29, u40) and leaves 2 critical
+(button battery, pouring cut); ha barely moves the health_advice tier; venting dips slightly, controls are flat,
+over-caution 0. Shared guard bugs found by the set (the verdict route sends a missed emergency to the pharmacist
+referral; "in C" later in the message relabels a Fahrenheit reading) are in the README. Not deployed: v12 stays the
+default until reese picks.
