@@ -2,6 +2,8 @@ import unittest
 
 from baby_boon.facts import FACTS, conversion_note, fact_note, with_facts
 
+ALL_FACTS = [f for facts in FACTS.values() for f in facts]
+
 
 class Facts(unittest.TestCase):
     def test_known_wrong_conversions_are_computed(self):
@@ -15,26 +17,55 @@ class Facts(unittest.TestCase):
             "how much is two sticks of butter": "2 sticks = 1 cup = 16 tablespoons = 8 ounces.",
             "how many ml in 3/4 cup": "3/4 cup = about 177 milliliters.",
             # A measure named with "a" next to a real amount is the unit wanted, not a second amount.
-            "need 3 tablespoons of oil but I only have a teaspoon, how many do I use": "3 tablespoons = 9 teaspoons.",
+            "need 3 tablespoons of oil but I only have a teaspoon, how many do I use": "3 tablespoons of oil = 9 teaspoons.",
             "the recipe wants 4 tbsp butter, how much of a stick is that": "4 tablespoons of butter = 1/2 stick.",
             "how much is 6 tbsp in cups": "6 tablespoons = 3/8 cup.",
+            # Unit before a bare reading, "in" between amount and unit, single-letter target.
+            "oven dial is in celsius and says 180. whats that in F": "180°C = 356°F.",
+            "it's 22 in celsius here, whats that in fahrenheit": "22°C = 71.6°F.",
+            "what's 100 C in F": "100°C = 212°F.",
+            # The source unit named again isn't a target (regressed in 9106ec3, caught on dev prompt f01).
+            "my 1/4 measuring cup broke. how many tablespoons is a quarter of a cup?": "1/4 cup = 4 tablespoons.",
         }
         for text, note in cases.items():
             self.assertEqual(conversion_note(text), note, text)
 
-    def test_weight_to_volume_needs_the_ingredient(self):
-        self.assertIn("can't be converted to cups", conversion_note("how many cups is 200 g of flour"))
+    def test_named_ingredients_convert_between_weight_and_volume(self):
+        cases = {
+            "how many cups is 250 g of flour": "250 grams of flour = about 2 cups.",
+            "2 cups of sugar in grams": "2 cups of sugar = about 400 grams.",
+            "need 1 cup packed brown sugar, how many grams": "1 cup of brown sugar = about 220 grams.",
+            "half a cup of milk, how many ounces is that": "1/2 cup of milk = 4 fluid ounces.",
+            "3 tbsp peanut butter in grams": "3 tablespoons of peanut butter = about 48 grams.",
+        }
+        for text, note in cases.items():
+            self.assertEqual(conversion_note(text), note, text)
+
+    def test_weight_to_volume_needs_a_known_ingredient(self):
+        self.assertIn("can't be converted to cups", conversion_note("how many cups is 200 g of chopped walnuts"))
 
     def test_casual_quantities_get_no_note(self):
         for text in ["had 2 cups of coffee and I'm still dead", "it's 30 C out and my AC died", "I got a C on the test",
-                     "lost 5 pounds this month!!", "In fact, tell him the truth."]:
+                     "lost 5 pounds this month!!", "In fact, tell him the truth.", "my sister is 3 and already reads",
+                     "we got to F in the alphabet song before he fell asleep"]:
             self.assertIsNone(conversion_note(text), text)
             self.assertIsNone(fact_note(text), text)
 
     def test_fact_requests_draw_from_the_topic_list(self):
         self.assertIn(fact_note("Zonked. Tell me one weird animal fact to perk me up."), FACTS["animal"])
         self.assertIn(fact_note("give me a space fact pls"), FACTS["space"])
-        self.assertIn(fact_note("random fun fact?"), [f for facts in FACTS.values() for f in facts])
+        self.assertIn(fact_note("random fun fact?"), ALL_FACTS)
+
+    def test_fact_requests_without_the_word_fact(self):
+        self.assertIn(fact_note("what's the grossest thing about the human body?"), FACTS["body"])
+        self.assertIn(fact_note("tell me the strangest creature in the sea"), FACTS["ocean"])
+        self.assertIn(fact_note("bored out of my mind. tell me something weird"), ALL_FACTS)
+        self.assertIn(fact_note("hit me with some trivia"), ALL_FACTS)
+
+    def test_personal_questions_are_not_fact_requests(self):
+        for text in ["what's the weirdest thing about your day?", "tell me something interesting about yourself",
+                     "trivia night is tomorrow and I'm nervous", "the weirdest thing about my ex is he never texts back"]:
+            self.assertIsNone(fact_note(text), text)
 
     def test_note_goes_to_the_system_prompt_for_this_turn_only(self):
         messages = [{"role": "system", "content": "S"}, {"role": "user", "content": "how many tbsp in a cup"}]

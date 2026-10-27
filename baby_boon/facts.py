@@ -4,13 +4,17 @@ model can't be trained into arithmetic, so conversions are computed and fun fact
 import re
 import zlib
 
-# Size in ml or g. Butter converts between volume and weight at 1 cup = 8 oz, so 1 stick = 1/2 cup = 4 oz.
+# Size in ml or g.
 UNITS = {"teaspoon": ("volume", 4.92892), "tablespoon": ("volume", 14.7868), "fluid ounce": ("volume", 29.5735),
          "cup": ("volume", 236.588), "pint": ("volume", 473.176), "quart": ("volume", 946.353),
          "gallon": ("volume", 3785.41), "milliliter": ("volume", 1), "liter": ("volume", 1000), "stick": ("volume", 118.294),
          "ounce": ("weight", 28.3495), "pound": ("weight", 453.592), "gram": ("weight", 1), "kilogram": ("weight", 1000),
          "°F": ("temperature", 1), "°C": ("temperature", 1)}
-BUTTER_G_PER_ML = 226.796 / 236.588
+# Grams per US cup, so volume and weight convert for named ingredients. Butter: 1 cup = 8 oz, 1 stick = 1/2 cup = 4 oz.
+INGREDIENTS = {"butter": 226.796, "peanut butter": 258, "flour": 125, "sugar": 200, "brown sugar": 220,
+               "powdered sugar": 120, "honey": 340, "water": 236.588, "milk": 245, "cream": 240, "yogurt": 245,
+               "oil": 218, "rice": 185, "oats": 90, "cocoa": 85, "salt": 288}
+LIQUIDS = {"water", "milk", "cream", "oil"}  # "ounces" of these means fluid ounces
 DEFAULTS = {"volume": ("tablespoon", "cup", "fluid ounce"), "weight": ("ounce", "pound"),
             "butter": ("stick", "cup", "tablespoon", "ounce"), "temperature": ("°F", "°C")}
 # Longer spellings first where they share a start ("fl oz" before "f"). Single letters count only after a digit.
@@ -27,11 +31,17 @@ WORDS = {"a": 1, "an": 1, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, 
          "quarters": 1/4, "eighth": 1/8, "eighths": 1/8}
 COUNT = r"a|an|one|two|three|four|five|six|seven|eight|nine|ten|twelve"
 PART = r"halves|half|thirds?|quarters?|eighths?"
-AMOUNT = (rf"\d+(?:\.\d+)?(?:\s*[½¼¾⅓⅔⅛]|\s+\d+/\d+)?|\d+/\d+|[½¼¾⅓⅔⅛]"
-          rf"|(?:(?:{COUNT})[\s-])?(?:{PART})|(?:{COUNT})(?:\s+and\s+a\s+half)?")
-QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?)?\s*(?:°\s*|degrees?\s+)?({UNIT})\b", re.I)
+NUMBER = r"\d+(?:\.\d+)?(?:\s*[½¼¾⅓⅔⅛]|\s+\d+/\d+)?|\d+/\d+"
+AMOUNT = rf"{NUMBER}|[½¼¾⅓⅔⅛]|(?:(?:{COUNT})[\s-])?(?:{PART})|(?:{COUNT})(?:\s+and\s+a\s+half)?"
+QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?|\s+in)?\s*(?:°\s*|degrees?\s+)?({UNIT})\b", re.I)
+# Unit first, then a bare reading: "the thermometer is on celsius and reads 38.5".
+UNIT_FIRST = re.compile(rf"(?<![\w°])({UNIT})\b(?:\s+\w+){{0,2}}?\s+(?:reads?|says?|shows?|is|at|=)\s*({NUMBER})(?![\w/]|\.\d)", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
-ASK = re.compile(r"\bconvert|\bhow (?:many|much)\b|\bwhat(?:'s| is) (?:that|this|it)\b|\bequals?\b|\bsame as\b", re.I)
+LETTER_TARGET = re.compile(r"\b(?:in|to|into)\s+([CF])\b", re.I)
+INGREDIENT = "|".join(sorted(INGREDIENTS, key=len, reverse=True)).replace(" ", r"\s+")
+AFTER = re.compile(rf"\s+(?:of\s+)?(?:[\w-]+\s+)??({INGREDIENT})\b", re.I)
+BEFORE = re.compile(rf"\b({INGREDIENT})\W{{0,3}}$", re.I)
+ASK = re.compile(r"\bconvert|\bhow (?:many|much)\b|\bwhat(?:'s|s| is) (?:that|this|it)\b|\bequals?\b|\bsame as\b", re.I)
 FRACTION = {1/8: "1/8", 1/4: "1/4", 1/3: "1/3", 3/8: "3/8", 1/2: "1/2", 5/8: "5/8", 2/3: "2/3", 3/4: "3/4", 7/8: "7/8"}
 NICE = (0, *FRACTION, 1)
 
@@ -75,10 +85,20 @@ FACTS = {
 TOPICS = {"ocean": r"ocean|sea|marine|underwater|fish", "animal": r"animals?|creatures?|birds?|bugs?|insects?|pets?|dogs?|cats?",
           "space": r"space|planets?|stars?|moon|sun|galax\w*|universe", "body": r"body|brain|bones?|human|heart|blood",
           "food": r"food|fruits?|veg\w*|cooking|snacks?"}
+ADJ = (r"fun|weird|cool|random|interesting|wild|strange|crazy|odd|neat|surprising|bizarre|unusual|amazing|creepy|gross"
+       r"|science|animal|space|ocean|food|body")
+MOST = (r"weirdest|coolest|strangest|craziest|wildest|oddest|creepiest|grossest|funniest"
+        r"|most (?:interesting|surprising|random|bizarre|unusual|amazing)")
+PERSONAL = r"me|my|you|your|yourself|him|his|her|them|their|us|our"
 FACT_REQUEST = re.compile(
-    r"\b(?:fun|weird|cool|random|interesting|wild|strange|crazy|odd|neat|surprising|science|animal|space|ocean|food|body)"
-    r"(?:[ -]\w+)? facts?\b|\bfacts? about\b|\b(?:tell|give|teach|share|hit|drop|send)\b[^.?!]{0,25}\bfacts?\b"
-    r"|\bany (?:good |fun )?facts?\b", re.I)
+    rf"\b(?:{ADJ})(?:[ -]\w+)? facts?\b|\bfacts? about\b|\b(?:tell|give|teach|share|hit|drop|send)\b[^.?!]{{0,25}}\bfacts?\b"
+    rf"|\bany (?:good |fun )?facts?\b|\b(?:some|any|random) trivia\b|\bblow my mind\b"
+    # "what's the weirdest thing about the human body", but not "...about your day"
+    rf"|\b(?:what(?:'s|s| is)|tell me|hit me with|give me)(?: the)? (?:{MOST}) (?:thing|part|stuff|bit|creature|animal)s?\b"
+    rf"(?!(?: (?:about|in|with|for))? (?:{PERSONAL})\b)"
+    # "say something interesting", but not "...about yourself"
+    rf"|\b(?:say|tell me|share|give me|teach me) something (?:{ADJ}|i (?:don'?t|didn'?t) know)\b(?! about (?:{PERSONAL})\b)",
+    re.I)
 CONVERSION_LEAD = "For this reply, use these checked numbers exactly and add no other figures:"
 FACT_LEAD = "For this reply, share this checked fact in your own words and add no other facts:"
 
@@ -117,62 +137,86 @@ def number(x):
     return ("about " if abs(shown - x) > 0.01 else "") + text
 
 
-def label(value, unit):
+def label(value, unit, rough=False):
     if unit.startswith("°"): return f"{round(value, 1):g}{unit}"
-    return f"{number(value)} {unit}{'' if value <= 1 else 's'}"
+    text = f"{number(value)} {unit}{'' if value <= 1 else 's'}"
+    return text if text.startswith("about") or not rough else "about " + text
 
 
-def convert(value, unit, target):
+def convert(value, unit, target, ingredient):
     if unit.startswith("°"): return value * 9 / 5 + 32 if target == "°F" else (value - 32) * 5 / 9
     (dim, size), (target_dim, target_size) = UNITS[unit], UNITS[target]
     base = value * size
-    if dim != target_dim: base = base * BUTTER_G_PER_ML if dim == "volume" else base / BUTTER_G_PER_ML
+    if dim != target_dim:
+        density = INGREDIENTS[ingredient] / UNITS["cup"][1]
+        base = base * density if dim == "volume" else base / density
     return base / target_size
 
 
-def compatible(unit, target, butter):
+def compatible(unit, target, ingredient):
     dims = {UNITS[unit][0], UNITS[target][0]}
-    return unit != target and (len(dims) == 1 or (butter and dims == {"volume", "weight"}))
+    return unit != target and (len(dims) == 1 or (ingredient and dims == {"volume", "weight"}))
+
+
+def ingredient_of(user, span, unit):
+    if unit == "stick": return "butter"
+    m = AFTER.match(user, span[1]) or BEFORE.search(user[:span[0]])
+    return re.sub(r"\s+", " ", m[1].lower()) if m else None
+
+
+def inside(found, pos):
+    return any(start <= pos < end for (start, end), *_ in found)
 
 
 def parse(user):
-    """(value, unit, butter) amounts in the message, and the units it asks for."""
-    found = []
+    """(value, unit, ingredient) amounts in the message, and the units it asks for."""
+    found = []  # (span, amount text, unit)
     for m in QUANTITY.finditer(user):
         word = m[2]
         if len(word) == 1 and not (m[1][0].isdigit() and (word in ("C", "F", "g") or "°" in m[0] or "degree" in m[0].lower())):
             continue
-        unit = canonical(word)
-        butter = unit == "stick" or bool(re.match(r"\s+(?:of\s+)?(?:\w+\s+)?butter\b", user[m.end():], re.I)
-                                         or re.search(r"\bbutter\W{0,3}$", user[:m.start()], re.I))
-        found.append((m, unit, butter))
+        found.append((m.span(), m[1], canonical(word)))
+    for m in UNIT_FIRST.finditer(user):
+        if (len(m[1]) > 1 or re.search(r"\bin\s*$", user[:m.start()], re.I)) and not inside(found, m.start(2)):
+            found.append((m.span(), m[2], canonical(m[1])))
     # Next to a real amount, "a teaspoon" names the measure wanted ("need 2 tbsp, only have a teaspoon").
-    named = [q for q in found if q[0][1].lower() in ("a", "an")]
+    named = [q for q in found if q[1].lower() in ("a", "an")]
     if len(named) == len(found): named = []
-    targets = [unit for _, unit, _ in named]
+    targets = [unit for _, _, unit in named]
     for m in UNIT_WORD.finditer(user):
         unit = canonical(m[0])
-        if (len(m[0]) > 1 and unit not in targets and not any(q.start() <= m.start() < q.end() for q, *_ in found)
+        if (len(m[0]) > 1 and unit not in targets and not inside(found, m.start())
                 and (unit != "stick" or re.search(r"\bbutter\b", user, re.I))):
             targets.append(unit)
-    return [(amount(m[1]), unit, butter) for m, unit, butter in found if (m, unit, butter) not in named], targets
+    for m in LETTER_TARGET.finditer(user):  # "what's that in F"
+        unit = canonical(m[1])
+        if unit not in targets and not inside(found, m.start(1)): targets.append(unit)
+    return [(amount(text), unit, ingredient_of(user, span, unit)) for span, text, unit in found
+            if (span, text, unit) not in named], targets
 
 
-def line(value, unit, butter, targets):
-    chosen = [t for t in targets if compatible(unit, t, butter)]
+def line(value, unit, ingredient, targets):
+    if ingredient in LIQUIDS and UNITS[unit][0] == "volume":
+        targets = ["fluid ounce" if t == "ounce" else t for t in targets]
+    chosen = [t for t in targets if compatible(unit, t, ingredient)]
     if targets and not chosen:
         return (f"{label(value, unit)} can't be converted to {targets[0]}s without knowing the ingredient; "
                 "a kitchen scale or the package label is safest.")
-    defaults = DEFAULTS["butter" if butter and not unit.startswith("°") else UNITS[unit][0]]
-    chosen = chosen or [t for t in defaults if compatible(unit, t, butter)]
-    return " = ".join([label(value, unit) + (" of butter" if butter and unit != "stick" else "")]
-                      + [label(convert(value, unit, t), t) for t in chosen]) + "."
+    defaults = DEFAULTS["butter" if ingredient == "butter" and not unit.startswith("°") else UNITS[unit][0]]
+    chosen = chosen or [t for t in defaults if compatible(unit, t, ingredient)]
+    rough = ingredient not in (None, "butter", "water")  # cup weights of flour, sugar etc. vary with packing
+    return " = ".join([label(value, unit) + (f" of {ingredient}" if ingredient and unit != "stick" else "")]
+                      + [label(convert(value, unit, t, ingredient), t, rough and UNITS[unit][0] != UNITS[t][0])
+                         for t in chosen]) + "."
 
 
 def conversion_note(user):
     quantities, targets = parse(user)
-    if not (targets or ASK.search(user)): return None
-    return " ".join(line(value, unit, butter, targets) for value, unit, butter in quantities if unit not in targets) or None
+    asked = bool(ASK.search(user))
+    # The source unit named again ("my 1/3 measuring cup ... how many tablespoons") isn't a target.
+    notes = [line(value, unit, ingredient, [t for t in targets if t != unit]) for value, unit, ingredient in quantities
+             if asked or any(t != unit for t in targets)]
+    return " ".join(notes) or None
 
 
 def fact_note(user):
