@@ -44,12 +44,20 @@ class Facts(unittest.TestCase):
             # The other scale named by a verb, and the same amount said twice.
             "the dial says 400 in F and this oven only does C, where do i put it": "400°F = 204.4°C.",
             "got 3 kilos of apples, the recipe is in pounds. 3 kilos is how many lb": "3 kilograms = about 6 5/8 pounds.",
+            # Dev fixes after the facts3 run: spelled mixed numbers beyond "and a half", a reading whose scale comes a few
+            # words later, two decimals under 1 (h20 got "about 0.7 kilogram").
+            "two and a quarter cups of flour in grams": "2 1/4 cups of flour = about 281 grams.",
+            "one and a third sticks of butter in tablespoons": "1 1/3 sticks = 10 2/3 tablespoons.",
+            "the strip says 39.2 but it's in celsius, what's that in fahrenheit": "39.2°C = 102.6°F.",
+            "the butcher only does kilos, recipe wants 1 1/2 lbs of beef": "1 1/2 pounds = 0.68 kilogram.",
         }
         for text, note in cases.items():
             self.assertEqual(conversion_note(text), note, text)
 
     def test_weight_to_volume_needs_a_known_ingredient(self):
-        self.assertIn("can't be converted to cups", conversion_note("how many cups is 200 g of chopped walnuts"))
+        self.assertEqual(conversion_note("how many cups is 200 g of chopped walnuts"),
+                         "200 grams can't be converted to cups without a checked cup weight for that ingredient; "
+                         "a kitchen scale or the package label is safest.")
 
     def test_casual_quantities_get_no_note(self):
         for text in ["had 2 cups of coffee and I'm still dead", "it's 30 C out and my AC died", "I got a C on the test",
@@ -86,6 +94,8 @@ class Facts(unittest.TestCase):
         rice = ("370 grams of rice = about 2 cups.", "recipe says 370 g of rice, how many cups is that")
         self.assertTrue(keeps_figures("That's about 2 cups. 370 g is a bit more than two cups, so round down.", *rice))
         self.assertTrue(keeps_figures("Two cups, more or less.", *rice))  # spelled number counts as present
+        self.assertTrue(keeps_figures("One and a third sticks. That's 150 grams.", "150 grams of butter = about 1 1/3 sticks.",
+                                      "British recipe wants 150 g butter, how many sticks"))  # facts3 h17 attempt 2 was rejected
         self.assertFalse(keeps_figures("That's about 2 cups. One cup is 100 grams, so 370 grams is roughly 2.7 cups.", *rice))  # facts2 g17
         self.assertFalse(keeps_figures("Two and a half cups.", *rice))
         self.assertFalse(keeps_figures("Just use a scale, it's easier.", *rice))

@@ -32,10 +32,14 @@ WORDS = {"a": 1, "an": 1, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, 
 COUNT = r"a|an|one|two|three|four|five|six|seven|eight|nine|ten|twelve"
 PART = r"halves|half|thirds?|quarters?|eighths?"
 NUMBER = r"\d+(?:\.\d+)?(?:\s*[½¼¾⅓⅔⅛]|\s+\d+/\d+)?|\d+/\d+"
-AMOUNT = rf"{NUMBER}|[½¼¾⅓⅔⅛]|(?:(?:{COUNT})[\s-])?(?:{PART})|(?:{COUNT})(?:\s+and\s+a\s+half)?"
+MIXED = rf"(?:{COUNT})(?:\s+and\s+a\s+(?:half|third|quarter))?"
+AMOUNT = rf"{NUMBER}|[½¼¾⅓⅔⅛]|(?:(?:{COUNT})[\s-])?(?:{PART})|{MIXED}"
 QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?|\s+in)?\s*(?:°\s*|degrees?\s+)?({UNIT})\b", re.I)
 # Unit first, then a bare reading: "the thermometer is on celsius and reads 38.5".
 UNIT_FIRST = re.compile(rf"(?<![\w°])({UNIT})\b(?:\s+\w+){{0,2}}?\s+(?:reads?|says?|shows?|is|at|=)\s*({NUMBER})(?![\w/]|\.\d)", re.I)
+# A bare reading, then its scale a few words later: "says 38.7 but it's in celsius" (facts3 h22).
+READING_SCALE = re.compile(rf"(?<![\w/.])({NUMBER})(?![\w/]|\.\d)(?:\s+[\w']+){{0,3}}?\s+(?:in|on)\s+"
+                           r"(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
 LETTER_TARGET = re.compile(r"\b(?:in|to|into|does|uses|shows|reads|on)\s+([CF])\b", re.I)
 INGREDIENT = "|".join(sorted(INGREDIENTS, key=len, reverse=True)).replace(" ", r"\s+")
@@ -110,7 +114,7 @@ FACT_REQUEST = re.compile(
     re.I)
 # Figures in a reply: digits (with commas, decimals, fractions, glyphs); spelled numbers only count as present, never as extra.
 DIGITS = re.compile(rf"(?<![\w/.,])(\d{{1,3}}(?:,\d{{3}})+(?:\.\d+)?|{NUMBER}|[½¼¾⅓⅔⅛])(?![\d/]|[.,]\d)")
-SPELLED = re.compile(rf"(?<![\w/.])((?:(?:{COUNT})[\s-])?(?:{PART})|(?:{COUNT})(?:\s+and\s+a\s+half)?)\b", re.I)
+SPELLED = re.compile(rf"(?<![\w/.])((?:(?:{COUNT})[\s-])?(?:{PART})|{MIXED})\b", re.I)
 CONVERSION_LEAD = "For this reply, use these checked numbers exactly and add no other figures:"
 FACT_LEAD = "For this reply, share this checked fact in your own words and add no other facts:"
 
@@ -131,7 +135,7 @@ def amount(text):
         whole, glyph, fraction = re.fullmatch(r"(\d+(?:\.\d+)?|\d+/\d+)\s*([½¼¾⅓⅔⅛]?)\s*(\d+/\d+)?", text).groups()
         return ratio(whole) + (ratio(fraction) if fraction else 0) + GLYPHS.get(glyph, 0)
     words = re.split(r"[\s-]+", text)
-    if "and" in words: return WORDS[words[0]] + 0.5  # "one and a half"
+    if "and" in words: return WORDS[words[0]] + WORDS[words[-1]]  # "one and a half", "two and a third"
     if words[-1] in ("half", "halves", "third", "thirds", "quarter", "quarters", "eighth", "eighths"):
         return WORDS[words[-1]] * (WORDS[words[0]] if len(words) > 1 else 1)
     return WORDS[words[0]]
@@ -145,7 +149,7 @@ def number(x):
         whole, shown = int(whole + (nice == 1)), whole + nice
         text = " ".join(s for s in (str(whole) if whole or nice in (0, 1) else "", FRACTION.get(nice, "")) if s)
     else:
-        shown = round(x) if x >= 20 else round(x, 1)
+        shown = round(x) if x >= 20 else round(x, 2 if x < 1 else 1)  # 0.68 kilogram, not "about 0.7"
         text = f"{shown:,}" if x >= 20 else f"{shown:g}"
     return ("about " if abs(shown - x) > 0.01 else "") + text
 
@@ -192,6 +196,8 @@ def parse(user):
     for m in UNIT_FIRST.finditer(user):
         if (len(m[1]) > 1 or re.search(r"\bin\s*$", user[:m.start()], re.I)) and not inside(found, m.start(2)):
             found.append((m.span(), m[2], canonical(m[1])))
+    for m in READING_SCALE.finditer(user):
+        if not inside(found, m.start(1)): found.append((m.span(), m[1], canonical(m[2])))
     # Next to a real amount, "a teaspoon" names the measure wanted ("need 2 tbsp, only have a teaspoon").
     named = [q for q in found if q[1].lower() in ("a", "an")]
     if len(named) == len(found): named = []
@@ -213,8 +219,10 @@ def line(value, unit, ingredient, targets):
         targets = ["fluid ounce" if t == "ounce" else t for t in targets]
     chosen = [t for t in targets if compatible(unit, t, ingredient)]
     if targets and not chosen:
-        return (f"{label(value, unit)} can't be converted to {targets[0]}s without knowing the ingredient; "
-                "a kitchen scale or the package label is safest.")
+        # Also the final reply when the model keeps inventing a weight (facts3 h06 walnuts, h18 onion), so it names no
+        # ingredient it doesn't know and doesn't claim the user left it out.
+        return (f"{label(value, unit)} can't be converted to {targets[0]}s without a checked cup weight for that "
+                "ingredient; a kitchen scale or the package label is safest.")
     defaults = DEFAULTS["butter" if ingredient == "butter" and not unit.startswith("°") else UNITS[unit][0]]
     chosen = chosen or [t for t in defaults if compatible(unit, t, ingredient)]
     rough = ingredient not in (None, "butter", "water")  # cup weights of flour, sugar etc. vary with packing
