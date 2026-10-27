@@ -1,0 +1,812 @@
+[
+ {
+  "id": "g01",
+  "category": "conversions",
+  "text": "the oven display is on celsius and says 200, so what is that in f? the recipe is all fahrenheit and i'm confused",
+  "answer": "392 F",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 200°C = 392°F.",
+  "routed": false,
+  "final": "200°C is about 392°F. That's way hotter than most recipes, so you'd probably want to check the oven's settings again or use a different one.",
+  "fallback": false,
+  "attempts": [
+   "200°C is about 392°F. That's way hotter than most recipes, so you'd probably want to check the oven's settings again or use a different one."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 72,
+    "prompt_ms": 129.198,
+    "prompt_per_token_ms": 1.7944166666666668,
+    "prompt_per_second": 557.2841684855803,
+    "predicted_n": 49,
+    "predicted_ms": 1150.137,
+    "predicted_per_token_ms": 23.961187499999998,
+    "predicted_per_second": 41.734158626320166
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g02",
+  "category": "fun_facts",
+  "text": "got any good trivia about the ocean? can't sleep",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The ocean covers 71% of Earth and holds 97% of its water. It's also home to over 800 species of fish, more than all the other oceans combined. And the Great Barrier Reef is the largest coral reef system in the world.",
+  "fallback": false,
+  "attempts": [
+   "The ocean covers 71% of Earth and holds 97% of its water. It's also home to over 800 species of fish, more than all the other oceans combined. And the Great Barrier Reef is the largest coral reef system in the world."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 25,
+    "prompt_ms": 65.118,
+    "prompt_per_token_ms": 2.60472,
+    "prompt_per_second": 383.91842501305325,
+    "predicted_n": 67,
+    "predicted_ms": 1502.812,
+    "predicted_per_token_ms": 22.769878787878785,
+    "predicted_per_second": 43.91766900982958
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g03",
+  "category": "casual_numbers",
+  "text": "ran 5 miles this morning and i feel amazing, first time in months i've felt like myself",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a big win! First time in months you've felt like yourself—well done. You've earned it.",
+  "fallback": false,
+  "attempts": [
+   "That's a big win! First time in months you've felt like yourself—well done. You've earned it."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 29,
+    "prompt_ms": 66.034,
+    "prompt_per_token_ms": 2.277034482758621,
+    "prompt_per_second": 439.16770148711265,
+    "predicted_n": 35,
+    "predicted_ms": 771.972,
+    "predicted_per_token_ms": 22.705058823529413,
+    "predicted_per_second": 44.04304819345779
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g04",
+  "category": "conversions",
+  "text": "ok the wrapper is gone and the recipe says half a stick of butter, how many tablespoons is that?? guests arrive in 10 min",
+  "answer": "4 tablespoons",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1/2 stick = 4 tablespoons.",
+  "routed": false,
+  "final": "Half a stick is 4 tablespoons. So you've got 4 right now. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and",
+  "fallback": false,
+  "attempts": [
+   "Half a stick is 4 tablespoons. So you've got 4 right now. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and you've got 4. You've got 4, and"
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 67,
+    "prompt_ms": 130.673,
+    "prompt_per_token_ms": 1.9503432835820895,
+    "prompt_per_second": 512.7302503194999,
+    "predicted_n": 128,
+    "predicted_ms": 2971.943,
+    "predicted_per_token_ms": 23.40112598425197,
+    "predicted_per_second": 42.73298646710249
+   }
+  ],
+  "cue_valid": false
+ },
+ {
+  "id": "g05",
+  "category": "quick_facts",
+  "text": "whats the capital of australia, i keep saying sydney and im pretty sure thats wrong",
+  "answer": "Canberra",
+  "facts": "",
+  "routed": false,
+  "final": "The capital of Australia is Canberra. Sydney is the largest city and the most populous, but it's not the capital.",
+  "fallback": false,
+  "attempts": [
+   "The capital of Australia is Canberra. Sydney is the largest city and the most populous, but it's not the capital."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 32,
+    "prompt_ms": 67.85,
+    "prompt_per_token_ms": 2.1203125,
+    "prompt_per_second": 471.62859248341937,
+    "predicted_n": 35,
+    "predicted_ms": 796.641,
+    "predicted_per_token_ms": 23.430617647058824,
+    "predicted_per_second": 42.67919928801054
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g06",
+  "category": "conversions",
+  "text": "how many grams is 3 cups of flour, my scale is dead and i'm doubling this recipe",
+  "answer": "about 375 g (3 cups x 125 g)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 3 cups of flour = about 375 grams.",
+  "routed": false,
+  "final": "3 cups of flour is about 375 grams. Doubling that would be 750 grams. You can weigh it on a kitchen scale or use a cup measure with a known weight, like a 1-cup measuring cup with a weight.",
+  "fallback": false,
+  "attempts": [
+   "3 cups of flour is about 375 grams. Doubling that would be 750 grams. You can weigh it on a kitchen scale or use a cup measure with a known weight, like a 1-cup measuring cup with a weight."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 62,
+    "prompt_ms": 118.49,
+    "prompt_per_token_ms": 1.9111290322580645,
+    "prompt_per_second": 523.2509072495569,
+    "predicted_n": 64,
+    "predicted_ms": 1481.952,
+    "predicted_per_token_ms": 23.52304761904762,
+    "predicted_per_second": 42.51149834812464
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g07",
+  "category": "fun_facts",
+  "text": "tell me something i dont know",
+  "answer": "",
+  "facts": "For this reply, share this checked fact in your own words and add no other facts: Peanuts aren't nuts; they're legumes, like beans and peas.",
+  "routed": false,
+  "final": "Peanuts aren't nuts; they're legumes, like beans and peas. They're also high in fat and protein, and they're used in many cuisines around the world.",
+  "fallback": false,
+  "attempts": [
+   "Peanuts aren't nuts; they're legumes, like beans and peas. They're also high in fat and protein, and they're used in many cuisines around the world."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 50,
+    "prompt_ms": 106.006,
+    "prompt_per_token_ms": 2.12012,
+    "prompt_per_second": 471.67141482557594,
+    "predicted_n": 49,
+    "predicted_ms": 1098.712,
+    "predicted_per_token_ms": 22.889833333333332,
+    "predicted_per_second": 43.68751774805409
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g08",
+  "category": "conversions",
+  "text": "recipe says 350 in F but my new oven only does C, what do i set it to",
+  "answer": "about 177 C (176.7 C)",
+  "facts": "",
+  "routed": false,
+  "final": "Set it to 350°F in the oven's Celsius mode. If it doesn't work, check the oven's settings or call the manufacturer.",
+  "fallback": false,
+  "attempts": [
+   "Set it to 350°F in the oven's Celsius mode. If it doesn't work, check the oven's settings or call the manufacturer."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 36,
+    "prompt_ms": 75.651,
+    "prompt_per_token_ms": 2.1014166666666667,
+    "prompt_per_second": 475.86945314668674,
+    "predicted_n": 42,
+    "predicted_ms": 925.695,
+    "predicted_per_token_ms": 22.577926829268293,
+    "predicted_per_second": 44.29104618691902
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g09",
+  "category": "casual_numbers",
+  "text": "got a C in chem and my mom is going to kill me",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "A C in chemistry and your mom is going to kill you. That's a lot to take in. You're not alone. You can talk to your mom about it, and she might not be as angry as you think. You're still learning, and that's okay.",
+  "fallback": false,
+  "attempts": [
+   "A C in chemistry and your mom is going to kill you. That's a lot to take in. You're not alone. You can talk to your mom about it, and she might not be as angry as you think. You're still learning, and that's okay."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 22,
+    "prompt_ms": 54.393,
+    "prompt_per_token_ms": 2.472409090909091,
+    "prompt_per_second": 404.46380968139283,
+    "predicted_n": 67,
+    "predicted_ms": 1493.125,
+    "predicted_per_token_ms": 22.623106060606062,
+    "predicted_per_second": 44.20259522812893
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g10",
+  "category": "conversions",
+  "text": "honey. 2 cups. how many grams? asking for a very sticky friend",
+  "answer": "about 680 g (2 cups x 340 g)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2 cups of honey = about 680 grams.",
+  "routed": false,
+  "final": "2 cups of honey = about 680 grams.",
+  "fallback": false,
+  "attempts": [
+   "2 cups of honey = about 680 grams."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 59,
+    "prompt_ms": 123.725,
+    "prompt_per_token_ms": 2.0970338983050847,
+    "prompt_per_second": 476.86401293190545,
+    "predicted_n": 23,
+    "predicted_ms": 499.778,
+    "predicted_per_token_ms": 22.717181818181817,
+    "predicted_per_second": 44.019544677836954
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g11",
+  "category": "fun_facts",
+  "text": "distract me with something cool about space, anxious tonight",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The universe is full of weird stuff. Like, the Milky Way is a spiral galaxy, and it's actually smaller than the Andromeda galaxy. Also, the oldest stars are in the center of the Milky Way, and they're still burning. And the universe is expanding, so galaxies are moving away from each other. That's kind of weird, but it's true.",
+  "fallback": false,
+  "attempts": [
+   "The universe is full of weird stuff. Like, the Milky Way is a spiral galaxy, and it's actually smaller than the Andromeda galaxy. Also, the oldest stars are in the center of the Milky Way, and they're still burning. And the universe is expanding, so galaxies are moving away from each other. That's kind of weird, but it's true."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 26,
+    "prompt_ms": 64.437,
+    "prompt_per_token_ms": 2.4783461538461538,
+    "prompt_per_second": 403.4948864782656,
+    "predicted_n": 87,
+    "predicted_ms": 1995.365,
+    "predicted_per_token_ms": 23.201918604651162,
+    "predicted_per_second": 43.09988398112626
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g12",
+  "category": "quick_facts",
+  "text": "what year did the berlin wall come down, it's for a trivia night and i blanked",
+  "answer": "1989",
+  "facts": "",
+  "routed": false,
+  "final": "It came down in 1989. That's the year it was finally removed.",
+  "fallback": false,
+  "attempts": [
+   "It came down in 1989. That's the year it was finally removed."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 28,
+    "prompt_ms": 64.919,
+    "prompt_per_token_ms": 2.3185357142857144,
+    "prompt_per_second": 431.306705278886,
+    "predicted_n": 30,
+    "predicted_ms": 703.907,
+    "predicted_per_token_ms": 24.272655172413796,
+    "predicted_per_second": 41.19862425007849
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g13",
+  "category": "conversions",
+  "text": "12 fl oz in ml? packing a bottle for my trip and i have no idea",
+  "answer": "about 355 ml",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 12 fluid ounces = about 355 milliliters.",
+  "routed": false,
+  "final": "12 fl oz is about 355 ml. That's roughly a third of a liter, so it's a decent-sized bottle.",
+  "fallback": false,
+  "attempts": [
+   "12 fl oz is about 355 ml. That's roughly a third of a liter, so it's a decent-sized bottle."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 62,
+    "prompt_ms": 118.247,
+    "prompt_per_token_ms": 1.9072096774193548,
+    "prompt_per_second": 524.3261985504918,
+    "predicted_n": 40,
+    "predicted_ms": 959.428,
+    "predicted_per_token_ms": 24.60071794871795,
+    "predicted_per_second": 40.649220160345536
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g14",
+  "category": "casual_numbers",
+  "text": "the weirdest thing about my brother is he irons his socks, all 14 pairs, every sunday",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a weird and oddly consistent habit. He must have a special reason for it.",
+  "fallback": false,
+  "attempts": [
+   "That's a weird and oddly consistent habit. He must have a special reason for it."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 36,
+    "prompt_ms": 77.637,
+    "prompt_per_token_ms": 2.1565833333333333,
+    "prompt_per_second": 463.69643340159973,
+    "predicted_n": 29,
+    "predicted_ms": 670.42,
+    "predicted_per_token_ms": 23.943571428571428,
+    "predicted_per_second": 41.76486381671191
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g15",
+  "category": "conversions",
+  "text": "cookies at midnight lol how many teaspoons is a third of a stick of butter",
+  "answer": "8 teaspoons (2 2/3 tablespoons)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1/3 stick = 8 teaspoons.",
+  "routed": false,
+  "final": "A third of a stick of butter is 8 teaspoons.",
+  "fallback": false,
+  "attempts": [
+   "A third of a stick of butter is 8 teaspoons."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 54,
+    "prompt_ms": 111.363,
+    "prompt_per_token_ms": 2.0622777777777777,
+    "prompt_per_second": 484.900730044988,
+    "predicted_n": 23,
+    "predicted_ms": 509.975,
+    "predicted_per_token_ms": 23.18068181818182,
+    "predicted_per_second": 43.13936957694004
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g16",
+  "category": "fun_facts",
+  "text": "blow my mind",
+  "answer": "",
+  "facts": "For this reply, share this checked fact in your own words and add no other facts: Most of the ocean floor still hasn't been mapped in high detail.",
+  "routed": false,
+  "final": "The ocean floor is still mostly uncharted, and some places are so deep they're harder to explore than the moon. That's pretty wild to think about.",
+  "fallback": false,
+  "attempts": [
+   "The ocean floor is still mostly uncharted, and some places are so deep they're harder to explore than the moon. That's pretty wild to think about."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 46,
+    "prompt_ms": 97.092,
+    "prompt_per_token_ms": 2.110695652173913,
+    "prompt_per_second": 473.777448193466,
+    "predicted_n": 43,
+    "predicted_ms": 1071.556,
+    "predicted_per_token_ms": 25.513238095238098,
+    "predicted_per_second": 39.19533836775679
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g17",
+  "category": "conversions",
+  "text": "recipe wants 370 grams of uncooked rice and i only have a cup measure, how many cups is that",
+  "answer": "about 2 cups (370 g / 185 g per cup)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 370 grams of rice = about 2 cups.",
+  "routed": false,
+  "final": "That's about 2 cups. One cup is 100 grams, so 370 grams is roughly 2.7 cups. Round it to 2 cups if you're short on measuring tools.",
+  "fallback": false,
+  "attempts": [
+   "That's about 2 cups. One cup is 100 grams, so 370 grams is roughly 2.7 cups. Round it to 2 cups if you're short on measuring tools."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 62,
+    "prompt_ms": 134.233,
+    "prompt_per_token_ms": 2.1650483870967743,
+    "prompt_per_second": 461.88344147862296,
+    "predicted_n": 55,
+    "predicted_ms": 1790.627,
+    "predicted_per_token_ms": 33.15975925925926,
+    "predicted_per_second": 30.157034379577656
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g18",
+  "category": "fun_facts",
+  "text": "what's the strangest thing about octopuses",
+  "answer": "",
+  "facts": "For this reply, share this checked fact in your own words and add no other facts: Butterflies taste with sensors on their feet.",
+  "routed": false,
+  "final": "Octopuses have three hearts, and one of them pumps blood to the gills, while the other two pump to the rest of the body. They also have a thick, muscular layer of skin that can regenerate, and they can even change their skin color and texture to blend in with their surroundings.",
+  "fallback": false,
+  "attempts": [
+   "Octopuses have three hearts, and one of them pumps blood to the gills, while the other two pump to the rest of the body. They also have a thick, muscular layer of skin that can regenerate, and they can even change their skin color and texture to blend in with their surroundings."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 47,
+    "prompt_ms": 126.232,
+    "prompt_per_token_ms": 2.6857872340425533,
+    "prompt_per_second": 372.33031244058554,
+    "predicted_n": 72,
+    "predicted_ms": 2701.479,
+    "predicted_per_token_ms": 38.049,
+    "predicted_per_second": 26.281899655707115
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g19",
+  "category": "quick_facts",
+  "text": "which planet is closest to the sun, 3am brain is not working",
+  "answer": "Mercury",
+  "facts": "",
+  "routed": false,
+  "final": "Mercury. It's the closest planet to the Sun, and it's actually the one that's moving fastest in its orbit.",
+  "fallback": false,
+  "attempts": [
+   "Mercury. It's the closest planet to the Sun, and it's actually the one that's moving fastest in its orbit."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 29,
+    "prompt_ms": 130.108,
+    "prompt_per_token_ms": 4.4864827586206895,
+    "prompt_per_second": 222.8917514680112,
+    "predicted_n": 37,
+    "predicted_ms": 1306.428,
+    "predicted_per_token_ms": 36.28966666666667,
+    "predicted_per_second": 27.556053605709614
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g20",
+  "category": "casual_numbers",
+  "text": "tell me something nice, rough day. 12 hours at work and my feet are killing me",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's rough. Your feet are doing the work, and you're thanking them. That's a good start.",
+  "fallback": false,
+  "attempts": [
+   "That's rough. Your feet are doing the work, and you're thanking them. That's a good start."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 29,
+    "prompt_ms": 91.497,
+    "prompt_per_token_ms": 3.1550689655172413,
+    "prompt_per_second": 316.9502825229242,
+    "predicted_n": 34,
+    "predicted_ms": 1169.211,
+    "predicted_per_token_ms": 35.43063636363637,
+    "predicted_per_second": 28.22416142167667
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g21",
+  "category": "conversions",
+  "text": "one and a half cups of milk is how many grams, my brain is fried",
+  "answer": "about 368 g (1.5 cups x 245 g)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 1/2 cup of milk = about 123 grams.",
+  "routed": false,
+  "final": "One and a half cups of milk is about 123 grams. That's roughly 123 grams of milk, which is about 1/2 cup. So, 123 grams is right.",
+  "fallback": false,
+  "attempts": [
+   "One and a half cups of milk is about 123 grams. That's roughly 123 grams of milk, which is about 1/2 cup. So, 123 grams is right."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 60,
+    "prompt_ms": 180.333,
+    "prompt_per_token_ms": 3.00555,
+    "prompt_per_second": 332.7178053933556,
+    "predicted_n": 56,
+    "predicted_ms": 7319.95,
+    "predicted_per_token_ms": 133.09,
+    "predicted_per_second": 7.5137125253587795
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g22",
+  "category": "fun_facts",
+  "text": "give me a weird fun fact about food",
+  "answer": "",
+  "facts": "For this reply, share this checked fact in your own words and add no other facts: Botanically, bananas are berries, but strawberries aren't.",
+  "routed": false,
+  "final": "Bananas are berries, but strawberries aren't. That's a weird fact about food.",
+  "fallback": false,
+  "attempts": [
+   "Bananas are berries, but strawberries aren't. That's a weird fact about food."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 49,
+    "prompt_ms": 120.658,
+    "prompt_per_token_ms": 2.462408163265306,
+    "prompt_per_second": 406.1065159376088,
+    "predicted_n": 29,
+    "predicted_ms": 987.985,
+    "predicted_per_token_ms": 35.285178571428574,
+    "predicted_per_second": 28.340511242579595
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g23",
+  "category": "conversions",
+  "text": "i only have a tablespoon clean, how many tablespoons is two thirds of a cup",
+  "answer": "10 2/3 tablespoons (10 tbsp plus 2 tsp)",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2/3 cup = 10 2/3 tablespoons.",
+  "routed": false,
+  "final": "Two-thirds of a cup is 10 2/3 tablespoons.",
+  "fallback": false,
+  "attempts": [
+   "Two-thirds of a cup is 10 2/3 tablespoons."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 56,
+    "prompt_ms": 159.15,
+    "prompt_per_token_ms": 2.841964285714286,
+    "prompt_per_second": 351.8693056864593,
+    "predicted_n": 26,
+    "predicted_ms": 913.945,
+    "predicted_per_token_ms": 36.5578,
+    "predicted_per_second": 27.353943618051414
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g24",
+  "category": "casual_numbers",
+  "text": "in fact i think she lied to me about where she was at 9pm and i cant stop thinking about it",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's totally understandable. It's okay to keep thinking about it even if it's hard. You don't have to fix it right now.",
+  "fallback": false,
+  "attempts": [
+   "That's totally understandable. It's okay to keep thinking about it even if it's hard. You don't have to fix it right now."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 37,
+    "prompt_ms": 126.11,
+    "prompt_per_token_ms": 3.4083783783783783,
+    "prompt_per_second": 293.39465545951947,
+    "predicted_n": 40,
+    "predicted_ms": 1452.014,
+    "predicted_per_token_ms": 37.2311282051282,
+    "predicted_per_second": 26.859245158793236
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g25",
+  "category": "fun_facts",
+  "text": "most surprising thing about the human body? go",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "The human body can regenerate parts like skin and hair, which is surprising because most people don't think about it.",
+  "fallback": false,
+  "attempts": [
+   "The human body can regenerate parts like skin and hair, which is surprising because most people don't think about it."
+  ],
+  "timings": [
+   {
+    "cache_n": 168,
+    "prompt_n": 18,
+    "prompt_ms": 66.619,
+    "prompt_per_token_ms": 3.7010555555555555,
+    "prompt_per_second": 270.19318812951263,
+    "predicted_n": 34,
+    "predicted_ms": 1206.55,
+    "predicted_per_token_ms": 36.56212121212121,
+    "predicted_per_second": 27.3507107040736
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g26",
+  "category": "conversions",
+  "text": "bought 2 kilos of chicken thighs and the store tag only shows pounds, so what is 2 kilos in lb",
+  "answer": "about 4.4 lb",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 2 kilograms = about 4 3/8 pounds. 2 kilograms = about 4 3/8 pounds.",
+  "routed": false,
+  "final": "2 kilograms is about 4 3/8 pounds.",
+  "fallback": false,
+  "attempts": [
+   "2 kilograms is about 4 3/8 pounds."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 81,
+    "prompt_ms": 179.497,
+    "prompt_per_token_ms": 2.2160123456790126,
+    "prompt_per_second": 451.261023861123,
+    "predicted_n": 23,
+    "predicted_ms": 683.204,
+    "predicted_per_token_ms": 31.05472727272727,
+    "predicted_per_second": 32.201216620511595
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g27",
+  "category": "quick_facts",
+  "text": "how many bones does an adult have, asking for my kid's homework",
+  "answer": "206",
+  "facts": "",
+  "routed": false,
+  "final": "An adult has 206 bones. Your kid's homework is probably about something else, like spelling or math. Let me know if you'd like help with that too!",
+  "fallback": false,
+  "attempts": [
+   "An adult has 206 bones. Your kid's homework is probably about something else, like spelling or math. Let me know if you'd like help with that too!"
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 28,
+    "prompt_ms": 73.083,
+    "prompt_per_token_ms": 2.6101071428571427,
+    "prompt_per_second": 383.12603478237077,
+    "predicted_n": 47,
+    "predicted_ms": 1390.288,
+    "predicted_per_token_ms": 30.223652173913045,
+    "predicted_per_second": 33.086669812297885
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g28",
+  "category": "fun_facts",
+  "text": "need a random fact to tell my coworkers at standup, anything",
+  "answer": "",
+  "facts": "For this reply, share this checked fact in your own words and add no other facts: You're slightly taller in the morning, because the discs in your spine compress during the day.",
+  "routed": false,
+  "final": "The first time you use a new phone, you can't call anyone because it's not set up yet. That's why you always have to ask someone else to call you first.",
+  "fallback": false,
+  "attempts": [
+   "The first time you use a new phone, you can't call anyone because it's not set up yet. That's why you always have to ask someone else to call you first."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 64,
+    "prompt_ms": 120.73,
+    "prompt_per_token_ms": 1.88640625,
+    "prompt_per_second": 530.1085065849416,
+    "predicted_n": 48,
+    "predicted_ms": 1344.947,
+    "predicted_per_token_ms": 28.615893617021275,
+    "predicted_per_second": 34.94561495731803
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g29",
+  "category": "conversions",
+  "text": "stock pot recipe says 3 quarts of water but my pitcher only shows cups, how many cups is that",
+  "answer": "12 cups",
+  "facts": "For this reply, use these checked numbers exactly and add no other figures: 3 quarts of water = 12 cups.",
+  "routed": false,
+  "final": "Three quarts is 12 cups. Your pitcher might just show quarts, but 12 cups is the number you need.",
+  "fallback": false,
+  "attempts": [
+   "Three quarts is 12 cups. Your pitcher might just show quarts, but 12 cups is the number you need."
+  ],
+  "timings": [
+   {
+    "cache_n": 167,
+    "prompt_n": 59,
+    "prompt_ms": 140.138,
+    "prompt_per_token_ms": 2.375220338983051,
+    "prompt_per_second": 421.01357233584037,
+    "predicted_n": 39,
+    "predicted_ms": 1092.723,
+    "predicted_per_token_ms": 28.75586842105263,
+    "predicted_per_second": 34.77551035349306
+   }
+  ],
+  "cue_valid": true
+ },
+ {
+  "id": "g30",
+  "category": "casual_numbers",
+  "text": "that movie was interesting but 3 hours is way too long, my back is dead",
+  "answer": "",
+  "facts": "",
+  "routed": false,
+  "final": "That's a fair point. Three hours is a lot for a back that's already tight. Maybe a shorter film would feel better.",
+  "fallback": false,
+  "attempts": [
+   "That's a fair point. Three hours is a lot for a back that's already tight. Maybe a shorter film would feel better."
+  ],
+  "timings": [
+   {
+    "cache_n": 163,
+    "prompt_n": 31,
+    "prompt_ms": 103.987,
+    "prompt_per_token_ms": 3.3544193548387096,
+    "prompt_per_second": 298.11418735034187,
+    "predicted_n": 38,
+    "predicted_ms": 1380.355,
+    "predicted_per_token_ms": 37.306891891891894,
+    "predicted_per_second": 26.804698791252974
+   }
+  ],
+  "cue_valid": true
+ }
+]

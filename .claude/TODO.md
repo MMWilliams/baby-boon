@@ -51,7 +51,9 @@
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
 - [x] Wrong facts: checked facts per turn (baby_boon/facts.py: computed conversions + vetted fun-fact list in the system prompt). Unseen facts set: wrong facts 16 -> 3, conversions 8 -> 0, preference 16 vs 5. See evidence/facts-unseen.
-- [ ] Facts misses (judge on a fresh set, not facts-unseen): fun-fact requests without the word "fact" ("weirdest thing about the body", "say something interesting"); unit before a bare number ("reads 38.5 in celsius, whats that in F"); model adds invented detail to a vetted fact; flour/sugar weight-to-volume gets only an "it depends" note.
+- [x] Facts misses widened (c3118a3) and judged on a fresh set (evidence/facts2-unseen): notes fire on 16 vs 12 of 20 requests, preference new 7 vs old 1 (p = 0.07), wrong facts 9 -> 8 only. Dev fixes after the run cover every miss in both sets; facts2-unseen is now dev data.
+- [ ] Facts: the model ignores or garbles a correct note (g17 invented "100 g per cup of rice" math, g18 reversed octopus hearts, g28 unrelated reply). Try a reply check in chat: conversion note injected but its number missing from the reply -> resample, then answer with the note itself. Measure on a fresh set.
+- [ ] Facts: fun-fact pool is 38 facts; a named subject outside it (dogs, bees, Mars) gets a random topic fact the model may ignore. Grow the vetted list per topic or skip the note when no fact mentions the subject.
 - [ ] llama-server greedy replies differ run to run on identical input (6/10 in facts-unseen); try "cache_prompt": false per request, or score several samples, before trusting small preference gaps.
 - [x] Deployed model: reese picked v12 (2026-10-26; pooled preference 38 vs 21 over v13 seeds). serve.ps1 defaults to pilot-v12-1.7b; the laptop bundle already ships it.
 - [ ] Guard miss on unseen v13: y21 "what I notice: the hum of the fridge..." (sound lists). Don't tune on v13 prompts; needs a fresh set.

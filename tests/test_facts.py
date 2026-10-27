@@ -37,6 +37,12 @@ class Facts(unittest.TestCase):
             "need 1 cup packed brown sugar, how many grams": "1 cup of brown sugar = about 220 grams.",
             "half a cup of milk, how many ounces is that": "1/2 cup of milk = 4 fluid ounces.",
             "3 tbsp peanut butter in grams": "3 tablespoons of peanut butter = about 48 grams.",
+            # "X and a half" counted as a half before (dev prompt g21 got 1/2 cup of milk).
+            "two and a half cups of sugar in grams": "2 1/2 cups of sugar = about 500 grams.",
+            "three and a half cups of water in ml": "3 1/2 cups of water = about 828 milliliters.",
+            # The other scale named by a verb, and the same amount said twice.
+            "the dial says 400 in F and this oven only does C, where do i put it": "400°F = 204.4°C.",
+            "got 3 kilos of apples, the recipe is in pounds. 3 kilos is how many lb": "3 kilograms = about 6 5/8 pounds.",
         }
         for text, note in cases.items():
             self.assertEqual(conversion_note(text), note, text)
@@ -61,6 +67,14 @@ class Facts(unittest.TestCase):
         self.assertIn(fact_note("tell me the strangest creature in the sea"), FACTS["ocean"])
         self.assertIn(fact_note("bored out of my mind. tell me something weird"), ALL_FACTS)
         self.assertIn(fact_note("hit me with some trivia"), ALL_FACTS)
+        self.assertIn(fact_note("know any cool trivia about fish?"), FACTS["ocean"])
+        self.assertIn(fact_note("distract me with something wild about the planets"), FACTS["space"])
+        self.assertIn(fact_note("craziest thing about the brain? hit me"), FACTS["body"])
+
+    def test_a_named_subject_picks_a_fact_that_mentions_it(self):
+        self.assertIn("Sharks", fact_note("know any cool trivia about sharks?"))
+        self.assertIn("Cats", fact_note("tell me something weird about cats"))
+        self.assertIn("Octopuses", fact_note("whats the strangest thing about octopuses"))
 
     def test_personal_questions_are_not_fact_requests(self):
         for text in ["what's the weirdest thing about your day?", "tell me something interesting about yourself",

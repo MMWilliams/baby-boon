@@ -37,7 +37,7 @@ QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?|\s+in)?\s*(?
 # Unit first, then a bare reading: "the thermometer is on celsius and reads 38.5".
 UNIT_FIRST = re.compile(rf"(?<![\w°])({UNIT})\b(?:\s+\w+){{0,2}}?\s+(?:reads?|says?|shows?|is|at|=)\s*({NUMBER})(?![\w/]|\.\d)", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
-LETTER_TARGET = re.compile(r"\b(?:in|to|into)\s+([CF])\b", re.I)
+LETTER_TARGET = re.compile(r"\b(?:in|to|into|does|uses|shows|reads|on)\s+([CF])\b", re.I)
 INGREDIENT = "|".join(sorted(INGREDIENTS, key=len, reverse=True)).replace(" ", r"\s+")
 AFTER = re.compile(rf"\s+(?:of\s+)?(?:[\w-]+\s+)??({INGREDIENT})\b", re.I)
 BEFORE = re.compile(rf"\b({INGREDIENT})\W{{0,3}}$", re.I)
@@ -85,6 +85,12 @@ FACTS = {
 TOPICS = {"ocean": r"ocean|sea|marine|underwater|fish", "animal": r"animals?|creatures?|birds?|bugs?|insects?|pets?|dogs?|cats?",
           "space": r"space|planets?|stars?|moon|sun|galax\w*|universe", "body": r"body|brain|bones?|human|heart|blood",
           "food": r"food|fruits?|veg\w*|cooking|snacks?"}
+# Words in the facts above that don't name a subject (stripped of a trailing s before matching).
+GENERIC = {"about", "than", "that", "this", "with", "from", "have", "into", "more", "most", "over", "back", "some", "only",
+           "even", "much", "many", "like", "when", "what", "their", "there", "these", "those", "which", "while", "still",
+           "other", "every", "through", "instead", "around", "because", "during", "time", "where", "thing", "something",
+           "anything", "year", "long", "part", "high", "under", "give", "turn", "hold", "make", "called", "group", "weak",
+           "faint", "very", "body", "human", "about", "tell", "know", "fact", "trivia", "weird", "cool", "mind"}
 ADJ = (r"fun|weird|cool|random|interesting|wild|strange|crazy|odd|neat|surprising|bizarre|unusual|amazing|creepy|gross"
        r"|science|animal|space|ocean|food|body")
 MOST = (r"weirdest|coolest|strangest|craziest|wildest|oddest|creepiest|grossest|funniest"
@@ -92,12 +98,15 @@ MOST = (r"weirdest|coolest|strangest|craziest|wildest|oddest|creepiest|grossest|
 PERSONAL = r"me|my|you|your|yourself|him|his|her|them|their|us|our"
 FACT_REQUEST = re.compile(
     rf"\b(?:{ADJ})(?:[ -]\w+)? facts?\b|\bfacts? about\b|\b(?:tell|give|teach|share|hit|drop|send)\b[^.?!]{{0,25}}\bfacts?\b"
-    rf"|\bany (?:good |fun )?facts?\b|\b(?:some|any|random) trivia\b|\bblow my mind\b"
+    rf"|\b(?:any|some|random|quick)(?: \w+)? (?:facts?|trivia)\b|\bblow my mind\b"
     # "what's the weirdest thing about the human body", but not "...about your day"
     rf"|\b(?:what(?:'s|s| is)|tell me|hit me with|give me)(?: the)? (?:{MOST}) (?:thing|part|stuff|bit|creature|animal)s?\b"
     rf"(?!(?: (?:about|in|with|for))? (?:{PERSONAL})\b)"
+    # Without a lead, only as a question: "most surprising thing about the human body?"
+    rf"|\b(?:{MOST}) (?:thing|part|stuff|bit)s? about (?!(?:{PERSONAL})\b)[^.?!]{{0,30}}\?"
     # "say something interesting", but not "...about yourself"
-    rf"|\b(?:say|tell me|share|give me|teach me) something (?:{ADJ}|i (?:don'?t|didn'?t) know)\b(?! about (?:{PERSONAL})\b)",
+    rf"|\b(?:say|tell me|share|give me|teach me|distract me with|hit me with|know) something "
+    rf"(?:{ADJ}|i (?:don'?t|didn'?t) know)\b(?! about (?:{PERSONAL})\b)",
     re.I)
 CONVERSION_LEAD = "For this reply, use these checked numbers exactly and add no other figures:"
 FACT_LEAD = "For this reply, share this checked fact in your own words and add no other facts:"
@@ -119,9 +128,10 @@ def amount(text):
         whole, glyph, fraction = re.fullmatch(r"(\d+(?:\.\d+)?|\d+/\d+)\s*([½¼¾⅓⅔⅛]?)\s*(\d+/\d+)?", text).groups()
         return ratio(whole) + (ratio(fraction) if fraction else 0) + GLYPHS.get(glyph, 0)
     words = re.split(r"[\s-]+", text)
+    if "and" in words: return WORDS[words[0]] + 0.5  # "one and a half"
     if words[-1] in ("half", "halves", "third", "thirds", "quarter", "quarters", "eighth", "eighths"):
         return WORDS[words[-1]] * (WORDS[words[0]] if len(words) > 1 else 1)
-    return WORDS[words[0]] + (0.5 if "half" in words else 0)
+    return WORDS[words[0]]
 
 
 def number(x):
@@ -216,13 +226,16 @@ def conversion_note(user):
     # The source unit named again ("my 1/3 measuring cup ... how many tablespoons") isn't a target.
     notes = [line(value, unit, ingredient, [t for t in targets if t != unit]) for value, unit, ingredient in quantities
              if asked or any(t != unit for t in targets)]
-    return " ".join(notes) or None
+    return " ".join(dict.fromkeys(notes)) or None  # the same amount said twice gets one line
 
 
 def fact_note(user):
     if not FACT_REQUEST.search(user): return None
     topic = next((t for t, words in TOPICS.items() if re.search(rf"\b(?:{words})\b", user, re.I)), None)
     pool = FACTS[topic] if topic else [fact for facts in FACTS.values() for fact in facts]
+    # A named subject ("about octopuses") picks a fact that mentions it; otherwise the model answers on its own.
+    words = {w.rstrip("s") for w in re.findall(r"[a-z]{4,}", user.lower())} - GENERIC
+    pool = [fact for fact in pool if any(w in fact.lower() for w in words)] or pool
     return pool[zlib.crc32(user.encode()) % len(pool)]
 
 

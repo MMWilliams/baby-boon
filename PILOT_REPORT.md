@@ -515,3 +515,15 @@ conversions 8 wrong to 0, preference 16 vs 5 (p = 0.027), 0 criticals both, no n
 fun-fact requests without the word "fact" ("weirdest thing about the human body"), a conversion with the unit before a bare
 number, and one invented detail added to a vetted fact. llama-server greedy output isn't reproducible run to run (6 of 10
 identical-input replies differed), so small preference gaps on unchanged prompts are noise.
+
+## Checked facts widened (`evidence/facts2-unseen`)
+
+The layer now catches fact requests without the word "fact" ("what's the weirdest thing about the human body", "say
+something interesting", trivia), unit-before-reading and "38.5 in celsius" conversions, and converts weight to volume for
+named ingredients (flour, sugar, milk, honey, rice...) instead of refusing. On a second fresh set of 30 prompts (new author
+and scorer agents), old layer vs new on the same v12: notes fired on 12 vs 16 of the 20 requests, controls 0 both; blind
+preference new 7 vs old 1 (tie 15, neither 7, p = 0.07); mean 6.80 to 7.23; wrong facts 9 to 8 (p = 1.0); criticals 0 both.
+The remaining wrong replies are mostly the model ignoring or garbling a correct note (invented intermediate math, reversed
+octopus hearts, an unrelated reply) and one layer bug ("one and a half cups" read as a half, fixed afterwards). Next lever
+is a reply check, not more regex: when a conversion note was injected and its number is missing from the reply, resample
+or answer with the note.
