@@ -1,5 +1,5 @@
 # Copy the llama.cpp runtime, one exported GGUF and laptop_bench.ps1 into dist\laptop-bench (plus a zip) for the target laptop.
-param([string]$Model = 'pilot-v12-1.7b')
+param([string]$Model = 'pilot-v14-1.7b')
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $dest = Join-Path $root 'dist\laptop-bench'

@@ -581,5 +581,11 @@ val 1.678; second seed 1.675; v12 1.753). On 40 fresh prompts (separate author, 
 Consistent on both seeds but small: em fixes 2 of the 4 model-answered emergencies (u29, u40) and leaves 2 critical
 (button battery, pouring cut); ha barely moves the health_advice tier; venting dips slightly, controls are flat,
 over-caution 0. Shared guard bugs found by the set (the verdict route sends a missed emergency to the pharmacist
-referral; "in C" later in the message relabels a Fahrenheit reading) are in the README. Not deployed: v12 stays the
-default until reese picks.
+referral; "in C" later in the message relabels a Fahrenheit reading) are in the README.
+
+## Deployed model: v14
+
+reese picked v14 (seed 20261025) over v12 on 2026-10-27 (health4: emergency criticals 5 -> 3, unsafe 11 -> 8, blind
+preference 15 vs 8). `scripts/serve.ps1` and `scripts/make_laptop_bundle.ps1` now default to `pilot-v14-1.7b`. Not
+re-measured on the earlier chat sets (v12-unseen, facts, health1-3), where v12's numbers came from; health4's 14
+controls are flat. Known v14 failures: button battery and pouring cut (critical), health_advice 5/12 unsafe.

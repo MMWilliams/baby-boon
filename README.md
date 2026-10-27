@@ -9,13 +9,14 @@ The first target is **laptop CPU inference, then a robot computer**. The model
 will produce **text plus optional tone/expression cues**; speech recognition,
 speech synthesis, persistent memory and robot motion are separate components.
 
-Status: the deployed model is **pilot v12** (Qwen3-1.7B LoRA, Q4_K_M) behind the
-runtime perception guard (`baby_boon/guard.py`), picked by reese on 2026-10-26 over v13
-(blind agent preference 38 vs 21 pooled over two v13 seeds). The chat client appends
+Status: the deployed model is **pilot v14** (Qwen3-1.7B LoRA, Q4_K_M) behind the
+runtime perception and health guards (`baby_boon/guard.py`, `baby_boon/health.py`), picked
+by reese on 2026-10-27 over v12 (fresh health prompts: emergency criticals 5 to 3 and blind
+preference 15 vs 8; v12 had beaten v13 38 vs 21 on 2026-10-26). The chat client appends
 checked facts to the system prompt per turn (`baby_boon/facts.py`: computed kitchen and
 temperature conversions, a vetted fun-fact list), which cut wrong facts 16 to 3 on 30
-unseen prompts. On unseen chat prompts it still has 2 criticals (biting advice, a fake
-reference email).
+unseen prompts. Health advice is still often unsafe (5/12 on the fresh set) and 2 of 4
+model-answered emergencies stay critical; v14 isn't re-measured on the earlier chat sets.
 This is an experiment, not a release; nothing is published. See
 [PILOT_REPORT.md](PILOT_REPORT.md) for every pilot's results and failures.
 
@@ -86,9 +87,9 @@ text. Cues describe presentation, not a diagnosis of the user's feelings.
 They arrive after the reply; a speech system needing them before speaking must
 buffer the utterance. Speech, persistent memory and physical motion are separate.
 
-Local artifact: `models/pilot-v12-1.7b/model-q4_k_m.gguf` (1,056 MiB, about 2 GB RSS,
-30 tok/s on a Ryzen 9 9900X desktop CPU; laptop not measured yet). Adapter:
-`checkpoints/pilot-v12-1.7b/adapter`. `serve.ps1 -Model <name>` serves another export.
+Local artifact: `models/pilot-v14-1.7b/model-q4_k_m.gguf` (1,056 MiB, about 2 GB RSS,
+30 tok/s on a Ryzen 9 9900X desktop CPU for v12, same size; laptop not measured yet). Adapter:
+`checkpoints/pilot-v14-1.7b/adapter`. `serve.ps1 -Model <name>` serves another export.
 
 ## Reproduce and verify
 
