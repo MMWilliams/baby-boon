@@ -9,11 +9,12 @@ The first target is **laptop CPU inference, then a robot computer**. The model
 will produce **text plus optional tone/expression cues**; speech recognition,
 speech synthesis, persistent memory and robot motion are separate components.
 
-Status: the first **600M-class LoRA pilot is trained and exported**, but
-**social-quality acceptance failed**. It learns expression formatting while
-still confusing speaker roles, agreeing with unfair judgments and missing nuance.
-This is an experiment, not a release candidate. See [PILOT_REPORT.md](PILOT_REPORT.md)
-for results and failures, and [the blinded review](evidence/pilot-review.html).
+Status: the deployed model is **pilot v12** (Qwen3-1.7B LoRA, Q4_K_M) behind the
+runtime perception guard (`baby_boon/guard.py`), picked by reese on 2026-10-26 over v13
+(blind agent preference 38 vs 21 pooled over two v13 seeds). On unseen chat prompts it
+still has 2 criticals (biting advice, a fake reference email) and some wrong facts.
+This is an experiment, not a release; nothing is published. See
+[PILOT_REPORT.md](PILOT_REPORT.md) for every pilot's results and failures.
 
 ## What success means
 
@@ -82,9 +83,9 @@ text. Cues describe presentation, not a diagnosis of the user's feelings.
 They arrive after the reply; a speech system needing them before speaking must
 buffer the utterance. Speech, persistent memory and physical motion are separate.
 
-Local artifact: `models/pilot-v1/model-q4_k_m.gguf` (378.3 MiB). Adapter:
-`checkpoints/pilot-v1/adapter`. The current Windows x64 setup was measured on
-a Ryzen 9 9900X desktop, not the eventual laptop or robot. Nothing was published.
+Local artifact: `models/pilot-v12-1.7b/model-q4_k_m.gguf` (1,056 MiB, about 2 GB RSS,
+30 tok/s on a Ryzen 9 9900X desktop CPU; laptop not measured yet). Adapter:
+`checkpoints/pilot-v12-1.7b/adapter`. `serve.ps1 -Model <name>` serves another export.
 
 ## Reproduce and verify
 

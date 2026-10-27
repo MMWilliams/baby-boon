@@ -1,4 +1,4 @@
-param([string]$Model = 'pilot-v1', [int]$Port = 11438, [int]$Threads = 6)
+param([string]$Model = 'pilot-v12-1.7b', [int]$Port = 11438, [int]$Threads = 6)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $runtimePath = Join-Path $projectRoot 'tools/llama/runtime/llama-server.exe'

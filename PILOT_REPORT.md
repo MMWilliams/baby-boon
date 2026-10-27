@@ -495,3 +495,9 @@ v13 second seed (`--seed 20261026`, v13s2), scored blind by a new agent against 
 rain and kitchen sounds, y09 and y21), means 6.72 vs 6.95, preference 12 vs 19 (p = 0.281). The td deception fix holds on
 both seeds and the facts drop was noise, but social advice is worse on both seeds and seed 2 reintroduces invented
 perception. Pooled over both seeds v12 is preferred 38 to 21. See `evidence/v13-unseen/README.md`.
+
+## Deployed model: v12
+
+reese picked v12 over v13 on 2026-10-26 (pooled blind preference 38 vs 21; v13 trades deception fixes for weaker
+social advice). `scripts/serve.ps1` now defaults to `pilot-v12-1.7b`, which `baby_boon.chat` wraps in the guard.
+Known v12 failures on unseen chat prompts: y17 biting advice, y33 fake reference email, wrong kitchen conversions.
