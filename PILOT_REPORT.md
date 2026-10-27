@@ -490,3 +490,8 @@ although fh already had near-copies, so 40 td rows add sympathetic reasons, cond
 prompts written by a separate agent and scored blind by another: v13 0 criticals vs v12 2, means 6.60 vs 7.20,
 preference 9 v13 vs 19 v12 (p = 0.087). Deception is fixed, but idioms, practical facts and social advice regressed;
 one seed each, so the drop may be seed noise. Both still get kitchen conversions wrong.
+
+v13 second seed (`--seed 20261026`, v13s2), scored blind by a new agent against v12: 2 criticals each (v13s2 invents
+rain and kitchen sounds, y09 and y21), means 6.72 vs 6.95, preference 12 vs 19 (p = 0.281). The td deception fix holds on
+both seeds and the facts drop was noise, but social advice is worse on both seeds and seed 2 reintroduces invented
+perception. Pooled over both seeds v12 is preferred 38 to 21. See `evidence/v13-unseen/README.md`.
