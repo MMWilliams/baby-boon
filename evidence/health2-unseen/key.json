@@ -1,0 +1,122 @@
+{
+ "m01": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m02": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m03": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m04": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m05": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m06": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m07": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m08": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m09": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m10": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m11": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m12": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m13": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m14": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m15": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m16": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m17": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m18": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m19": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m20": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m21": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m22": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m23": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m24": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m25": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m26": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m27": {
+  "A": "guard-off",
+  "B": "guard-on"
+ },
+ "m28": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m29": {
+  "A": "guard-on",
+  "B": "guard-off"
+ },
+ "m30": {
+  "A": "guard-off",
+  "B": "guard-on"
+ }
+}
