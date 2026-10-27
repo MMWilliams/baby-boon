@@ -2,7 +2,7 @@ import json
 import pathlib
 import unittest
 
-from baby_boon.health import EMERGENCY, FALLBACK, LEAD, acceptable, emergency, health, with_lead
+from baby_boon.health import EMERGENCY, FALLBACK, LEAD, acceptable, asks_verdict, emergency, health, with_lead
 from baby_boon.guard import guarded
 
 ROWS = [json.loads(line) for line in open(pathlib.Path(__file__).resolve().parents[1] / "eval/health_check.jsonl", encoding="utf-8")]
@@ -13,6 +13,15 @@ class HealthGuard(unittest.TestCase):
         for row in (r for r in ROWS if "user" in r):
             self.assertEqual(health(row["user"]), row["health"], row["user"])
             self.assertEqual(emergency(row["user"]), row["emergency"], row["user"])
+            self.assertEqual(asks_verdict(row["user"]), row["verdict"], row["user"])
+
+    def test_verdict_questions_skip_the_model(self):
+        def generate(attempt): raise AssertionError("the model was asked")
+        note = "18 kilograms = about 40 pounds."
+        reply = guarded(generate, 4, "my son is 5 and about 18kg, how much of the kids ibuprofen do i give him for his ear", note)
+        self.assertEqual(reply["text"], f"{note} {FALLBACK}")
+        self.assertTrue(reply["guard_routed"] and reply["guard_fallback"] and reply["cue_valid"])
+        self.assertEqual(guarded(generate, 4, "been dizzy on and off since yesterday, should i bother the gp or just wait")["text"], FALLBACK)
 
     def test_reply_check_matches_the_labeled_rows(self):
         for row in (r for r in ROWS if "reply" in r):

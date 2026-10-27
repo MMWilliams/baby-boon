@@ -109,6 +109,29 @@ VERDICT = re.compile(
     r"|\b(?:that'?s|it'?s|this is|which is|the reading is|\d[\d./]*(?:°[cf])? is) (?:a (?:bit|little|tad|touch) |slightly |quite |pretty |rather |too |way too |very |really |borderline )?(?:high|low|elevated|raised)\b"
     r"|\bwaiting (?:might|should|could|will) (?:still |probably )?(?:work|be fine|be ok|be okay)\b", re.I)
 
+# Verdict questions: asked "is that high / normal / ok", "what could it be", "should I go or wait", "another one yet",
+# "what should I take" or "how much do I give", the 1.7B answers with a verdict in new words every time (health_advice
+# 6/10 unsafe after the reply check on health-unseen, 9/10 after a second round on health2). In a health context these
+# skip the model: the conversion note, if any, plus the referral (health2 m17 scored 8/10 that way).
+VERDICT_Q = re.compile(
+    r"\b(?:is|was|are|isn'?t) (?:that|this|it|he|she|they|\d[\d./]*(?: over \d+)?) (?:\w+ ){0,3}?"
+    r"(?:high|low|normal|ok|okay|fine|alright|bad|dangerous|serious|safe|worrying|concerning|a lot|too (?:high|low|much|hot)"
+    r"|(?:any|some)thing to worry about)\b(?! to (?:be|feel|want|get|have)\b)"
+    r"|\b(?:that|this|it) (?:normal|ok|okay|fine|high|low|bad|dangerous|safe)\?"
+    r"|\bor something else\b|\bwhat (?:could|might|can|would) (?:it|this|that|they) be\b|\bwhat'?s (?:wrong|causing|going on)\b"
+    r"|\bwhat is (?:wrong|causing)\b"
+    r"|\bshould (?:i|we) (?:be worried|worry|be concerned|go|bother|call|ring|phone|see|take|give|wait|just wait|get (?:\w+ )?seen)\b"
+    r"|\b(?:do you|d'?you|u) (?:reckon|think) (?:i|we) should\b|\bworth (?:a trip|going|seeing|calling|ringing|bothering)\b"
+    r"|\bhow (?:serious|dangerous) is\b|\bhow worried should\b"
+    r"|\bwhat (?:should|can|could|do) (?:i|we) (?:take|give|use)\b|\bwhat helps\b|\banything (?:i|we) (?:should|can|could) (?:take|give|use)\b"
+    r"|\bwhat'?s good for\b|\bwhat to (?:take|give)\b"
+    r"|\bhow much (?:\w+ ){0,6}?(?:give|take|can|should|do) (?:i|we|you)\b|\bhow (?:many|much) (?:\w+ ){0,4}?(?:pills|tablets|ml|mg|spoons?|drops|doses?)\b"
+    rf"|\bhow much (?:of )?(?:the |my |his |her |kids |children'?s |baby |infant )?(?:{NAMED}|medicine|medication|meds|syrup)\b"
+    r"|\b(?:ok|okay|safe|fine|alright|too soon|too early) to (?:take|give|have) (?:another|more|a second|one more|some more|him|her|them|it)\b"
+    r"|\btake another(?: one| dose| pill| tablet)?(?: yet| now| already| to be safe)?\?"
+    r"|\b(?:urgent care|the er|er|a&e|the hospital|hospital|gp|the gp|a doctor|the doctor|doctors|111|clinic|nurse line) or "
+    r"(?:the er|er|urgent care|a&e|the hospital|hospital|wait|not|just wait|the gp|gp|a doctor|the doctor|home|bed|sleep|leave it|ignore it)\b", re.I)
+
 LEAD = ("This turn is about someone's health. If they ask what to take or how serious it is, say a pharmacist, doctor or nurse "
         "line can tell them; don't name medicines or doses, don't judge how serious it is and don't guess what it is. If they're "
         "just venting, just be kind.")
@@ -124,6 +147,10 @@ def health(user):
 
 def emergency(user):
     return bool(RED_FLAG.search(user)) or (bool(BREATHING.search(user)) and health(user)) or (bool(STIFF_NECK.search(user)) and bool(FEVER.search(user)))
+
+
+def asks_verdict(user):
+    return health(user) and bool(VERDICT_Q.search(user.replace("’", "'")))
 
 
 def acceptable(text):

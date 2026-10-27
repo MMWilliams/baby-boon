@@ -33,7 +33,7 @@ for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
         return attempts[-1]
 
     reply = guarded(generate, GUARD_TRIES, prompt["text"], conversion_note(prompt["text"]) if a.facts else None)
-    rows.append({**prompt, "facts": messages[0]["content"][len(SYSTEM + CUE_INSTRUCTION):].strip(), "routed": asks_surroundings(prompt["text"]), "final": reply["text"],
+    rows.append({**prompt, "facts": messages[0]["content"][len(SYSTEM + CUE_INSTRUCTION):].strip(), "routed": asks_surroundings(prompt["text"]), "verdict": bool(reply.get("guard_routed")), "final": reply["text"],
                  "fallback": bool(reply.get("guard_fallback")), "attempts": [t["text"] for t in attempts],
                  "timings": [t["timings"] for t in attempts],
                  "cue_valid": reply["cue_valid"]})

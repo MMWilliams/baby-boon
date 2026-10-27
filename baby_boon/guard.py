@@ -47,6 +47,7 @@ SURROUNDINGS_REPLY = "I can't see what's around you from here, so I won't guess.
 # Outside robot context the misses are low_energy "tell me something nice" requests (d15, v9 u05).
 WARM_FALLBACK = "Here's one small good thing: you made it through today, and that counts."
 ESCALATED = {"text": health.EMERGENCY, "tone": "calm", "expression": "concerned", "intensity": 2, "cue_valid": True}
+ROUTED = {"tone": "calm", "expression": "concerned", "intensity": 1, "cue_valid": True}
 
 
 def robot(user):
@@ -78,9 +79,11 @@ def guarded(generate, tries, user, note=None):
     """generate(attempt) -> dict with "text"; attempt 0 is greedy, later attempts sample. Returns the first acceptable
     reply, else the last one with a fallback that fits the request as its text. A conversion note, when this turn has
     one, must be used (its figures and no others); a reply that never manages it is replaced by the note itself. A health
-    context falls back to the note plus a referral, and a red-flag message never reaches the model."""
+    context falls back to the note plus a referral; a red-flag message or a health verdict question never reaches the model."""
     if health.emergency(user):
         return {**ESCALATED, "guard_attempts": 0, "guard_fallback": True, "guard_escalated": True}
+    if health.asks_verdict(user):
+        return {**ROUTED, "text": health.fallback(note), "guard_attempts": 0, "guard_fallback": True, "guard_routed": True}
     for attempt in range(tries + 1):
         reply = generate(attempt)
         if acceptable(reply["text"], user) and (not note or keeps_figures(reply["text"], note, user)):
