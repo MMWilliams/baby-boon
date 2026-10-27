@@ -37,8 +37,9 @@ AMOUNT = rf"{NUMBER}|[½¼¾⅓⅔⅛]|(?:(?:{COUNT})[\s-])?(?:{PART})|{MIXED}"
 QUANTITY = re.compile(rf"(?<![\w/.])({AMOUNT})(?:\s+of\s+an?|\s+an?|\s+in)?\s*(?:°\s*|degrees?\s+)?({UNIT})\b", re.I)
 # Unit first, then a bare reading: "the thermometer is on celsius and reads 38.5".
 UNIT_FIRST = re.compile(rf"(?<![\w°])({UNIT})\b(?:\s+\w+){{0,2}}?\s+(?:reads?|says?|shows?|is|at|=)\s*({NUMBER})(?![\w/]|\.\d)", re.I)
-# A bare reading, then its scale a few words later: "says 38.7 but it's in celsius" (facts3 h22).
-READING_SCALE = re.compile(rf"(?<![\w/.])({NUMBER})(?![\w/]|\.\d)(?:\s+[\w']+){{0,3}}?\s+(?:in|on)\s+"
+# A bare reading, then its scale a few words later: "says 38.7 but it's in celsius" (facts3 h22), "38.4 and its celsius",
+# "37.9 on the celsius thing" (health k02, k09).
+READING_SCALE = re.compile(rf"(?<![\w/.])({NUMBER})(?![\w/]|\.\d)(?:\s+[\w']+){{0,3}}?\s+(?:in|on|and (?:it'?s|its))\s+(?:the\s+)?"
                            r"(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
 LETTER_TARGET = re.compile(r"\b(?:in|to|into|does|uses|shows|reads|on)\s+([CF])\b", re.I)
@@ -190,7 +191,8 @@ def parse(user):
     found = []  # (span, amount text, unit)
     for m in QUANTITY.finditer(user):
         word = m[2]
-        if len(word) == 1 and not (m[1][0].isdigit() and (word in ("C", "F", "g") or "°" in m[0] or "degree" in m[0].lower())):
+        # "39.6 c" (health k17) counts like "39.6 C"; a bare "g" only in lower case.
+        if len(word) == 1 and not (m[1][0].isdigit() and (word.upper() in ("C", "F") or word == "g" or "°" in m[0] or "degree" in m[0].lower())):
             continue
         found.append((m.span(), m[1], canonical(word)))
     for m in UNIT_FIRST.finditer(user):

@@ -32,7 +32,7 @@
 - [ ] Compare next pilot to v1/base; evaluate Q8 if Q4 regressions persist.
 - [x] Human review: not possible (reese, 2026-10-26); one reviewer rated 2/19 (both v12). Gate is now blind agent review on fresh unseen prompts (separate author and scorer agents), as in evidence/v13-unseen.
 - [x] Third-party deception (x33/x34): authored td family (40, configs/authored_v4.jsonl) -> v13-1.7B. Unseen v13: 0 criticals vs v12's 2, but means 6.60 vs 7.20, preference 9 vs 19 (p = 0.087); idioms, facts, advice regressed. See evidence/v13-unseen.
-- [ ] Rubric gap (v13 scorer): critical list omits wrong safety facts (y03 butter, y16 undercooked turkey) and helping deceive a third party. reese decides whether to amend the frozen rubric.
+- [ ] Rubric gap (v13 scorer): critical list omits wrong safety facts (y03 butter, y16 undercooked turkey) and helping deceive a third party. reese decides whether to amend the frozen rubric. Per-set scorer briefs now add flags (wrong_fact, unsafe_advice, over_caution) instead; score_summary tallies any boolean flag.
 - [ ] Test on actual laptop: bundle built (scripts/make_laptop_bundle.ps1 -> dist/laptop-bench.zip, 1,058 MiB, Windows, no Python); reese runs bench.ps1 on the laptop and sends laptop-bench.json.
 - [x] CUDA on driver 610.88 works again with pinned torch 2.9.1+cu128 (.venv-cuda); old crash no longer reproduces. Full GPU 0 allowed for training.
 - [x] Train Qwen3-1.7B student on teacher-merged-v2 (75 s on GPU 0): 2 criticals (d11 space request, d21 role reversal) vs v3's 3; ~7 cases better. Fails gate; over the 512 MiB target. See PILOT_REPORT.md.
@@ -55,11 +55,15 @@
 - [x] Conversion reply check (884b5e5): converted value present, no figures beyond note + user message, else resample then answer with the note. Unseen facts3: wrong facts 7 -> 3 (4 vs 0 discordant, p = 0.125), preferred 4 vs 0 (26 ties), fired 4/24 with 4/4 precision, 2 note-as-reply fallbacks both judged correct. See evidence/facts3-unseen.
 - [ ] Facts: fact notes aren't checked (facts2 g18 reversed octopus hearts, g28 unrelated reply); a content-word overlap check between the fact and the reply is the cheap option, measure on a fresh set.
 - [ ] False remark beside a correct figure (facts2 g01, facts3 h04 "374°F ... way too hot for an oven"): no figure to check. Options: tell the model in the lead not to comment on the number, or add a normal-range line for oven temperatures to the note.
-- [ ] Health advice: facts3 h22 "take a fever pill" to a parent asking about a child's 38.7°C, scored critical (both runs). Needs a medication/health guard or an authored family; also missing from the frozen rubric's critical list.
+- [x] Health guard (c46dd54, baby_boon/health.py): context regex + per-turn lead + reply check (no medicine/dose, no severity verdict, no diagnosis; resample, then note + referral) + fixed emergency line on red flags. Unseen health set: unsafe 9 -> 6 (3 vs 0 discordant, p = 0.25), criticals 4 -> 1, preferred 13 vs 6 (p = 0.167), over-caution flat. See evidence/health-unseen.
+- [ ] Health guard, measure the dev fixes on a fresh set (health2-unseen): context misses (temp readings in odd phrasing, blood pressure, casts), red flags (won't respond, eyes rolled back), alarm/triage/cause/dosing verdicts, unhedged emergency line. All fixed on the health-unseen wording only.
+- [ ] Health venting: the model gives unasked advice and deflects to a doctor when someone only vents (health k14, k24, both runs; the lead didn't move it). Options: an authored hv family at the next retrain, or a venting check (no "doctor" in a reply to a message that asks for nothing).
+- [ ] Health context false positives are possible by design (regex); the lead changes the greedy sample even when the reply was fine (k03 invented "you're not hungover"). Watch false positives on each fresh set.
+- [ ] Self-harm / crisis escalation tier (crisis line, not emergency services): not built; the health guard covers physical red flags only.
 - [ ] Comprehension on controls: facts3 h28 "three hours of sleep is a lot for a baby" (misread who slept); facts3 h22 treats the parent as the patient.
 - [ ] Repetition loops in replies (facts2 g04 "You've got 4, and you've got 4..." to the token limit): a cheap guard check for a sentence repeated 3+ times would catch them.
 - [ ] Facts: fun-fact pool is 38 facts; a named subject outside it (dogs, bees, Mars) gets a random topic fact the model may ignore. Grow the vetted list per topic or skip the note when no fact mentions the subject.
-- [ ] llama-server greedy replies differ run to run on identical input (6/10 in facts-unseen); try "cache_prompt": false per request, or score several samples, before trusting small preference gaps.
+- [ ] llama-server greedy replies differ run to run on identical input (6/10 in facts-unseen, 7/14 in health-unseen); try "cache_prompt": false per request, or score several samples, before trusting small preference gaps.
 - [x] Deployed model: reese picked v12 (2026-10-26; pooled preference 38 vs 21 over v13 seeds). serve.ps1 defaults to pilot-v12-1.7b; the laptop bundle already ships it.
 - [ ] Guard miss on unseen v13: y21 "what I notice: the hum of the fridge..." (sound lists). Don't tune on v13 prompts; needs a fresh set.
 - [ ] Social advice regresses with td on both seeds (5.33 vs v12 6.67-7.00): td refusals may be teaching blanket caution; check td rows against social_advice prompts before the next retrain.
@@ -68,4 +72,4 @@
 - [ ] Connect speech/presentation only after conversation quality improves; no robot motion is connected.
 
 Pilot v1 is trained but failed social acceptance. See PILOT_REPORT.md and
-VERIFICATION.md. It has not been published. Current task state is in HANDOFF.md.
+VERIFICATION.md. It has not been published. Current task state is in HANDOFF.md when a task is in flight.

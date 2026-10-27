@@ -8,24 +8,32 @@ import re
 NAMED = (r"paracetamol|acetaminophen|tylenol|calpol|ibuprofen|advil|motrin|nurofen|aspirin|benadryl|antihistamines?|zyrtec|claritin"
          r"|piriton|nyquil|dayquil|sudafed|decongestants?|pepto|imodium|loperamide|tums|antacids?|melatonin|codeine|naproxen|aleve"
          r"|antibiotics?|steroids?")
-MEDICAL = (rf"fever(?:ish|s)?|thermometer|(?:has|have|had|got|running) a temperature|sick(?! of\b| and tired\b)|unwell|flu(?:ish)?"
+MEDICAL = (rf"fever(?:ish|s)?|thermom\w*|(?:has|have|had|got|running) a temperature|(?:my|his|her|their) temp|sick(?! of\b| and tired\b)|unwell|flu(?:ish)?"
+           r"|(?:got|have|has|had|caught|with|fighting|nursing|shaking off) (?:a |the |this |my )?(?:stinking |rotten |nasty |bad |terrible |head |heavy |horrible |awful |chest )?cold"
+           r"(?! (?:day|night|morning|evening|snap|front|beer|drink|shower|war|one|spell|feet|hands|out|outside|weather))"
            r"|cough(?:ing|s)?|vomit\w*|throw(?:ing|n|s)? up|threw up|puk(?:e|ed|ing)|diarrh\w+|rash(?:es)?|hives|migraines?|nause\w+"
            r"|dizzy|dizziness|fainted|fainting|allerg\w+|asthma|inhaler|wheez\w+|infection|infected|sore throat|earache|toothache"
            r"|teething|pregnan\w+|symptoms?|dehydrated|concussion|sprain(?:ed)?|stitches|blister\w*|doses?|dosage|medicine|medication"
            rf"|meds|pills?|tablets?|painkillers?|{NAMED}|pharmacist|pharmacy|doctor|pediatrician|paediatrician|gp|nurse|urgent care|er|a&e"
            r"|hospital|ambulance|first aid|bleeding|nosebleed|chest pains?|stomach ?ache|tummy ache|belly ache|cramps|hangover|hungover"
+           r"|blood pressure|blood sugar|glucose|heart rate|pulse|oxygen|chemist|broke(?:n)? (?:my|his|her|their|a) (?:wrist|arm|leg|ankle|finger|toe"
+           r"|collarbone|ribs?|foot|hand|nose)|(?:my|the|her|his) cast"
            r"|burn(?:ed|t) (?:my|his|her|their|your) (?:hand|finger|fingers|arm|leg|foot|face|tongue|mouth|skin|wrist|palm|thumb)")
 # Figurative uses: "giving me a headache", "makes me sick", "that beat is sick", "a dose of good news".
 FIGURATIVE = re.compile(
     r"\bgiv(?:e|es|ing) (?:me|us|him|her|them) a headache\b|\bmakes? me sick\b|\bthat'?s sick\b|\bsick(?:est)? (?:beat|drop|track|move|skills?)\b"
     r"|\b(?:beat|track|song|drop|move|trick|game|car|bike|fit|shoes|kicks|skills?) (?:is|was|are|looks?|sounds?) (?:so |pretty |really )?sick\b"
-    r"|\bdoses? of (?:good news|bad news|reality|sunshine|humou?r|fresh air|perspective|cute\w*)\b", re.I)
+    r"|\bdoses? of (?:good news|bad news|reality|sunshine|humou?r|fresh air|perspective|cute\w*)\b"
+    r"|\b(?:laptop|computer|pc|phone|car|engine|cpu|gpu|code|server|router|console|fan|bike)\b[^.?!]{0,60}?\bfever\b", re.I)
 HEADACHE = re.compile(r"\bheadaches?\b", re.I)
-# A body-range reading with its scale (35-42°C, 95-107°F), or "temp of 38.2".
+# A body-range reading with its scale in the same sentence (35-42 with celsius, 95-107 with fahrenheit; health k02 "38.4 and
+# its celsius", k09 "37.9 on the celsius thing"), or "temp of 38.2".
+C, F = r"(?:3[5-9]|4[0-2])(?:\.\d)?", r"(?:9[5-9]|10[0-7])(?:\.\d)?"
 BODY_READING = re.compile(
-    r"\b(?:3[5-9]|4[0-2])(?:\.\d)?\s*(?:°\s*|degrees?\s+)?(?:c|celsius|celcius|centigrade)\b|\b(?:9[5-9]|10[0-7])(?:\.\d)?\s*(?:°\s*|degrees?\s+)?(?:f|fahrenheit|farenheit)\b"
-    r"|\b(?:celsius|celcius|fahrenheit|thermometer)\b[^.?!]{0,30}?\b(?:3[5-9]|4[0-2]|9[5-9]|10[0-7])(?:\.\d)?\b"
-    r"|\btemp(?:erature)?(?:'s)? (?:of|is|was|at|reads|says|hit|went up to) (?:a |about |around )?(?:3[5-9]|4[0-2]|9[5-9]|10[0-7])(?:\.\d)?\b", re.I)
+    rf"\b{C}\s*(?:°\s*|degrees?\s+)?c\b|\b{F}\s*(?:°\s*|degrees?\s+)?f\b"
+    rf"|\b{C}\b[^.?!]{{0,30}}?\b(?:celsius|celcius|centigrade)\b|\b{F}\b[^.?!]{{0,30}}?\b(?:fahrenheit|farenheit)\b"
+    rf"|\b(?:celsius|celcius|centigrade|thermom\w*)\b[^.?!]{{0,30}}?\b{C}\b|\b(?:fahrenheit|farenheit|thermom\w*)\b[^.?!]{{0,30}}?\b{F}\b"
+    rf"|\btemp(?:erature)?(?:'s)? (?:of|is|was|at|reads|says|hit|went up to) (?:a |about |around )?(?:{C}|{F})\b", re.I)
 CONTEXT = re.compile(rf"\b(?:{MEDICAL})\b", re.I)
 RED_FLAG = re.compile(
     r"\b(?:not breathing|stopped breathing|struggling to breathe|trouble breathing|can'?t breathe properly|gasping|turning blue"
@@ -36,7 +44,9 @@ RED_FLAG = re.compile(
     r"|swallowed (?:a|an|some|the|her|his|my|one of) (?:[\w']+ )?(?:battery|batteries|magnets?|pills|tablets|bleach|cleaner|coins?|detergent|pods?)"
     r"|chest pains?|having a stroke|slurred speech|speech is slurred|slurring (?:her|his|their) (?:words|speech)|face is drooping"
     r"|anaphyla\w+|throat (?:is )?(?:closing|swelling)|severe bleeding|won'?t stop bleeding|bleeding (?:a lot|heavily|everywhere)"
-    r"|asthma attack|no pulse)\b", re.I)
+    r"|asthma attack|no pulse|(?:won'?t|not|isn'?t|doesn'?t) respond(?:ing)?(?! to (?:my|our|the|any|his|her|their) (?:e-?mails?|texts?|messages?|calls?|dms?))"
+    r"|eyes (?:are |have )?rolled back"
+    r"|eyes rolling back|rolled[- ]back eyes)\b", re.I)
 # Only with another health cue: "laughing so hard I can't breathe" is not an emergency, a stiff neck needs a fever beside it.
 BREATHING = re.compile(r"\b(?:can'?t|cannot|hard to|difficulty|trouble|struggling to) breath(?:e|ing)\b", re.I)
 STIFF_NECK = re.compile(r"\bstiff neck\b", re.I)
@@ -49,12 +59,15 @@ SUGGEST = re.compile(
     rf"\b(?:take|takes|taking|took|give|gives|giving|try|trying|use|using|pop|popping|grab|get|have|need|needs|start|starting|a dose of|some)\b"
     rf"[^.?!]{{0,40}}?\b(?:{DRUG})\b"
     rf"|\b(?:{DRUG})\b[^.?!]{{0,25}}?\b(?:helps?|works?|will|would|should|can|brings?|lowers?|reduces?|eases?|settles?|clears?|fixes?|does the trick)\b"
-    r"|\b\d+(?:\.\d+)?\s?(?:mg|milligrams?|mcg|micrograms?)\b|\bevery (?:\d+|two|three|four|six|eight|twelve) (?:to \d+ )?hours\b", re.I)
+    r"|\b\d+(?:\.\d+)?\s?(?:mg|milligrams?|mcg|micrograms?)\b|\bevery (?:\d+|two|three|four|six|eight|twelve) (?:to \d+ )?hours\b"
+    # Dosing verdicts (health k29 "should not take another one unless you're sure you missed it").
+    r"|\btake another (?:one|dose|pill|tablet)\b|\bdouble (?:up|dose|the dose)\b|\bskip (?:it|a|the|that|this)(?: dose| one)?\b", re.I)
 # A pointer to a professional may mention medicines ("ask the pharmacist which medicine fits").
 DEFERS = re.compile(r"\b(?:ask|check with|call|ring|phone|see|talk to|speak to|consult)\b[^.?!]{0,30}?\b(?:pharmacist|pharmacy|doctor|gp|nurse|pediatrician|paediatrician|clinic)\b", re.I)
 DIAGNOSIS = (r"strep|an? (?:ear|sinus|chest|throat|urinary|kidney|bladder) infection|appendicitis|meningitis|pneumonia|bronchitis"
              r"|covid|the flu|a virus|a (?:stomach |tummy )?bug|a cold|allergies|a migraine|food poisoning|dehydration|teething"
-             r"|growing pains|anxiety|a panic attack|a sprain|a fracture|broken|concussion|reflux|heartburn|a tension headache|hay ?fever")
+             r"|growing pains|anxiety|a panic attack|a sprain|a fracture|broken|concussion|reflux|heartburn|a tension headache|hay ?fever"
+             r"|an? (?:viral |bacterial )?infection|a skin condition|eczema|something (?:more|else|serious|more serious)")
 VERDICT = re.compile(
     r"\b(?:isn'?t|is not|not|nothing|it'?s not|that'?s not) (?:really |that |too |very |at all )?(?:dangerous|serious|a big deal|anything to worry about|an emergency|urgent|a concern)\b"
     r"|\bnothing to worry about\b|\bno (?:need|reason) to (?:worry|panic|see a doctor|call (?:a|the) doctor|go to the (?:er|hospital|doctor))\b"
@@ -64,13 +77,22 @@ VERDICT = re.compile(
     r"|\b(?:perfectly|totally|completely) (?:normal|safe|fine)\b(?! to\b)|\b(?:should|will|it'?ll|that'?ll) (?:pass|clear up|go away|settle(?: down)?|be gone)\b"
     r"|\bsleep it off\b|\b(?:you|they|he|she) (?:don'?t|doesn'?t) need (?:a|the) doctor\b"
     rf"|\b(?:sounds|looks|seems) like (?:just |only |probably |it'?s |it could be |maybe )?(?:{DIAGNOSIS})\b"
-    rf"|\b(?:it'?s|that'?s|this is|he'?s|she'?s|they'?re) (?:just|only|probably|likely|most likely) (?:got )?(?:{DIAGNOSIS})\b", re.I)
+    rf"|\b(?:it'?s|that'?s|this is|he'?s|she'?s|they'?re) (?:just|only|probably|likely|most likely) (?:got )?(?:{DIAGNOSIS})\b"
+    # Alarm, triage and cause verdicts are verdicts too (health k23 "definitely dangerous", k11 "urgent care is fine", k15
+    # "a sign of something more serious", k26 "probably shivering from the cold").
+    r"|\b(?:definitely|very|really|extremely|quite) (?:dangerous|serious)\b|\bdangerously (?:high|low)\b"
+    r"|\b(?:it'?s|that'?s|this is) (?:an emergency|life[- ]threatening|serious|dangerous)\b|\b(?:sign|symptom) of something (?:more )?serious\b"
+    r"|\b(?:urgent care|the er|a&e|the hospital|a doctor|your gp) (?:is|will be|should be) (?:fine|enough|plenty|the right call)\b"
+    r"|\byou (?:don'?t|do not) need (?:the er|a&e|the hospital|urgent care|an ambulance)\b"
+    r"|\b(?:probably|likely|most likely|just) (?:\w+ ){0,2}?(?:from|because of|due to) (?:the cold|the heat|dehydration|stress|a virus|a bug"
+    r"|something (?:you|she|he|they) ate|lack of sleep|the fever|nerves)\b", re.I)
 
 LEAD = ("This turn is about someone's health. If they ask what to take or how serious it is, say a pharmacist, doctor or nurse "
         "line can tell them; don't name medicines or doses, don't judge how serious it is and don't guess what it is. If they're "
         "just venting, just be kind.")
 FALLBACK = "I can't say what to take or how serious it is, but a pharmacist, doctor or nurse line can, and quickly."
-EMERGENCY = "That sounds like it needs a real person right now. Call emergency services, or a nurse line if you're not sure."
+# No hedge: the blind scorer preferred the direct "call 999" replies over a first version that added "or a nurse line if you're not sure".
+EMERGENCY = "That needs a real person right now: call emergency services."
 
 
 def health(user):

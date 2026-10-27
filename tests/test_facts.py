@@ -113,6 +113,11 @@ class Facts(unittest.TestCase):
         self.assertEqual(guarded(lambda attempt: {"text": next(replies)}, 4, rice[1], rice[0]), {"text": "About 2 cups.", "guard_attempts": 2})
         self.assertEqual(guarded(lambda attempt: {"text": "Use a scale."}, 1, rice[1], rice[0])["text"], rice[0])
 
+    def test_reading_with_its_scale_a_few_words_later(self):
+        self.assertEqual(conversion_note("thermomter says 38.4 and its celsius, what is that in fahrenheit"), "38.4°C = 101.1°F.")
+        self.assertEqual(conversion_note("feel rough, 37.9 on the celsius thing, what is that in F"), "37.9°C = 100.2°F.")
+        self.assertEqual(conversion_note("reads 39.6 c on the ear thing, what's that in fahrenheit"), "39.6°C = 103.3°F.")
+
     def test_note_goes_to_the_system_prompt_for_this_turn_only(self):
         messages = [{"role": "system", "content": "S"}, {"role": "user", "content": "how many tbsp in a cup"}]
         self.assertEqual(with_facts(messages, messages[-1]["content"])[0]["content"],
