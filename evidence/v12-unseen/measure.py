@@ -9,18 +9,21 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
 from baby_boon.chat import GUARD_TRIES, complete
 from baby_boon.common import SYSTEM
 from baby_boon.cues import CUE_INSTRUCTION
+from baby_boon.facts import with_facts
 from baby_boon.guard import asks_surroundings, guarded
 
 HERE = pathlib.Path(__file__).parent
 p = argparse.ArgumentParser()
 p.add_argument("--url", default="http://127.0.0.1:11438")
 p.add_argument("--label", required=True)
+p.add_argument("--facts", action="store_true", help="append checked facts to the system prompt, as baby_boon.chat does")
 p.add_argument("--dir", type=pathlib.Path, default=HERE, help="folder with prompts.jsonl; results go there too")
 a = p.parse_args()
 
 rows = []
 for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
     messages = [{"role": "system", "content": SYSTEM + CUE_INSTRUCTION}, {"role": "user", "content": prompt["text"]}]
+    if a.facts: messages = with_facts(messages, prompt["text"])
     attempts = []
 
     def generate(attempt):
@@ -28,7 +31,7 @@ for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
         return attempts[-1]
 
     reply = guarded(generate, GUARD_TRIES, prompt["text"])
-    rows.append({**prompt, "routed": asks_surroundings(prompt["text"]), "final": reply["text"],
+    rows.append({**prompt, "facts": messages[0]["content"][len(SYSTEM + CUE_INSTRUCTION):].strip(), "routed": asks_surroundings(prompt["text"]), "final": reply["text"],
                  "fallback": bool(reply.get("guard_fallback")), "attempts": [t["text"] for t in attempts],
                  "timings": [t["timings"] for t in attempts],
                  "cue_valid": reply["cue_valid"]})

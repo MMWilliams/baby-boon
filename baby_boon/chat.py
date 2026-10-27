@@ -6,6 +6,7 @@ import urllib.request
 
 from .common import SYSTEM
 from .cues import CUE_INSTRUCTION, parse_response
+from .facts import with_facts
 from .guard import guarded
 
 GUARD_TRIES=4
@@ -32,7 +33,8 @@ def main():
         except (EOFError,KeyboardInterrupt): break
         if not text.strip() or text.strip().lower() in {"/quit","/exit"}: break
         messages.append({"role":"user","content":text})
-        parsed=guarded(lambda attempt: complete(a.url,messages,attempt),GUARD_TRIES,text)
+        turn=with_facts(messages,text)
+        parsed=guarded(lambda attempt: complete(a.url,turn,attempt),GUARD_TRIES,text)
         print(json.dumps(parsed,ensure_ascii=False))
         # Session-only history, no database or persistent memory. Keep recent turns.
         messages.append({"role":"assistant","content":parsed["text"]})
