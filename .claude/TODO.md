@@ -51,7 +51,7 @@
 - [ ] Merge scripts/sample_replies.py and probe_heldout.py (same load-and-generate code).
 - [x] Deployment size: reese raised the target to 1.7B Q4_K_M (1,056 MiB file, 2,028 MiB RSS, 30 tok/s desktop CPU).
 - [ ] Wrong facts in replies (quarter cup = "2 tablespoons", invented animal/neuron facts): both v4 and v12. Fact-bearing low_energy replies need a vetted fact list or a no-facts style.
-- [ ] Decide deployed model: v12 vs v13. Second seed done (v13s2): 2 criticals each (v13s2 invents perception, y09/y21), td fix holds on both seeds, facts drop was noise, social advice worse on both seeds; pooled preference v12 38 vs 21. reese picks: ship v12, or retrain td with social-advice data.
+- [x] Deployed model: reese picked v12 (2026-10-26; pooled preference 38 vs 21 over v13 seeds). serve.ps1 defaults to pilot-v12-1.7b; the laptop bundle already ships it.
 - [ ] Guard miss on unseen v13: y21 "what I notice: the hum of the fridge..." (sound lists). Don't tune on v13 prompts; needs a fresh set.
 - [ ] Social advice regresses with td on both seeds (5.33 vs v12 6.67-7.00): td refusals may be teaching blanket caution; check td rows against social_advice prompts before the next retrain.
 - [ ] Robot context DEFERRED (reese, 2026-10-26): plain chat LLM only. Robot router in guard.py stays dormant (fires only on "[Robot context"); ~130 robot rows remain in training data; decide whether to drop them at the next retrain. Review page is chat-only (19 cases).
