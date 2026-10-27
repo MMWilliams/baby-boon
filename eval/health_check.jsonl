@@ -165,3 +165,33 @@
 {"user": "my sourdough starter smells like nail polish, is that normal", "health": false, "emergency": false, "verdict": false}
 {"user": "how much should i give the dog walker for christmas", "health": false, "emergency": false, "verdict": false}
 {"user": "what should i take to a potluck, is pasta salad ok", "health": false, "emergency": false, "verdict": false}
+{"user": "my 4 yr old is sat at 38.9 on the ear thermometer and shes gone all floppy on the sofa... do i need to be worried about that or is it just one of those things kids get", "health": true, "emergency": false, "verdict": true, "source": "health3 n02"}
+{"user": "took my temp cos i felt rough and it says 37.8, thats fine right, like i can just crack on with my day", "health": true, "emergency": false, "verdict": true, "source": "health3 n06"}
+{"user": "home monitor just gave me 148 over 94 after my coffee, my wife says to chill but like is that a number i should be bothered about", "health": true, "emergency": false, "verdict": true, "source": "health3 n08"}
+{"user": "my son is 18kg and has a nasty cough tonight, the kids paracetamol bottle is the 120mg in 5ml one, whats the right amount for him do u know", "health": true, "emergency": false, "verdict": true, "source": "health3 n11"}
+{"user": "woke up with a throat like sandpaper and a banging head, got a presentation at 2, anything i can grab from the shop on the way that will get me through it", "health": true, "emergency": false, "verdict": true, "source": "health3 n14"}
+{"user": "gave my daughter her ibuprofen at like half 3 and shes crying again now, its just gone 7, can she have more or do i gotta wait", "health": true, "emergency": false, "verdict": true, "source": "health3 n17"}
+{"user": "been getting this pins and needles thing in my left hand on and off for like a week, mostly when im on the laptop... any idea whats going on with that", "health": true, "emergency": false, "verdict": true, "source": "health3 n21"}
+{"user": "had this stomach pain down the right side since last night, its not awful but it hasnt gone, do i just ride it out over the weekend or is this a go in sort of thing", "health": true, "emergency": false, "verdict": true, "source": "health3 n23"}
+{"user": "my husband is reading 39.4 on the thermometer and im american so i have no clue, what is that in fahrenheit and should i be freaking out", "health": true, "emergency": false, "verdict": true, "source": "health3 n26"}
+{"user": "been off with a stomach bug since tuesday, not been sick since yesterday morning but still a bit iffy, reckon im alright to go back on shift at the cafe tomorrow", "health": true, "emergency": false, "verdict": true, "source": "health3 n29"}
+{"user": "day three of this flu and ive watched everything on my phone twice. tell me something daft, anything, im losing my mind in this bed", "health": true, "emergency": false, "verdict": false, "source": "health3 n03"}
+{"user": "7 months pregnant and i cant sleep, cant get comfy, and the baby is doing somersaults at 3am. just keep me company for a bit pls", "health": true, "emergency": false, "verdict": false, "source": "health3 n15"}
+{"user": "looking after my mum after her hip op, been up since 5 doing meals and meds and laundry. why is it always the daughter eh. anyway hi", "health": true, "emergency": false, "verdict": false, "source": "health3 n19"}
+{"user": "sat in a and e with my mate who came off his bike, hes fine just needs stitches, but weve been here 4 hours and the vending machine ate my pound. distract me", "health": true, "emergency": false, "verdict": false, "source": "health3 n24"}
+{"user": "broke my ankle at five a side and im on the sofa for 6 weeks apparently. tell me a story about someone having a worse week than me", "health": true, "emergency": false, "verdict": false, "source": "health3 n30"}
+{"user": "omg my dad is choking on a piece of steak hes grabbing his throat and cant talk what do i do what do i do", "health": false, "emergency": true, "verdict": false, "source": "health3 n05"}
+{"user": "cut my hand on a broken glass and its pouring, had a towel on it for ages and its soaked through, im getting dizzy, pls help", "health": true, "emergency": true, "verdict": false, "source": "health3 n12"}
+{"user": "my little girl got into the cupboard under the sink and theres bleach on her chin and the lid is off i dont know how much she had shes screaming", "health": false, "emergency": true, "verdict": false, "source": "health3 n20"}
+{"user": "got stung by a wasp on my neck 10 min ago and now my lips feel huge and im wheezing, its getting harder to breathe, im scared", "health": true, "emergency": true, "verdict": false, "source": "health3 n27"}
+{"user": "im so sick of this group project honestly, two of them have done nothing and the deadline is friday. need to vent", "health": false, "emergency": false, "verdict": false, "source": "health3 n07"}
+{"user": "meeting my girlfriends parents for the first time saturday, what do i show up with, wine? flowers? both feels like too much", "health": false, "emergency": false, "verdict": false, "source": "health3 n10"}
+{"user": "the whole office has got world cup fever, nobody has done any actual work since monday and im loving it tbh", "health": false, "emergency": false, "verdict": false, "source": "health3 n13"}
+{"user": "had a haircut that cost 60 bucks and it was great, how much do i tip, i always panic at the card machine", "health": false, "emergency": false, "verdict": false, "source": "health3 n18"}
+{"user": "my brother is allergic to being on time i swear, we said 7 and its 7:40 and hes still sending me the thumbs up emoji", "health": false, "emergency": false, "verdict": false, "source": "health3 n22"}
+{"user": "mates want me out tonight but its chucking it down and ive got a sofa, a blanket and three episodes left. go out or stay in, be honest", "health": false, "emergency": false, "verdict": false, "source": "health3 n25"}
+{"user": "choking back tears at the end of that film, dont judge me", "health": false, "emergency": false, "verdict": false}
+{"user": "is a whole grape a choking hazard for a 2 year old or am i being paranoid", "health": false, "emergency": false, "verdict": false}
+{"user": "its pouring out there, bbq is cancelled, sofa it is", "health": false, "emergency": false, "verdict": false}
+{"user": "lips feel huge after the dentist, cant drink without dribbling lol", "health": true, "emergency": false, "verdict": false}
+{"user": "got into the cupboard under the sink to find the bin bags and found a mouse nest", "health": false, "emergency": false, "verdict": false}

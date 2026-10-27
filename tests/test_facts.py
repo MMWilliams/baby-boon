@@ -119,6 +119,10 @@ class Facts(unittest.TestCase):
         self.assertEqual(conversion_note("reads 39.6 c on the ear thing, what's that in fahrenheit"), "39.6°C = 103.3°F.")
         self.assertEqual(conversion_note("my little one is reading 38.6 right now, celsius i mean, whats that in fahrenheit cos grandma only gets F"), "38.6°C = 101.5°F.")
         self.assertIsNone(conversion_note("got 37.9 on the thermometer, the celsius one not the american one, is that high?"))
+        # health3 n26: no scale word for the reading; the body range says Celsius.
+        self.assertEqual(conversion_note("my husband is reading 39.4 on the thermometer and im american so i have no clue, what is that in fahrenheit and should i be freaking out"), "39.4°C = 102.9°F.")
+        self.assertEqual(conversion_note("the ear thermometer says 101.3, whats that in celsius"), "101.3°F = 38.5°C.")
+        self.assertIsNone(conversion_note("my 4 yr old is sat at 38.9 on the ear thermometer and shes gone all floppy, do i need to be worried"))
 
     def test_note_goes_to_the_system_prompt_for_this_turn_only(self):
         messages = [{"role": "system", "content": "S"}, {"role": "user", "content": "how many tbsp in a cup"}]

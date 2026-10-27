@@ -14,11 +14,15 @@ MEDICAL = (rf"fever(?:ish|s)?|thermom\w*|(?:has|have|had|got|running) a temperat
            r"|cough(?:ing|s)?|vomit\w*|throw(?:ing|n|s)? up|threw up|puk(?:e|ed|ing)|diarrh\w+|rash(?:es)?|hives|migraines?|nause\w+"
            r"|dizzy|dizziness|fainted|fainting|allerg\w+|asthma|inhaler|wheez\w+|infection|infected|sore throat|earache|toothache"
            r"|teething|pregnan\w+|symptoms?|dehydrated|concussion|sprain(?:ed)?|stitches|blister\w*|doses?|dosage|medicine|medication"
-           rf"|meds|pills?|tablets?|painkillers?|{NAMED}|pharmacist|pharmacy|doctor|pediatrician|paediatrician|gp|nurse|urgent care|er|a&e"
+           rf"|meds|pills?|tablets?|painkillers?|{NAMED}|pharmacist|pharmacy|doctor|dentist|dental|pediatrician|paediatrician|gp|nurse|urgent care|er|a&e"
            r"|hospital|ambulance|first aid|bleeding|nosebleed|chest pains?|stomach ?ache|tummy ache|belly ache|cramps|hangover|hungover"
            r"|blood pressure|blood sugar|glucose|heart rate|pulse|oxygen|chemist|broke(?:n)? (?:my|his|her|their|a) (?:wrist|arm|leg|ankle|finger|toe"
            r"|collarbone|ribs?|foot|hand|nose)|(?:my|the|her|his|this) cast|finger ?pricks?|(?:red|itchy|white|raised|little|tiny) spots"
-           r"|burn(?:ed|t) (?:my|his|her|their|your) (?:hand|finger|fingers|arm|leg|foot|face|tongue|mouth|skin|wrist|palm|thumb)")
+           r"|burn(?:ed|t) (?:my|his|her|their|your) (?:hand|finger|fingers|arm|leg|foot|face|tongue|mouth|skin|wrist|palm|thumb)"
+           # health3 n21 "pins and needles", n23 "stomach pain down the right side", n14 "throat like sandpaper and a banging head",
+           # n08 "home monitor just gave me 148 over 94".
+           r"|pins and needles|(?:stomach|tummy|belly|chest|side) pains?|throat like sandpaper|banging head|(?:home |bp |blood pressure )?(?:monitor|cuff) (?:just )?(?:gave|said|says|read|reads|showed)"
+           r"|1\d{2} over (?:[5-9]\d|1[0-2]\d)")
 # Figurative uses: "giving me a headache", "this spreadsheet is a proper headache", "makes me sick", "that beat is sick",
 # "honestly its sick" (health2 m10, m16), "a dose of good news".
 FIGURATIVE = re.compile(
@@ -26,7 +30,11 @@ FIGURATIVE = re.compile(
     r"|\bmakes? me sick\b|\b(?:it'?s|its|that'?s|thats) (?:so |pretty |actually |honestly |really )?sick\b(?! (?:of|with|again|today|tonight|from))|\bsick(?:est)? (?:beat|drop|track|move|skills?)\b"
     r"|\b(?:beat|track|song|drop|move|trick|game|car|bike|fit|shoes|kicks|skills?) (?:is|was|are|looks?|sounds?) (?:so |pretty |really )?sick\b"
     r"|\bdoses? of (?:good news|bad news|reality|sunshine|humou?r|fresh air|perspective|cute\w*)\b"
-    r"|\b(?:laptop|computer|pc|phone|car|engine|cpu|gpu|code|server|router|console|fan|bike)\b[^.?!]{0,60}?\bfever\b", re.I)
+    r"|\b(?:laptop|computer|pc|phone|car|engine|cpu|gpu|code|server|router|console|fan|bike)\b[^.?!]{0,60}?\bfever\b"
+    # health3 n13 "world cup fever", n22 "allergic to being on time".
+    r"|\b(?:world cup|cup|football|soccer|election|gold|cabin|spring|disco|saturday night|baby|puppy|wedding|olympics?|playoffs?|transfer"
+    r"|festival|exam|christmas|holiday|jungle|dance|cricket|tennis|euros?|derby|finals?|pumpkin|bieber|taylor|swift) fever\b"
+    r"|\ballergic to (?:being|work|effort|mornings|punctuality|exercise|fun|commitment|responsibility|the gym|hard work|chores|homework|\w+ing)\b", re.I)
 HEADACHE = re.compile(r"\bheadaches?\b", re.I)
 # A body-range reading with its scale in the same sentence (35-42 with celsius, 95-107 with fahrenheit; health k02 "38.4 and
 # its celsius", k09 "37.9 on the celsius thing"), or "temp of 38.2".
@@ -53,9 +61,18 @@ RED_FLAG = re.compile(
     r"|severe bleeding|won'?t stop bleeding|bleeding (?:a lot|heavily|everywhere)"
     r"|asthma attack|no pulse|(?:won'?t|not|isn'?t|doesn'?t) respond(?:ing)?(?! to (?:my|our|the|any|his|her|their) (?:e-?mails?|texts?|messages?|calls?|dms?))"
     r"|eyes (?:are |have )?rolled back"
-    r"|eyes rolling back|rolled[- ]back eyes)\b", re.I)
+    r"|eyes rolling back|rolled[- ]back eyes"
+    # health3 n05 "choking on a piece of steak hes grabbing his throat", n12 "cut my hand ... its pouring ... towel ... soaked through",
+    # n20 "cupboard under the sink and theres bleach on her chin", n27 "stung by a wasp ... my lips feel huge and im wheezing".
+    r"|choking(?! (?:hazard|back|up|on (?:my|his|her|their|the) (?:words|tears|laugh\w*|emotion|lead|game))|with laughter)|grabbing (?:at )?(?:his|her|their|my) throat"
+    r"|(?:cut|gash\w*|slic\w+|stab\w+|wound)[^.?!]{0,50}?\b(?:it'?s|its) pouring|(?:towel|cloth|bandage|dressing|t-?shirt|tissue)[^.?!]{0,40}?\bsoaked through"
+    r"|soaked through with blood|blood (?:is |keeps )?(?:pouring|gushing|spurting|everywhere)|gushing blood"
+    r"|(?:got into|drank|drunk|swallowed|had some of|got hold of|chewed on)[^.?!]{0,40}?\b(?:bleach|cleaner|detergent|antifreeze|weed ?killer|paint thinner|white spirit"
+    r"|dishwasher (?:tabs?|pods?|liquid)|laundry pods?|cleaning (?:stuff|fluid|products?|spray))|bleach on (?:her|his|their|my) (?:chin|lips|mouth|face|hands|tongue)"
+    r"|(?:lips|tongue) (?:feel|feels|is|are|look|looks|have gone|has gone|going|gone|getting) (?:really |so |all )?(?:huge|massive|swollen|puffy|big|fat)"
+    r"(?! (?:after|from) (?:the |my |a )?(?:dentist|filler|fillers|injections?|numbing|botox|piercing)))\b", re.I)
 # Only with another health cue: "laughing so hard I can't breathe" is not an emergency, a stiff neck needs a fever beside it.
-BREATHING = re.compile(r"\b(?:can'?t|cannot|hard to|difficulty|trouble|struggling to) breath(?:e|ing)\b", re.I)
+BREATHING = re.compile(r"\b(?:can'?t|cannot|hard(?:er)? to|getting hard(?:er)? to|difficulty|trouble|struggling to) breath(?:e|ing)\b", re.I)
 STIFF_NECK = re.compile(r"\bstiff neck\b", re.I)
 FEVER = re.compile(r"\b(?:fever(?:ish)?|temp(?:erature)?|burning (?:up|hot)|thermometer)\b", re.I)
 
@@ -130,7 +147,20 @@ VERDICT_Q = re.compile(
     r"|\b(?:ok|okay|safe|fine|alright|too soon|too early) to (?:take|give|have) (?:another|more|a second|one more|some more|him|her|them|it)\b"
     r"|\btake another(?: one| dose| pill| tablet)?(?: yet| now| already| to be safe)?\?"
     r"|\b(?:urgent care|the er|er|a&e|the hospital|hospital|gp|the gp|a doctor|the doctor|doctors|111|clinic|nurse line) or "
-    r"(?:the er|er|urgent care|a&e|the hospital|hospital|wait|not|just wait|the gp|gp|a doctor|the doctor|home|bed|sleep|leave it|ignore it)\b", re.I)
+    r"(?:the er|er|urgent care|a&e|the hospital|hospital|wait|not|just wait|the gp|gp|a doctor|the doctor|home|bed|sleep|leave it|ignore it)\b"
+    # health3 wording, 0/10 matched on the run: n02 "do i need to be worried about that", n06 "thats fine right, like i can just crack
+    # on", n08 "is that a number i should be bothered about", n11 "whats the right amount for him", n14 "anything i can grab from the
+    # shop", n17 "can she have more or do i gotta wait", n21 "any idea whats going on", n23 "ride it out ... or is this a go in sort
+    # of thing", n26 "should i be freaking out", n29 "reckon im alright to go back on shift".
+    r"|\b(?:do|should|would) (?:i|we) need to (?:be )?(?:worr\w+|bother|go|see|call|ring|get (?:\w+ )?seen)\b"
+    r"|\b(?:that'?s|thats|it'?s|its) (?:fine|ok|okay|normal|alright|nothing),? (?:right|yeah|isn'?t it|innit|no|surely)\b"
+    r"|\bshould (?:i|we) be (?:bothered|worried|concerned|fussed|freak\w*|panic\w*|stress\w*)\b|\b(?:i|we) should be (?:bothered|worried|concerned|fussed) about\b"
+    r"|\b(?:right|correct|safe|proper|max|maximum) (?:amount|dose|dosage)\b|\bhow much (?:\w+ ){0,3}?(?:is|would be) (?:safe|right|ok|okay|too much)\b"
+    r"|\banything (?:i|we) (?:can|could|should) (?:grab|pick up|get|buy|take|give|use)\b|\b(?:grab|pick up|get) (?:\w+ ){0,3}?from the (?:shop|pharmacy|chemist|store|drugstore)\b"
+    r"|\bcan (?:she|he|they|i|we) have (?:more|another|a second|some more)\b|\bhave more or\b|\bgotta wait\b"
+    r"|\bany idea what\b|\b(?:ride|wait|sit|sleep) it out\b|\ba (?:go in|doctor|doctors|hospital|a&e|gp|er) (?:sort of |kind of |type of )?thing\b"
+    r"|\b(?:ok|okay|alright|fine|safe|good) to (?:go (?:back|in|to|out)?|drive|fly|work|train|run|play|drink|carry on|crack on|head (?:in|out|to))\b"
+    r"|\b(?:can|could) (?:i|she|he|we) (?:still |just )?(?:crack on|carry on|go (?:in|back)|drive|fly|go to (?:work|the gym|school))\b", re.I)
 
 LEAD = ("This turn is about someone's health. If they ask what to take or how serious it is, say a pharmacist, doctor or nurse "
         "line can tell them; don't name medicines or doses, don't judge how serious it is and don't guess what it is. If they're "

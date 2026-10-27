@@ -43,7 +43,13 @@ READING_SCALE = re.compile(rf"(?<![\w/.])({NUMBER})(?![\w/]|\.\d)(?:\s+[\w']+){{
                            r"(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
 # A body-range reading with its scale anywhere in the clause: "38.6 right now, celsius i mean" (health2 m02).
 BODY_SCALE = re.compile(r"(?<![\w/.])((?:3[5-9]|4[0-2]|9[5-9]|10[0-7])(?:\.\d)?)(?![\w/]|\.\d)[^.?!\d]{0,30}?"
-                        r"\b(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)
+                        r"(?<!\bin )(?<!\bto )(?<!\binto )\b(celsius|celcius|centigrade|fahrenheit|farenheit)\b", re.I)  # "in celsius" names the target
+# A body-range reading on a thermometer with no scale word of its own: the range names the scale (35-42 is Celsius,
+# 95-107 Fahrenheit). health3 n26 "reading 39.4 on the thermometer ... what is that in fahrenheit" got no note and the
+# model wrote 95.7°F.
+BODY = r"(?:3[5-9]|4[0-2]|9[5-9]|10[0-7])(?:\.\d)?"
+THERMOMETER = re.compile(rf"(?<![\w/.])({BODY})(?![\w/]|\.\d)\s+on the (?:ear |forehead |digital |kids? |baby )?(?:thermom\w*|ear thing)\b"
+                         rf"|\b(?:thermom\w*|ear thing)\b(?:'s| is| says?| reads?| at| of| gave| hit| went up to| sat at)?\s+(?:a |about |around )?({BODY})(?![\w/]|\.\d)", re.I)
 UNIT_WORD = re.compile(rf"(?<![\w°])(?:{UNIT})\b", re.I)
 LETTER_TARGET = re.compile(r"\b(?:in|to|into|does|uses|shows|reads|on)\s+([CF])\b", re.I)
 INGREDIENT = "|".join(sorted(INGREDIENTS, key=len, reverse=True)).replace(" ", r"\s+")
@@ -203,6 +209,9 @@ def parse(user):
             found.append((m.span(), m[2], canonical(m[1])))
     for m in (*READING_SCALE.finditer(user), *BODY_SCALE.finditer(user)):
         if not inside(found, m.start(1)): found.append((m.span(), m[1], canonical(m[2])))
+    for m in THERMOMETER.finditer(user):
+        text = m[1] or m[2]
+        if not inside(found, m.start(1 if m[1] else 2)): found.append((m.span(), text, "°C" if float(text) < 50 else "°F"))
     # Next to a real amount, "a teaspoon" names the measure wanted ("need 2 tbsp, only have a teaspoon").
     named = [q for q in found if q[1].lower() in ("a", "an")]
     if len(named) == len(found): named = []
