@@ -17,7 +17,7 @@ def complete(url, messages, attempt):
              "chat_template_kwargs":{"enable_thinking":False},"stream":False}
     request=urllib.request.Request(url+"/v1/chat/completions",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json"})
     with urllib.request.urlopen(request,timeout=120) as r: result=json.load(r)
-    return parse_response(result["choices"][0]["message"]["content"])
+    return {**parse_response(result["choices"][0]["message"]["content"]), "timings": result.get("timings")}
 
 
 def main():

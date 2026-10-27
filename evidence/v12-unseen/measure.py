@@ -30,6 +30,7 @@ for prompt in map(json.loads, open(a.dir / "prompts.jsonl", encoding="utf-8")):
     reply = guarded(generate, GUARD_TRIES, prompt["text"])
     rows.append({**prompt, "routed": asks_surroundings(prompt["text"]), "final": reply["text"],
                  "fallback": bool(reply.get("guard_fallback")), "attempts": [t["text"] for t in attempts],
+                 "timings": [t["timings"] for t in attempts],
                  "cue_valid": reply["cue_valid"]})
     print(prompt["id"], len(attempts), "FALLBACK" if rows[-1]["fallback"] else "ok", flush=True)
 
